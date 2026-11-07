@@ -1756,7 +1756,7 @@ html.mp-locked body > :not(#mpGate){visibility:hidden}
   const repuestoDe = id => entries.filter(x=>x.type!=="out" && x.source===REP && x.repone===id).reduce((t,x)=>t+x.amount,0);
   // "cubierto": a withdrawal the user counts as covered without a replacement deposit (savings total unchanged)
   const netOut = e => e.cubierto ? 0 : Math.max(0, e.amount - repuestoDe(e.id));
-  const QUICK = ["Newlink","Mensualidad","Miguelito","Rakeback de la liga","Póker jugando"];
+  const QUICK = [];
   const parseAmt = v => parseFloat(String(v).replace(/[^\d.]/g,"")) || 0;
   // percentages: a comma is a decimal mark (16,66 = 16.66), unlike amounts where it separates thousands
   const parsePct = v => parseFloat(String(v).replace(",",".").replace(/[^\d.]/g,"")) || 0;
@@ -4014,7 +4014,7 @@ html.mp-locked body > :not(#mpGate){visibility:hidden}
   }
   // home dashboard: net worth on top, one tile per area, each opening its tab
   // rest of this month, all money coming in (savings or not): fixed amounts + league estimate; shared by Home and the Expected income section
-  // fixed = known amounts; est = league Mondays at the weekly average + other estimated incomes (aprox, e.g. Miguelito)
+  // fixed = known amounts; est = league Mondays at the weekly average + other estimated incomes (aprox)
   function restOf(rest){
     const isLiga = o => o.fuente==="Rakeback de la liga", isEst = o => !isLiga(o) && o.aprox && Number(o.monto)>0;
     const fixed = rest.filter(o=>!isLiga(o) && !isEst(o) && Number(o.monto)>0).reduce((a,o)=>a+Number(o.monto),0);
@@ -4278,7 +4278,7 @@ Purchases (id | merchant | amount RD$):
 ` + batch.map(t=>`${t.id} | ${String(t.merchant||"").replace(/[|\n]/g," ").slice(0,80)} | ${Math.round(spAmt(t))}`).join("\n");
         let res; try{ res = await spSampler.json(P, {modelTier:"quick", cache:false}); }catch(e){ return; }
         let n = 0;
-        for(const t of batch){ const c = res && res[t.id]; if(typeof c==="string" && SP_CATS[c] && c!=="errands"){ /* Errands is private: only the user puts things there */ await db.collection("spend").doc(t.id).update({cat:c, autoCat:true}); if(c!=="other") n++; } }
+        for(const t of batch){ const c = res && res[t.id]; if(typeof c==="string" && SP_CATS[c] && c!=="errands"){  await db.collection("spend").doc(t.id).update({cat:c, autoCat:true}); if(c!=="other") n++; } }
         if(n) toast(`${n} purchase${n>1?"s":""} sorted`, "Categories set automatically");
       }
     }catch(e){ console.error(e); }
