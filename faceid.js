@@ -59,9 +59,9 @@
   if (tog) tog.onclick = function(){ if (cred) disable(); else enable(); };
   paintToggle();
 
-  // lock again when the app comes back after a minute in the background
+  // lock again when the app comes back after 10 minutes in the background
   document.addEventListener("visibilitychange", function(){
     if (document.hidden) { hiddenAt = Date.now(); return; }
-    if (cred && signedIn && hiddenAt && Date.now() - hiddenAt > 60000) { setLocked(true); unlock(true); }
+    if (cred && signedIn && hiddenAt && Date.now() - hiddenAt > 600000) { setLocked(true); unlock(true); }
   });
 })();
