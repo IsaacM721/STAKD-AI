@@ -1386,9 +1386,11 @@ html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
 html.mp-guest .tabs{justify-content:space-around}
 #sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
 </style>
+<style id="stakd-bets">.pk-seg button{flex:1 1 auto;padding-left:8px!important;padding-right:8px!important}#pkSTot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}#pkSTot .pk-sm{flex-basis:100%;color:var(--muted);font-size:.85rem}#pkSTot .pk-sm b{font-size:inherit}</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108155204";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108173151";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1759,9 +1761,10 @@ html.mp-guest .tabs{justify-content:space-around}
     </div>
     <div class="hint num" id="pkInvNote" hidden></div>
     <div id="pkNew">
-      <div class="pk-seg" id="pkSeg"><button type="button" data-v="league" class="on">League</button><button type="button" data-v="ot">Outside &amp; home games</button></div>
+      <div class="pk-seg" id="pkSeg"><button type="button" data-v="league" class="on">League</button><button type="button" data-v="ot">Outside &amp; home games</button><button type="button" data-v="sb">Sports</button></div>
       <div id="pkVLeague"><div class="pk-three num" id="pkThree"></div><div class="pk-chips-t">By Monday · rake + action</div><div class="pk-chips num" id="pkWkChips"></div><div class="pk-det num" id="pkWkDet"></div></div>
       <div id="pkVOther" hidden><div class="pk-ototal num" id="pkOTot"></div><ul class="hist pweeks" id="pkWeeks"></ul><div class="pk-ototal pk-hg num" id="pkHTot"></div><ul class="hist pweeks" id="pkWeeksH"></ul></div>
+      <div id="pkVSports" hidden><div class="pk-ototal num" id="pkSTot"></div><ul class="hist pweeks" id="pkSList"></ul></div>
     </div>
     <div class="pk-stats num" id="pkStats" hidden style="display:none!important">
       <div class="pk-st"><div class="pk-st-t">League</div><div id="pkStLiga"></div><div id="pkChipsBox" hidden><div class="pk-chips-t">Rakeback by Monday</div><div class="pk-chips num" id="pkChips"></div><div class="pk-leg"><span><i class="up"></i>Above avg</span><span><i></i>Below avg</span><span><i class="owed"></i>Owed</span></div></div></div>
@@ -1927,14 +1930,14 @@ html.mp-guest .tabs{justify-content:space-around}
   const fmt = n => "RD$" + Math.round(n).toLocaleString("en-US");
   const kfmt = n => n>=1e6 ? (n/1e6).toLocaleString("en-US",{maximumFractionDigits:2})+"M" : n>=1000 ? (n/1000).toLocaleString("en-US",{maximumFractionDigits:1})+"k" : String(n);
   const $ = id => document.getElementById(id);
-  const LABELS = {"Premio casino":"Casino win (slots)","Saldo inicial":"Starting balance","Rakeback de la liga":"League rakeback","Póker jugando":"League Action","Mensualidad":"Monthly allowance","Préstamo":"Loan","Otro":"Other","Rakeback como jugador":"Player rakeback","Póker casino":"Outside Tables","Póker con amigos":"Home games","Retiro":"Withdrawal","Reposición":"Replacement"};
-  const WHY = [["gasto","Expense"],["emergencia","Emergency"],["corriente","Moved to checking account"],["negocio","Business or investment"],["poker","League poker loss or buy-in"],["poker_casino","Outside Tables loss"],["poker_amigos","Home game loss"],["favor","Favor"],["efectivo","Cash"],["otro","Other"]];
+  const LABELS = {"Apuestas":"Sports bets","Premio casino":"Casino win (slots)","Saldo inicial":"Starting balance","Rakeback de la liga":"League rakeback","Póker jugando":"League Action","Mensualidad":"Monthly allowance","Préstamo":"Loan","Otro":"Other","Rakeback como jugador":"Player rakeback","Póker casino":"Outside Tables","Póker con amigos":"Home games","Retiro":"Withdrawal","Reposición":"Replacement"};
+  const WHY = [["gasto","Expense"],["emergencia","Emergency"],["corriente","Moved to checking account"],["negocio","Business or investment"],["poker","League poker loss or buy-in"],["poker_casino","Outside Tables loss"],["poker_amigos","Home game loss"],["apuesta","Sports bet"],["favor","Favor"],["efectivo","Cash"],["otro","Other"]];
   const whyLbl = k => (WHY.find(w=>w[0]===k)||[])[1] || "Other";
-  const whySrc = k => ({poker:"Póker jugando",poker_casino:"Póker casino",poker_amigos:"Póker con amigos"})[k] || "Retiro";
+  const whySrc = k => ({poker:"Póker jugando",poker_casino:"Póker casino",poker_amigos:"Póker con amigos",apuesta:"Apuestas"})[k] || "Retiro";
   const cap = x => String(x||"").replace(/(^|[\s(·-])(\p{Ll})/gu, (m,a,b)=>a+b.toUpperCase());
   const lbl = x => LABELS[x] || cap(x);
-  const OWNER_SOURCES = ["Saldo inicial","Newlink","Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Mensualidad","Préstamo","Otro","Reposición"];
-  const baseSources = () => { const me = window.MP_ME; if(!me || me.owner) return OWNER_SOURCES; const pk = document.documentElement.classList.contains("on-poker"); return ["Saldo inicial","Salary", ...(pk ? ["Póker casino","Póker con amigos"] : []), "Mensualidad","Préstamo","Otro","Reposición"]; };
+  const OWNER_SOURCES = ["Saldo inicial","Newlink","Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Apuestas","Mensualidad","Préstamo","Otro","Reposición"];
+  const baseSources = () => { const me = window.MP_ME; if(!me || me.owner) return OWNER_SOURCES; const pk = document.documentElement.classList.contains("on-poker"); return ["Saldo inicial","Salary", ...(pk ? ["Póker casino","Póker con amigos","Apuestas"] : []), "Mensualidad","Préstamo","Otro","Reposición"]; };
   const REP = "Reposición";
   // a replacement deposit puts back money taken out of savings; it points at the withdrawal with "repone"
   const repuestoDe = id => entries.filter(x=>x.type!=="out" && x.source===REP && x.repone===id).reduce((t,x)=>t+x.amount,0);
@@ -2124,10 +2127,10 @@ html.mp-guest .tabs{justify-content:space-around}
   $("tOut").onclick=()=>setType("out");
   $("amount").addEventListener("input", ()=>{ syncSave(); updRetImpact(); });
   $("date").addEventListener("input", updRetImpact);
-  const POKER_SRC = ["Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos"];
+  const POKER_SRC = ["Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Apuestas"];
   // Player winnings are one-offs: they stay in the savings total but are left out of the daily pace,
   // so a single big night doesn't get projected forward as if it repeats.
-  const WINDFALL_SRC = ["Póker jugando","Póker casino","Póker con amigos","Rakeback como jugador","Premio casino"];
+  const WINDFALL_SRC = ["Póker jugando","Póker casino","Póker con amigos","Apuestas","Rakeback como jugador","Premio casino"];
   const windfallNet = () => entries.filter(e=>WINDFALL_SRC.includes(e.source)).reduce((t,e)=>t+(e.type==="out"?-e.amount:e.amount),0);
   function syncSplit(){
     const out = type==="out";
@@ -3901,7 +3904,8 @@ html.mp-guest .tabs{justify-content:space-around}
     $("pkPlay").className = play>0 ? "profit" : play<0 ? "late" : "";
     const cas = sumSrc("Póker casino"), home = sumSrc("Póker con amigos");
     [["pkCas",cas],["pkHome",home]].forEach(([id,v]) => { $(id).textContent = (v<0?"−":"") + fmt(Math.abs(v)); $(id).className = v>0 ? "profit" : v<0 ? "late" : ""; });
-    const all = ligaNet+play+rbj+cas+home;
+    const sbT = sumSrc("Apuestas");
+    const all = ligaNet+play+rbj+cas+home+sbT;
     $("pkAll").textContent = (all<0?"−":"") + fmt(Math.abs(all));
     // ---- poker stats: League (rakeback) and League Action (own play), both per league week ----
     // League Action is logged once a week; a week counts only if it has an entry (no entry = not logged, not zero)
@@ -4006,7 +4010,7 @@ html.mp-guest .tabs{justify-content:space-around}
     // ---- layout: switch League / Outside Tables / Home games ----
     { const sw = $("pkSeg");
       sw.querySelectorAll("button").forEach(b => { b.classList.toggle("on", b.dataset.v===pkV); b.onclick = () => { window.pkView = b.dataset.v; render(); }; });
-      $("pkVLeague").hidden = pkV!=="league"; $("pkVOther").hidden = pkV==="league";
+      $("pkVLeague").hidden = pkV!=="league"; $("pkVOther").hidden = pkV!=="ot"; $("pkVSports").hidden = pkV!=="sb";
       const owRk = ligaWeeks(ligaDebt()).reduce((t,w)=>t+Number(w.monto||0),0), owAc = ligaWeeks(ligaDebt()).reduce((t,w)=>t+Number(w.accion||0),0);
       $("pkThree").innerHTML = `<div><span>Rake per week</span><b>${fmt(Math.round(pkAvgV))}</b></div><div><span>Action per week</span><b class="${cls(actAvgV)}">${sgn(actAvgV)}</b></div>`+(owRk+owAc>0 ? `<div class="pk-owed"><span>League owes you</span><b>${fmt(owRk+owAc)}</b></div>` : "");
       const ks = [...new Set([...avgKeys, ...actKeys])].sort().slice(-8);
@@ -4025,6 +4029,14 @@ html.mp-guest .tabs{justify-content:space-around}
       $("pkWkDet").hidden = !k;
       $("pkOTot").innerHTML = `<span>Outside Tables</span><b class="${cls(cas)}">${sgn(cas)}</b>`;
       $("pkHTot").innerHTML = `<span>Home games</span><b class="${cls(home)}">${sgn(home)}</b>`;
+      { const ym = today().slice(0,7), bets = entries.filter(e=>e.source==="Apuestas").sort((a,b)=>(b.date||"").localeCompare(a.date||"")||((b.createdAt||0)-(a.createdAt||0)));
+        const mo = bets.filter(e=>(e.date||"").startsWith(ym)).reduce((t,e)=>t+(e.type==="out"?-e.amount:e.amount),0);
+        $("pkSTot").innerHTML = `<span>Sports bets</span><b class="${cls(sbT)}">${sgn(sbT)}</b>` + (bets.length ? `<small class="pk-sm">This month <b class="${cls(mo)}">${sgn(mo)}</b></small>` : "");
+        const ul = $("pkSList"); ul.innerHTML = bets.length ? "" : '<li class="empty">No bets logged yet.</li>';
+        bets.slice(0,15).forEach(e => { const li = document.createElement("li"); li.style.gridTemplateColumns = "1fr auto";
+          li.innerHTML = `<div><div class="src"></div><div class="meta"></div></div><div class="amt num"></div>`;
+          li.querySelector(".src").textContent = fmtDate(e.date,false); li.querySelector(".meta").textContent = e.type==="out" ? "Bet" : "Win";
+          const a = li.querySelector(".amt"); a.textContent = (e.type==="out"?"−":"+") + fmt(e.amount); a.classList.add(e.type==="out"?"out":"in"); ul.appendChild(li); }); }
     }
     const inv = config.inversionPoker;
     const recovered = inv>0 && pkT>=inv;
@@ -4838,7 +4850,7 @@ Numbers on the receipt may use a comma for decimals (RD$2.000,00 means 2000). If
   try{ new ResizeObserver(() => { if(Math.abs(($("cWrap").clientWidth||0) - chLastW) > 8) renderChart(); }).observe($("cWrap")); }catch(e){}
   // ---------- income by month ----------
   const BCATS = [["nl","Newlink","--c-nl"],["al","Monthly allowance","--c-al"],["rb","League rakeback","--c-rb"],["pk","Player winnings","--c-pk"],["int","Loan interest","--c-int"],["ot","Other","--c-ot"]];
-  const bCat = src => ({"Newlink":"nl","Mensualidad":"al","Rakeback de la liga":"rb","Póker jugando":"pk","Póker casino":"pk","Póker con amigos":"pk","Rakeback como jugador":"pk","Otro":"ot"})[src] || null;
+  const bCat = src => ({"Newlink":"nl","Mensualidad":"al","Rakeback de la liga":"rb","Póker jugando":"pk","Póker casino":"pk","Póker con amigos":"pk","Apuestas":"pk","Rakeback como jugador":"pk","Otro":"ot"})[src] || null;
   function interestIn(key){
     const share = l => (l.interes||0)/(100+(l.interes||0)); let t=0;
     loans.forEach(l => {
