@@ -8,12 +8,12 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Stakd">
-<meta name="theme-color" content="#6E1830">
+<meta name="theme-color" content="#0F241B">
 <meta name="robots" content="noindex,nofollow">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png?v=5">
 <link rel="icon" type="image/png" href="icon-192.png?v=5">
-<script>(function(){var p="goyardb";try{p=localStorage.getItem("mp-palette")||"goyardb";}catch(e){}if(["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo"].indexOf(p)<0)p="goyardb";document.documentElement.setAttribute("data-palette",p);})();</script>
+<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo","goyards"].indexOf(p)<0)p="goyardb";document.documentElement.setAttribute("data-palette",p);})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
@@ -1276,6 +1276,40 @@ html.mp-locked body > :not(#mpGate){visibility:hidden}
 #mpGate input{margin-bottom:10px}
 #mpGate .lnk{background:none;border:0;color:var(--muted);font:inherit;font-size:.85rem;margin-top:12px;text-decoration:underline;cursor:pointer}
 </style>
+<style id="stakd-theme">
+html:root[data-palette="goyards"]{color-scheme:dark;
+ --paper:#0F241B; --card:#132C21; --ink:#FFFFFF; --muted:#A9BFB4; --line:#2B5442;
+ --green:#FFFFFF; --green-soft:#2B5442; --mango:#E9C67A; --mango-ink:#FFFFFF; --red:#FFB8AA; --on-green:#0B1A13;
+ --c-sav:#F3E9DC; --c-owe:#E2B65F; --c-cc:#9FC3B1; --c-nl:#F3E9DC; --c-al:#7FD1A8; --c-rb:#E2B65F; --c-pk:#9FC3B1; --c-int:#F5D58C; --c-ot:#2E6149;
+ --d1:#F3E9DC; --d2:#E2B65F; --d3:#7FD1A8; --d4:#9FC3B1; --d5:#F5D58C; --d0:#2E6149;
+ --gy-leather:#E2B65F; --gy-stitch:transparent; --gy-trim:#E2B65F}
+html[data-palette="goyards"]::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;pointer-events:none;transform:translateZ(0);contain:strict;
+ background:radial-gradient(120% 70% at 15% 0%,#24503D 0%,#132B21 55%,#08160F 100%)}
+html[data-palette="goyards"]::after{display:none}
+html:root[data-palette="goyards"] :is(section,.tabs,.tabp > .hero){background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015)),#112A1F;border:1px solid rgba(255,255,255,.07);outline:none;
+ box-shadow:0 14px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06)}
+html:root[data-palette="goyards"] :is(input,select,textarea){background:#0B1D15;border-color:#2B5442;color:#fff}
+html:root[data-palette="goyards"] :is(input,select,textarea):focus{border-color:#E2B65F;outline-color:#E2B65F}
+html:root[data-palette="goyards"] .pct{color:#E2B65F}
+html:root[data-palette="goyards"] .primary{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405;border:0}
+html:root[data-palette="goyards"] .primary.out{background:var(--red);color:#5A1206}
+html:root[data-palette="goyards"] .jump{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--paper) 96%,transparent)}
+html:root[data-palette="goyards"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched){background:rgba(255,255,255,.045)}
+/* progress bar: a clean gold fill instead of stitched leather */
+html:root[data-palette="goyards"] .bar{height:14px;border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
+html:root[data-palette="goyards"] .bar::before,html:root[data-palette="goyards"] .bar i::before,html:root[data-palette="goyards"] .bar i::after{display:none}
+html:root[data-palette="goyards"] .bar i{border-radius:999px;background:linear-gradient(90deg,#C8973F,#F5D58C);box-shadow:0 0 12px rgba(226,182,95,.35)}
+html:root[data-palette="goyards"] .mk{background:rgba(255,255,255,.35)}
+html:root[data-palette="goyards"] .mk.hit{background:#F5D58C}
+/* number colors: money in / gains green, money out / losses red (same as Stocks) */
+html:root[data-palette="goyards"] :is(.amt.in,.profit,.badge.good,.sent-ok,.be-done b,#pkAvg b){color:#A6E9C2}
+html:root[data-palette="goyards"] span.a[style*="var(--green)"]{color:#A6E9C2!important}
+html:root[data-palette="goyards"] :is(.amt.out,.late,.badge.bad,.warn){color:#FFB8AA}
+/* no Goyard stitching anywhere */
+html:root[data-palette="goyards"] main :is(div,section,li,a,span,b){outline-style:none}
+html:root[data-palette="goyards"] :is(#savSplit>div,#pkNew .pk-three div,#pkNew .pk-det){outline:none;background:rgba(255,255,255,.05);border:0}
+html:root[data-palette="goyards"] .tabs button[aria-selected=true],html:root[data-palette="goyards"] .tabs button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+</style>
 </head>
 <body>
 <div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png" alt=""><h1>Stakd</h1><p>Enter your password</p>
@@ -1725,7 +1759,7 @@ html.mp-locked body > :not(#mpGate){visibility:hidden}
   <div class="toast" id="toast" role="status" aria-live="polite"><span class="tk" aria-hidden="true">✓</span><div><b id="toastT"></b><small id="toastS"></small></div><button type="button" class="tundo" id="toastUndo" hidden>Undo</button></div>
 
   <button type="button" class="palbtn" id="palBtn" aria-label="Colors" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.2" fill="currentColor"/><circle cx="12" cy="7.5" r="1.2" fill="currentColor"/><circle cx="16.5" cy="10.5" r="1.2" fill="currentColor"/></svg></button>
-  <div class="palette palsheet" id="palSheet" hidden><span>Colors</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyardb" aria-pressed="false">Goyard Burgundy</button><button type="button" data-pal="goyard" aria-pressed="false">Goyard Blue</button><button type="button" data-pal="goyarde" aria-pressed="false">Goyard Evergreen</button><button type="button" data-pal="goyardp" aria-pressed="false">Goyard Pink</button><button type="button" data-pal="goyardv" aria-pressed="false">Goyard Purple</button><button type="button" data-pal="goyardy" aria-pressed="false">Goyard Grey</button><button type="button" data-pal="goyardk" aria-pressed="false">Goyard Black</button><button type="button" data-pal="goyardn" aria-pressed="false">Goyard Navy</button><button type="button" data-pal="goyardo" aria-pressed="false">Goyard Orange</button></div></div>
+  <div class="palette palsheet" id="palSheet" hidden><span>Colors</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Stakd</button><button type="button" data-pal="goyardb" aria-pressed="false">Goyard Burgundy</button><button type="button" data-pal="goyard" aria-pressed="false">Goyard Blue</button><button type="button" data-pal="goyarde" aria-pressed="false">Goyard Evergreen</button><button type="button" data-pal="goyardp" aria-pressed="false">Goyard Pink</button><button type="button" data-pal="goyardv" aria-pressed="false">Goyard Purple</button><button type="button" data-pal="goyardy" aria-pressed="false">Goyard Grey</button><button type="button" data-pal="goyardk" aria-pressed="false">Goyard Black</button><button type="button" data-pal="goyardn" aria-pressed="false">Goyard Navy</button><button type="button" data-pal="goyardo" aria-pressed="false">Goyard Orange</button></div></div>
 
   <div class="notice" id="notice">This view can’t save data. Open the tracker from your Claude account to log transactions.</div>
 </main>
@@ -1734,8 +1768,8 @@ html.mp-locked body > :not(#mpGate){visibility:hidden}
 (function(){
   // color theme: remembered on this device only
   (()=>{
-    let pal = "goyardb"; try{ pal = localStorage.getItem("mp-palette") || "goyardb"; }catch(e){}
-    if(!["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo"].includes(pal)) pal = "goyardb";
+    let pal = "goyards"; try{ pal = localStorage.getItem("mp-palette") || "goyards"; }catch(e){}
+    if(!["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo","goyards"].includes(pal)) pal = "goyardb";
     const set = p => { document.documentElement.setAttribute("data-palette", p); try{ const bg = getComputedStyle(document.documentElement, "::before").backgroundImage; document.documentElement.style.setProperty("--gy-canvas", bg && bg!=="none" ? bg : "none"); }catch(e){} document.querySelectorAll("[data-pal]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.pal===p)); try{ localStorage.setItem("mp-palette", p); }catch(e){} };
     set(pal);
     /* the home-screen app can lose localStorage, so the theme is also kept in the tracker's data (prefs/ui) */
