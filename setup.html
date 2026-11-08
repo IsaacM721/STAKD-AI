@@ -10,13 +10,13 @@
 <p class="li">4. Change your color or tabs anytime from the gear at the top right.</p>
 <h2>Automatic bank sync (optional)</h2>
 <h2>What you need</h2>
-<p class="li">- A Stakd AI account. Open <a href="https://marcoferrando114.github.io/Sette-Cifre/">https://marcoferrando114.github.io/Sette-Cifre/</a>, tap <b>Create an account</b>, and finish the setup.</p>
+<p class="li">- A Stakd AI account. Open <a href="https://isaacm721.github.io/stakd-ai/">https://isaacm721.github.io/stakd-ai/</a>, tap <b>Create an account</b>, and finish the setup.</p>
 <p class="li">- A paid Claude plan (Pro or Max).</p>
 <p class="li">- Your bank sends you an email for every card purchase. Turn on email alerts in your bank app if they&#x27;re off.</p>
 <h2>Setup (about 10 minutes, one time)</h2>
 <p class="li">1. <b>Connect Gmail to Claude.</b> In claude.ai, go to Settings &gt; Connectors and connect Gmail.</p>
 <p class="li">2. <b>Create a cloud environment.</b> Go to claude.ai/code and create a new environment (you don&#x27;t need to pick a repository).</p>
-<p class="li">   - <b>Network access:</b> allow these sites: <code>firestore.googleapis.com</code>, <code>identitytoolkit.googleapis.com</code>, <code>marcoferrando114.github.io</code>.</p>
+<p class="li">   - <b>Network access:</b> allow these sites: <code>firestore.googleapis.com</code>, <code>identitytoolkit.googleapis.com</code>, <code>raw.githubusercontent.com</code>. Setup script: download <code>tools/stakd_db.py</code> from this repo to <code>/opt/stakd/stakd_db.py</code>.</p>
 <p class="li">   - <b>Environment variables:</b> add <code>STAKD_EMAIL</code> = the email you use for Stakd AI, and <code>STAKD_PASSWORD</code> = your Stakd AI password. Type them only in the environment settings, never in a chat.</p>
 <p class="li">3. <b>Make the sync prompt yours.</b> Copy the sync prompt at the bottom of this page and fill in the three blanks: your bank&#x27;s name, the email address your alerts come from, and the last 4 digits of your card.</p>
 <p class="li">4. <b>Schedule it.</b> In Claude Code, using that environment, create a scheduled task that runs the prompt twice a day (for example 8:00 and 14:00 Santo Domingo time), with the Gmail connector turned on.</p>
@@ -28,12 +28,11 @@
 <h2>Sync prompt</h2><p>Fill in the three &lt;blanks&gt; before using it.</p><button onclick="navigator.clipboard.writeText(document.getElementById('pr').textContent).then(()=>this.textContent='Copied')">Copy prompt</button>
 <pre id="pr">Sync my bank alert emails from Gmail into my Stakd AI app. Work quietly; this is routine.
 
-SETUP (every run): download the helper and use it for all reads and writes. It signs in as me with the environment variables STAKD_EMAIL and STAKD_PASSWORD. Never print, store or ask for the password.
-  curl -sSfo /tmp/stakd_db.py https://marcoferrando114.github.io/Sette-Cifre/tools/stakd_db.py
-  python3 -I /tmp/stakd_db.py list spend
-  python3 -I /tmp/stakd_db.py get spendMeta sync
-  python3 -I /tmp/stakd_db.py set spend &lt;GMAIL_MESSAGE_ID&gt; &#x27;&lt;json&gt;&#x27;
-  python3 -I /tmp/stakd_db.py update spendMeta sync &#x27;&lt;json&gt;&#x27;
+SETUP: the environment&#x27;s setup script already installed the helper at /opt/stakd/stakd_db.py; use it for all reads and writes. It signs in as me with the environment variables STAKD_EMAIL and STAKD_PASSWORD. Never print, store or ask for the password.
+  python3 -I /opt/stakd/stakd_db.py list spend
+  python3 -I /opt/stakd/stakd_db.py get spendMeta sync
+  python3 -I /opt/stakd/stakd_db.py set spend &lt;GMAIL_MESSAGE_ID&gt; &#x27;&lt;json&gt;&#x27;
+  python3 -I /opt/stakd/stakd_db.py update spendMeta sync &#x27;&lt;json&gt;&#x27;
 If sign-in fails, stop and tell me in one line.
 
 MY BANK: &lt;BANK NAME&gt;. Alerts come from &lt;SENDER ADDRESS, e.g. alertas@mybank.com&gt;. My card ends in &lt;LAST 4&gt;.

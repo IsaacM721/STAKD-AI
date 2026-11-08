@@ -12,8 +12,8 @@ Also importable: from stakd_db import get, list_col, set_doc, update_doc, delete
 """
 import json, os, sys, urllib.request, urllib.error
 
-API_KEY = "AIzaSyAMuD9zu8-MXApaHTCVsaXLi5CtV3WufY4"
-PROJECT = "stakd-3d1b9"
+API_KEY = "AIzaSyBwQfOJ4jRjmVcqoTAnC01snchuMl1hQm8"
+PROJECT = "stakd-isaac"
 ROOT = f"projects/{PROJECT}/databases/(default)/documents"
 BASE = "https://firestore.googleapis.com/v1/" + ROOT
 _tok = None
