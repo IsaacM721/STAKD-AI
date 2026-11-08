@@ -1366,7 +1366,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108103639";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108104545";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3710,8 +3711,12 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
     const capAll = loans.reduce((t,l)=>t+l.monto,0);
     const avgRate = capAll ? loans.reduce((t,l)=>t+l.monto*(l.interes||0),0)/capAll : 0;
     const shareOf = l => (l.interes||0)/(100+(l.interes||0));
-    const earned = loans.reduce((t,l)=>t + (l.pagado ? loanTotal(l.monto,l.interes||0) : paidSum(l))*shareOf(l),0);
-    const pending = act.reduce((t,l)=>t+loanRemaining(l)*shareOf(l),0);
+    const earned0 = loans.reduce((t,l)=>t + (l.pagado ? loanTotal(l.monto,l.interes||0) : paidSum(l))*shareOf(l),0);
+    const favs = config.deudas.filter(d=>d.prestado>0 && d.total>d.prestado);
+    const favEarned = favs.reduce((t,d)=>t+Math.min(d.total-d.prestado,Math.max(0,paidTo(d.nombre)-d.prestado)),0);
+    const favPending = favs.reduce((t,d)=>t+(d.total-d.prestado),0) - favEarned;
+    const earned = earned0 + favEarned;
+    const pending = act.reduce((t,l)=>t+loanRemaining(l)*shareOf(l),0) + favPending;
     const capAct = act.reduce((t,l)=>t+l.monto,0);
     const actSav = act.filter(l=>l.retiroId).reduce((t,l)=>{ const r=entries.find(e=>e.id===l.retiroId); return t+(r?r.amount:0); },0);
     const pctSav = actSav>0 ? actSav/(total+actSav)*100 : 0;
