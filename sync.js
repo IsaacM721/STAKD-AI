@@ -77,7 +77,7 @@
   };
   $("saGm").onclick = async function(){
     req = { status: "pending", at: Date.now() }; paint();
-    try { await db.doc("spendMeta/syncReq").set(req); toast("Spending update asked", "It runs within the hour"); }
+    try { await db.doc("spendMeta/syncReq").set(req); toast("Refresh asked", "It runs within the hour"); }
     catch (e) { req = null; paint(); toast("Couldn’t ask for an update", "Try again", true); }
   };
   (async function(){
