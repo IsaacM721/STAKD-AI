@@ -1325,6 +1325,17 @@ html.sf-locked body > :not(#sfLock){visibility:hidden}
 #sfOffer .g{max-width:420px}
 #sfToggle{margin-top:14px}
 </style>
+<style id="stakd-dock">
+.tabs{left:0!important;right:0!important;transform:none!important;bottom:0!important;width:100%!important;max-width:none!important;
+ border-radius:22px 22px 0 0!important;padding:6px 10px calc(6px + env(safe-area-inset-bottom,0px))!important;box-shadow:0 -8px 24px rgba(0,0,0,.28)!important}
+@media (min-width:760px){.tabs{left:50%!important;transform:translateX(-50%)!important;width:744px!important}}
+main{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))!important}
+.toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}
+body::after{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:29;pointer-events:none}
+html:root[data-palette="goyards"] .tabs{background:#0D1F17!important;border:0!important;border-top:1px solid rgba(255,255,255,.08)!important}
+html:root[data-palette="goyards"] body::after{background:#0E2219}
+html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[data-palette="goyards"] .seg button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+</style>
 </head>
 <body>
 <div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png" alt=""><h1>Stakd</h1><p>Enter your password</p>
