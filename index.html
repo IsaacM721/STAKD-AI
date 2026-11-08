@@ -1424,9 +1424,19 @@ html.sg-on #snapBtn,#mpGate:not([hidden])~#snapUi #snapBtn{display:none}
 #snapKeyRow{flex-basis:100%;max-width:340px;margin:10px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--ink)}
 #snapKeyRow button{background:none;border:0;color:var(--mango);font:inherit;text-decoration:underline;cursor:pointer}
 </style>
+<style id="stakd-alerts">
+#alWrap{flex-basis:100%;max-width:340px;margin:12px auto 0;text-align:left}
+#alWrap>span{display:block;text-align:center;margin-bottom:6px}
+#alWrap .tg{display:flex;align-items:center;justify-content:space-between;padding:9px 4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink);font-size:.95rem}
+#alWrap .tg input{width:20px;height:20px;accent-color:var(--mango)}
+#alWrap .primary{width:100%;margin:4px 0 8px}
+#alWrap .hint{font-size:.82rem;color:var(--muted);text-align:center;margin:4px 0 8px}
+html.mp-guest #alWrap{display:none}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108194455";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108201455";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -5466,6 +5476,59 @@ TRACKER DATA:
     db = d; addKeyRow();
     db.collection("spend").onSnapshot(function(s){ spend = s.docs.map(function(x){ var o = x.data(); o.id = x.id; return o; }); }, function(){});
     db.collection("bets").onSnapshot(function(s){ bets = s.docs.map(function(x){ return {id:x.id}; }); }, function(){});
+  });
+})();
+</script>
+<script id="stakd-alerts-js">
+(function(){
+  var PUB = "BAg0woHIxVYnMieYNkLUB-H_aID7XGPWxXMsWw0EhkhdcJvqnX36l4LsXkt-KZf7-fVb50HkP5ee3GsIOzB-wis";
+  var LIST = [["limit","A stock hits your limit price"],["move","A stock moves 5% or has earnings tomorrow"],["loan","A loan is due tomorrow"],["paid","A payment comes in"],["budget","You reach 85% of your monthly limit"],["rake","Rakeback arrives"]];
+  var $ = function(id){ return document.getElementById(id); };
+  var db = null, prefs = {}, subs = [];
+  var ok = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  var b2u = function(s){ s = s.replace(/-/g,"+").replace(/_/g,"/"); s += "===".slice((s.length+3)%4); var r = atob(s), a = new Uint8Array(r.length); for(var i=0;i<r.length;i++) a[i] = r.charCodeAt(i); return a; };
+  var toast = function(t, s, w){ if(window.mpToast) window.mpToast(t, s||"", w); };
+  function build(){
+    var sh = $("palSheet"); if(!sh || $("alWrap")) return;
+    var w = document.createElement("div"); w.id = "alWrap";
+    w.innerHTML = '<span>Alerts</span><div id="alState"></div>' + LIST.map(function(x){ return '<label class="tg"><span>'+x[1]+'</span><input type="checkbox" data-al="'+x[0]+'"></label>'; }).join("");
+    var before = $("snapKeyRow") || $("sgTabs"); if(before) sh.insertBefore(w, before); else sh.appendChild(w);
+    w.querySelectorAll("[data-al]").forEach(function(c){ c.onchange = function(){ var o = {}; o[c.dataset.al] = c.checked; prefs[c.dataset.al] = c.checked; db.doc("prefs/alerts").set(Object.assign({}, prefs, {at: Date.now()})).catch(function(){ toast("Couldn’t save", "Try again", true); }); }; });
+    state();
+  }
+  function sync(){ var w = $("alWrap"); if(!w) return; w.querySelectorAll("[data-al]").forEach(function(c){ c.checked = prefs[c.dataset.al] !== false; }); }
+  async function state(){
+    var el = $("alState"); if(!el) return;
+    if(!ok){ el.innerHTML = '<div class="hint">To get alerts, open Stakd from its Home Screen icon (iPhone with iOS 16.4 or newer).</div>'; return; }
+    var reg = await navigator.serviceWorker.getRegistration().catch(function(){ return null; });
+    var sub = reg ? await reg.pushManager.getSubscription().catch(function(){ return null; }) : null;
+    var on = sub && Notification.permission === "granted" && subs.some(function(s){ return s.endpoint === sub.endpoint; });
+    if(on){ el.innerHTML = '<div class="hint">Alerts are on for this phone.</div>'; return; }
+    if(Notification.permission === "denied"){ el.innerHTML = '<div class="hint">Notifications are blocked. Turn them on in iPhone Settings → Notifications → Stakd AI.</div>'; return; }
+    el.innerHTML = '<button type="button" class="primary" id="alOn">Turn on alerts</button>';
+    $("alOn").onclick = turnOn;
+  }
+  async function turnOn(){
+    var b = $("alOn"); if(b){ b.disabled = true; b.textContent = "Turning on…"; }
+    try{
+      var perm = await Notification.requestPermission();
+      if(perm !== "granted"){ toast("Alerts not allowed", "You can allow them in iPhone Settings", true); state(); return; }
+      var reg = await navigator.serviceWorker.register("sw.js"); await navigator.serviceWorker.ready;
+      var sub = await reg.pushManager.getSubscription() || await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:b2u(PUB)});
+      var j = sub.toJSON(), mine = {endpoint:j.endpoint, keys:j.keys, at:Date.now(), ua:navigator.userAgent.slice(0,120)};
+      subs = subs.filter(function(s){ return s.endpoint !== j.endpoint; }).concat([mine]);
+      await db.doc("prefs/push").set({subs:subs, at:Date.now()});
+      toast("Alerts are on", "You’ll get a test alert within the hour");
+    }catch(e){ console.error(e); toast("Couldn’t turn on alerts", "Open Stakd from the Home Screen icon and try again", true); }
+    state();
+  }
+  if(!window.claude) return;
+  window.claude.use("db").then(function(d){
+    db = d; var me = window.MP_ME || {}; if(!me.owner) return;
+    build();
+    if(ok) navigator.serviceWorker.register("sw.js").catch(function(){});
+    db.doc("prefs/alerts").onSnapshot(function(s){ prefs = s.exists ? (s.data() || {}) : {}; sync(); }, function(){});
+    db.doc("prefs/push").onSnapshot(function(s){ subs = (s.exists && s.data().subs) || []; state(); }, function(){});
   });
 })();
 </script>
