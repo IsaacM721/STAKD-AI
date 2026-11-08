@@ -1,6 +1,6 @@
 {
- "name": "Stakd",
- "short_name": "Stakd",
+ "name": "Stakd AI · money tracker",
+ "short_name": "Stakd AI",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
