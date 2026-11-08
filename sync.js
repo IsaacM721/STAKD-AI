@@ -42,6 +42,9 @@
       var bench = Object.assign({ t: "SPY" }, d.bench || {}); var s = await quote(bench.t || "SPY"); latest = Math.max(latest, s.time);
       if (!bench.start) bench.start = s.precio; bench.precio = s.precio;
       latest = Math.min(latest, Math.floor(Date.now() / 1000));
+      // market closed: the saved prices (which include after-hours trades) are already newer than these quotes
+      var have = d.at ? Date.parse(d.at) / 1000 : 0;
+      if (latest <= have) { toast("Prices are up to date", "Market is closed"); return; }
       var v = Math.round(((d.cash || 0) + pos.reduce(function(t, p){ return t + (p.sh || 0) * p.precio; }, 0)) * 100) / 100;
       var h = (d.hist || []).filter(function(x){ return x && x.t != null && x.v != null; });
       if (!h.length || latest > h[h.length - 1].t + 600) h.push({ t: latest, v: v });
@@ -52,8 +55,9 @@
       console.warn("refresh", e);
       if (String(e.message) === "key") { key = null; toast("That stock key didn’t work", "Paste it again", true); }
       else toast("Couldn’t refresh prices", "Try again in a minute", true);
+    } finally {
+      busy = false; b.disabled = false; b.textContent = "Refresh"; paint();
     }
-    busy = false; b.disabled = false; b.textContent = "Refresh"; paint();
   }
   $("saSt").onclick = refresh;
   $("saKeySave").onclick = async function(){
