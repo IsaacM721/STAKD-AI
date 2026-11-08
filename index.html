@@ -1344,7 +1344,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 .sa-st{margin-top:14px}
 .sa-st .sa-st-r{display:flex;justify-content:flex-end}
 .sa-st #saStT{display:none}
-#saKey[hidden],#saSt[hidden]{display:none}
+#saKey[hidden]{display:none}
+.sa-st .sa-st-r{display:none!important}
 #saKey{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 #saKey .sa-in{display:flex;gap:8px}
 #saKey input{flex:1;min-width:0;margin:0}
@@ -1354,7 +1355,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108093410";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108093508";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1505,7 +1507,7 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
     </div>
     <div class="sp-pace num" id="spPace"></div>
     <div class="sa-gm" id="saGmRow"><div><b>Gmail</b><small id="saGmT">…</small></div><button type="button" class="mini" id="saGm">Sync now</button></div><!--/saGm-->
-  </div>
+      </div>
 
   <section id="s-spcats">
     <h2>Where it went</h2>
@@ -1694,8 +1696,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
     <div id="stMore"></div>
     <div id="stAt"></div>
     <div class="sa-st" id="saStRow"><small id="saStT"></small><div class="sa-st-r"><button type="button" class="mini" id="saSt">Refresh prices</button></div>
-      <div id="saKey" hidden><div class="sa-k">To refresh from here, get a free key at <a href="https://finnhub.io/register" target="_blank" rel="noopener">finnhub.io</a> and paste it once.</div><div class="sa-in"><input id="saKeyIn" type="password" autocomplete="off" placeholder="Paste your free stock key" aria-label="Stock key"><button type="button" class="mini" id="saKeySave">Save</button></div></div></div><!--/saSt-->
-  </section>
+      <div id="saKey" hidden><div class="sa-k">For live prices, get a free key at <a href="https://finnhub.io/register" target="_blank" rel="noopener">finnhub.io</a> and paste it once.</div><div class="sa-in"><input id="saKeyIn" type="password" autocomplete="off" placeholder="Paste your free stock key" aria-label="Stock key"><button type="button" class="mini" id="saKeySave">Save</button></div></div></div><!--/saSt-->
+      </section>
   </div>
 
   <div class="tabp" role="tabpanel" id="p-trends" aria-labelledby="tab-trends" hidden>
