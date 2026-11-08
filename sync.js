@@ -2,7 +2,7 @@
 // (writes spendMeta/syncReq; the hourly scheduled sync picks it up).
 (function(){
   var $ = function(id){ return document.getElementById(id); };
-  var btn = $("saBtn"), sh = $("saSheet"); if (!btn || !sh) return;
+  if (!$("saGm") || !$("saSt")) return;
   var db = null, ibkr = null, meta = null, req = null, key = null, busy = false;
   var tm = function(ms){ var d = new Date(ms), now = new Date();
     var t = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }).toLowerCase();
@@ -22,10 +22,6 @@
     else $("saGmT").textContent = "Not synced yet";
     $("saGm").disabled = !!(req && (req.status === "pending" || req.status === "running"));
   }
-  var close = function(){ sh.hidden = true; btn.setAttribute("aria-expanded", "false"); };
-  btn.onclick = function(e){ e.stopPropagation(); sh.hidden = !sh.hidden; btn.setAttribute("aria-expanded", String(!sh.hidden)); paint(); var p = $("palSheet"); if (p && !sh.hidden) p.hidden = true; };
-  document.addEventListener("click", function(e){ if (!sh.hidden && !sh.contains(e.target) && !btn.contains(e.target)) close(); });
-
   async function quote(sym){
     var r = await fetch("https://finnhub.io/api/v1/quote?symbol=" + encodeURIComponent(sym) + "&token=" + encodeURIComponent(key), { cache: "no-store" });
     if (r.status === 401 || r.status === 403) throw new Error("key");
