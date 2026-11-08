@@ -1355,7 +1355,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108093624";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108093940";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1377,6 +1378,24 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 <script src="mp-firebase.js"></script>
 <script src="faceid.js?v=2" defer></script>
 <script src="sync.js?v=5" defer></script>
+<div id="sdProbe" aria-hidden="true" style="position:fixed;left:0;bottom:0;width:1px;height:1px;pointer-events:none;visibility:hidden"></div>
+<script id="stakd-dockfix">(function(){
+  var st = navigator.standalone || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+  if (!st) return;
+  function fix(){
+    var bar = document.querySelector(".tabs"), pr = document.getElementById("sdProbe"); if (!bar || !pr) return;
+    var land = innerWidth > innerHeight, full = land ? Math.min(screen.width, screen.height) : Math.max(screen.width, screen.height);
+    var gap = Math.round(full - pr.getBoundingClientRect().bottom);
+    if (gap > 2 && gap < 260) {
+      bar.style.setProperty("bottom", (-gap) + "px", "important");
+      bar.style.setProperty("padding-bottom", "calc(6px + max(env(safe-area-inset-bottom,0px), 22px))", "important");
+    } else { bar.style.removeProperty("bottom"); bar.style.removeProperty("padding-bottom"); }
+  }
+  ["resize","orientationchange","pageshow","scroll"].forEach(function(e){ addEventListener(e, fix, {passive:true}); });
+  if (window.visualViewport) { visualViewport.addEventListener("resize", fix); visualViewport.addEventListener("scroll", fix); }
+  document.addEventListener("visibilitychange", function(){ if (!document.hidden) { fix(); setTimeout(fix, 300); setTimeout(fix, 1200); } });
+  document.addEventListener("DOMContentLoaded", fix); setTimeout(fix, 500); setTimeout(fix, 2000);
+})();</script>
 <main>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button type="button" role="tab" data-tab="home" id="tab-home" hidden style="display:none" aria-controls="p-home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg><span>Home</span></button>
