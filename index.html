@@ -1388,7 +1388,8 @@ html.mp-guest .tabs{justify-content:space-around}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108155129";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108155204";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3598,7 +3599,7 @@ html.mp-guest .tabs{justify-content:space-around}
     $("left").textContent = total>=meta ? "Goal exceeded by " + fmt(total-meta) : fmt(meta-total) + " to go";
     // no-touch streak: days since the last withdrawal from savings (loans don't count), and the longest run so far
     (()=>{
-      const ini = config.inicio || "2026-09-01", t = today();
+      const ini = config.inicio || config.creada || "2026-09-01", t = today();
       const ds = [...new Set(entries.filter(e=>isSpend(e) && e.date).map(e=>e.date))].sort();
       let rec = 0, prev = ini;
       ds.forEach(d => { rec = Math.max(rec, daysBetween(prev, d)); prev = d; });
@@ -5086,7 +5087,7 @@ TRACKER DATA:
     db.doc("config/main").onSnapshot(s => {
       if(s.exists){ const d=s.data(); config = {
         meta:d.meta||1000000, deudas:Array.isArray(d.deudas)?d.deudas:[], inversionPoker:Number(d.inversionPoker)||0,
-        hitos:Array.isArray(d.hitos)&&d.hitos.length?d.hitos:[500000,650000,800000,1000000], fijos:Array.isArray(d.fijos)?d.fijos:[], inversiones:Array.isArray(d.inversiones)?d.inversiones:[], extraMensual:Number(d.extraMensual)||0, gastosMensuales:Number(d.gastosMensuales)||0, limiteMensual:Number(d.limiteMensual)||0, plazo:d.plazo||"", celebrados:Array.isArray(d.celebrados)?d.celebrados:[], insignias:Array.isArray(d.insignias)?d.insignias:null, recordarDias: d.recordarDias===undefined || d.recordarDias===null ? 2 : Number(d.recordarDias) }; }
+        hitos:Array.isArray(d.hitos)&&d.hitos.length?d.hitos:[500000,650000,800000,1000000], fijos:Array.isArray(d.fijos)?d.fijos:[], inversiones:Array.isArray(d.inversiones)?d.inversiones:[], extraMensual:Number(d.extraMensual)||0, creada:d.creada||"", gastosMensuales:Number(d.gastosMensuales)||0, limiteMensual:Number(d.limiteMensual)||0, plazo:d.plazo||"", celebrados:Array.isArray(d.celebrados)?d.celebrados:[], insignias:Array.isArray(d.insignias)?d.insignias:null, recordarDias: d.recordarDias===undefined || d.recordarDias===null ? 2 : Number(d.recordarDias) }; }
       loaded.config = true; deriveEntries();
       buildSources();
       render();
