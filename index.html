@@ -1355,7 +1355,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108093508";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108093624";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1375,7 +1376,7 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 <script>try{if(localStorage.getItem("stakd-faceid"))document.documentElement.classList.add("sf-locked");}catch(e){}</script>
 <script src="mp-firebase.js"></script>
 <script src="faceid.js?v=2" defer></script>
-<script src="sync.js?v=4" defer></script>
+<script src="sync.js?v=5" defer></script>
 <main>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button type="button" role="tab" data-tab="home" id="tab-home" hidden style="display:none" aria-controls="p-home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg><span>Home</span></button>
@@ -1506,8 +1507,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
       <div id="spSavBox" hidden><b id="spSavSpent">—</b><span>From savings</span></div>
     </div>
     <div class="sp-pace num" id="spPace"></div>
-    <div class="sa-gm" id="saGmRow"><div><b>Gmail</b><small id="saGmT">…</small></div><button type="button" class="mini" id="saGm">Sync now</button></div><!--/saGm-->
-      </div>
+    <div class="sa-gm" id="saGmRow"><div><b>Update my spending</b><small id="saGmT">…</small></div><button type="button" class="mini" id="saGm">Update</button></div><!--/saGm-->
+          </div>
 
   <section id="s-spcats">
     <h2>Where it went</h2>
@@ -1697,7 +1698,7 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
     <div id="stAt"></div>
     <div class="sa-st" id="saStRow"><small id="saStT"></small><div class="sa-st-r"><button type="button" class="mini" id="saSt">Refresh prices</button></div>
       <div id="saKey" hidden><div class="sa-k">For live prices, get a free key at <a href="https://finnhub.io/register" target="_blank" rel="noopener">finnhub.io</a> and paste it once.</div><div class="sa-in"><input id="saKeyIn" type="password" autocomplete="off" placeholder="Paste your free stock key" aria-label="Stock key"><button type="button" class="mini" id="saKeySave">Save</button></div></div></div><!--/saSt-->
-      </section>
+          </section>
   </div>
 
   <div class="tabp" role="tabpanel" id="p-trends" aria-labelledby="tab-trends" hidden>

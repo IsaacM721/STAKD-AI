@@ -16,10 +16,10 @@
     $("saStT").textContent = a ? "Updated " + tm(a) : "Not updated yet";
     $("saKey").hidden = !!key; $("saSt").hidden = !key;
     if (req && req.status === "pending") $("saGmT").textContent = "Asked " + tm(req.at).replace("today ", "") + ", runs within the hour";
-    else if (req && req.status === "running") $("saGmT").textContent = "Syncing now…";
-    else if (meta && meta.lastRunAt) $("saGmT").textContent = "Last synced " + tm(meta.lastRunAt);
-    else if (meta && meta.lastSync) $("saGmT").textContent = "Last synced " + new Date(meta.lastSync + "T12:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    else $("saGmT").textContent = "Not synced yet";
+    else if (req && req.status === "running") $("saGmT").textContent = "Updating now…";
+    else if (meta && meta.lastRunAt) $("saGmT").textContent = "Last updated " + tm(meta.lastRunAt);
+    else if (meta && meta.lastSync) $("saGmT").textContent = "Last updated " + new Date(meta.lastSync + "T12:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    else $("saGmT").textContent = "Not updated yet";
     $("saGm").disabled = !!(req && (req.status === "pending" || req.status === "running"));
   }
   async function quote(sym){
@@ -77,8 +77,8 @@
   };
   $("saGm").onclick = async function(){
     req = { status: "pending", at: Date.now() }; paint();
-    try { await db.doc("spendMeta/syncReq").set(req); toast("Gmail sync asked", "It runs within the hour"); }
-    catch (e) { req = null; paint(); toast("Couldn’t ask for a sync", "Try again", true); }
+    try { await db.doc("spendMeta/syncReq").set(req); toast("Spending update asked", "It runs within the hour"); }
+    catch (e) { req = null; paint(); toast("Couldn’t ask for an update", "Try again", true); }
   };
   (async function(){
     if (!window.claude) return;
