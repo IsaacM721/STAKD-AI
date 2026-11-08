@@ -1364,9 +1364,31 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 .sa-k a{color:var(--mango)}
 .sa-gm button:disabled,.sa-st button:disabled{opacity:.45}
 </style>
+<style id="stakd-guest">
+#mpGate input{display:block;width:100%}
+html.mp-guest #saGmRow,html.mp-guest #spSrc,html.mp-guest #saKey,html.mp-guest #tab-stocks{display:none!important}
+html.mp-guest:not(.on-spending) #tab-spending,html.mp-guest:not(.on-poker) #tab-poker,html.mp-guest:not(.on-loans) #tab-loans,html.mp-guest:not(.on-trends) #tab-trends{display:none!important}
+#sgSetup{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:max(24px,env(safe-area-inset-top)) 16px 32px;background:var(--paper)}
+#sgSetup[hidden]{display:none}
+html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
+#sgSetup .g{width:100%;max-width:380px;background:var(--card);border-radius:20px;padding:24px 20px;outline:1.5px dashed color-mix(in srgb,var(--mango) 70%,transparent);outline-offset:-7px}
+#sgSetup h2{font-family:var(--serif,Georgia),serif;margin:0 0 4px;color:var(--ink)}
+#sgSetup p{margin:0 0 16px;color:var(--muted);font-size:.92rem}
+#sgSetup label.f{display:block;font-size:.85rem;color:var(--muted);margin:12px 0 6px}
+#sgSetup input[type=text],#sgSetup select{width:100%}
+#sgSetup .tg{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink)}
+#sgSetup .tg input{width:22px;height:22px;accent-color:var(--mango)}
+#sgSetup .primary{width:100%;margin-top:18px}
+#sgTabs{flex-basis:100%;max-width:340px;margin:6px auto 0;text-align:left}
+#sgTabs>span{display:block;text-align:center;margin-bottom:4px}
+#sgTabs .tg{display:flex;align-items:center;justify-content:space-between;padding:9px 4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink);font-size:.95rem}
+#sgTabs .tg input{width:20px;height:20px;accent-color:var(--mango)}
+html.mp-guest .tabs{justify-content:space-around}
+#sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108104758";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108155129";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 
 
 
@@ -1385,10 +1407,12 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 
 
 
-<div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png" alt=""><h1>Stakd AI</h1><p>Enter your password</p>
-<input type="password" id="mpPass" autocomplete="current-password" aria-label="Password" required>
-<button class="primary" type="submit">Open</button><div class="hint" id="mpGateMsg" aria-live="polite"></div>
-<button type="button" class="lnk" id="mpForgot">Forgot password</button></form></div>
+
+<div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png" alt=""><h1>Stakd AI</h1><p id="mpGateSub">Sign in</p>
+<input type="email" id="mpEmail" autocomplete="username" inputmode="email" placeholder="Email" aria-label="Email" required>
+<input type="password" id="mpPass" autocomplete="current-password" placeholder="Password" aria-label="Password" required>
+<button class="primary" type="submit" id="mpGateGo">Open</button><div class="hint" id="mpGateMsg" aria-live="polite"></div>
+<button type="button" class="lnk" id="mpForgot">Forgot password</button><br><button type="button" class="lnk" id="mpSwitch">Create an account</button></form></div>
 <script>window.MP_FIREBASE={"apiKey": "AIzaSyAMuD9zu8-MXApaHTCVsaXLi5CtV3WufY4", "authDomain": "stakd-3d1b9.firebaseapp.com", "projectId": "stakd-3d1b9", "storageBucket": "stakd-3d1b9.firebasestorage.app", "messagingSenderId": "578019134464", "appId": "1:578019134464:web:09b3b23120c23df3d89ce5"};window.MP_OWNER="marcoferrandodemoya@gmail.com";document.documentElement.classList.add("mp-locked");</script>
 <div id="sfLock" hidden><div class="g"><img src="icon-192.png?v=5" alt=""><h1>Stakd AI</h1><p>Locked</p>
 <button class="primary" type="button" id="sfUnlock">Unlock with Face ID</button><div id="sfMsg" aria-live="polite"></div>
@@ -1396,6 +1420,17 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 <div id="sfOffer" hidden><div class="g"><h2>Use Face ID?</h2><p>Only your face opens Stakd AI. No password to type.</p>
 <button class="primary" type="button" id="sfYes">Turn on Face ID</button><br><button type="button" class="lnk" id="sfNo">Not now</button></div></div>
 <script>try{if(localStorage.getItem("stakd-faceid"))document.documentElement.classList.add("sf-locked");}catch(e){}</script>
+<div id="sgSetup" hidden><form class="g" id="sgForm"><h2>Welcome to Stakd AI</h2><p>Set up your app. You can change this later.</p>
+<label class="f" for="sgGoal">Your savings goal (RD$)</label><input type="text" id="sgGoal" inputmode="numeric" value="1,000,000">
+<label class="f" for="sgLimit">Monthly spending limit (RD$, optional)</label><input type="text" id="sgLimit" inputmode="numeric" placeholder="e.g. 50,000">
+<label class="f" for="sgPal">Color</label><select id="sgPal"></select>
+<label class="f">Tabs</label>
+<div class="tg"><span>Savings</span><input type="checkbox" checked disabled></div>
+<div class="tg"><span>Spend</span><input type="checkbox" data-t="spending" checked></div>
+<div class="tg"><span>Poker</span><input type="checkbox" data-t="poker"></div>
+<div class="tg"><span>Loans</span><input type="checkbox" data-t="loans" checked></div>
+<div class="tg"><span>Trends</span><input type="checkbox" data-t="trends" checked></div>
+<button class="primary" type="submit">Start</button><div class="hint" id="sgMsg" aria-live="polite"></div></form></div>
 <script src="mp-firebase.js"></script>
 <script src="faceid.js?v=2" defer></script>
 <script src="sync.js?v=6" defer></script>
@@ -1897,7 +1932,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
   const whySrc = k => ({poker:"Póker jugando",poker_casino:"Póker casino",poker_amigos:"Póker con amigos"})[k] || "Retiro";
   const cap = x => String(x||"").replace(/(^|[\s(·-])(\p{Ll})/gu, (m,a,b)=>a+b.toUpperCase());
   const lbl = x => LABELS[x] || cap(x);
-  const BASE_SOURCES = ["Saldo inicial","Newlink","Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Mensualidad","Préstamo","Otro","Reposición"];
+  const OWNER_SOURCES = ["Saldo inicial","Newlink","Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Mensualidad","Préstamo","Otro","Reposición"];
+  const baseSources = () => { const me = window.MP_ME; if(!me || me.owner) return OWNER_SOURCES; const pk = document.documentElement.classList.contains("on-poker"); return ["Saldo inicial","Salary", ...(pk ? ["Póker casino","Póker con amigos"] : []), "Mensualidad","Préstamo","Otro","Reposición"]; };
   const REP = "Reposición";
   // a replacement deposit puts back money taken out of savings; it points at the withdrawal with "repone"
   const repuestoDe = id => entries.filter(x=>x.type!=="out" && x.source===REP && x.repone===id).reduce((t,x)=>t+x.amount,0);
@@ -2017,14 +2053,16 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
   // people who owe money are grouped under "Loan payment"; the person is picked in a second list
   const DEBT = "__debt";
   const debtNames = () => [...new Set((config.deudas||[]).filter(d=>!d.liga).map(d=>d.nombre).filter(Boolean))];
+  window.__mpBuildSources = () => { try{ buildSources(); }catch(e){} };
   function buildSources(){
-    const sel=$("source"), prev=sel.value || "Newlink", prevWho=$("who").value;
+    const BASE_SOURCES = baseSources();
+    const sel=$("source"), prev=sel.value || BASE_SOURCES[1], prevWho=$("who").value;
     const people = debtNames();
-    const extra=[...new Set(entries.filter(e=>e.type!=="out").map(e=>e.source))].filter(x=>x && x!=="Retiro" && !BASE_SOURCES.includes(x) && !people.includes(x));
+    const extra=[...new Set(entries.filter(e=>e.type!=="out").map(e=>e.source))].filter(x=>x && x!=="Retiro" && !OWNER_SOURCES.includes(x) && !BASE_SOURCES.includes(x) && !people.includes(x));
     const all=[...BASE_SOURCES.slice(0,2), ...BASE_SOURCES.slice(2).filter(x=>x!=="Préstamo"), ...extra];
     sel.innerHTML="";
     [...new Set(all)].forEach(x=>{ const o=document.createElement("option"); o.value=x; o.textContent= x===DEBT ? "Loan payment" : x===REP ? "Replacement (puts back a withdrawal)" : lbl(x); sel.appendChild(o); });
-    sel.value = [...sel.options].some(o=>o.value===prev) ? prev : "Newlink";
+    sel.value = [...sel.options].some(o=>o.value===prev) ? prev : BASE_SOURCES[1];
     const w=$("who"); w.innerHTML="";
     people.forEach(n=>{ const o=document.createElement("option"); o.value=n; o.textContent=cap(n); w.appendChild(o); });
     if(people.includes(prevWho)) w.value = prevWho;
@@ -5130,5 +5168,60 @@ TRACKER DATA:
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();</script>
+<script id="stakd-guest-js">
+(function(){
+  var H = document.documentElement, TABS = ["spending","poker","loans","trends"], db = null, cur = null, shown = false;
+  var num = function(v){ return Number(String(v||"").replace(/[^0-9.]/g,"")) || 0; };
+  function apply(tabs){
+    cur = tabs;
+    TABS.forEach(function(t){ H.classList.toggle("on-"+t, tabs.indexOf(t) >= 0); });
+    var sel = document.querySelector('.tabs [aria-selected="true"]');
+    if(sel && getComputedStyle(sel).display === "none") document.getElementById("tab-savings").click();
+    if(window.__mpBuildSources) window.__mpBuildSources();
+    syncSettings();
+  }
+  function fillSetup(){
+    var s = document.getElementById("sgPal"); s.innerHTML = "";
+    document.querySelectorAll("#palSheet [data-pal]").forEach(function(b){ var o = document.createElement("option"); o.value = b.dataset.pal; o.textContent = b.textContent.trim(); s.appendChild(o); });
+    s.value = H.getAttribute("data-palette") || "goyards";
+    s.onchange = function(){ var b = document.querySelector('#palSheet [data-pal="'+s.value+'"]'); if(b) b.click(); };
+  }
+  function showSetup(){
+    if(shown) return; shown = true; fillSetup();
+    var box = document.getElementById("sgSetup"); box.hidden = false; H.classList.add("sg-on");
+    document.getElementById("sgForm").onsubmit = async function(e){
+      e.preventDefault();
+      var goal = num(document.getElementById("sgGoal").value) || 1000000, lim = num(document.getElementById("sgLimit").value);
+      var tabs = TABS.filter(function(t){ var c = document.querySelector('#sgSetup [data-t="'+t+'"]'); return c && c.checked; });
+      var hitos = [0.5,0.65,0.8,1].map(function(f){ return Math.round(goal*f/1000)*1000; });
+      document.getElementById("sgMsg").textContent = "Saving…";
+      try{
+        await db.doc("prefs/ui").set({ pal: document.getElementById("sgPal").value, tabs: tabs, at: Date.now() });
+        var c = { meta: goal, hitos: hitos, deudas: [], fijos: [], creada: new Date().toISOString().slice(0,10) };
+        if(lim > 0) c.limiteMensual = lim;
+        await db.doc("config/main").set(c);
+        box.hidden = true; H.classList.remove("sg-on"); apply(tabs);
+      }catch(err){ console.error(err); document.getElementById("sgMsg").textContent = "Couldn’t save. Check your connection and try again."; }
+    };
+  }
+  function addSettings(){
+    var sh = document.getElementById("palSheet"); if(!sh || document.getElementById("sgTabs")) return;
+    var w = document.createElement("div"); w.id = "sgTabs";
+    w.innerHTML = '<span>Tabs</span>' + TABS.map(function(t){ var n = {spending:"Spend",poker:"Poker",loans:"Loans",trends:"Trends"}[t]; return '<label class="tg"><span>'+n+'</span><input type="checkbox" data-st="'+t+'"></label>'; }).join("") + '<button type="button" id="sgOut">Sign out</button>';
+    sh.appendChild(w);
+    w.querySelectorAll("[data-st]").forEach(function(c){ c.onchange = function(){ var t = TABS.filter(function(x){ var k = w.querySelector('[data-st="'+x+'"]'); return k && k.checked; }); apply(t); db.doc("prefs/ui").update({ tabs: t }).catch(function(){}); }; });
+    document.getElementById("sgOut").onclick = function(){ if(window.mpSignOut) window.mpSignOut(); };
+  }
+  function syncSettings(){ var w = document.getElementById("sgTabs"); if(!w || !cur) return; w.querySelectorAll("[data-st]").forEach(function(c){ c.checked = cur.indexOf(c.dataset.st) >= 0; }); }
+  if(!window.claude) return;
+  window.claude.use("db").then(function(d){
+    db = d; var me = window.MP_ME || {};
+    if(me.owner) return; // Marco: nothing changes
+    addSettings();
+    db.doc("prefs/ui").onSnapshot(function(s){ var x = s.exists ? s.data() : {}; apply(Array.isArray(x.tabs) ? x.tabs : ["spending","loans","trends"]); syncSettings(); }, function(){});
+    db.doc("config/main").onSnapshot(function(s){ if(!s.exists) showSetup(); }, function(){});
+  });
+})();
+</script>
 </body>
 </html>
