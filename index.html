@@ -1366,7 +1366,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108100208";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108100741";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1410,6 +1411,16 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
   ["resize","orientationchange","pageshow","scroll"].forEach(function(e){ addEventListener(e, fix, {passive:true}); });
   if (window.visualViewport) { visualViewport.addEventListener("resize", fix); visualViewport.addEventListener("scroll", fix); }
   document.addEventListener("visibilitychange", function(){ if (!document.hidden) { fix(); setTimeout(fix, 300); setTimeout(fix, 1200); } });
+  // keyboard: hide the bar while typing; when the keyboard closes iOS can leave the page shifted, so nudge it back
+  function kb(){ var bar = document.querySelector(".tabs"); if (!bar || !window.visualViewport) return;
+    var open = visualViewport.height < innerHeight - 120 || !!(document.activeElement && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && document.activeElement.type !== "button");
+    bar.style.visibility = open ? "hidden" : ""; }
+  document.addEventListener("focusin", function(){ setTimeout(kb, 50); });
+  document.addEventListener("focusout", function(){
+    setTimeout(function(){ if (!(document.activeElement && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName))) { window.scrollTo(window.scrollX, window.scrollY); kb(); fix(); } }, 60);
+    setTimeout(function(){ kb(); fix(); }, 400); setTimeout(fix, 900);
+  });
+  if (window.visualViewport) visualViewport.addEventListener("resize", kb);
   document.addEventListener("DOMContentLoaded", fix); setTimeout(fix, 500); setTimeout(fix, 2000);
 })();</script>
 <main>
