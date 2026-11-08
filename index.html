@@ -1398,9 +1398,14 @@ html.mp-guest .tabs{justify-content:space-around}
 .sb-legs{list-style:none;margin:0 0 12px;padding:0}.sb-legs li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;padding:6px 0}
 .sb-legs i{font-style:normal;font-weight:700;text-align:center}.sb-legs li.lg-won i{color:var(--green)}.sb-legs li.lg-lost i{color:var(--red,#e07a6a)}.sb-legs li.lg-pending i{color:var(--muted)}
 .sb-legs b{font-weight:600;font-size:.92rem}.sb-legs small{display:block;color:var(--muted);font-size:.78rem}.sb-legs span{font-size:.85rem;color:var(--muted)}.pk-seg button{flex:1 1 auto;padding-left:8px!important;padding-right:8px!important}#pkSTot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}#pkSTot .pk-sm{flex-basis:100%;color:var(--muted);font-size:.85rem}#pkSTot .pk-sm b{font-size:inherit}</style>
+<style id="stakd-brief">#brief{margin:0 0 14px;padding:14px 18px;border-radius:20px;background:color-mix(in srgb,var(--card) 92%,var(--mango) 8%);border:1px solid color-mix(in srgb,var(--mango) 30%,transparent)}
+#brief .br-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}#brief .br-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--mango)}#brief .br-h span{font-size:.78rem;color:var(--muted)}
+#brief .br-r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;font-size:.92rem}#brief .br-r span{color:var(--muted)}#brief .br-r b{font-weight:600;color:var(--ink)}#brief .br-r b small{font-weight:500;color:var(--muted);font-size:.78rem;margin-left:4px}
+#brief .br-r b.profit{color:var(--green)}#brief .br-r b.late{color:var(--red,#e07a6a)}</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108175523";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108193441";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1516,6 +1521,7 @@ html.mp-guest .tabs{justify-content:space-around}
   </div>
 
   <div class="tabp" role="tabpanel" id="p-savings" aria-labelledby="tab-savings" hidden>
+  <div class="brief" id="brief" hidden><div class="br-h"><b>Today</b><span id="brDate"></span></div><div id="brRows"></div></div>
   <div class="hero" id="s-goal">
     <h1>Road to <span class="goalK">1M</span></h1>
     <div class="pct num" id="pct" aria-live="polite"><span id="pctBase">0%</span><span class="fill" id="pctFill" aria-hidden="true">0%</span></div>
@@ -3786,6 +3792,28 @@ html.mp-guest .tabs{justify-content:space-around}
       <div class="stat"><b>${fmt(pending)}</b><span>Interest pending</span></div>
 ` : "";
 
+    // ---- Today brief (top of Savings): what matters today, one line each ----
+    try{ (()=>{
+      const me = window.MP_ME; if(me && !me.owner){ $("brief").hidden = true; return; }
+      const rows = [], t = today(), mk = t.slice(0,7);
+      const lim = Number(config.limiteMensual)||0;
+      if(lim>0 && spend.length){ const S = spSummary(mk), dim = lastDay(+mk.slice(0,4), +mk.slice(5,7)-1), dl = dim - Number(t.slice(8,10)) + 1, left = lim - S.total;
+        rows.push(left>=0 ? ["Spend today", fmt(Math.floor(left/dl)), ""] : ["Over the limit", fmt(-left), "late"]); }
+      if(ibkr && Array.isArray(ibkr.posiciones) && ibkr.posiciones.length){
+        const ps = ibkr.posiciones.filter(x=>Number(x.prev)>0 && Number(x.precio)>0);
+        const chg = ps.reduce((s,x)=>s+Number(x.sh||0)*(Number(x.precio)-Number(x.prev)),0), base = ps.reduce((s,x)=>s+Number(x.sh||0)*Number(x.prev),0);
+        if(base>0){ const pc = chg/base*100; rows.push(["Stocks", `${chg<0?"−":"+"}US$${Math.abs(chg).toFixed(0)} <small>${pc>=0?"+":""}${pc.toFixed(1)}%</small>`, chg>0?"profit":chg<0?"late":""]); } }
+      const due = loans.map(dueOf).filter(it=>it && it.d<=7).map(it=>({n:it.l.nombre, a:it.amt, d:it.date, late:it.d<0}));
+      (config.deudas||[]).forEach(d => { if(d.liga || d.pausado || !d.vence) return; const left = Math.max(0, Number(d.total||0) - paidTo(d.nombre)); const dd = daysBetween(t, d.vence); if(left>0 && dd<=7) due.push({n:d.nombre, a:left, d:d.vence, late:dd<0}); });
+      const byN = {}; due.forEach(x => { const k = norm(x.n)+"|"+x.d; byN[k] = byN[k] ? {...byN[k], a: byN[k].a + x.a} : x; });
+      Object.values(byN).sort((a,b)=>a.d.localeCompare(b.d)).slice(0,3).forEach(x => {
+        const dd = daysBetween(t, x.d), when = x.late ? "late" : dd===0 ? "today" : dd===1 ? "tomorrow" : new Date(x.d+"T12:00").toLocaleDateString("en-US",{weekday:"short"});
+        rows.push([`${cap(String(x.n).trim())} pays`, `${fmt(Math.round(x.a))} <small>${when}</small>`, x.late ? "late" : ""]); });
+      { const sv = rateFor(mk).saved || 0; rows.push(["Saved this month", `${sv<0?"−":"+"}${fmt(Math.abs(Math.round(sv)))}`, sv>0?"profit":sv<0?"late":""]); }
+      $("brDate").textContent = new Date(t+"T12:00").toLocaleDateString("en-US",{weekday:"long", month:"short", day:"numeric"});
+      $("brRows").innerHTML = rows.map(r => `<div class="br-r"><span>${r[0]}</span><b class="num ${r[2]}">${r[1]}</b></div>`).join("");
+      $("brief").hidden = !rows.length;
+    })(); }catch(e){ console.error(e); }
     const drawGroup = kind => {
     const isD = kind==="D";
     const map = new Map();
