@@ -25,6 +25,7 @@
 <p class="li">- The sync only writes into your own account. It can&#x27;t see anyone else&#x27;s data, and nobody else can see yours.</p>
 <p class="li">- If your bank changes its email format, ask Claude to adjust the prompt.</p>
 <p class="li">- To stop syncing, turn off or delete the scheduled task.</p>
+<h2>Banreservas or BHD? Use the gastos skill instead</h2><p class="li">If your alerts come from Banreservas or BHD and you have the <b>gastos</b> skill, it already reads them with tested parsers. The environment&#x27;s setup script also installs <code>/opt/stakd/gastos_to_stakd.py</code>, which sends what gastos found into Stakd&#x27;s Spend tab (only new transactions, so your edits in the app stay; BHD reversals mark the purchase as reversed). Scheduled task prompt:</p><pre>Run the gastos skill to update my Gastos dashboard with new Banreservas/BHD emails. Don&#x27;t ask for confirmation; Gmail is read-only. Then send the result to Stakd AI: python3 -I /opt/stakd/gastos_to_stakd.py gastos-run/transactions.json (it signs in with STAKD_EMAIL and STAKD_PASSWORD; never print or ask for the password). Tell me in 2-3 lines: new transactions, spent this month, how many went into Stakd, and any email that couldn&#x27;t be read.</pre>
 <h2>Sync prompt</h2><p>Fill in the three &lt;blanks&gt; before using it.</p><button onclick="navigator.clipboard.writeText(document.getElementById('pr').textContent).then(()=>this.textContent='Copied')">Copy prompt</button>
 <pre id="pr">Sync my bank alert emails from Gmail into my Stakd AI app. Work quietly; this is routine.
 
