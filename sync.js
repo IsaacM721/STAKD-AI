@@ -33,8 +33,8 @@
     var q = await r.json(); if (!q || !q.c) throw new Error("no price for " + sym);
     return { precio: Math.round(q.c * 10000) / 10000, prev: q.pc || null, open: q.o || null, time: q.t || Math.floor(Date.now() / 1000) };
   }
-  async function refresh(){
-    if (busy || !ibkr) return; busy = true; var b = $("saSt"); b.disabled = true; b.textContent = "Refreshing…";
+  async function refresh(silent){
+    if (busy || !ibkr || !key) return; busy = true; var b = $("saSt"); if (!silent) { b.disabled = true; b.textContent = "Refreshing…"; }
     try {
       var d = ibkr, latest = 0, pos = [];
       var qs = await Promise.all((d.posiciones || []).map(function(p){ return quote(p.t); }));
@@ -44,22 +44,35 @@
       latest = Math.min(latest, Math.floor(Date.now() / 1000));
       // market closed: the saved prices (which include after-hours trades) are already newer than these quotes
       var have = d.at ? Date.parse(d.at) / 1000 : 0;
-      if (latest <= have) { toast("Prices are up to date", "Market is closed"); return; }
+      if (latest <= have) { if (!silent) toast("Prices are up to date", "Market is closed"); return; }
       var v = Math.round(((d.cash || 0) + pos.reduce(function(t, p){ return t + (p.sh || 0) * p.precio; }, 0)) * 100) / 100;
       var h = (d.hist || []).filter(function(x){ return x && x.t != null && x.v != null; });
       if (!h.length || latest > h[h.length - 1].t + 600) h.push({ t: latest, v: v });
       else if (latest >= h[h.length - 1].t) h[h.length - 1] = { t: latest, v: v };
       await db.doc("invest/ibkr").update({ posiciones: pos, bench: bench, hist: h.slice(-400), at: new Date(latest * 1000).toISOString().replace(/\.\d+Z$/, "Z") });
-      toast("Stock prices updated");
+      if (!silent) toast("Stock prices updated");
     } catch (e) {
       console.warn("refresh", e);
+      if (silent && String(e.message) !== "key") return;
       if (String(e.message) === "key") { key = null; toast("That stock key didn’t work", "Paste it again", true); }
       else toast("Couldn’t refresh prices", "Try again in a minute", true);
     } finally {
       busy = false; b.disabled = false; b.textContent = "Refresh"; paint();
     }
   }
-  $("saSt").onclick = refresh;
+  $("saSt").onclick = function(){ refresh(false); };
+  // live prices: while the app is open during US market hours, refresh every minute (straight from the phone, no Claude)
+  function marketOpen(){
+    try {
+      var p = {}; new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" })
+        .formatToParts(new Date()).forEach(function(x){ p[x.type] = x.value; });
+      if (p.weekday === "Sat" || p.weekday === "Sun") return false;
+      var m = (+p.hour) * 60 + (+p.minute); return m >= 570 && m <= 961;   // 9:30 am to 4:01 pm New York
+    } catch (e) { return false; }
+  }
+  function tick(){ if (!document.hidden && key && marketOpen()) refresh(true); }
+  setInterval(tick, 60000);
+  document.addEventListener("visibilitychange", function(){ if (!document.hidden) setTimeout(tick, 1500); });
   $("saKeySave").onclick = async function(){
     var k = $("saKeyIn").value.trim(); if (k.length < 10) return;
     key = k; $("saKeyIn").value = "";
@@ -77,6 +90,6 @@
     db.doc("invest/ibkr").onSnapshot(function(s){ ibkr = s.exists ? s.data() : null; paint(); }, function(){});
     db.doc("spendMeta/sync").onSnapshot(function(s){ meta = s.exists ? s.data() : null; paint(); }, function(){});
     db.doc("spendMeta/syncReq").onSnapshot(function(s){ req = s.exists ? s.data() : null; paint(); }, function(){});
-    db.doc("prefs/keys").onSnapshot(function(s){ var k = s.exists ? s.data().finnhub : null; if (k) key = k; paint(); }, function(){});
+    db.doc("prefs/keys").onSnapshot(function(s){ var k = s.exists ? s.data().finnhub : null; var first = !key && k; if (k) key = k; paint(); if (first) setTimeout(tick, 1500); }, function(){});
   })();
 })();
