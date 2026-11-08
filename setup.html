@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stakd AI setup</title>
+<style>:root{--bg:#0F241B;--card:#16302a;--ink:#f4efe4;--mut:#b9c4bc;--gold:#E3BC6A}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,system-ui,sans-serif}main{max-width:640px;margin:0 auto;padding:24px 16px 48px}h1{font-family:Georgia,serif;color:var(--gold)}h2{font-family:Georgia,serif;margin-top:28px}a{color:var(--gold)}code{background:#0b1a14;padding:1px 5px;border-radius:5px;word-break:break-all}p.li{margin:6px 0 6px 8px}pre{white-space:pre-wrap;background:#0b1a14;border-radius:12px;padding:14px;font-size:13px;color:var(--mut)}button{background:var(--gold);color:#1a1405;border:0;border-radius:10px;padding:10px 16px;font:600 15px system-ui}</style></head><body><main>
+<p><a href="./">Open Stakd AI</a></p>
+<h1>Stakd AI: sync your bank emails with your own Claude</h1>
+<p>Stakd AI reads your bank alert emails and logs your spending for you. You run the sync with your own Claude, so nobody else sees your emails.</p>
+<h2>What you need</h2>
+<p class="li">- A Stakd AI account. Open <a href="https://marcoferrando114.github.io/Sette-Cifre/">https://marcoferrando114.github.io/Sette-Cifre/</a>, tap <b>Create an account</b>, and finish the setup.</p>
+<p class="li">- A paid Claude plan (Pro or Max).</p>
+<p class="li">- Your bank sends you an email for every card purchase. Turn on email alerts in your bank app if they&#x27;re off.</p>
+<h2>Setup (about 10 minutes, one time)</h2>
+<p class="li">1. <b>Connect Gmail to Claude.</b> In claude.ai, go to Settings &gt; Connectors and connect Gmail.</p>
+<p class="li">2. <b>Create a cloud environment.</b> Go to claude.ai/code and create a new environment (you don&#x27;t need to pick a repository).</p>
+<p class="li">   - <b>Network access:</b> allow these sites: <code>firestore.googleapis.com</code>, <code>identitytoolkit.googleapis.com</code>, <code>marcoferrando114.github.io</code>.</p>
+<p class="li">   - <b>Environment variables:</b> add <code>STAKD_EMAIL</code> = the email you use for Stakd AI, and <code>STAKD_PASSWORD</code> = your Stakd AI password. Type them only in the environment settings, never in a chat.</p>
+<p class="li">3. <b>Make the sync prompt yours.</b> Copy the sync prompt at the bottom of this page and fill in the three blanks: your bank&#x27;s name, the email address your alerts come from, and the last 4 digits of your card.</p>
+<p class="li">4. <b>Schedule it.</b> In Claude Code, using that environment, create a scheduled task that runs the prompt twice a day (for example 8:00 and 14:00 Santo Domingo time), with the Gmail connector turned on.</p>
+<p class="li">5. <b>Test it once.</b> Run the task now. Then open Stakd AI and look at Spend: your recent purchases should be there.</p>
+<h2>Good to know</h2>
+<p class="li">- The sync only writes into your own account. It can&#x27;t see anyone else&#x27;s data, and nobody else can see yours.</p>
+<p class="li">- If your bank changes its email format, ask Claude to adjust the prompt.</p>
+<p class="li">- To stop syncing, turn off or delete the scheduled task.</p>
+<h2>Sync prompt</h2><p>Fill in the three &lt;blanks&gt; before using it.</p><button onclick="navigator.clipboard.writeText(document.getElementById('pr').textContent).then(()=>this.textContent='Copied')">Copy prompt</button>
+<pre id="pr">Sync my bank alert emails from Gmail into my Stakd AI app. Work quietly; this is routine.
+
+SETUP (every run): download the helper and use it for all reads and writes. It signs in as me with the environment variables STAKD_EMAIL and STAKD_PASSWORD. Never print, store or ask for the password.
+  curl -sSfo /tmp/stakd_db.py https://marcoferrando114.github.io/Sette-Cifre/tools/stakd_db.py
+  python3 -I /tmp/stakd_db.py list spend
+  python3 -I /tmp/stakd_db.py get spendMeta sync
+  python3 -I /tmp/stakd_db.py set spend &lt;GMAIL_MESSAGE_ID&gt; &#x27;&lt;json&gt;&#x27;
+  python3 -I /tmp/stakd_db.py update spendMeta sync &#x27;&lt;json&gt;&#x27;
+If sign-in fails, stop and tell me in one line.
+
+MY BANK: &lt;BANK NAME&gt;. Alerts come from &lt;SENDER ADDRESS, e.g. alertas@mybank.com&gt;. My card ends in &lt;LAST 4&gt;.
+
+1. List the &quot;spend&quot; collection; every doc id there is a Gmail message id already synced.
+2. Search Gmail: from:&lt;SENDER ADDRESS&gt; newer_than:10d. Open every thread (get_thread) and handle each message whose id is not synced yet. Read it as plain text.
+3. For each card purchase or cash withdrawal, create one spend doc with doc id = the Gmail message id:
+   {date:&quot;YYYY-MM-DD&quot; (transaction date in the email), merchant: readable title-case name, raw: merchant text as in the email, amount: number in the original currency, currency:&quot;DOP&quot;|&quot;USD&quot;|&quot;EUR&quot;, rd: amount in RD$ (USD×60, EUR×73, DOP×1), kind:&quot;consumo&quot; (or &quot;retiro&quot; for cash withdrawals, cat &quot;cash&quot;), status:&quot;Aprobada&quot; or &quot;Declinada&quot;, cat, source:&quot;email&quot;, excluded:false, ts: the email&#x27;s internalDate in ms}
+   Categories: food (restaurants, cafés, fast food), delivery (Uber Eats, PedidosYa), groceries (supermarkets), gas (gas stations, parking, tolls, car wash, car repairs), sport (gyms, clubs, sports), out (bars, trips, hotels), shopping (clothes, electronics, games), subs (subscriptions), rides (Uber rides, taxis), health (pharmacies), family, other (unclear).
+   Skip verification codes, statements and marketing. Transfers I send: kind &quot;transfer&quot;, merchant &quot;Transfer to &lt;name&gt;&quot;, cat &quot;other&quot;.
+4. Update spendMeta/sync with {lastSync: today YYYY-MM-DD, lastRunAt: now in ms}.
+5. Only tell me about declined purchases or a single purchase over RD$10,000. Otherwise just say how many were added.
+</pre></main></body></html>
