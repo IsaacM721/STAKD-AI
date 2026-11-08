@@ -1366,7 +1366,8 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108100010";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108100208";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1741,7 +1742,7 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
       <h2>Savings over time</h2>
       <div class="ctrls">
         
-        <div class="seg" role="group" aria-label="Period"><button type="button" data-rng="30" aria-pressed="false">30 days</button><button type="button" data-rng="90" aria-pressed="false">90 days</button><button type="button" data-rng="todo" aria-pressed="true">All</button></div>
+        <div class="seg" role="group" aria-label="Period"><button type="button" data-rng="30" aria-pressed="true">30 days</button><button type="button" data-rng="90" aria-pressed="false">90 days</button><button type="button" data-rng="todo" aria-pressed="false">All</button></div>
       </div>
     </div>
     <div class="cwrap" id="cWrap"><div class="ctip" id="cTip"></div><div id="cSvg"></div></div>
@@ -4633,7 +4634,7 @@ Numbers on the receipt may use a comma for decimals (RD$2.000,00 means 2000). If
   };
 
   // ---------- trend chart ----------
-  let chSer = "ahorro", chRng = "todo", chLastW = 0;
+  let chSer = "ahorro", chRng = "30", chLastW = 0;
   const tms = d => new Date(d+"T12:00").getTime();
   const DAY = 864e5;
   document.querySelectorAll("[data-ser]").forEach(b => b.onclick = () => { chSer=b.dataset.ser; document.querySelectorAll("[data-ser]").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderChart(); });
