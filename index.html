@@ -1386,10 +1386,22 @@ html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
 html.mp-guest .tabs{justify-content:space-around}
 #sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
 </style>
-<style id="stakd-bets">.pk-seg button{flex:1 1 auto;padding-left:8px!important;padding-right:8px!important}#pkSTot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}#pkSTot .pk-sm{flex-basis:100%;color:var(--muted);font-size:.85rem}#pkSTot .pk-sm b{font-size:inherit}</style>
+<style id="stakd-bets">#sbStats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+#sbStats>div{background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+#sbStats span{font-size:.75rem;color:var(--muted)}#sbStats b{font-size:1.05rem}#sbStats small{font-size:.75rem;color:var(--muted);font-weight:500}
+.sb-h{margin:18px 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.sb-bet{border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+.sb-bet summary{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:12px 0;cursor:pointer}.sb-bet summary::-webkit-details-marker{display:none}
+.sb-l,.sb-r{display:flex;flex-direction:column;gap:2px;min-width:0}.sb-r{align-items:flex-end;text-align:right;flex:none}
+.sb-l b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sb-l small,.sb-r small{color:var(--muted);font-size:.8rem}
+.sb-r b.in{color:var(--green)}.sb-r b.out{color:var(--red,#e07a6a)}
+.sb-legs{list-style:none;margin:0 0 12px;padding:0}.sb-legs li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;padding:6px 0}
+.sb-legs i{font-style:normal;font-weight:700;text-align:center}.sb-legs li.lg-won i{color:var(--green)}.sb-legs li.lg-lost i{color:var(--red,#e07a6a)}.sb-legs li.lg-pending i{color:var(--muted)}
+.sb-legs b{font-weight:600;font-size:.92rem}.sb-legs small{display:block;color:var(--muted);font-size:.78rem}.sb-legs span{font-size:.85rem;color:var(--muted)}.pk-seg button{flex:1 1 auto;padding-left:8px!important;padding-right:8px!important}#pkSTot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}#pkSTot .pk-sm{flex-basis:100%;color:var(--muted);font-size:.85rem}#pkSTot .pk-sm b{font-size:inherit}</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108173151";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261108174304";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1764,7 +1776,7 @@ html.mp-guest .tabs{justify-content:space-around}
       <div class="pk-seg" id="pkSeg"><button type="button" data-v="league" class="on">League</button><button type="button" data-v="ot">Outside &amp; home games</button><button type="button" data-v="sb">Sports</button></div>
       <div id="pkVLeague"><div class="pk-three num" id="pkThree"></div><div class="pk-chips-t">By Monday · rake + action</div><div class="pk-chips num" id="pkWkChips"></div><div class="pk-det num" id="pkWkDet"></div></div>
       <div id="pkVOther" hidden><div class="pk-ototal num" id="pkOTot"></div><ul class="hist pweeks" id="pkWeeks"></ul><div class="pk-ototal pk-hg num" id="pkHTot"></div><ul class="hist pweeks" id="pkWeeksH"></ul></div>
-      <div id="pkVSports" hidden><div class="pk-ototal num" id="pkSTot"></div><ul class="hist pweeks" id="pkSList"></ul></div>
+      <div id="pkVSports" hidden><div class="pk-ototal num" id="pkSTot"></div><div class="sb-stats num" id="sbStats"></div><div class="sb-h" id="sbBetsH">Bets</div><div id="sbBets"></div><div class="sb-h">Deposits &amp; cashouts</div><ul class="hist pweeks" id="pkSList"></ul></div>
     </div>
     <div class="pk-stats num" id="pkStats" hidden style="display:none!important">
       <div class="pk-st"><div class="pk-st-t">League</div><div id="pkStLiga"></div><div id="pkChipsBox" hidden><div class="pk-chips-t">Rakeback by Monday</div><div class="pk-chips num" id="pkChips"></div><div class="pk-leg"><span><i class="up"></i>Above avg</span><span><i></i>Below avg</span><span><i class="owed"></i>Owed</span></div></div></div>
@@ -3419,7 +3431,7 @@ html.mp-guest .tabs{justify-content:space-around}
   };
 
   // ---------- schedule ----------
-  let pagos = [], pokerOtra = [];
+  let pagos = [], pokerOtra = [], bets = [];
   function paidTo(name){
     const k = String(name||"").trim().toLowerCase();
     return entries.filter(e=>e.source===name && e.type!=="out").reduce((s,e)=>s+(e.raw ?? e.amount),0)
@@ -4032,11 +4044,39 @@ html.mp-guest .tabs{justify-content:space-around}
       { const ym = today().slice(0,7), bets = entries.filter(e=>e.source==="Apuestas").sort((a,b)=>(b.date||"").localeCompare(a.date||"")||((b.createdAt||0)-(a.createdAt||0)));
         const mo = bets.filter(e=>(e.date||"").startsWith(ym)).reduce((t,e)=>t+(e.type==="out"?-e.amount:e.amount),0);
         $("pkSTot").innerHTML = `<span>Sports bets</span><b class="${cls(sbT)}">${sgn(sbT)}</b>` + (bets.length ? `<small class="pk-sm">This month <b class="${cls(mo)}">${sgn(mo)}</b></small>` : "");
-        const ul = $("pkSList"); ul.innerHTML = bets.length ? "" : '<li class="empty">No bets logged yet.</li>';
-        bets.slice(0,15).forEach(e => { const li = document.createElement("li"); li.style.gridTemplateColumns = "1fr auto";
+        const ul = $("pkSList"); ul.innerHTML = bets.length ? "" : '<li class="empty">Nothing yet.</li>';
+        bets.slice(0,10).forEach(e => { const li = document.createElement("li"); li.style.gridTemplateColumns = "1fr auto";
           li.innerHTML = `<div><div class="src"></div><div class="meta"></div></div><div class="amt num"></div>`;
-          li.querySelector(".src").textContent = fmtDate(e.date,false); li.querySelector(".meta").textContent = e.type==="out" ? "Bet" : "Win";
+          li.querySelector(".src").textContent = fmtDate(e.date,false); li.querySelector(".meta").textContent = e.type==="out" ? "Deposit" : "Cashout";
           const a = li.querySelector(".amt"); a.textContent = (e.type==="out"?"−":"+") + fmt(e.amount); a.classList.add(e.type==="out"?"out":"in"); ul.appendChild(li); }); }
+      { const B = [...bets].sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||"")||String(b.hora||"").localeCompare(String(a.hora||"")));
+        const done = B.filter(b=>b.result==="won"||b.result==="lost"||b.result==="push"), pend = B.filter(b=>!b.result||b.result==="pending");
+        const W = done.filter(b=>b.result==="won").length, L = done.filter(b=>b.result==="lost").length;
+        const staked = done.reduce((t,b)=>t+(Number(b.stake)||0),0), net = done.reduce((t,b)=>t+(Number(b.payout)||0)-(Number(b.stake)||0),0);
+        const roi = staked ? net/staked*100 : 0, open = pend.reduce((t,b)=>t+(Number(b.stake)||0),0);
+        const legsAll = B.flatMap(b=>b.legs||[]), lw = legsAll.filter(l=>l.result==="won").length, ll = legsAll.filter(l=>l.result==="lost").length;
+        const od = v => v==null||v==="" ? "" : (Number(v)>0?"+":"")+Number(v);
+        $("sbStats").innerHTML = B.length ? `<div><span>Record</span><b>${W}–${L}${pend.length?` <small>· ${pend.length} open</small>`:""}</b></div><div><span>Staked</span><b>${fmt(staked)}</b></div><div><span>Profit</span><b class="${cls(net)}">${sgn(net)}</b></div><div><span>ROI</span><b class="${cls(roi)}">${roi>0?"+":""}${roi.toFixed(0)}%</b></div>`
+          + (legsAll.length ? `<div><span>Picks hit</span><b>${lw}/${lw+ll}${lw+ll?` <small>· ${Math.round(lw/(lw+ll)*100)}%</small>`:""}</b></div>` : "") + (open ? `<div><span>In play</span><b>${fmt(open)}</b></div>` : "") : "";
+        $("sbStats").hidden = !B.length; $("sbBetsH").hidden = !B.length;
+        const RL = {won:"Won",lost:"Lost",push:"Push",pending:"Open"}, ic = r => r==="won"?"✓":r==="lost"?"✗":r==="push"?"↺":"•";
+        const box = $("sbBets"); box.innerHTML = "";
+        B.slice(0,20).forEach(b => {
+          const r = b.result||"pending", n = (b.legs||[]).length, v = r==="won" ? (Number(b.payout)||0)-(Number(b.stake)||0) : r==="lost" ? -(Number(b.stake)||0) : 0;
+          const d = document.createElement("details"); d.className = "sb-bet r-"+r;
+          const title = n>1 ? `Parlay · ${n} picks` : (b.legs&&b.legs[0] ? b.legs[0].pick : "Bet");
+          d.innerHTML = `<summary><div class="sb-l"><b></b><small></small></div><div class="sb-r"><b class="${r==="won"?"in":r==="lost"?"out":""}"></b><small></small></div></summary><ul class="sb-legs"></ul>`;
+          d.querySelector(".sb-l b").textContent = title;
+          d.querySelector(".sb-l small").textContent = `${fmtDate(b.fecha,false)} · ${od(b.odds)} · ${fmt(Number(b.stake)||0)}` + (b.casa ? ` · ${b.casa}` : "");
+          d.querySelector(".sb-r b").textContent = r==="pending" ? `To win ${fmt(Number(b.toWin)||0)}` : r==="push" ? "Push" : (v<0?"−":"+")+fmt(Math.abs(v));
+          d.querySelector(".sb-r small").textContent = RL[r]||"";
+          const ul2 = d.querySelector(".sb-legs");
+          (b.legs||[]).forEach(l => { const li = document.createElement("li"); li.className = "lg-"+(l.result||"pending");
+            li.innerHTML = `<i></i><div><b></b><small></small></div><span></span>`;
+            li.querySelector("i").textContent = ic(l.result); li.querySelector("b").textContent = l.pick||"";
+            li.querySelector("small").textContent = [l.game, l.sport].filter(Boolean).join(" · "); li.querySelector("span").textContent = od(l.odds); ul2.appendChild(li); });
+          box.appendChild(d); });
+      }
     }
     const inv = config.inversionPoker;
     const recovered = inv>0 && pkT>=inv;
@@ -5114,6 +5154,7 @@ TRACKER DATA:
       pokerOtra = snap.docs.map(d => ({id:d.id, ...d.data(), monto:Number(d.data().monto)||0}));
       render();
     }, ()=>{});
+    db.collection("bets").onSnapshot(snap => { bets = snap.docs.map(d => ({id:d.id, ...d.data()})); render(); }, ()=>{});
     db.collection("pagos").onSnapshot(snap => {
       pagos = snap.docs.map(d => ({id:d.id, ...d.data(), monto:Number(d.data().monto)||0}));
       render();
