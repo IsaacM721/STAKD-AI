@@ -1657,7 +1657,8 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109095228";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109100225";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4295,7 +4296,7 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
         const nt = dpa ? "On hold" : p.deudas.some(d=>d.liga) ? "Paid weekly" : dv ? "Due " + fmtDate(dv,false) : "";
         if(nt){ const sm=document.createElement("small"); sm.className="pnote"; sm.textContent=nt; nm.parentNode.appendChild(sm); } }
       const onHold = p.loans.some(l=>!l.pagado && l.pausado);
-      if(p.loans.length && !onHold){ const bd=document.createElement("span"); bd.className="badge "+tr.cls; bd.textContent = `${tr.label} · ${tr.score}`; nm.after(bd); }
+      if(p.loans.length){ const bd=document.createElement("span"); bd.className="badge "+tr.cls; bd.textContent = `${tr.label} · ${tr.score}`; nm.after(bd); }
       if(onHold){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; nm.after(pb); }
       const actN = p.loans.filter(l=>!l.pagado).length;
       det.querySelector(".powed").innerHTML = isD ? (p.owe>0 ? fmt(p.owe) : `<span class="profit">Paid</span>`) : p.owe>0 ? fmt(p.owe) : `<span class="profit">All paid</span>`;
