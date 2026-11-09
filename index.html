@@ -1564,13 +1564,24 @@ details.lrec>summary{cursor:pointer;color:var(--muted);font-size:.85rem;list-sty
 details.lrec>summary::-webkit-details-marker{display:none}
 details.lrec>summary::after{content:" ›";display:inline-block;transition:transform .2s}
 details.lrec[open]>summary::after{transform:rotate(90deg)}
+.loan-actions.lb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;position:relative}
+.loan-actions .lp{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:999px;border:0;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none!important;background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink)}
+.loan-actions .lp.g{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardl"] .loan-actions .lp.g{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
+.loan-actions svg{flex:none;margin-right:2px;width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.loan-actions .lmore{margin-left:auto;width:38px;height:38px;border-radius:12px;border:0;display:grid;place-items:center;cursor:pointer;background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink)}
+.loan-actions .lmenu{flex-basis:100%;display:flex;gap:8px;justify-content:flex-end}
+.loan-actions .lmenu[hidden]{display:none}
+.loan-actions .lmenu button{border:1px solid color-mix(in srgb,var(--ink) 15%,transparent);background:transparent;color:var(--ink);font:inherit;font-size:.85rem;padding:7px 14px;border-radius:999px;cursor:pointer}
+.loan-actions .lmenu button.danger{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,transparent)}
 #sbCover{position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:60;pointer-events:none}
 html:root[data-palette="goyards"] #sbCover{background:#0E2219}
 html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109023936";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109033211";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -2865,6 +2876,16 @@ html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
       const d=document.createElement("button"); d.className="mini danger"; d.type="button"; d.textContent="Delete"; d.onclick=()=>deleteLoan(l); act.appendChild(d);
       if(editingLoan===l.id) el.appendChild(loanEditor(l));
     }
+    // buttons (Marco picked B): "Remind" and "Paid" pills with icons; Undo, Edit and Delete in a ⋯ menu
+    { const kids = [...act.children]; if(kids.length){
+        const SV = {ok:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg>', wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5A8.4 8.4 0 1 1 21 11.5z"/></svg>', dots:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg>'};
+        const pay = kids.find(b=>/^Log payment/.test(b.textContent)), wa = kids.find(b=>/WhatsApp|Reminded/.test(b.textContent)), rest = kids.filter(b=>b!==pay && b!==wa);
+        act.innerHTML = ""; act.classList.add("lb");
+        if(wa){ const was = /Reminded/.test(wa.textContent); wa.title = wa.textContent; wa.className = "lp"; wa.innerHTML = SV.wa + (was ? "Remind again" : /follow/.test(wa.title) ? "Follow up" : "Remind"); act.appendChild(wa); }
+        if(pay){ const m = pay.textContent.match(/\d+\/\d+/); pay.className = "lp g"; pay.innerHTML = SV.ok + "Paid" + (m ? " " + m[0] : ""); act.appendChild(pay); }
+        if(rest.length){ const mb = document.createElement("button"); mb.type = "button"; mb.className = "lmore"; mb.setAttribute("aria-label", "More"); mb.innerHTML = SV.dots;
+          const menu = document.createElement("div"); menu.className = "lmenu"; menu.hidden = editingLoan!==l.id; rest.forEach(b=>{ b.classList.remove("mini"); menu.appendChild(b); });
+          mb.onclick = ev => { ev.stopPropagation(); menu.hidden = !menu.hidden; }; act.appendChild(mb); act.appendChild(menu); } } }
     { const op = window.__loanOpen || (window.__loanOpen = new Set()), isOpen = op.has(l.id) || editingLoan===l.id;
       const left = loanRemaining(l), dd = nx ? nx.date : l.fecha, late = !l.pagado && !l.pausado && dd && dd < today();
       const one = document.createElement("button"); one.type = "button"; one.className = "l1 num";
