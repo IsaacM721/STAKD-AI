@@ -13,7 +13,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png?v=6">
 <link rel="icon" type="image/png" href="icon-192.png?v=6">
-<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo","goyards"].indexOf(p)<0)p="goyardb";document.documentElement.setAttribute("data-palette",p);})();</script>
+<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyards","goyardl"].indexOf(p)<0)p="goyards";document.documentElement.setAttribute("data-palette",p);document.documentElement.setAttribute("data-theme",p==="goyardl"?"light":"dark");})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
@@ -1439,9 +1439,44 @@ html.mp-guest #pkSeg [data-v="league"],html.mp-guest #pkSeg [data-v="ar"],html.m
 html.mp-guest .tabs{justify-content:space-around}
 #sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
 </style>
+<style id="pato-light">
+html:root[data-palette="goyardl"]{color-scheme:light;
+ --paper:#F4EFE5; --card:#FFFDF8; --ink:#14261C; --muted:#6E6B5F; --line:#E4DBCA;
+ --green:#1C6444; --green-soft:#DDEBE0; --mango:#C8973F; --mango-ink:#8A6420; --red:#B8432C; --on-green:#FFFFFF;
+ --c-sav:#1C6444; --c-owe:#C8973F; --c-cc:#6E9C86; --c-nl:#1C6444; --c-al:#2F8F62; --c-rb:#C8973F; --c-pk:#8FB5A2; --c-int:#D9A94E; --c-ot:#D6CCB8;
+ --d1:#1C6444; --d2:#C8973F; --d3:#2F8F62; --d4:#8FB5A2; --d5:#D9A94E; --d0:#D6CCB8;
+ --gy-leather:#C8973F; --gy-stitch:transparent; --gy-trim:#C8973F}
+html[data-palette="goyardl"]::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;pointer-events:none;transform:translateZ(0);contain:strict;
+ background:radial-gradient(120% 70% at 15% 0%,#FCFAF4 0%,#F4EFE5 55%,#ECE4D4 100%)}
+html[data-palette="goyardl"]::after{display:none}
+html:root[data-palette="goyardl"] :is(section,.tabs,.tabp > .hero){background:#FFFDF8;border:1px solid rgba(20,38,28,.07);outline:none;box-shadow:0 10px 28px rgba(70,52,20,.08)}
+html:root[data-palette="goyardl"] :is(input,select,textarea){background:#FBF8F2;border-color:#E4DBCA;color:#14261C}
+html:root[data-palette="goyardl"] :is(input,select,textarea):focus{border-color:#C8973F;outline-color:#C8973F}
+html:root[data-palette="goyardl"] .pct{color:#A8782E}
+html:root[data-palette="goyardl"] .primary{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff;border:0}
+html:root[data-palette="goyardl"] .primary.out{background:var(--red);color:#fff}
+html:root[data-palette="goyardl"] .jump{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--paper) 96%,transparent)}
+html:root[data-palette="goyardl"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched){background:rgba(20,38,28,.04)}
+html:root[data-palette="goyardl"] .bar{height:14px;border-radius:999px;background:rgba(20,38,28,.08);box-shadow:inset 0 1px 2px rgba(0,0,0,.08)}
+html:root[data-palette="goyardl"] .bar::before,html:root[data-palette="goyardl"] .bar i::before,html:root[data-palette="goyardl"] .bar i::after{display:none}
+html:root[data-palette="goyardl"] .bar i{border-radius:999px;background:linear-gradient(90deg,#C8973F,#E8C477)}
+html:root[data-palette="goyardl"] .mk{background:rgba(20,38,28,.25)}
+html:root[data-palette="goyardl"] .mk.hit{background:#C8973F}
+html:root[data-palette="goyardl"] :is(.amt.in,.profit,.badge.good,.sent-ok,.be-done b,#pkAvg b){color:#1E7A4E}
+html:root[data-palette="goyardl"] span.a[style*="var(--green)"]{color:#1E7A4E!important}
+html:root[data-palette="goyardl"] :is(.amt.out,.late,.badge.bad,.warn){color:#B8432C}
+html:root[data-palette="goyardl"] main :is(div,section,li,a,span,b){outline-style:none}
+html:root[data-palette="goyardl"] :is(#savSplit>div,#pkNew .pk-three div,#pkNew .pk-det){outline:none;background:rgba(20,38,28,.04);border:0}
+html:root[data-palette="goyardl"] .tabs button[aria-selected=true],html:root[data-palette="goyardl"] .tabs button.on{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
+html:root[data-palette="goyardl"] .tabs{background:#FFFDF8!important;border:0!important;border-top:1px solid rgba(20,38,28,.08)!important;box-shadow:0 -8px 24px rgba(70,52,20,.08)!important}
+html:root[data-palette="goyardl"] body::after{background:#F4EFE5}
+html:root[data-palette="goyardl"] .seg button[aria-pressed="true"],html:root[data-palette="goyardl"] .seg button.on{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
+html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #sfOffer .g{box-shadow:0 14px 34px rgba(70,52,20,.12)}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109004753";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109005142";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1971,7 +2006,7 @@ html.mp-guest .tabs{justify-content:space-around}
   <div class="toast" id="toast" role="status" aria-live="polite"><span class="tk" aria-hidden="true">✓</span><div><b id="toastT"></b><small id="toastS"></small></div><button type="button" class="tundo" id="toastUndo" hidden>Undo</button></div>
 
   <button type="button" class="palbtn" id="palBtn" aria-label="Settings" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
-  <div class="palette palsheet" id="palSheet" hidden><span>Colors</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Pato</button><button type="button" data-pal="goyardb" aria-pressed="false">Goyard Burgundy</button><button type="button" data-pal="goyard" aria-pressed="false">Goyard Blue</button><button type="button" data-pal="goyarde" aria-pressed="false">Goyard Evergreen</button><button type="button" data-pal="goyardp" aria-pressed="false">Goyard Pink</button><button type="button" data-pal="goyardv" aria-pressed="false">Goyard Purple</button><button type="button" data-pal="goyardy" aria-pressed="false">Goyard Grey</button><button type="button" data-pal="goyardk" aria-pressed="false">Goyard Black</button><button type="button" data-pal="goyardn" aria-pressed="false">Goyard Navy</button><button type="button" data-pal="goyardo" aria-pressed="false">Goyard Orange</button></div><button type="button" class="mini" id="sfToggle" hidden>Face ID lock: Off</button></div>
+  <div class="palette palsheet" id="palSheet" hidden><span>Look</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Dark</button><button type="button" data-pal="goyardl" aria-pressed="false">Light</button></div><button type="button" class="mini" id="sfToggle" hidden>Face ID lock: Off</button></div>
 
   <div class="notice" id="notice">This view can’t save data. Open the tracker from your Claude account to log transactions.</div>
 </main>
@@ -1981,8 +2016,8 @@ html.mp-guest .tabs{justify-content:space-around}
   // color theme: remembered on this device only
   (()=>{
     let pal = "goyards"; try{ pal = localStorage.getItem("mp-palette") || "goyards"; }catch(e){}
-    if(!["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo","goyards"].includes(pal)) pal = "goyardb";
-    const set = p => { document.documentElement.setAttribute("data-palette", p); try{ const bg = getComputedStyle(document.documentElement, "::before").backgroundImage; document.documentElement.style.setProperty("--gy-canvas", bg && bg!=="none" ? bg : "none"); }catch(e){} document.querySelectorAll("[data-pal]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.pal===p)); try{ localStorage.setItem("mp-palette", p); }catch(e){} };
+    if(!["goyards","goyardl"].includes(pal)) pal = "goyards";
+    const set = p => { document.documentElement.setAttribute("data-palette", p); try{ window.__patoLook && window.__patoLook(p); }catch(e){} try{ const bg = getComputedStyle(document.documentElement, "::before").backgroundImage; document.documentElement.style.setProperty("--gy-canvas", bg && bg!=="none" ? bg : "none"); }catch(e){} document.querySelectorAll("[data-pal]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.pal===p)); try{ localStorage.setItem("mp-palette", p); }catch(e){} };
     set(pal);
     /* the home-screen app can lose localStorage, so the theme is also kept in the tracker's data (prefs/ui) */
     window.__mpSetPal = p => { if(!p || p===document.documentElement.getAttribute("data-palette") || !document.querySelector('[data-pal="'+p+'"]')) return; set(p); try{ renderChart(); renderBars(); }catch(e){} try{ render(); }catch(e){} };
@@ -5550,6 +5585,17 @@ TRACKER DATA:
     db.doc("prefs/ui").onSnapshot(function(s){ var x = s.exists ? s.data() : {}; apply(Array.isArray(x.tabs) ? x.tabs : ["spending","loans","trends"]); applyTrack(Array.isArray(x.track) ? x.track : ["bets","poker"]); syncSettings(); }, function(){});
     db.doc("config/main").onSnapshot(function(s){ if(!s.exists) showSetup(); }, function(){});
   });
+})();
+</script>
+<script id="pato-light-js">
+(function(){
+  window.__patoLook = function(p){
+    var L = p === "goyardl", H = document.documentElement;
+    H.setAttribute("data-theme", L ? "light" : "dark");
+    var m = document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute("content", L ? "#F4EFE5" : "#0F241B");
+    document.querySelectorAll('img[src^="icon-192"],img[src^="icon-light-192"]').forEach(function(i){ i.src = L ? "icon-light-192.png?v=6" : "icon-192.png?v=6"; });
+  };
+  window.__patoLook(document.documentElement.getAttribute("data-palette"));
 })();
 </script>
 </body>
