@@ -1,4 +1,4 @@
-// Stakd: Refresh stock prices (straight from the phone, Finnhub free key) and ask for a Gmail sync
+// Pato: Refresh stock prices (straight from the phone, Finnhub free key) and ask for a Gmail sync
 // (writes spendMeta/syncReq; the hourly scheduled sync picks it up).
 (function(){
   var $ = function(id){ return document.getElementById(id); };

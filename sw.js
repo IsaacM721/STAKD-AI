@@ -1,10 +1,10 @@
-// Stakd AI service worker: shows Smart alerts (push notifications). No offline caching.
+// Pato AI service worker: shows Smart alerts (push notifications). No offline caching.
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
 self.addEventListener("push", e => {
   let d = {};
   try { d = e.data ? e.data.json() : {}; } catch (_) { d = { body: e.data ? e.data.text() : "" }; }
-  e.waitUntil(self.registration.showNotification(d.title || "Stakd AI", {
+  e.waitUntil(self.registration.showNotification(d.title || "Pato AI", {
     body: d.body || "", icon: "icon-192.png", badge: "icon-192.png", tag: d.tag || undefined, data: { url: d.url || "./" }
   }));
 });
