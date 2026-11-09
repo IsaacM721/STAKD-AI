@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pato AI</title>
+<title>Pato</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Pato AI">
+<meta name="apple-mobile-web-app-title" content="Pato">
 <meta name="theme-color" content="#0F241B">
 <meta name="robots" content="noindex,nofollow">
 <link rel="manifest" href="manifest.webmanifest">
@@ -1550,7 +1550,7 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109015335";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109015607";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 
 
 
@@ -1595,19 +1595,20 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 
 
 
-<div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png?v=6" alt=""><h1>Pato AI</h1><p id="mpGateSub">Sign in</p>
+
+<div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png?v=6" alt=""><h1>Pato</h1><p id="mpGateSub">Sign in</p>
 <input type="email" id="mpEmail" autocomplete="username" inputmode="email" placeholder="Email" aria-label="Email" required>
 <input type="password" id="mpPass" autocomplete="current-password" placeholder="Password" aria-label="Password" required>
 <button class="primary" type="submit" id="mpGateGo">Open</button><div class="hint" id="mpGateMsg" aria-live="polite"></div>
 <button type="button" class="lnk" id="mpForgot">Forgot password</button><br><button type="button" class="lnk" id="mpSwitch">Create an account</button></form></div>
 <script>window.MP_FIREBASE={"apiKey": "AIzaSyAMuD9zu8-MXApaHTCVsaXLi5CtV3WufY4", "authDomain": "stakd-3d1b9.firebaseapp.com", "projectId": "stakd-3d1b9", "storageBucket": "stakd-3d1b9.firebasestorage.app", "messagingSenderId": "578019134464", "appId": "1:578019134464:web:09b3b23120c23df3d89ce5"};window.MP_OWNER="marcoferrandodemoya@gmail.com";document.documentElement.classList.add("mp-locked");</script>
-<div id="sfLock" hidden><div class="g"><img src="icon-192.png?v=6" alt=""><h1>Pato AI</h1><p>Locked</p>
+<div id="sfLock" hidden><div class="g"><img src="icon-192.png?v=6" alt=""><h1>Pato</h1><p>Locked</p>
 <button class="primary" type="button" id="sfUnlock">Unlock with Face ID</button><div id="sfMsg" aria-live="polite"></div>
 <button type="button" class="lnk" id="sfPass">Use password instead</button></div></div>
-<div id="sfOffer" hidden><div class="g"><h2>Use Face ID?</h2><p>Only your face opens Pato AI. No password to type.</p>
+<div id="sfOffer" hidden><div class="g"><h2>Use Face ID?</h2><p>Only your face opens Pato. No password to type.</p>
 <button class="primary" type="button" id="sfYes">Turn on Face ID</button><br><button type="button" class="lnk" id="sfNo">Not now</button></div></div>
 <script>try{if(localStorage.getItem("stakd-faceid"))document.documentElement.classList.add("sf-locked");}catch(e){}</script>
-<div id="sgSetup" hidden><form class="g" id="sgForm"><h2>Welcome to Pato AI</h2><p>Set up your app. You can change this later.</p>
+<div id="sgSetup" hidden><form class="g" id="sgForm"><h2>Welcome to Pato</h2><p>Set up your app. You can change this later.</p>
 <label class="f" for="sgGoal">Your savings goal (RD$)</label><input type="text" id="sgGoal" inputmode="numeric" value="1,000,000">
 <label class="f" for="sgLimit">Monthly spending limit (RD$, optional)</label><input type="text" id="sgLimit" inputmode="numeric" placeholder="e.g. 50,000">
 <label class="f" for="sgPal">Color</label><select id="sgPal"></select>
@@ -4630,6 +4631,14 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
       $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
       const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
       $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
   }
   // league rakeback per Monday: average of the weeks so far (first week left out), counting weeks earned but not paid yet
   function ligaAvg(){
@@ -5750,7 +5759,7 @@ TRACKER DATA:
     var sub = reg ? await reg.pushManager.getSubscription().catch(function(){ return null; }) : null;
     var on = sub && Notification.permission === "granted" && subs.some(function(s){ return s.endpoint === sub.endpoint; });
     if(on){ el.innerHTML = '<div class="hint">Alerts are on for this phone.</div>'; return; }
-    if(Notification.permission === "denied"){ el.innerHTML = '<div class="hint">Notifications are blocked. Turn them on in iPhone Settings → Notifications → Pato AI.</div>'; return; }
+    if(Notification.permission === "denied"){ el.innerHTML = '<div class="hint">Notifications are blocked. Turn them on in iPhone Settings → Notifications → Pato.</div>'; return; }
     el.innerHTML = '<button type="button" class="primary" id="alOn">Turn on alerts</button>';
     $("alOn").onclick = turnOn;
   }
@@ -5908,7 +5917,10 @@ TRACKER DATA:
   };
   if(window.__patoLast) window.__patoPill.apply(null, window.__patoLast);
   // camera button sits in the middle of the tab bar
-  function dockCam(){ var nav = document.querySelector(".tabs"), b = document.getElementById("snapBtn"); if(!nav || !b) return;
+  function dockCam(){ var nav = document.querySelector(".tabs"), b = document.getElementById("snapBtn"); if(!nav) return;
+    var st = document.getElementById("tab-stocks"), spn = document.getElementById("tab-spending");   // order: Savings, Stocks, Spend, camera, Poker, Loans, Trends
+    if(st && spn && st.nextElementSibling !== spn) nav.insertBefore(st, spn);
+    if(!b) return;
     var vis = Array.prototype.filter.call(nav.querySelectorAll("[role=tab]"), function(x){ return !x.hidden && getComputedStyle(x).display !== "none"; });
     var before = vis[Math.ceil(vis.length/2)] || null; if(b.parentNode !== nav || b.nextElementSibling !== before) nav.insertBefore(b, before); }
   dockCam(); setInterval(dockCam, 1500);

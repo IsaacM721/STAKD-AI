@@ -1,6 +1,6 @@
 {
- "name": "Pato AI · money tracker",
- "short_name": "Pato AI",
+ "name": "Pato · money tracker",
+ "short_name": "Pato",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
