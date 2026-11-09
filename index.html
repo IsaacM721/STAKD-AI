@@ -1519,7 +1519,8 @@ html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109012002";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109012054";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -5789,13 +5790,15 @@ TRACKER DATA:
 (function(){
   // Discreet mode: hide every money amount (Marco, Nov 9). Text is masked in place and put back when turned off.
   var H = document.documentElement, KEY = "pato-discreet", orig = new Map(), obs = null;
+  var SHORT = /(^|[\s(])[−+\-]?\d+(?:\.\d+)?[kKM](?=$|[\s.,;:)])/g;   // "1M", "500k" inside sentences
   var IN = /[−+\-]?\s?(?:RD|US)\$\s?\d[\d,]*(?:\.\d+)?\s?[kKM]?/g, BARE = /^\s*[−+\-]?\s?(?:\d{1,3}(?:,\d{3})+|\d{4,})(?:\.\d+)?\s*$|^\s*[−+\-]?\d+(?:\.\d+)?[kM]\s*$/;
   var EYE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
   var OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.4 10.4 0 0 1 12 19c-6.4 0-10-7-10-7a18.5 18.5 0 0 1 5.1-5.9M9.9 5.2A9.7 9.7 0 0 1 12 5c6.4 0 10 7 10 7a18.6 18.6 0 0 1-2.2 3.2M14.1 14.1a3 3 0 1 1-4.2-4.2"/><path d="M2 2l20 20"/></svg>';
   function maskNode(n){
     var v = n.nodeValue; if(!v || v.indexOf("•") >= 0) return;
     var p = n.parentNode; if(!p || /^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(p.nodeName)) return;
-    var m = v.replace(IN, "RD$•••"); if(m === v && BARE.test(v)) m = "•••";
+    var m = v.replace(IN, "RD$•••").replace(SHORT, "$1•••"); if(m === v && BARE.test(v)) m = "•••";
+    if(p.closest && p.closest("#pctBase,#pctFill,#pct")) m = m.replace(/\d+(?:\.\d+)?\s?%/g, "•••%");   // goal % would give the balance away
     if(m !== v){ orig.set(n, v); n.nodeValue = m; }
   }
   function maskAll(root){ var w = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT), n, list = []; while((n = w.nextNode())) list.push(n); list.forEach(maskNode); }
