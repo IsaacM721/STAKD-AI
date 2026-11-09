@@ -1628,9 +1628,27 @@ html:root[data-palette="goyardl"] .tabs button[aria-selected=true],html:root[dat
 html:root[data-palette="goyardl"] .primary,html:root[data-palette="goyardl"] .loan-actions .lp.g{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
 html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
 </style>
+<style id="pato-lperson">
+#people .person>summary{position:relative;flex-wrap:nowrap}
+#people .person>summary .pact{display:flex;gap:8px;flex:none;order:3}
+#people .person>summary .powed{margin-left:auto}
+#people .pic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;padding:0;border:0;background:color-mix(in srgb,var(--ink) 9%,transparent);color:var(--ink)}
+#people .pic.g{background:transparent;border:1.5px solid #E2B65F;color:#E2B65F}
+html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6F1F}
+#people .pic.done{opacity:.55}
+#people .pic svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#people .loan .loan-actions.lb>.lp{display:none!important}
+#people .loan.lc:not(.lo)>.loan-actions{display:none!important}
+#people .ppick{position:absolute;right:0;top:calc(100% + 6px);z-index:20;min-width:240px;background:var(--card);border:1px solid color-mix(in srgb,#E2B65F 55%,transparent);border-radius:14px;padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+#people .ppick .pph{font-size:.8rem;color:var(--muted);padding:6px 10px 4px}
+#people .ppick button{all:unset;box-sizing:border-box;display:flex;gap:10px;width:100%;padding:10px;border-radius:10px;cursor:pointer;font-size:.9rem;color:var(--ink)}
+#people .ppick button:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+#people .ppick .a{font-weight:600}#people .ppick .d{margin-left:auto;color:var(--muted)}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109090132";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109092852";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3003,6 +3021,49 @@ html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
     a.addEventListener("click", ()=>{ waOpened.add(itKey(it)); setTimeout(render, 300); });
     return a;
   }
+  // ---- one Remind + one Paid per person (Marco, Nov 9) ----
+  window.__personActs = function(det, p){
+    const open = p.loans.filter(l => !l.pagado).map(l => ({l, it: dueOf(l), nx: nCuotas(l)>1 ? nextInstallment(l) : null}));
+    if(!open.length) return;
+    open.sort((x,y) => ((x.it&&x.it.date)||(x.nx&&x.nx.date)||x.l.fecha||"9").localeCompare((y.it&&y.it.date)||(y.nx&&y.nx.date)||y.l.fecha||"9"));
+    const SV = {wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5A8.4 8.4 0 1 1 21 11.5z"/></svg>', ok:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'};
+    const sum = det.querySelector("summary"), pa = document.createElement("span"); pa.className = "pact";
+    const stop = ev => { ev.preventDefault(); ev.stopPropagation(); };
+    // reminder: every late payment plus the next one; one message
+    const due = open.map(o => o.it).filter(Boolean), late = due.filter(it => it.kind === "late"), nextUp = due.find(it => it.kind !== "late");
+    const items = late.length ? late.concat(nextUp ? [nextUp] : []) : (nextUp ? [nextUp] : []);
+    if(items.length){
+      const name = cap(String(p.name||"").trim());
+      const dEs = it => new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
+      const mEs = it => "RD$" + Math.round(it.amt).toLocaleString("en-US") + (it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "");
+      const msg = items.length === 1 ? msgFor(items[0]) : `Hola ${name}! Te escribo pa' recordarte tus pagos: ` +
+        items.map(it => it.kind === "late" ? `${mEs(it)} que tocaba el ${dEs(it)} (pendiente)` : `${mEs(it)} el ${dEs(it)}`).join(", ").replace(/, ([^,]*)$/, " y $1") + ". Gracias!";
+      const done = items.every(wasReminded) || items.every(it => waOpened.has(itKey(it)));
+      const rb = document.createElement("button"); rb.type = "button"; rb.className = "pic" + (done ? " done" : "");
+      rb.setAttribute("aria-label", "Remind " + name + " on WhatsApp"); rb.title = done ? "Reminded · send again" : "Remind"; rb.innerHTML = SV.wa;
+      rb.onclick = ev => { stop(ev); const tel = telOf(p.name);
+        if(tel){ items.forEach(it => waOpened.add(itKey(it))); window.open(waLink(tel, msg), "_blank", "noopener"); setTimeout(render, 300); return; }
+        openWA(items[0]); $("waMsg").value = msg; $("waGo").href = waUrl(); };
+      pa.appendChild(rb);
+    }
+    // paid: the payment form; a small picker when there are 2+ open loans
+    const pb = document.createElement("button"); pb.type = "button"; pb.className = "pic g"; pb.setAttribute("aria-label", "Log a payment from " + cap(p.name)); pb.title = "Paid"; pb.innerHTML = SV.ok;
+    pb.onclick = ev => { stop(ev);
+      if(open.length === 1){ collectLoan(open[0].l); return; }
+      let m = sum.querySelector(".ppick"); if(m){ m.remove(); return; }
+      m = document.createElement("div"); m.className = "ppick"; m.innerHTML = '<div class="pph">Which loan?</div>';
+      open.forEach(o => { const b = document.createElement("button"); b.type = "button";
+        const amt = o.it ? o.it.amt : o.nx ? o.nx.amt : loanRemaining(o.l), dd = (o.it && o.it.date) || (o.nx && o.nx.date) || o.l.fecha;
+        b.innerHTML = '<span class="a"></span><span class="d"></span>';
+        b.querySelector(".a").textContent = fmt(amt) + (o.nx ? ` (${o.nx.k}/${o.nx.n})` : "") + " · lent " + fmt(o.l.monto);
+        b.querySelector(".d").textContent = o.l.pausado ? "Paused" : dd ? fmtDate(dd,false) : "";
+        b.onclick = e2 => { stop(e2); m.remove(); collectLoan(o.l); }; m.appendChild(b); });
+      sum.appendChild(m);
+      setTimeout(() => document.addEventListener("click", function off(e3){ if(!m.contains(e3.target)){ m.remove(); document.removeEventListener("click", off, true); } }, true), 0);
+    };
+    pa.appendChild(pb);
+    sum.appendChild(pa);
+  };
   let waItem = null;
   function openWA(it){
     if(!it) return;
@@ -4272,6 +4333,7 @@ html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
         body.appendChild(el);
       });
       [...p.loans].filter(l=>!l.pagado || editingLoan===l.id).sort((a,b)=>(a.fecha||"").localeCompare(b.fecha||"")).forEach(l => body.appendChild(loanRow(l)));
+      if(!isD && db){ try{ (window.__personActs || (()=>{}))(det, p); }catch(e){ console.error(e); } }  // one Remind + one Paid per person
       const done = p.loans.filter(l=>l.pagado);
       if(done.length){
         const g = done.reduce((t,l)=>t+l.monto*(l.interes||0)/100,0);
