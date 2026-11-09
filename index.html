@@ -1468,34 +1468,6 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
 #discBtn svg{width:19px;height:19px}
 html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
 </style>
-<style id="pato-score">
-#psc{margin:14px 0;padding:16px 18px 14px;border-radius:20px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);text-align:center}
-#psc[hidden]{display:none}
-#brief{display:none!important}
-.psc-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--ink)}
-.psc-gw{position:relative;max-width:240px;margin:4px auto 0}
-#pscG svg{display:block;width:100%;height:auto;overflow:visible}
-#pscG path{fill:none;stroke-width:14;stroke-linecap:butt;opacity:.28}#pscG path.on{opacity:1}
-.g-z1{stroke:#D9534A}.g-z2{stroke:#E8893A}.g-z3{stroke:#E5BE3E}.g-z4{stroke:#8CCB6E}.g-z5{stroke:#2E9E68}
-.g-n{stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}.g-c{fill:var(--ink)}
-.psc-num{display:flex;flex-direction:column;align-items:center;margin-top:6px}
-.psc-num b{font-family:var(--serif,Georgia),serif;font-size:2.4rem;line-height:1;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;}
-.psc-z{font-size:.95rem;font-weight:700;margin-top:2px}
-.psc-z.z1{color:#D9534A}.psc-z.z2{color:#E07B2E}.psc-z.z3{color:#C9A227}.psc-z.z4{color:#5FAE47}.psc-z.z5{color:#2E9E68}
-.psc-mean{margin:8px 0 2px;font-size:.92rem;color:var(--ink)}
-.psc-why{margin:0;font-size:.85rem;color:var(--muted)}
-.psc-why b.up{color:#2E9E68}.psc-why b.dn{color:#D0624A}
-.psc-bars{display:grid;gap:7px;margin:14px 0 4px;text-align:left}
-.psc-b{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:10px;font-size:.8rem;color:var(--muted)}
-.psc-b i{height:6px;border-radius:99px;background:color-mix(in srgb,var(--ink) 9%,transparent);overflow:hidden}
-.psc-b em{display:block;height:100%;border-radius:99px;background:#E5BE3E}.psc-b em.good{background:#3DBB7E}.psc-b em.bad{background:#E0735A}
-.psc-more{all:unset;cursor:pointer;font-size:.82rem;color:var(--muted);text-decoration:underline;margin-top:8px}
-.psc-det{margin-top:10px;border-top:1px solid color-mix(in srgb,var(--ink) 8%,transparent);padding-top:4px;text-align:left}
-.psc-g>b{display:block;margin:10px 0 2px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.psc-i{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:.88rem;color:var(--ink)}
-.psc-i i{flex:none;width:8px;height:8px;border-radius:50%;background:#E5BE3E}.psc-i i.good{background:#3DBB7E}.psc-i i.bad{background:#E0735A}
-.psc-how{font-size:.74rem;color:var(--muted);margin:10px 0 0;line-height:1.4}
-</style>
 <style id="pato-bar">
 html,body{overscroll-behavior:none}
 .tabs{position:fixed!important;bottom:0!important;transform:translateZ(0)!important;-webkit-transform:translateZ(0)!important;will-change:transform}
@@ -1657,9 +1629,38 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
 html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 .badge.hold{border-color:color-mix(in srgb,var(--muted) 55%,transparent);color:var(--muted);font-weight:600}
 </style>
+<style id="pato-score">
+#psc{margin:14px 0;padding:16px 18px 14px;border-radius:20px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);text-align:center}
+#psc[hidden]{display:none}
+#brief{display:none!important}
+.psc-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--ink)}
+.psc-gw{position:relative;max-width:240px;margin:4px auto 0}
+#pscG svg{display:block;width:100%;height:auto;overflow:visible}
+#pscG path{fill:none;stroke-width:14;stroke-linecap:butt;opacity:.28}#pscG path.on{opacity:1}
+.g-z1{stroke:#D9534A}.g-z2{stroke:#E8893A}.g-z3{stroke:#E5BE3E}.g-z4{stroke:#8CCB6E}.g-z5{stroke:#2E9E68}
+.g-n{stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}.g-c{fill:var(--ink)}
+.psc-num{display:flex;flex-direction:column;align-items:center;margin-top:6px}
+.psc-num b{font-family:var(--serif,Georgia),serif;font-size:2.4rem;line-height:1;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;}
+.psc-z{font-size:.95rem;font-weight:700;margin-top:2px}
+.psc-z.z1{color:#D9534A}.psc-z.z2{color:#E07B2E}.psc-z.z3{color:#C9A227}.psc-z.z4{color:#5FAE47}.psc-z.z5{color:#2E9E68}
+.psc-mean{margin:8px 0 2px;font-size:.92rem;color:var(--ink)}
+.psc-why{margin:0;font-size:.85rem;color:var(--muted)}
+.psc-why b.up{color:#2E9E68}.psc-why b.dn{color:#D0624A}
+.psc-bars{display:grid;gap:7px;margin:14px 0 4px;text-align:left}
+.psc-b{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:10px;font-size:.8rem;color:var(--muted)}
+.psc-b i{height:6px;border-radius:99px;background:color-mix(in srgb,var(--ink) 9%,transparent);overflow:hidden}
+.psc-b em{display:block;height:100%;border-radius:99px;background:#E5BE3E}.psc-b em.good{background:#3DBB7E}.psc-b em.bad{background:#E0735A}
+.psc-more{all:unset;cursor:pointer;font-size:.82rem;color:var(--muted);text-decoration:underline;margin-top:8px}
+.psc-det{margin-top:10px;border-top:1px solid color-mix(in srgb,var(--ink) 8%,transparent);padding-top:4px;text-align:left}
+.psc-g>b{display:block;margin:10px 0 2px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.psc-i{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:.88rem;color:var(--ink)}
+.psc-i i{flex:none;width:8px;height:8px;border-radius:50%;background:#E5BE3E}.psc-i i.good{background:#3DBB7E}.psc-i i.bad{background:#E0735A}
+.psc-how{font-size:.74rem;color:var(--muted);margin:10px 0 0;line-height:1.4}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109102327";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109103406";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4209,8 +4210,14 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       P.plan = [];
       { const rs = keys.map(k=>rateFor(k)), svd = rs.reduce((s,r)=>s+(r.saved||0),0), start = sav - svd;   // growth of the savings balance over 3 months
         if(start>0) P.plan.push(["kept","Growing toward your goal", pw(svd/start, [[0,0],[0.05,50],[0.15,100]]), svd>=0 ? `Your savings grew ${fmt(svd)} in 3 months` : `Your savings shrank ${fmt(-svd)} in 3 months`]);
-        const up = rs.filter(r=>(r.saved||0)>0).length;
-        P.plan.push(["mup","Saved every month", up/3*100, `Savings grew in ${up} of the last 3 months`]); }
+        // steady saving (Marco, Nov 9): how much the savings balance grew per finished month, not counting winnings (poker, Arcade, sports)
+        const gm = k => entries.filter(e=>GAME.includes(e.source) && (e.date||"").slice(0,7)===k).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);   // only what moved through savings
+        const fk = [1,2,3].map(i => { const d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1-i, 1); return d.getFullYear()+"-"+pad(d.getMonth()+1); })
+                    .filter(k => entries.some(e=>(e.date||"").slice(0,7)===k && e.source!=="Saldo inicial"));   // finished months with data
+        const st = fk.map(k => (rateFor(k).saved||0) - gm(k));
+        if(st.length){ const stM = st.reduce((a,b)=>a+b,0)/st.length; let run = 0; for(const v of st){ if(v>0) run++; else break; }
+          P.plan.push(["steady","Saving steadily", pw(stM, [[0,0],[15000,40],[30000,70],[50000,100]]),
+            stM>0 ? `You save about ${fmt(Math.round(stM/500)*500)} a month, not counting winnings` + (run>=2 ? ` · up ${run} months in a row` : "") : `Without winnings your savings went down about ${fmt(Math.round(-stM/500)*500)} a month`]); } }
       // PLAY (Pato): how much you stake compared to what you earn, and how it's going
       P.play = [];
       { const bw = (bets||[]).filter(b=>inW(b.fecha)), linked = new Set(bw.map(b=>b.entryId).filter(Boolean));
@@ -4247,7 +4254,7 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       // why it moved: compare with the saved score from about a week ago
       const PH = {spend:["you spent less compared to what you earn","you spent more compared to what you earn"], limit:["you're on a better pace for your limit","you're spending faster than your limit"],
         months:["your savings cushion grew","your savings cushion shrank"], inv:["more of your money is invested","less of your money is invested"], ontime:["loans came back on time","a loan is late"],
-        lent:["less of your money is lent out","more of your money is lent out"], kept:["your savings grew faster","your savings grew slower"], mup:["your savings grew more months in a row","your savings dropped in a month"],
+        lent:["less of your money is lent out","more of your money is lent out"], kept:["your savings grew faster","your savings grew slower"], mup:["your savings grew more months in a row","your savings dropped in a month"], steady:["you saved more each month","you saved less each month"],
         staked:["you staked less","you staked more"], result:["your betting results improved","you lost more betting"]};
       const hist = (window.__pscHist||{}), days = Object.keys(hist).filter(d=>d<t).sort();
       const ref = days.filter(d=>daysBetween(d,t)>=7).pop() || days[0];
@@ -4264,7 +4271,6 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
         `<p class="psc-how">Last 90 days</p>`;
       if(!$("pscMore").onclick) $("pscMore").onclick = () => { const d = $("pscDet"), o = d.hidden; d.hidden = !o; $("pscMore").textContent = o ? "Hide details" : "See what's behind it"; };
       { const s = $("saved"), hero = s && s.closest(".hero, section"), c = $("psc"); if(hero && hero.nextElementSibling !== c) hero.after(c); }
-      window.__patoLast = [score, z[1], z[3]]; window.__patoPill && window.__patoPill(score, z[1], z[3]);
       $("psc").hidden = false;
     })(); }catch(e){ console.error(e); $("psc").hidden = true; }
     // ---- end Pato score ----
