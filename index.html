@@ -1630,7 +1630,8 @@ html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109085357";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109090132";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3740,7 +3741,7 @@ html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
           const day = d==="fin" ? lastDay(y,m) : Math.min(Number(d), lastDay(y,m));
           const ds = `${y}-${pad(m+1)}-${pad(day)}`;
           // omitir: dates the payer said they will skip (what they owe stays the same)
-          if(ds <= f.hasta && !(f.omitir||[]).includes(ds)) all.push({date:ds, fuente:f.fuente, monto:f.monto, ahorro:!!f.ahorro, tope:f.tope||null, aprox:!!f.aprox});
+          if(ds <= f.hasta && !(f.omitir||[]).includes(ds)) all.push({date:ds, fuente:f.fuente, monto:(f.montos && f.montos[ds] != null) ? f.montos[ds] : f.monto, ahorro:!!f.ahorro, tope:f.tope||null, aprox:!!f.aprox});
         });
         m++; if(m>11){m=0;y++;}
       }
