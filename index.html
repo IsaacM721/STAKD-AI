@@ -13,7 +13,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png?v=6">
 <link rel="icon" type="image/png" href="icon-192.png?v=6">
-<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyards","goyardl"].indexOf(p)<0)p="goyards";document.documentElement.setAttribute("data-palette",p);document.documentElement.setAttribute("data-theme",p==="goyardl"?"light":"dark");})();</script>
+<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyards","goyardt","goyardl"].indexOf(p)<0)p="goyards";document.documentElement.setAttribute("data-palette",p);document.documentElement.setAttribute("data-theme",p==="goyardl"?"light":"dark");var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute("content",p==="goyardt"?"#24170E":p==="goyardl"?"#E8D7B8":"#0F241B");})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
@@ -1580,9 +1580,58 @@ html:root[data-palette="goyardl"] .loan-actions .lp.g{background:linear-gradient
 html:root[data-palette="goyards"] #sbCover{background:#0E2219}
 html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
 </style>
+<style id="pato-looks">
+html:root[data-palette="goyardt"]{color-scheme:dark;
+ --paper:#26180F; --card:#2E1E13; --ink:#FFFFFF; --muted:#C6B9B1; --line:#583E2C;
+ --green:#FFFFFF; --green-soft:#583E2C; --mango:#E9C67A; --mango-ink:#FFFFFF; --red:#FFB8AA; --on-green:#1B120B;
+ --c-sav:#F3E9DC; --c-owe:#E2B65F; --c-cc:#C9B5A7; --c-nl:#F3E9DC; --c-al:#7FD1A8; --c-rb:#E2B65F; --c-pk:#C9B5A7; --c-int:#F5D58C; --c-ot:#66452F;
+ --d1:#F3E9DC; --d2:#E2B65F; --d3:#7FD1A8; --d4:#C9B5A7; --d5:#F5D58C; --d0:#66452F;
+ --gy-leather:#E2B65F; --gy-stitch:transparent; --gy-trim:#E2B65F}
+html[data-palette="goyardt"]::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;pointer-events:none;transform:translateZ(0);contain:strict;
+ background:radial-gradient(120% 70% at 15% 0%,#543824 0%,#2D1E13 55%,#170E08 100%)}
+html[data-palette="goyardt"]::after{display:none}
+html:root[data-palette="goyardt"] :is(section,.tabs,.tabp > .hero){background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015)),#2C1C11;border:1px solid rgba(255,255,255,.07);outline:none;
+ box-shadow:0 14px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06)}
+html:root[data-palette="goyardt"] :is(input,select,textarea){background:#1F130B;border-color:#583E2C;color:#fff}
+html:root[data-palette="goyardt"] :is(input,select,textarea):focus{border-color:#E2B65F;outline-color:#E2B65F}
+html:root[data-palette="goyardt"] .pct{color:#E2B65F}
+html:root[data-palette="goyardt"] .primary{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405;border:0}
+html:root[data-palette="goyardt"] .primary.out{background:var(--red);color:#5A1206}
+html:root[data-palette="goyardt"] .jump{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--paper) 96%,transparent)}
+html:root[data-palette="goyardt"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched){background:rgba(255,255,255,.045)}
+html:root[data-palette="goyardt"] .bar{height:14px;border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
+html:root[data-palette="goyardt"] .bar::before,html:root[data-palette="goyardt"] .bar i::before,html:root[data-palette="goyardt"] .bar i::after{display:none}
+html:root[data-palette="goyardt"] .bar i{border-radius:999px;background:linear-gradient(90deg,#C8973F,#F5D58C);box-shadow:0 0 12px rgba(226,182,95,.35)}
+html:root[data-palette="goyardt"] .mk{background:rgba(255,255,255,.35)}
+html:root[data-palette="goyardt"] .mk.hit{background:#F5D58C}
+html:root[data-palette="goyardt"] :is(.amt.in,.profit,.badge.good,.sent-ok,.be-done b,#pkAvg b){color:#A6E9C2}
+html:root[data-palette="goyardt"] span.a[style*="var(--green)"]{color:#A6E9C2!important}
+html:root[data-palette="goyardt"] :is(.amt.out,.late,.badge.bad,.warn){color:#FFB8AA}
+html:root[data-palette="goyardt"] main :is(div,section,li,a,span,b){outline-style:none}
+html:root[data-palette="goyardt"] :is(#savSplit>div,#pkNew .pk-three div,#pkNew .pk-det){outline:none;background:rgba(255,255,255,.05);border:0}
+html:root[data-palette="goyardt"] .tabs button[aria-selected=true],html:root[data-palette="goyardt"] .tabs button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardt"] .tabs{background:#21150D!important;border:0!important;border-top:1px solid rgba(255,255,255,.08)!important}
+html:root[data-palette="goyardt"] body::after{background:#24170E}
+html:root[data-palette="goyardt"] .seg button[aria-pressed="true"],html:root[data-palette="goyardt"] .seg button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardt"] #sbCover{background:#24170E}
+html:root[data-palette="goyardl"]{--paper:#E8D7B8;--card:#F3E5C9;--ink:#2A1C10;--muted:#7A684F;--line:#DCC7A0;--mango:#B8892F;--mango-ink:#8A6420}
+html[data-palette="goyardl"]::before{background:radial-gradient(120% 70% at 15% 0%,#F0DFC0 0%,#E8D7B8 55%,#DCC59C 100%)}
+html:root[data-palette="goyardl"] :is(section,.tabp > .hero){background:#F3E5C9;border:1px solid rgba(184,137,47,.6);box-shadow:0 10px 28px rgba(90,62,20,.10),inset 0 1px 0 rgba(255,255,255,.6)}
+html:root[data-palette="goyardl"] .tabs{background:#F3E5C9!important;border-top:1px solid rgba(184,137,47,.42)!important}
+html:root[data-palette="goyardl"] body::after,html:root[data-palette="goyardl"] #sbCover{background:#E8D7B8}
+html:root[data-palette="goyardl"] :is(input,select,textarea){background:#F0DFC0;border-color:#DCC7A0;color:#2A1C10}
+html:root[data-palette="goyardl"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched,#savSplit>div){background:rgba(120,84,30,.06)}
+html:root[data-palette="goyardl"] .pct{color:#B8892F}
+html:root[data-palette="goyardl"] .pct .fill{color:#2A1C10}
+html:root[data-palette="goyardl"] #checkin{border:1.5px solid #C8973F}
+html:root[data-palette="goyardl"] .tabs button[aria-selected=true],html:root[data-palette="goyardl"] .tabs button.on,html:root[data-palette="goyardl"] .seg button[aria-pressed="true"],html:root[data-palette="goyardl"] .seg button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardl"] .primary,html:root[data-palette="goyardl"] .loan-actions .lp.g{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109033502";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109085357";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -2131,7 +2180,7 @@ html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
   <div class="toast" id="toast" role="status" aria-live="polite"><span class="tk" aria-hidden="true">✓</span><div><b id="toastT"></b><small id="toastS"></small></div><button type="button" class="tundo" id="toastUndo" hidden>Undo</button></div>
 
   <button type="button" class="palbtn" id="palBtn" aria-label="Settings" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
-  <div class="palette palsheet" id="palSheet" hidden><span>Look</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Dark</button><button type="button" data-pal="goyardl" aria-pressed="false">Light</button></div><button type="button" class="mini" id="sfToggle" hidden>Face ID lock: Off</button></div>
+  <div class="palette palsheet" id="palSheet" hidden><span>Look</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Green</button><button type="button" data-pal="goyardt" aria-pressed="false">Brown</button><button type="button" data-pal="goyardl" aria-pressed="false">Cream</button></div><button type="button" class="mini" id="sfToggle" hidden>Face ID lock: Off</button></div>
 
   <div class="notice" id="notice">This view can’t save data. Open the tracker from your Claude account to log transactions.</div>
 </main>
@@ -2141,7 +2190,7 @@ html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
   // color theme: remembered on this device only
   (()=>{
     let pal = "goyards"; try{ pal = localStorage.getItem("mp-palette") || "goyards"; }catch(e){}
-    if(!["goyards","goyardl"].includes(pal)) pal = "goyards";
+    if(!["goyards","goyardt","goyardl"].includes(pal)) pal = "goyards";
     const set = p => { document.documentElement.setAttribute("data-palette", p); try{ window.__patoLook && window.__patoLook(p); }catch(e){} try{ const bg = getComputedStyle(document.documentElement, "::before").backgroundImage; document.documentElement.style.setProperty("--gy-canvas", bg && bg!=="none" ? bg : "none"); }catch(e){} document.querySelectorAll("[data-pal]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.pal===p)); try{ localStorage.setItem("mp-palette", p); }catch(e){} };
     set(pal);
     /* the home-screen app can lose localStorage, so the theme is also kept in the tracker's data (prefs/ui) */
@@ -6010,5 +6059,19 @@ TRACKER DATA:
 })();
 </script>
 <div id="sbCover"></div>
+<script id="pato-looks-js">
+(function(){
+  var base = window.__patoLook;
+  window.__patoLook = function(p){
+    if(base) base(p);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if(p === "goyardt"){ if(m) m.setAttribute("content", "#24170E"); }
+    if(p === "goyardl"){ if(m) m.setAttribute("content", "#E8D7B8"); }
+    document.querySelectorAll('img[src^="icon-192"],img[src^="icon-light-192"],img[src^="icon-brown-192"]').forEach(function(i){
+      i.src = p === "goyardl" ? "icon-light-192.png?v=6" : p === "goyardt" ? "icon-brown-192.png?v=6" : "icon-192.png?v=6"; });
+  };
+  window.__patoLook(document.documentElement.getAttribute("data-palette"));
+})();
+</script>
 </body>
 </html>
