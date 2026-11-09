@@ -1364,28 +1364,6 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 .sa-k a{color:var(--mango)}
 .sa-gm button:disabled,.sa-st button:disabled{opacity:.45}
 </style>
-<style id="stakd-guest">
-#mpGate input{display:block;width:100%}
-html.mp-guest #saGmRow,html.mp-guest #spSrc,html.mp-guest #saKey,html.mp-guest #tab-stocks{display:none!important}
-html.mp-guest:not(.on-spending) #tab-spending,html.mp-guest:not(.on-poker) #tab-poker,html.mp-guest:not(.on-loans) #tab-loans,html.mp-guest:not(.on-trends) #tab-trends{display:none!important}
-#sgSetup{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:max(24px,env(safe-area-inset-top)) 16px 32px;background:var(--paper)}
-#sgSetup[hidden]{display:none}
-html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
-#sgSetup .g{width:100%;max-width:380px;background:var(--card);border-radius:20px;padding:24px 20px;outline:1.5px dashed color-mix(in srgb,var(--mango) 70%,transparent);outline-offset:-7px}
-#sgSetup h2{font-family:var(--serif,Georgia),serif;margin:0 0 4px;color:var(--ink)}
-#sgSetup p{margin:0 0 16px;color:var(--muted);font-size:.92rem}
-#sgSetup label.f{display:block;font-size:.85rem;color:var(--muted);margin:12px 0 6px}
-#sgSetup input[type=text],#sgSetup select{width:100%}
-#sgSetup .tg{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink)}
-#sgSetup .tg input{width:22px;height:22px;accent-color:var(--mango)}
-#sgSetup .primary{width:100%;margin-top:18px}
-#sgTabs{flex-basis:100%;max-width:340px;margin:6px auto 0;text-align:left}
-#sgTabs>span{display:block;text-align:center;margin-bottom:4px}
-#sgTabs .tg{display:flex;align-items:center;justify-content:space-between;padding:9px 4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink);font-size:.95rem}
-#sgTabs .tg input{width:20px;height:20px;accent-color:var(--mango)}
-html.mp-guest .tabs{justify-content:space-around}
-#sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
-</style>
 <style id="stakd-bets">.pk-more{margin:2px 0 6px}.pk-more>summary{list-style:none;cursor:pointer;color:var(--muted);font-size:.85rem;text-decoration:underline;padding:6px 0;text-align:center}.pk-more>summary::-webkit-details-marker{display:none}.pk-more[open]>summary{margin-bottom:4px}#pkWeeksSum,#pkWeeksHSum,#pkSSum{margin-top:8px}.sb-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 4px}
 .sb-stats>div{background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
 .sb-stats span{font-size:.75rem;color:var(--muted)}.sb-stats b{font-size:1.05rem}.sb-stats small{font-size:.75rem;color:var(--muted);font-weight:500}
@@ -1434,9 +1412,37 @@ html.sg-on #snapBtn,#mpGate:not([hidden])~#snapUi #snapBtn{display:none}
 html.mp-guest #alWrap{display:none}
 </style>
 <style id="stakd-stale">#stStale{display:inline-block;margin:6px 0 2px;padding:3px 10px;border-radius:999px;font-size:.78rem;color:var(--muted);border:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}#stStale[hidden]{display:none}</style>
+<style id="stakd-guest">
+#mpGate input{display:block;width:100%}
+html.mp-guest #saGmRow,html.mp-guest #spSrc,html.mp-guest #saKey,html.mp-guest #tab-stocks{display:none!important}
+html.mp-guest:not(.on-spending) #tab-spending,html.mp-guest:not(.on-poker) #tab-poker,html.mp-guest:not(.on-loans) #tab-loans,html.mp-guest:not(.on-trends) #tab-trends{display:none!important}
+#sgSetup{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:max(24px,env(safe-area-inset-top)) 16px 32px;background:var(--paper)}
+#sgSetup[hidden]{display:none}
+html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
+#sgSetup .g{width:100%;max-width:380px;background:var(--card);border-radius:20px;padding:24px 20px;outline:1.5px dashed color-mix(in srgb,var(--mango) 70%,transparent);outline-offset:-7px}
+#sgSetup h2{font-family:var(--serif,Georgia),serif;margin:0 0 4px;color:var(--ink)}
+#sgSetup p{margin:0 0 16px;color:var(--muted);font-size:.92rem}
+#sgSetup label.f{display:block;font-size:.85rem;color:var(--muted);margin:12px 0 6px}
+#sgSetup input[type=text],#sgSetup select{width:100%}
+#sgSetup .tg{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink)}
+#sgSetup .tg input{width:22px;height:22px;accent-color:var(--mango)}
+#sgSetup .primary{width:100%;margin-top:18px}
+#sgSetup .sg-chips{display:flex;flex-wrap:wrap;gap:8px}
+#sgSetup .sg-chips>*{padding:10px 14px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--ink) 18%,transparent);background:none;color:var(--ink);font:inherit;font-size:.95rem;cursor:pointer}
+#sgSetup .sg-chips>.on{border-color:var(--mango);background:color-mix(in srgb,var(--mango) 18%,transparent)}
+#sgSetup .sg-chips>.fixed{cursor:default;opacity:.85}
+html.mp-guest #pkSeg [data-v="league"],html.mp-guest #pkSeg [data-v="ar"],html.mp-guest:not(.tr-poker) #pkSeg [data-v="ot"],html.mp-guest:not(.tr-bets) #pkSeg [data-v="sb"]{display:none!important}
+#sgTabs{flex-basis:100%;max-width:340px;margin:6px auto 0;text-align:left}
+#sgTabs>span{display:block;text-align:center;margin-bottom:4px}
+#sgTabs .tg{display:flex;align-items:center;justify-content:space-between;padding:9px 4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink);font-size:.95rem}
+#sgTabs .tg input{width:20px;height:20px;accent-color:var(--mango)}
+html.mp-guest .tabs{justify-content:space-around}
+#sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109001514";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109001929";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1482,12 +1488,8 @@ html.mp-guest #alWrap{display:none}
 <label class="f" for="sgGoal">Your savings goal (RD$)</label><input type="text" id="sgGoal" inputmode="numeric" value="1,000,000">
 <label class="f" for="sgLimit">Monthly spending limit (RD$, optional)</label><input type="text" id="sgLimit" inputmode="numeric" placeholder="e.g. 50,000">
 <label class="f" for="sgPal">Color</label><select id="sgPal"></select>
-<label class="f">Tabs</label>
-<div class="tg"><span>Savings</span><input type="checkbox" checked disabled></div>
-<div class="tg"><span>Spend</span><input type="checkbox" data-t="spending" checked></div>
-<div class="tg"><span>Poker</span><input type="checkbox" data-t="poker"></div>
-<div class="tg"><span>Loans</span><input type="checkbox" data-t="loans" checked></div>
-<div class="tg"><span>Trends</span><input type="checkbox" data-t="trends" checked></div>
+<label class="f">What do you want to track?</label>
+<div class="sg-chips"><span class="on fixed">💰 Saving</span><button type="button" data-k="spending" class="on">💳 Spending</button><button type="button" data-k="bets">⚽ Sports bets</button><button type="button" data-k="poker">♠️ Poker</button><button type="button" data-k="loans">🤝 Money I lend</button><button type="button" data-k="trends" class="on">📈 Trends</button></div>
 <button class="primary" type="submit">Start</button><div class="hint" id="sgMsg" aria-live="polite"></div></form></div>
 <script src="mp-firebase.js"></script>
 <script src="faceid.js?v=2" defer></script>
@@ -5316,61 +5318,6 @@ TRACKER DATA:
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();</script>
-<script id="stakd-guest-js">
-(function(){
-  var H = document.documentElement, TABS = ["spending","poker","loans","trends"], db = null, cur = null, shown = false;
-  var num = function(v){ return Number(String(v||"").replace(/[^0-9.]/g,"")) || 0; };
-  function apply(tabs){
-    cur = tabs;
-    TABS.forEach(function(t){ H.classList.toggle("on-"+t, tabs.indexOf(t) >= 0); });
-    var sel = document.querySelector('.tabs [aria-selected="true"]');
-    if(sel && getComputedStyle(sel).display === "none") document.getElementById("tab-savings").click();
-    if(window.__mpBuildSources) window.__mpBuildSources();
-    syncSettings();
-  }
-  function fillSetup(){
-    var s = document.getElementById("sgPal"); s.innerHTML = "";
-    document.querySelectorAll("#palSheet [data-pal]").forEach(function(b){ var o = document.createElement("option"); o.value = b.dataset.pal; o.textContent = b.textContent.trim(); s.appendChild(o); });
-    s.value = H.getAttribute("data-palette") || "goyards";
-    s.onchange = function(){ var b = document.querySelector('#palSheet [data-pal="'+s.value+'"]'); if(b) b.click(); };
-  }
-  function showSetup(){
-    if(shown) return; shown = true; fillSetup();
-    var box = document.getElementById("sgSetup"); box.hidden = false; H.classList.add("sg-on");
-    document.getElementById("sgForm").onsubmit = async function(e){
-      e.preventDefault();
-      var goal = num(document.getElementById("sgGoal").value) || 1000000, lim = num(document.getElementById("sgLimit").value);
-      var tabs = TABS.filter(function(t){ var c = document.querySelector('#sgSetup [data-t="'+t+'"]'); return c && c.checked; });
-      var hitos = [0.5,0.65,0.8,1].map(function(f){ return Math.round(goal*f/1000)*1000; });
-      document.getElementById("sgMsg").textContent = "Saving…";
-      try{
-        await db.doc("prefs/ui").set({ pal: document.getElementById("sgPal").value, tabs: tabs, at: Date.now() });
-        var c = { meta: goal, hitos: hitos, deudas: [], fijos: [], creada: new Date().toISOString().slice(0,10) };
-        if(lim > 0) c.limiteMensual = lim;
-        await db.doc("config/main").set(c);
-        box.hidden = true; H.classList.remove("sg-on"); apply(tabs);
-      }catch(err){ console.error(err); document.getElementById("sgMsg").textContent = "Couldn’t save. Check your connection and try again."; }
-    };
-  }
-  function addSettings(){
-    var sh = document.getElementById("palSheet"); if(!sh || document.getElementById("sgTabs")) return;
-    var w = document.createElement("div"); w.id = "sgTabs";
-    w.innerHTML = '<span>Tabs</span>' + TABS.map(function(t){ var n = {spending:"Spend",poker:"Poker",loans:"Loans",trends:"Trends"}[t]; return '<label class="tg"><span>'+n+'</span><input type="checkbox" data-st="'+t+'"></label>'; }).join("") + '<button type="button" id="sgOut">Sign out</button>';
-    sh.appendChild(w);
-    w.querySelectorAll("[data-st]").forEach(function(c){ c.onchange = function(){ var t = TABS.filter(function(x){ var k = w.querySelector('[data-st="'+x+'"]'); return k && k.checked; }); apply(t); db.doc("prefs/ui").update({ tabs: t }).catch(function(){}); }; });
-    document.getElementById("sgOut").onclick = function(){ if(window.mpSignOut) window.mpSignOut(); };
-  }
-  function syncSettings(){ var w = document.getElementById("sgTabs"); if(!w || !cur) return; w.querySelectorAll("[data-st]").forEach(function(c){ c.checked = cur.indexOf(c.dataset.st) >= 0; }); }
-  if(!window.claude) return;
-  window.claude.use("db").then(function(d){
-    db = d; var me = window.MP_ME || {};
-    if(me.owner) return; // Marco: nothing changes
-    addSettings();
-    db.doc("prefs/ui").onSnapshot(function(s){ var x = s.exists ? s.data() : {}; apply(Array.isArray(x.tabs) ? x.tabs : ["spending","loans","trends"]); syncSettings(); }, function(){});
-    db.doc("config/main").onSnapshot(function(s){ if(!s.exists) showSetup(); }, function(){});
-  });
-})();
-</script>
 <div id="snapUi"><button type="button" id="snapBtn" aria-label="Snap a photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
 <input type="file" id="snapFile" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" aria-label="Photo">
 <div id="snapDlg" hidden role="dialog" aria-modal="true"><div class="sd" id="snapBody"></div></div></div><!--/snapUi-->
@@ -5535,6 +5482,72 @@ TRACKER DATA:
     if(ok) navigator.serviceWorker.register("sw.js").catch(function(){});
     db.doc("prefs/alerts").onSnapshot(function(s){ prefs = s.exists ? (s.data() || {}) : {}; sync(); }, function(){});
     db.doc("prefs/push").onSnapshot(function(s){ subs = (s.exists && s.data().subs) || []; state(); }, function(){});
+  });
+})();
+</script>
+<script id="stakd-guest-js">
+(function(){
+  var H = document.documentElement, TABS = ["spending","poker","loans","trends"], db = null, cur = null, shown = false;
+  var num = function(v){ return Number(String(v||"").replace(/[^0-9.]/g,"")) || 0; };
+  var track = [];
+  function applyTrack(t){
+    track = Array.isArray(t) ? t : [];
+    var bets = track.indexOf("bets") >= 0, pk = track.indexOf("poker") >= 0;
+    H.classList.toggle("tr-bets", bets); H.classList.toggle("tr-poker", pk);
+    var lab = document.querySelector("#tab-poker span"); if(lab) lab.textContent = bets && !pk ? "Bets" : pk && !bets ? "Poker" : "Play";
+    var seg = document.getElementById("pkSeg");
+    if(seg){ var vis = [].slice.call(seg.querySelectorAll("button")).filter(function(b){ return getComputedStyle(b).display !== "none"; }); var on = seg.querySelector("button.on"); if(vis.length && (!on || vis.indexOf(on) < 0)) vis[0].click(); }
+  }
+  function apply(tabs){
+    cur = tabs;
+    TABS.forEach(function(t){ H.classList.toggle("on-"+t, tabs.indexOf(t) >= 0); });
+    var sel = document.querySelector('.tabs [aria-selected="true"]');
+    if(sel && getComputedStyle(sel).display === "none") document.getElementById("tab-savings").click();
+    if(window.__mpBuildSources) window.__mpBuildSources();
+    syncSettings();
+  }
+  function fillSetup(){
+    var s = document.getElementById("sgPal"); s.innerHTML = "";
+    document.querySelectorAll("#palSheet [data-pal]").forEach(function(b){ var o = document.createElement("option"); o.value = b.dataset.pal; o.textContent = b.textContent.trim(); s.appendChild(o); });
+    s.value = H.getAttribute("data-palette") || "goyards";
+    s.onchange = function(){ var b = document.querySelector('#palSheet [data-pal="'+s.value+'"]'); if(b) b.click(); };
+  }
+  function showSetup(){
+    if(shown) return; shown = true; fillSetup();
+    var box = document.getElementById("sgSetup"); box.hidden = false; H.classList.add("sg-on");
+    box.querySelectorAll(".sg-chips button").forEach(function(b){ b.onclick = function(){ b.classList.toggle("on"); }; });
+    document.getElementById("sgForm").onsubmit = async function(e){
+      e.preventDefault();
+      var goal = num(document.getElementById("sgGoal").value) || 1000000, lim = num(document.getElementById("sgLimit").value);
+      var picks = [].slice.call(document.querySelectorAll('#sgSetup .sg-chips button.on')).map(function(b){ return b.dataset.k; });
+      var tabs = TABS.filter(function(t){ return t === "poker" ? (picks.indexOf("poker") >= 0 || picks.indexOf("bets") >= 0) : picks.indexOf(t) >= 0; });
+      var hitos = [0.5,0.65,0.8,1].map(function(f){ return Math.round(goal*f/1000)*1000; });
+      document.getElementById("sgMsg").textContent = "Saving…";
+      try{
+        await db.doc("prefs/ui").set({ pal: document.getElementById("sgPal").value, tabs: tabs, track: picks, at: Date.now() });
+        var c = { meta: goal, hitos: hitos, deudas: [], fijos: [], creada: new Date().toISOString().slice(0,10) };
+        if(lim > 0) c.limiteMensual = lim;
+        await db.doc("config/main").set(c);
+        box.hidden = true; H.classList.remove("sg-on"); apply(tabs); applyTrack(picks);
+      }catch(err){ console.error(err); document.getElementById("sgMsg").textContent = "Couldn’t save. Check your connection and try again."; }
+    };
+  }
+  function addSettings(){
+    var sh = document.getElementById("palSheet"); if(!sh || document.getElementById("sgTabs")) return;
+    var w = document.createElement("div"); w.id = "sgTabs";
+    w.innerHTML = '<span>Tabs</span>' + TABS.map(function(t){ var n = {spending:"Spend",poker:"Poker",loans:"Loans",trends:"Trends"}[t]; return '<label class="tg"><span>'+n+'</span><input type="checkbox" data-st="'+t+'"></label>'; }).join("") + '<button type="button" id="sgOut">Sign out</button>';
+    sh.appendChild(w);
+    w.querySelectorAll("[data-st]").forEach(function(c){ c.onchange = function(){ var t = TABS.filter(function(x){ var k = w.querySelector('[data-st="'+x+'"]'); return k && k.checked; }); apply(t); db.doc("prefs/ui").update({ tabs: t }).catch(function(){}); }; });
+    document.getElementById("sgOut").onclick = function(){ if(window.mpSignOut) window.mpSignOut(); };
+  }
+  function syncSettings(){ var w = document.getElementById("sgTabs"); if(!w || !cur) return; w.querySelectorAll("[data-st]").forEach(function(c){ c.checked = cur.indexOf(c.dataset.st) >= 0; }); }
+  if(!window.claude) return;
+  window.claude.use("db").then(function(d){
+    db = d; var me = window.MP_ME || {};
+    if(me.owner) return; // Marco: nothing changes
+    addSettings();
+    db.doc("prefs/ui").onSnapshot(function(s){ var x = s.exists ? s.data() : {}; apply(Array.isArray(x.tabs) ? x.tabs : ["spending","loans","trends"]); applyTrack(Array.isArray(x.track) ? x.track : ["bets","poker"]); syncSettings(); }, function(){});
+    db.doc("config/main").onSnapshot(function(s){ if(!s.exists) showSetup(); }, function(){});
   });
 })();
 </script>
