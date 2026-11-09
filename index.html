@@ -1541,10 +1541,17 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 .pato-pill span.z1{color:#D9534A}.pato-pill span.z2{color:#E07B2E}.pato-pill span.z3{color:#C9A227}.pato-pill span.z4{color:#5FAE47}.pato-pill span.z5{color:#2E9E68}
 .tabp>.pp-row{display:flow-root;margin:0 0 -2px}
 #p-savings>.pp-row{display:none}
+/* camera: a round button in the middle of the tab bar instead of floating over the page (Marco, Nov 9) */
+.tabs{display:flex!important;align-items:flex-end}
+.tabs>button[role=tab]{flex:1 1 0;min-width:0}
+.tabs #snapBtn{position:relative;right:auto;bottom:auto;flex:0 0 56px;width:56px;height:56px;min-height:0;margin:-20px 4px 4px;padding:0!important;border-radius:50%;
+ background:linear-gradient(145deg,#2F8F62,#1C6444);color:#fff;border:3px solid var(--paper);box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:2}
+.tabs #snapBtn svg{width:24px;height:24px}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109014934";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109015335";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4615,6 +4622,14 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
       $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
       const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
       $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
   }
   // league rakeback per Monday: average of the weeks so far (first week left out), counting weeks earned but not paid yet
   function ligaAvg(){
@@ -5892,6 +5907,11 @@ TRACKER DATA:
     });
   };
   if(window.__patoLast) window.__patoPill.apply(null, window.__patoLast);
+  // camera button sits in the middle of the tab bar
+  function dockCam(){ var nav = document.querySelector(".tabs"), b = document.getElementById("snapBtn"); if(!nav || !b) return;
+    var vis = Array.prototype.filter.call(nav.querySelectorAll("[role=tab]"), function(x){ return !x.hidden && getComputedStyle(x).display !== "none"; });
+    var before = vis[Math.ceil(vis.length/2)] || null; if(b.parentNode !== nav || b.nextElementSibling !== before) nav.insertBefore(b, before); }
+  dockCam(); setInterval(dockCam, 1500);
 })();
 </script>
 </body>
