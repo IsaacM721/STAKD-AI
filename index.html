@@ -1663,7 +1663,8 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109105828";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109110251";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3017,14 +3018,28 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
   }
   function saludoDR(){ const hr = Number(new Date().toLocaleString("en-US", {timeZone:"America/Santo_Domingo", hour:"numeric", hour12:false})) % 24;
     return hr < 12 ? "Buenos días" : hr < 19 ? "Buenas tardes" : "Buenas noches"; }
+  // warm opener + closer (Marco, Nov 9)
+  function warmBits(name){
+    const now = new Date(), hr = Number(now.toLocaleString("en-US", {timeZone:"America/Santo_Domingo", hour:"numeric", hour12:false})) % 24;
+    const wd = now.toLocaleDateString("en-US", {timeZone:"America/Santo_Domingo", weekday:"short"});
+    const ops = ["todo bien?", "espero que estés bien", "cómo vas?", "espero que todo esté bien por allá"];
+    if(wd === "Mon") ops.push("espero que hayas empezado bien la semana");
+    if(wd === "Fri") ops.push("feliz viernes");
+    const key = "pato-op-" + String(name||"").toLowerCase(); let last = ""; try{ last = localStorage.getItem(key) || ""; }catch(e){}
+    const pool = ops.filter(o => o !== last), op = pool[Math.floor(Math.random()*pool.length)];
+    try{ localStorage.setItem(key, op); }catch(e){}
+    const cl = ["Gracias"]; if(hr < 12) cl.push("Gracias, que tengas buen día"); else if(hr < 19) cl.push("Gracias, buena tarde");
+    return {op: /\?$/.test(op) ? op : op + ".", cl: cl[Math.floor(Math.random()*cl.length)]};   // "todo bien?" needs no period
+  }
   function msgFor(it){
     const name = cap(String(it.l.nombre||"").trim());
     const fechaEs = new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
     const monto = "RD$" + Math.round(it.amt).toLocaleString("en-US");
     const cuota = it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "";
-    if(it.kind==="late") return `${saludoDR()} ${name}, el pago de ${monto}${cuota} del ${fechaEs} sigue pendiente. ¿Me avisas cuándo me lo puedes mandar? Gracias`;
+    const w = warmBits(name);
+    if(it.kind==="late") return `${saludoDR()} ${name}, ${w.op} El pago de ${monto}${cuota} del ${fechaEs} sigue pendiente, me avisas cuándo me lo puedes mandar? ${w.cl}`;
     const when = it.d===0 ? "hoy" : it.d===1 ? "mañana" : `el ${fechaEs}`;
-    return `${saludoDR()} ${name}, te recuerdo el pago de ${monto}${cuota} para ${when}. Gracias`;
+    return `${saludoDR()} ${name}, ${w.op} Te recuerdo que ${when} toca el pago de ${monto}${cuota}. ${w.cl}`;
   }
   const dueTxt = it => it.kind==="late" ? `Was due ${fmtDate(it.date,false)} · ${Math.abs(it.d)} day${Math.abs(it.d)>1?"s":""} late` : it.d===0 ? "Due today" : it.d===1 ? "Due tomorrow" : `Due ${fmtDate(it.date,false)} · in ${it.d} days`;
   function waLink(tel, msg){
@@ -3066,8 +3081,8 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       const name = cap(String(p.name||"").trim());
       const dEs = it => new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
       const mEs = it => "RD$" + Math.round(it.amt).toLocaleString("en-US") + (it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "");
-      const msg = items.length === 1 ? msgFor(items[0]) : `${saludoDR()} ${name}, te recuerdo tus pagos: ` +
-        items.map(it => it.kind === "late" ? `${mEs(it)} del ${dEs(it)} (pendiente)` : `${mEs(it)} para el ${dEs(it)}`).join(", ").replace(/, ([^,]*)$/, " y $1") + ". Gracias";
+      const wb = warmBits(name), msg = items.length === 1 ? msgFor(items[0]) : `${saludoDR()} ${name}, ${wb.op} Te recuerdo tus pagos: ` +
+        items.map(it => it.kind === "late" ? `${mEs(it)} del ${dEs(it)} (pendiente)` : `${mEs(it)} para el ${dEs(it)}`).join(", ").replace(/, ([^,]*)$/, " y $1") + ". " + wb.cl;
       const done = items.every(wasReminded) || items.every(it => waOpened.has(itKey(it)));
       const rb = document.createElement("button"); rb.type = "button"; rb.className = "pic" + (done ? " done" : "");
       rb.setAttribute("aria-label", "Remind " + name + " on WhatsApp"); rb.title = done ? "Reminded · send again" : "Remind"; rb.innerHTML = SV.wa;
@@ -3078,7 +3093,7 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
     }
     if(!items.length && open.some(o => o.l.pausado)){
       const nm2 = cap(String(p.name||"").trim()), owed = open.filter(o => o.l.pausado).reduce((s,o) => s + loanRemaining(o.l), 0);
-      const msg2 = `${typeof saludoDR === "function" ? saludoDR() : "Hola"} ${nm2}, el pago de RD$${Math.round(owed).toLocaleString("en-US")} sigue pendiente. ¿Me avisas cuándo me lo puedes mandar? Gracias`;
+      const w2 = warmBits(nm2), msg2 = `${saludoDR()} ${nm2}, ${w2.op} El pago de RD$${Math.round(owed).toLocaleString("en-US")} sigue pendiente, me avisas cuándo me lo puedes mandar? ${w2.cl}`;
       const rb2 = document.createElement("button"); rb2.type = "button"; rb2.className = "pic"; rb2.setAttribute("aria-label", "Remind " + nm2 + " on WhatsApp"); rb2.title = "Remind"; rb2.innerHTML = SV.wa;
       rb2.onclick = ev => { stop(ev); const tel = telOf(p.name); if(tel){ window.open(waLink(tel, msg2), "_blank", "noopener"); return; }
         openWA({l: open[0].l, kind: "late", date: today(), d: 0, amt: owed, k: 1, n: 1}); $("waMsg").value = msg2; $("waGo").href = waUrl(); };
