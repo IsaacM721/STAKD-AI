@@ -1502,7 +1502,8 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109010840";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109010857";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3988,7 +3989,7 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
       if(pv.some(v=>v<60)) score = Math.min(score, 79); if(pv.some(v=>v<20)) score = Math.min(score, 59); if(pv.filter(v=>v<40).length>=2) score = Math.min(score, 39);
       score = Math.round(score);
       const contrib = {}; pil.forEach(x=>x.items.forEach(i=>{ contrib[i[0]] = Math.round(i[2]*x.w/x.items.length/tw*10)/10; }));
-      const Z = [[20,"Sinking","Money is slipping away. Stop the biggest leak first.","z1"],[40,"Paddling hard","Working, but not getting ahead. Cut one habit.","z2"],[60,"Floating","Okay, but one bad month hurts. Build your cushion.","z3"],[80,"Cruising","Good habits, money growing. Keep it steady.","z4"],[101,"Flying","Top shape, and rare. Protect it.","z5"]];
+      const Z = [[20,"Sinking","Money is slipping away. Stop the biggest leak first.","z1"],[40,"Paddling","Working, but not getting ahead. Cut one habit.","z2"],[60,"Floating","Okay, but one bad month hurts. Build your cushion.","z3"],[80,"Cruising","Good habits, money growing. Keep it steady.","z4"],[101,"Flying","Top shape, and rare. Protect it.","z5"]];
       const z = Z.find(x=>score<=x[0]) || Z[4];
       // gauge: 5 zones on a half circle, needle at the score
       { const R = 80, cx = 100, cy = 96, pt = (s,r) => { const a = Math.PI*(1 - s/100); return [cx + r*Math.cos(a), cy - r*Math.sin(a)]; };
