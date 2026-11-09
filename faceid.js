@@ -1,4 +1,4 @@
-// Stakd: Face ID lock (WebAuthn passkey on this device). The data is still protected by the account sign-in;
+// Pato: Face ID lock (WebAuthn passkey on this device). The data is still protected by the account sign-in;
 // this keeps the app closed until Face ID (or the device passcode) says it's you.
 (function(){
   var KEY = "stakd-faceid", ASKED = "stakd-faceid-asked";
@@ -24,8 +24,8 @@
   }
   async function enable(){
     try {
-      var c = await navigator.credentials.create({ publicKey: { challenge: rnd(32), rp: { name: "Stakd" },
-        user: { id: rnd(16), name: "Stakd", displayName: "Stakd" },
+      var c = await navigator.credentials.create({ publicKey: { challenge: rnd(32), rp: { name: "Pato" },
+        user: { id: rnd(16), name: "Pato", displayName: "Pato" },
         pubKeyCredParams: [{ type: "public-key", alg: -7 }, { type: "public-key", alg: -257 }],
         authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "required", residentKey: "preferred" }, timeout: 60000 } });
       cred = { id: b64(c.rawId), at: Date.now() }; localStorage.setItem(KEY, JSON.stringify(cred));

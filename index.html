@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Stakd AI</title>
+<title>Pato</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Stakd AI">
+<meta name="apple-mobile-web-app-title" content="Pato">
 <meta name="theme-color" content="#0F241B">
 <meta name="robots" content="noindex,nofollow">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-180.png?v=5">
-<link rel="icon" type="image/png" href="icon-192.png?v=5">
-<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo","goyards"].indexOf(p)<0)p="goyardb";document.documentElement.setAttribute("data-palette",p);})();</script>
+<link rel="apple-touch-icon" href="icon-180.png?v=6">
+<link rel="icon" type="image/png" href="icon-192.png?v=6">
+<script>(function(){var p="goyards";try{p=localStorage.getItem("mp-palette")||"goyards";}catch(e){}if(["goyards","goyardt","goyardl"].indexOf(p)<0)p="goyards";document.documentElement.setAttribute("data-palette",p);document.documentElement.setAttribute("data-theme",p==="goyardl"?"light":"dark");var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute("content",p==="goyardt"?"#24170E":p==="goyardl"?"#E8D7B8":"#0F241B");})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
@@ -1364,6 +1364,32 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 .sa-k a{color:var(--mango)}
 .sa-gm button:disabled,.sa-st button:disabled{opacity:.45}
 </style>
+<style id="stakd-bets">.pk-more{margin:2px 0 6px}.pk-more>summary{list-style:none;cursor:pointer;color:var(--muted);font-size:.85rem;text-decoration:underline;padding:6px 0;text-align:center}.pk-more>summary::-webkit-details-marker{display:none}.pk-more[open]>summary{margin-bottom:4px}#pkWeeksSum,#pkWeeksHSum,#pkSSum{margin-top:8px}.sb-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.sb-stats>div{background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.sb-stats span{font-size:.75rem;color:var(--muted)}.sb-stats b{font-size:1.05rem}.sb-stats small{font-size:.75rem;color:var(--muted);font-weight:500}
+.sb-h{margin:18px 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.sb-bet{border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+.sb-bet summary{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:12px 0;cursor:pointer}.sb-bet summary::-webkit-details-marker{display:none}
+.sb-l,.sb-r{display:flex;flex-direction:column;gap:2px;min-width:0}.sb-r{align-items:flex-end;text-align:right;flex:none}
+.sb-l b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sb-l small,.sb-r small{color:var(--muted);font-size:.8rem}
+.sb-r b.in{color:var(--green)}.sb-r b.out{color:var(--red,#e07a6a)}
+.sb-legs{list-style:none;margin:0 0 12px;padding:0}.sb-legs li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;padding:6px 0}
+.sb-legs i{font-style:normal;font-weight:700;text-align:center}.sb-legs li.lg-won i{color:var(--green)}.sb-legs li.lg-lost i{color:var(--red,#e07a6a)}.sb-legs li.lg-pending i{color:var(--muted)}
+.sb-legs b{font-weight:600;font-size:.92rem}.sb-legs small{display:block;color:var(--muted);font-size:.78rem}.sb-legs span{font-size:.85rem;color:var(--muted)}.pk-seg button{flex:1 1 auto;padding-left:8px!important;padding-right:8px!important}#pkSTot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}#pkSTot .pk-sm{flex-basis:100%;color:var(--muted);font-size:.85rem}#pkSTot .pk-sm b{font-size:inherit}</style>
+<style id="stakd-brief">#brief{margin:0 0 14px;padding:14px 18px;border-radius:20px;background:color-mix(in srgb,var(--card) 92%,var(--mango) 8%);border:1px solid color-mix(in srgb,var(--mango) 30%,transparent)}
+#brief .br-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}#brief .br-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--mango)}#brief .br-h span{font-size:.78rem;color:var(--muted)}
+#brief .br-r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;font-size:.92rem}#brief .br-r span{color:var(--muted)}#brief .br-r b{font-weight:600;color:var(--ink)}#brief .br-r b small{font-weight:500;color:var(--muted);font-size:.78rem;margin-left:4px}
+#brief .br-r b.profit{color:var(--green)}#brief .br-r b.late{color:var(--red,#e07a6a)}</style>
+<style id="stakd-alerts">
+#alWrap{flex-basis:100%;max-width:340px;margin:12px auto 0;text-align:left}
+#alWrap>span{display:block;text-align:center;margin-bottom:6px}
+#alWrap .tg{display:flex;align-items:center;justify-content:space-between;padding:9px 4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink);font-size:.95rem}
+#alWrap .tg input{width:20px;height:20px;accent-color:var(--mango)}
+#alWrap .primary{width:100%;margin:4px 0 8px}
+#alWrap .hint{font-size:.82rem;color:var(--muted);text-align:center;margin:4px 0 8px}
+html.mp-guest #alWrap{display:none}
+</style>
+<style id="stakd-stale">#stStale{display:inline-block;margin:6px 0 2px;padding:3px 10px;border-radius:999px;font-size:.78rem;color:var(--muted);border:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}#stStale[hidden]{display:none}</style>
 <style id="stakd-guest">
 #mpGate input{display:block;width:100%}
 html.mp-guest #saGmRow,html.mp-guest #spSrc,html.mp-guest #saKey,html.mp-guest #tab-stocks{display:none!important}
@@ -1379,6 +1405,11 @@ html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
 #sgSetup .tg{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink)}
 #sgSetup .tg input{width:22px;height:22px;accent-color:var(--mango)}
 #sgSetup .primary{width:100%;margin-top:18px}
+#sgSetup .sg-chips{display:flex;flex-wrap:wrap;gap:8px}
+#sgSetup .sg-chips>*{padding:10px 14px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--ink) 18%,transparent);background:none;color:var(--ink);font:inherit;font-size:.95rem;cursor:pointer}
+#sgSetup .sg-chips>.on{border-color:var(--mango);background:color-mix(in srgb,var(--mango) 18%,transparent)}
+#sgSetup .sg-chips>.fixed{cursor:default;opacity:.85}
+html.mp-guest #pkSeg [data-v="league"],html.mp-guest #pkSeg [data-v="ar"],html.mp-guest:not(.tr-poker) #pkSeg [data-v="ot"],html.mp-guest:not(.tr-bets) #pkSeg [data-v="sb"]{display:none!important}
 #sgTabs{flex-basis:100%;max-width:340px;margin:6px auto 0;text-align:left}
 #sgTabs>span{display:block;text-align:center;margin-bottom:4px}
 #sgTabs .tg{display:flex;align-items:center;justify-content:space-between;padding:9px 4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--ink);font-size:.95rem}
@@ -1386,9 +1417,253 @@ html.sg-on #sfOffer,html.sg-on .tabs{display:none!important}
 html.mp-guest .tabs{justify-content:space-around}
 #sgOut{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem}
 </style>
+<style id="pato-light">
+html:root[data-palette="goyardl"]{color-scheme:light;
+ --paper:#F4EFE5; --card:#FFFDF8; --ink:#14261C; --muted:#6E6B5F; --line:#E4DBCA;
+ --green:#1C6444; --green-soft:#DDEBE0; --mango:#C8973F; --mango-ink:#8A6420; --red:#B8432C; --on-green:#FFFFFF;
+ --c-sav:#1C6444; --c-owe:#C8973F; --c-cc:#6E9C86; --c-nl:#1C6444; --c-al:#2F8F62; --c-rb:#C8973F; --c-pk:#8FB5A2; --c-int:#D9A94E; --c-ot:#D6CCB8;
+ --d1:#1C6444; --d2:#C8973F; --d3:#2F8F62; --d4:#8FB5A2; --d5:#D9A94E; --d0:#D6CCB8;
+ --gy-leather:#C8973F; --gy-stitch:transparent; --gy-trim:#C8973F}
+html[data-palette="goyardl"]::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;pointer-events:none;transform:translateZ(0);contain:strict;
+ background:radial-gradient(120% 70% at 15% 0%,#FCFAF4 0%,#F4EFE5 55%,#ECE4D4 100%)}
+html[data-palette="goyardl"]::after{display:none}
+html:root[data-palette="goyardl"] :is(section,.tabs,.tabp > .hero){background:#FFFDF8;border:1px solid rgba(20,38,28,.07);outline:none;box-shadow:0 10px 28px rgba(70,52,20,.08)}
+html:root[data-palette="goyardl"] :is(input,select,textarea){background:#FBF8F2;border-color:#E4DBCA;color:#14261C}
+html:root[data-palette="goyardl"] :is(input,select,textarea):focus{border-color:#C8973F;outline-color:#C8973F}
+html:root[data-palette="goyardl"] .pct{color:#A8782E}
+html:root[data-palette="goyardl"] .primary{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff;border:0}
+html:root[data-palette="goyardl"] .primary.out{background:var(--red);color:#fff}
+html:root[data-palette="goyardl"] .jump{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--paper) 96%,transparent)}
+html:root[data-palette="goyardl"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched){background:rgba(20,38,28,.04)}
+html:root[data-palette="goyardl"] .bar{height:14px;border-radius:999px;background:rgba(20,38,28,.08);box-shadow:inset 0 1px 2px rgba(0,0,0,.08)}
+html:root[data-palette="goyardl"] .bar::before,html:root[data-palette="goyardl"] .bar i::before,html:root[data-palette="goyardl"] .bar i::after{display:none}
+html:root[data-palette="goyardl"] .bar i{border-radius:999px;background:linear-gradient(90deg,#C8973F,#E8C477)}
+html:root[data-palette="goyardl"] .mk{background:rgba(20,38,28,.25)}
+html:root[data-palette="goyardl"] .mk.hit{background:#C8973F}
+html:root[data-palette="goyardl"] :is(.amt.in,.profit,.badge.good,.sent-ok,.be-done b,#pkAvg b){color:#1E7A4E}
+html:root[data-palette="goyardl"] span.a[style*="var(--green)"]{color:#1E7A4E!important}
+html:root[data-palette="goyardl"] :is(.amt.out,.late,.badge.bad,.warn){color:#B8432C}
+html:root[data-palette="goyardl"] main :is(div,section,li,a,span,b){outline-style:none}
+html:root[data-palette="goyardl"] :is(#savSplit>div,#pkNew .pk-three div,#pkNew .pk-det){outline:none;background:rgba(20,38,28,.04);border:0}
+html:root[data-palette="goyardl"] .tabs button[aria-selected=true],html:root[data-palette="goyardl"] .tabs button.on{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
+html:root[data-palette="goyardl"] .tabs{background:#FFFDF8!important;border:0!important;border-top:1px solid rgba(20,38,28,.08)!important;box-shadow:0 -8px 24px rgba(70,52,20,.08)!important}
+html:root[data-palette="goyardl"] body::after{background:#F4EFE5}
+html:root[data-palette="goyardl"] .seg button[aria-pressed="true"],html:root[data-palette="goyardl"] .seg button.on{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
+html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #sfOffer .g{box-shadow:0 14px 34px rgba(70,52,20,.12)}
+</style>
+<style id="pato-rc">
+.rc{margin:4px 0 14px;padding:12px 16px;border-radius:18px;background:color-mix(in srgb,var(--card) 90%,var(--mango) 10%);border:1px solid color-mix(in srgb,var(--mango) 28%,transparent)}
+.rc[hidden]{display:none}
+.rc-h{font-family:var(--serif,Georgia),serif;font-weight:700;font-size:1rem;color:var(--mango);margin-bottom:4px}
+.rc-r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;font-size:.9rem}
+.rc-r span{color:var(--muted)}.rc-r b{font-weight:600;color:var(--ink);text-align:right}.rc-r b small{font-weight:500;color:var(--muted);font-size:.76rem}
+.rc-r b.profit{color:var(--green)}.rc-r b.late{color:var(--red,#e07a6a)}
+.rc-n{font-size:.78rem;color:var(--muted);margin:-2px 0 4px}
+.rc-r b{white-space:nowrap}
+.rc-v{all:unset;display:block;cursor:pointer;margin:2px 0 6px;padding:9px 12px;border-radius:12px;font-size:.88rem;font-weight:600;line-height:1.35;color:var(--ink);background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.rc-v small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:4px}.rc-v small[hidden]{display:none}
+</style>
+<style id="pato-disc">
+#discBtn{all:unset;cursor:pointer;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;margin-left:6px;vertical-align:middle;color:var(--muted);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+#discBtn svg{width:19px;height:19px}
+html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
+</style>
+<style id="pato-bar">
+html,body{overscroll-behavior:none}
+.tabs{position:fixed!important;bottom:0!important;transform:translateZ(0)!important;-webkit-transform:translateZ(0)!important;will-change:transform}
+@media (min-width:760px){.tabs{transform:translateX(-50%) translateZ(0)!important}}
+html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
+</style>
+<style id="stakd-snap">
+#snapBtn{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:31;width:54px;height:54px;border-radius:50%;border:0;background:var(--mango);color:var(--paper,#fff);box-shadow:0 8px 24px rgba(0,0,0,.3);display:grid;place-items:center;cursor:pointer}
+#snapBtn svg{width:24px;height:24px}
+#snapBtn.busy{animation:snapPulse 1s ease-in-out infinite}
+@keyframes snapPulse{50%{transform:scale(.92);opacity:.75}}
+html.sg-on #snapBtn,#mpGate:not([hidden])~#snapUi #snapBtn{display:none}
+#snapDlg{position:fixed;inset:0;z-index:95;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45);padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+#snapDlg[hidden]{display:none}
+#snapDlg .sd{width:100%;max-width:420px;max-height:85vh;overflow:auto;background:var(--card);border-radius:22px;padding:20px 18px;color:var(--ink)}
+#snapDlg h3{margin:0 0 2px;font-family:var(--serif,Georgia),serif;font-size:1.2rem;color:var(--mango)}
+#snapDlg .sub{margin:0 0 12px;color:var(--muted);font-size:.85rem}
+#snapDlg .r{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 9%,transparent);font-size:.92rem}
+#snapDlg .r span{color:var(--muted)}#snapDlg .r b{font-weight:600;text-align:right}
+#snapDlg .leg{font-size:.85rem;padding:6px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink) 9%,transparent)}
+#snapDlg .leg small{color:var(--muted)}
+#snapDlg .bt{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+#snapDlg .bt button{width:100%}
+#snapDlg input{width:100%;margin-top:8px}
+#snapDlg a{color:var(--mango)}
+#snapDlg .snap-type{display:flex;gap:8px;margin-top:12px}#snapDlg .snap-type input{flex:1;margin:0}#snapDlg .snap-type button{flex:none;width:auto;padding:0 18px}
+#snapDlg .snap-x{all:unset;display:block;margin:14px auto 0;color:var(--muted);font-size:.88rem;cursor:pointer}
+html.has-ak #s-sptr,html.has-ak #s-spcash>h3,html.has-ak #s-spcash>.grid,html.has-ak #spForWd,html.has-ak #spSave{display:none!important}
+#snapKeyRow{flex-basis:100%;max-width:340px;margin:10px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--ink)}
+#snapKeyRow button{background:none;border:0;color:var(--mango);font:inherit;text-decoration:underline;cursor:pointer}
+</style>
+<style id="pato-ui">
+#spMore{display:flex;gap:10px;justify-content:center;margin-top:8px}#spMore:empty{display:none}
+#spMore button{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.85rem;padding:7px 14px;border-radius:999px;cursor:pointer}
+.nw-split{display:grid;gap:14px;margin-top:14px}
+.nw-gh{display:flex;justify-content:space-between;align-items:baseline;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-bottom:4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 9%,transparent)}
+.nw-gh b{font-size:.9rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+.nw-r{display:grid;grid-template-columns:10px minmax(0,1fr) auto 3.2em;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 5%,transparent)}
+.nw-r:last-child{border-bottom:0}
+.nw-r i{width:9px;height:9px;border-radius:50%}
+.nw-r span{color:var(--ink);font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nw-r span small{color:var(--muted);font-size:.78rem}
+.nw-r b{font-weight:700;color:var(--ink)}.nw-r>small{color:var(--muted);font-size:.8rem;text-align:right}
+.pato-pill{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;float:right;margin:2px 0 6px 10px;padding:4px 11px 4px 4px;border-radius:999px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);font-size:.82rem;color:var(--ink);position:relative;z-index:2}
+.pato-pill img{width:24px;height:24px;border-radius:7px}
+.pato-pill b{font-weight:800;font-variant-numeric:tabular-nums}
+.pato-pill span.z1{color:#D9534A}.pato-pill span.z2{color:#E07B2E}.pato-pill span.z3{color:#C9A227}.pato-pill span.z4{color:#5FAE47}.pato-pill span.z5{color:#2E9E68}
+.tabp>.pp-row{display:flow-root;margin:0 0 -2px}
+#p-savings>.pp-row{display:none}
+/* camera: a round button in the middle of the tab bar instead of floating over the page (Marco, Nov 9) */
+.tabs{display:flex!important;align-items:flex-end}
+.tabs>button[role=tab]{flex:1 1 0;min-width:0}
+.tabs #snapBtn{position:relative;right:auto;bottom:auto;flex:0 0 56px;width:56px;height:56px;min-height:0;margin:-20px 4px 4px;padding:0!important;border-radius:50%;
+ background:linear-gradient(145deg,#2F8F62,#1C6444);color:#fff;border:3px solid var(--paper);box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:2}
+.tabs #snapBtn svg{width:24px;height:24px}
+</style>
+<style id="pato-looks">
+html:root[data-palette="goyardt"]{color-scheme:dark;
+ --paper:#26180F; --card:#2E1E13; --ink:#FFFFFF; --muted:#C6B9B1; --line:#583E2C;
+ --green:#FFFFFF; --green-soft:#583E2C; --mango:#E9C67A; --mango-ink:#FFFFFF; --red:#FFB8AA; --on-green:#1B120B;
+ --c-sav:#F3E9DC; --c-owe:#E2B65F; --c-cc:#C9B5A7; --c-nl:#F3E9DC; --c-al:#7FD1A8; --c-rb:#E2B65F; --c-pk:#C9B5A7; --c-int:#F5D58C; --c-ot:#66452F;
+ --d1:#F3E9DC; --d2:#E2B65F; --d3:#7FD1A8; --d4:#C9B5A7; --d5:#F5D58C; --d0:#66452F;
+ --gy-leather:#E2B65F; --gy-stitch:transparent; --gy-trim:#E2B65F}
+html[data-palette="goyardt"]::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:-1;pointer-events:none;transform:translateZ(0);contain:strict;
+ background:radial-gradient(120% 70% at 15% 0%,#543824 0%,#2D1E13 55%,#170E08 100%)}
+html[data-palette="goyardt"]::after{display:none}
+html:root[data-palette="goyardt"] :is(section,.tabs,.tabp > .hero){background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015)),#2C1C11;border:1px solid rgba(255,255,255,.07);outline:none;
+ box-shadow:0 14px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06)}
+html:root[data-palette="goyardt"] :is(input,select,textarea){background:#1F130B;border-color:#583E2C;color:#fff}
+html:root[data-palette="goyardt"] :is(input,select,textarea):focus{border-color:#E2B65F;outline-color:#E2B65F}
+html:root[data-palette="goyardt"] .pct{color:#E2B65F}
+html:root[data-palette="goyardt"] .primary{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405;border:0}
+html:root[data-palette="goyardt"] .primary.out{background:var(--red);color:#5A1206}
+html:root[data-palette="goyardt"] .jump{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--paper) 96%,transparent)}
+html:root[data-palette="goyardt"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched){background:rgba(255,255,255,.045)}
+html:root[data-palette="goyardt"] .bar{height:14px;border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
+html:root[data-palette="goyardt"] .bar::before,html:root[data-palette="goyardt"] .bar i::before,html:root[data-palette="goyardt"] .bar i::after{display:none}
+html:root[data-palette="goyardt"] .bar i{border-radius:999px;background:linear-gradient(90deg,#C8973F,#F5D58C);box-shadow:0 0 12px rgba(226,182,95,.35)}
+html:root[data-palette="goyardt"] .mk{background:rgba(255,255,255,.35)}
+html:root[data-palette="goyardt"] .mk.hit{background:#F5D58C}
+html:root[data-palette="goyardt"] :is(.amt.in,.profit,.badge.good,.sent-ok,.be-done b,#pkAvg b){color:#A6E9C2}
+html:root[data-palette="goyardt"] span.a[style*="var(--green)"]{color:#A6E9C2!important}
+html:root[data-palette="goyardt"] :is(.amt.out,.late,.badge.bad,.warn){color:#FFB8AA}
+html:root[data-palette="goyardt"] main :is(div,section,li,a,span,b){outline-style:none}
+html:root[data-palette="goyardt"] :is(#savSplit>div,#pkNew .pk-three div,#pkNew .pk-det){outline:none;background:rgba(255,255,255,.05);border:0}
+html:root[data-palette="goyardt"] .tabs button[aria-selected=true],html:root[data-palette="goyardt"] .tabs button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardt"] .tabs{background:#21150D!important;border:0!important;border-top:1px solid rgba(255,255,255,.08)!important}
+html:root[data-palette="goyardt"] body::after{background:#24170E}
+html:root[data-palette="goyardt"] .seg button[aria-pressed="true"],html:root[data-palette="goyardt"] .seg button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardt"] #sbCover{background:#24170E}
+html:root[data-palette="goyardl"]{--paper:#E8D7B8;--card:#F3E5C9;--ink:#2A1C10;--muted:#7A684F;--line:#DCC7A0;--mango:#B8892F;--mango-ink:#8A6420}
+html[data-palette="goyardl"]::before{background:radial-gradient(120% 70% at 15% 0%,#F0DFC0 0%,#E8D7B8 55%,#DCC59C 100%)}
+html:root[data-palette="goyardl"] :is(section,.tabp > .hero){background:#F3E5C9;border:1px solid rgba(184,137,47,.6);box-shadow:0 10px 28px rgba(90,62,20,.10),inset 0 1px 0 rgba(255,255,255,.6)}
+html:root[data-palette="goyardl"] .tabs{background:#F3E5C9!important;border-top:1px solid rgba(184,137,47,.42)!important}
+html:root[data-palette="goyardl"] body::after,html:root[data-palette="goyardl"] #sbCover{background:#E8D7B8}
+html:root[data-palette="goyardl"] :is(input,select,textarea){background:#F0DFC0;border-color:#DCC7A0;color:#2A1C10}
+html:root[data-palette="goyardl"] :is(.hito,.proj,.uptot,.owsplit a,.pk-st,.editbox,.person,.srate,.sp-split>div,.home-tiles button,.record,.sched,#savSplit>div){background:rgba(120,84,30,.06)}
+html:root[data-palette="goyardl"] .pct{color:#B8892F}
+html:root[data-palette="goyardl"] .pct .fill{color:#2A1C10}
+html:root[data-palette="goyardl"] #checkin{border:1.5px solid #C8973F}
+html:root[data-palette="goyardl"] .tabs button[aria-selected=true],html:root[data-palette="goyardl"] .tabs button.on,html:root[data-palette="goyardl"] .seg button[aria-pressed="true"],html:root[data-palette="goyardl"] .seg button.on{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardl"] .primary,html:root[data-palette="goyardl"] .loan-actions .lp.g{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardl"] :is(h2,h3){color:#2A1C10}
+</style>
+<style id="pato-loans">
+.loan.lc>.l1{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;cursor:pointer;padding:4px 0;font-size:.95rem}
+.loan.lc>.l1 .a{font-weight:600;color:var(--ink)}
+.loan.lc>.l1 .d{margin-left:auto;color:var(--muted);font-size:.86rem;white-space:nowrap}.loan.lc>.l1 .d.late{color:var(--red)}
+.loan.lc>.l1 .ch{color:var(--muted);transition:transform .2s;font-size:1.1rem;line-height:1}
+.loan.lc.lo>.l1 .ch{transform:rotate(90deg)}
+.loan.lc:not(.lo)>:not(.l1):not(.loan-actions){display:none!important}
+.loan.lc:not(.lo) .loan-actions .lmore,.loan.lc:not(.lo) .loan-actions .lmenu{display:none!important}
+.loan.lc:not(.lo)>.loan-actions{margin-top:4px;margin-bottom:6px}
+.loan.lc.lo>.l1{margin-bottom:8px}
+details.lrec{margin-top:10px}
+details.lrec>summary{cursor:pointer;color:var(--muted);font-size:.85rem;list-style:none}
+details.lrec>summary::-webkit-details-marker{display:none}
+details.lrec>summary::after{content:" ›";display:inline-block;transition:transform .2s}
+details.lrec[open]>summary::after{transform:rotate(90deg)}
+.loan-actions.lb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;position:relative}
+.loan-actions .lp{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:999px;border:0;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none!important;background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink)}
+.loan-actions .lp.g{background:linear-gradient(135deg,#F5D58C,#C8973F);color:#1A1405}
+html:root[data-palette="goyardl"] .loan-actions .lp.g{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
+.loan-actions svg{flex:none;margin-right:2px;width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.loan-actions .lmore{margin-left:auto;width:38px;height:38px;border-radius:12px;border:0;display:grid;place-items:center;cursor:pointer;background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink)}
+.loan-actions .lmenu{flex-basis:100%;display:flex;gap:8px;justify-content:flex-end}
+.loan-actions .lmenu[hidden]{display:none}
+.loan-actions .lmenu button{border:1px solid color-mix(in srgb,var(--ink) 15%,transparent);background:transparent;color:var(--ink);font:inherit;font-size:.85rem;padding:7px 14px;border-radius:999px;cursor:pointer}
+.loan-actions .lmenu button.danger{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,transparent)}
+#sbCover{position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:60;pointer-events:none}
+html:root[data-palette="goyards"] #sbCover{background:#0E2219}
+html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
+</style>
+<style id="pato-lperson">
+#people .person>summary{position:relative;flex-wrap:nowrap}
+#people .person>summary .pact{display:flex;gap:8px;flex:none;order:3}
+#people .person>summary .powed{margin-left:auto}
+#people .pic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;padding:0;border:0;background:color-mix(in srgb,var(--ink) 9%,transparent);color:var(--ink)}
+#people .pic.g{background:transparent;border:1.5px solid #E2B65F;color:#E2B65F}
+html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6F1F}
+#people .pic.done{opacity:.55}
+#people .pic svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#people .loan .loan-actions.lb>.lp{display:none!important}
+#people .loan.lc:not(.lo)>.loan-actions{display:none!important}
+#people .ppick{position:absolute;right:0;top:calc(100% + 6px);z-index:20;min-width:240px;background:var(--card);border:1px solid color-mix(in srgb,#E2B65F 55%,transparent);border-radius:14px;padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+#people .ppick .pph{font-size:.8rem;color:var(--muted);padding:6px 10px 4px}
+#people .ppick button{all:unset;box-sizing:border-box;display:flex;gap:10px;width:100%;padding:10px;border-radius:10px;cursor:pointer;font-size:.9rem;color:var(--ink)}
+#people .ppick button:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+#people .ppick .a{font-weight:600}#people .ppick .d{margin-left:auto;color:var(--muted)}
+</style>
+<style id="pato-hold">
+#people .person>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:2px;align-items:center}
+#people .person>summary>div:first-child{grid-column:1;grid-row:1;display:flex;align-items:center;gap:6px;min-width:0;white-space:nowrap}
+#people .person>summary .pname{flex:none}
+#people .person>summary .badge{margin-left:0;flex:none;font-size:.68rem;padding:2px 7px}
+#people .person>summary .powed{grid-column:1;grid-row:2;margin:0;text-align:left;font-size:1.05rem}
+#people .person>summary .pact{grid-column:2;grid-row:1 / span 2;gap:8px;margin:0}
+#people .pic{width:36px;height:36px}
+.stat b.ipend{color:#E2B65F}
+html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
+.badge.hold{border-color:color-mix(in srgb,var(--muted) 55%,transparent);color:var(--muted);font-weight:600}
+</style>
+<style id="pato-score">
+#psc{margin:14px 0;padding:16px 18px 14px;border-radius:20px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);text-align:center}
+#psc[hidden]{display:none}
+#brief{display:none!important}
+.psc-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--ink)}
+.psc-gw{position:relative;max-width:240px;margin:4px auto 0}
+#pscG svg{display:block;width:100%;height:auto;overflow:visible}
+#pscG path{fill:none;stroke-width:14;stroke-linecap:butt;opacity:.28}#pscG path.on{opacity:1}
+.g-z1{stroke:#D9534A}.g-z2{stroke:#E8893A}.g-z3{stroke:#E5BE3E}.g-z4{stroke:#8CCB6E}.g-z5{stroke:#2E9E68}
+.g-n{stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}.g-c{fill:var(--ink)}
+.psc-num{display:flex;flex-direction:column;align-items:center;margin-top:6px}
+.psc-num b{font-family:var(--serif,Georgia),serif;font-size:2.4rem;line-height:1;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;}
+.psc-z{font-size:.95rem;font-weight:700;margin-top:2px}
+.psc-z.z1{color:#D9534A}.psc-z.z2{color:#E07B2E}.psc-z.z3{color:#C9A227}.psc-z.z4{color:#5FAE47}.psc-z.z5{color:#2E9E68}
+.psc-mean{margin:8px 0 2px;font-size:.92rem;color:var(--ink)}
+.psc-why{margin:0;font-size:.85rem;color:var(--muted)}
+.psc-why b.up{color:#2E9E68}.psc-why b.dn{color:#D0624A}
+.psc-bars{display:grid;gap:7px;margin:14px 0 4px;text-align:left}
+.psc-b{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:10px;font-size:.8rem;color:var(--muted)}
+.psc-b i{height:6px;border-radius:99px;background:color-mix(in srgb,var(--ink) 9%,transparent);overflow:hidden}
+.psc-b em{display:block;height:100%;border-radius:99px;background:#E5BE3E}.psc-b em.good{background:#3DBB7E}.psc-b em.bad{background:#E0735A}
+.psc-more{all:unset;cursor:pointer;font-size:.82rem;color:var(--muted);text-decoration:underline;margin-top:8px}
+.psc-det{margin-top:10px;border-top:1px solid color-mix(in srgb,var(--ink) 8%,transparent);padding-top:4px;text-align:left}
+.psc-g>b{display:block;margin:10px 0 2px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.psc-i{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:.88rem;color:var(--ink)}
+.psc-i i{flex:none;width:8px;height:8px;border-radius:50%;background:#E5BE3E}.psc-i i.good{background:#3DBB7E}.psc-i i.bad{background:#E0735A}
+.psc-how{font-size:.74rem;color:var(--muted);margin:10px 0 0;line-height:1.4}
+</style>
+<style id="pato-holdmenu">
+#people .pic.pmore{background:transparent;color:var(--muted);width:28px}
+#people .pic.pmore svg{fill:currentColor;stroke:none}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108155204";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109110559";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 
 
 
@@ -1409,28 +1684,72 @@ html.mp-guest .tabs{justify-content:space-around}
 
 
 
-<div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png" alt=""><h1>Stakd AI</h1><p id="mpGateSub">Sign in</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="mpGate" hidden><form class="g" id="mpGateForm"><img src="icon-192.png?v=6" alt=""><h1>Pato</h1><p id="mpGateSub">Sign in</p>
 <input type="email" id="mpEmail" autocomplete="username" inputmode="email" placeholder="Email" aria-label="Email" required>
 <input type="password" id="mpPass" autocomplete="current-password" placeholder="Password" aria-label="Password" required>
 <button class="primary" type="submit" id="mpGateGo">Open</button><div class="hint" id="mpGateMsg" aria-live="polite"></div>
 <button type="button" class="lnk" id="mpForgot">Forgot password</button><br><button type="button" class="lnk" id="mpSwitch">Create an account</button></form></div>
 <script>window.MP_FIREBASE={"apiKey": "AIzaSyBwQfOJ4jRjmVcqoTAnC01snchuMl1hQm8", "authDomain": "stakd-isaac.firebaseapp.com", "projectId": "stakd-isaac", "storageBucket": "stakd-isaac.firebasestorage.app", "messagingSenderId": "850843587598", "appId": "1:850843587598:web:5371678f5373561434d85f"};window.MP_OWNER="";document.documentElement.classList.add("mp-locked");</script>
-<div id="sfLock" hidden><div class="g"><img src="icon-192.png?v=5" alt=""><h1>Stakd AI</h1><p>Locked</p>
+<div id="sfLock" hidden><div class="g"><img src="icon-192.png?v=6" alt=""><h1>Pato</h1><p>Locked</p>
 <button class="primary" type="button" id="sfUnlock">Unlock with Face ID</button><div id="sfMsg" aria-live="polite"></div>
 <button type="button" class="lnk" id="sfPass">Use password instead</button></div></div>
-<div id="sfOffer" hidden><div class="g"><h2>Use Face ID?</h2><p>Only your face opens Stakd AI. No password to type.</p>
+<div id="sfOffer" hidden><div class="g"><h2>Use Face ID?</h2><p>Only your face opens Pato. No password to type.</p>
 <button class="primary" type="button" id="sfYes">Turn on Face ID</button><br><button type="button" class="lnk" id="sfNo">Not now</button></div></div>
 <script>try{if(localStorage.getItem("stakd-faceid"))document.documentElement.classList.add("sf-locked");}catch(e){}</script>
-<div id="sgSetup" hidden><form class="g" id="sgForm"><h2>Welcome to Stakd AI</h2><p>Set up your app. You can change this later.</p>
+<div id="sgSetup" hidden><form class="g" id="sgForm"><h2>Welcome to Pato</h2><p>Set up your app. You can change this later.</p>
 <label class="f" for="sgGoal">Your savings goal (RD$)</label><input type="text" id="sgGoal" inputmode="numeric" value="1,000,000">
 <label class="f" for="sgLimit">Monthly spending limit (RD$, optional)</label><input type="text" id="sgLimit" inputmode="numeric" placeholder="e.g. 50,000">
 <label class="f" for="sgPal">Color</label><select id="sgPal"></select>
-<label class="f">Tabs</label>
-<div class="tg"><span>Savings</span><input type="checkbox" checked disabled></div>
-<div class="tg"><span>Spend</span><input type="checkbox" data-t="spending" checked></div>
-<div class="tg"><span>Poker</span><input type="checkbox" data-t="poker"></div>
-<div class="tg"><span>Loans</span><input type="checkbox" data-t="loans" checked></div>
-<div class="tg"><span>Trends</span><input type="checkbox" data-t="trends" checked></div>
+<label class="f">What do you want to track?</label>
+<div class="sg-chips"><span class="on fixed">💰 Saving</span><button type="button" data-k="spending" class="on">💳 Spending</button><button type="button" data-k="bets">⚽ Sports bets</button><button type="button" data-k="poker">♠️ Poker</button><button type="button" data-k="loans">🤝 Money I lend</button><button type="button" data-k="trends" class="on">📈 Trends</button></div>
 <button class="primary" type="submit">Start</button><div class="hint" id="sgMsg" aria-live="polite"></div></form></div>
 <script src="mp-firebase.js"></script>
 <script src="faceid.js?v=2" defer></script>
@@ -1500,6 +1819,8 @@ html.mp-guest .tabs{justify-content:space-around}
   </div>
 
   <div class="tabp" role="tabpanel" id="p-savings" aria-labelledby="tab-savings" hidden>
+  <div class="brief" id="brief" hidden><div class="br-h"><b>Today</b><span id="brDate"></span></div><div id="brRows"></div></div>
+  <div class="psc" id="psc" hidden><div class="psc-h"><b>Pato score</b></div><div class="psc-gw"><div id="pscG"></div><div class="psc-num"><b id="pscNum">–</b><span id="pscBand"></span></div></div><p class="psc-mean" id="pscMean"></p><p class="psc-why" id="pscWhy"></p><div class="psc-bars" id="pscBars"></div><button type="button" class="psc-more" id="pscMore">See what's behind it</button><div class="psc-det" id="pscDet" hidden></div></div>
   <div class="hero" id="s-goal">
     <h1>Road to <span class="goalK">1M</span></h1>
     <div class="pct num" id="pct" aria-live="polite"><span id="pctBase">0%</span><span class="fill" id="pctFill" aria-hidden="true">0%</span></div>
@@ -1759,9 +2080,11 @@ html.mp-guest .tabs{justify-content:space-around}
     </div>
     <div class="hint num" id="pkInvNote" hidden></div>
     <div id="pkNew">
-      <div class="pk-seg" id="pkSeg"><button type="button" data-v="league" class="on">League</button><button type="button" data-v="ot">Outside &amp; home games</button></div>
+      <div class="pk-seg" id="pkSeg"><button type="button" data-v="league" class="on">League</button><button type="button" data-v="ot">Tables</button><button type="button" data-v="ar">Arcade</button><button type="button" data-v="sb">Sports</button></div>
       <div id="pkVLeague"><div class="pk-three num" id="pkThree"></div><div class="pk-chips-t">By Monday · rake + action</div><div class="pk-chips num" id="pkWkChips"></div><div class="pk-det num" id="pkWkDet"></div></div>
-      <div id="pkVOther" hidden><div class="pk-ototal num" id="pkOTot"></div><ul class="hist pweeks" id="pkWeeks"></ul><div class="pk-ototal pk-hg num" id="pkHTot"></div><ul class="hist pweeks" id="pkWeeksH"></ul></div>
+      <div id="pkVOther" hidden><div class="rc" id="rcPoker" hidden></div><div class="pk-ototal num" id="pkOTot"></div><div class="sb-stats num" id="pkWeeksSum"></div><details class="pk-more"><summary>See sessions</summary><ul class="hist pweeks" id="pkWeeks"></ul></details><div class="pk-ototal pk-hg num" id="pkHTot"></div><div class="sb-stats num" id="pkWeeksHSum"></div><details class="pk-more"><summary>See sessions</summary><ul class="hist pweeks" id="pkWeeksH"></ul></details></div>
+      <div id="pkVArcade" hidden><div class="pk-ototal num" id="pkATot"></div><div class="sb-stats num" id="pkASum"></div><details class="pk-more"><summary>See all</summary><ul class="hist pweeks" id="pkAList"></ul></details></div>
+      <div id="pkVSports" hidden><div class="rc" id="rcSports" hidden></div><div class="pk-ototal num" id="pkSTot"></div><div class="sb-stats num" id="sbStats"></div><div class="sb-h" id="sbBetsH">Bets</div><div id="sbBets"></div><div class="sb-h">Deposits &amp; cashouts</div><div class="sb-stats num" id="pkSSum"></div><details class="pk-more"><summary>See all</summary><ul class="hist pweeks" id="pkSList"></ul></details></div>
     </div>
     <div class="pk-stats num" id="pkStats" hidden style="display:none!important">
       <div class="pk-st"><div class="pk-st-t">League</div><div id="pkStLiga"></div><div id="pkChipsBox" hidden><div class="pk-chips-t">Rakeback by Monday</div><div class="pk-chips num" id="pkChips"></div><div class="pk-leg"><span><i class="up"></i>Above avg</span><span><i></i>Below avg</span><span><i class="owed"></i>Owed</span></div></div></div>
@@ -1778,6 +2101,7 @@ html.mp-guest .tabs{justify-content:space-around}
     <h2>IBKR</h2>
     <div class="st-big num" id="stVal">—</div>
     <div class="st-rd num" id="stRd"></div>
+    <div id="stStale" hidden></div>
     <div class="num" id="stBoxes"></div>
     <div id="stList"></div>
     <div id="stMore"></div>
@@ -1907,7 +2231,7 @@ html.mp-guest .tabs{justify-content:space-around}
   <div class="toast" id="toast" role="status" aria-live="polite"><span class="tk" aria-hidden="true">✓</span><div><b id="toastT"></b><small id="toastS"></small></div><button type="button" class="tundo" id="toastUndo" hidden>Undo</button></div>
 
   <button type="button" class="palbtn" id="palBtn" aria-label="Settings" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
-  <div class="palette palsheet" id="palSheet" hidden><span>Colors</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Stakd</button><button type="button" data-pal="goyardb" aria-pressed="false">Goyard Burgundy</button><button type="button" data-pal="goyard" aria-pressed="false">Goyard Blue</button><button type="button" data-pal="goyarde" aria-pressed="false">Goyard Evergreen</button><button type="button" data-pal="goyardp" aria-pressed="false">Goyard Pink</button><button type="button" data-pal="goyardv" aria-pressed="false">Goyard Purple</button><button type="button" data-pal="goyardy" aria-pressed="false">Goyard Grey</button><button type="button" data-pal="goyardk" aria-pressed="false">Goyard Black</button><button type="button" data-pal="goyardn" aria-pressed="false">Goyard Navy</button><button type="button" data-pal="goyardo" aria-pressed="false">Goyard Orange</button></div><button type="button" class="mini" id="sfToggle" hidden>Face ID lock: Off</button></div>
+  <div class="palette palsheet" id="palSheet" hidden><span>Look</span><div class="seg" role="group" aria-label="Colors"><button type="button" data-pal="goyards" aria-pressed="false">Green</button><button type="button" data-pal="goyardt" aria-pressed="false">Brown</button><button type="button" data-pal="goyardl" aria-pressed="false">Cream</button></div><button type="button" class="mini" id="sfToggle" hidden>Face ID lock: Off</button></div>
 
   <div class="notice" id="notice">This view can’t save data. Open the tracker from your Claude account to log transactions.</div>
 </main>
@@ -1917,8 +2241,8 @@ html.mp-guest .tabs{justify-content:space-around}
   // color theme: remembered on this device only
   (()=>{
     let pal = "goyards"; try{ pal = localStorage.getItem("mp-palette") || "goyards"; }catch(e){}
-    if(!["goyard","goyardb","goyardk","goyarde","goyardp","goyardv","goyardy","goyardn","goyardo","goyards"].includes(pal)) pal = "goyardb";
-    const set = p => { document.documentElement.setAttribute("data-palette", p); try{ const bg = getComputedStyle(document.documentElement, "::before").backgroundImage; document.documentElement.style.setProperty("--gy-canvas", bg && bg!=="none" ? bg : "none"); }catch(e){} document.querySelectorAll("[data-pal]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.pal===p)); try{ localStorage.setItem("mp-palette", p); }catch(e){} };
+    if(!["goyards","goyardt","goyardl"].includes(pal)) pal = "goyards";
+    const set = p => { document.documentElement.setAttribute("data-palette", p); try{ window.__patoLook && window.__patoLook(p); }catch(e){} try{ const bg = getComputedStyle(document.documentElement, "::before").backgroundImage; document.documentElement.style.setProperty("--gy-canvas", bg && bg!=="none" ? bg : "none"); }catch(e){} document.querySelectorAll("[data-pal]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.pal===p)); try{ localStorage.setItem("mp-palette", p); }catch(e){} };
     set(pal);
     /* the home-screen app can lose localStorage, so the theme is also kept in the tracker's data (prefs/ui) */
     window.__mpSetPal = p => { if(!p || p===document.documentElement.getAttribute("data-palette") || !document.querySelector('[data-pal="'+p+'"]')) return; set(p); try{ renderChart(); renderBars(); }catch(e){} try{ render(); }catch(e){} };
@@ -1927,14 +2251,14 @@ html.mp-guest .tabs{justify-content:space-around}
   const fmt = n => "RD$" + Math.round(n).toLocaleString("en-US");
   const kfmt = n => n>=1e6 ? (n/1e6).toLocaleString("en-US",{maximumFractionDigits:2})+"M" : n>=1000 ? (n/1000).toLocaleString("en-US",{maximumFractionDigits:1})+"k" : String(n);
   const $ = id => document.getElementById(id);
-  const LABELS = {"Premio casino":"Casino win (slots)","Saldo inicial":"Starting balance","Rakeback de la liga":"League rakeback","Póker jugando":"League Action","Mensualidad":"Monthly allowance","Préstamo":"Loan","Otro":"Other","Rakeback como jugador":"Player rakeback","Póker casino":"Outside Tables","Póker con amigos":"Home games","Retiro":"Withdrawal","Reposición":"Replacement"};
-  const WHY = [["gasto","Expense"],["emergencia","Emergency"],["corriente","Moved to checking account"],["negocio","Business or investment"],["poker","League poker loss or buy-in"],["poker_casino","Outside Tables loss"],["poker_amigos","Home game loss"],["favor","Favor"],["efectivo","Cash"],["otro","Other"]];
+  const LABELS = {"Apuestas":"Sports bets","Premio casino":"Arcade","Saldo inicial":"Starting balance","Rakeback de la liga":"League rakeback","Póker jugando":"League Action","Mensualidad":"Monthly allowance","Préstamo":"Loan","Otro":"Other","Rakeback como jugador":"Player rakeback","Póker casino":"Outside Tables","Póker con amigos":"Home games","Retiro":"Withdrawal","Reposición":"Replacement"};
+  const WHY = [["gasto","Expense"],["emergencia","Emergency"],["corriente","Moved to checking account"],["negocio","Business or investment"],["poker","League poker loss or buy-in"],["poker_casino","Outside Tables loss"],["poker_amigos","Home game loss"],["apuesta","Sports bet"],["arcade","Arcade"],["favor","Favor"],["efectivo","Cash"],["otro","Other"]];
   const whyLbl = k => (WHY.find(w=>w[0]===k)||[])[1] || "Other";
-  const whySrc = k => ({poker:"Póker jugando",poker_casino:"Póker casino",poker_amigos:"Póker con amigos"})[k] || "Retiro";
+  const whySrc = k => ({poker:"Póker jugando",poker_casino:"Póker casino",poker_amigos:"Póker con amigos",apuesta:"Apuestas",arcade:"Premio casino"})[k] || "Retiro";
   const cap = x => String(x||"").replace(/(^|[\s(·-])(\p{Ll})/gu, (m,a,b)=>a+b.toUpperCase());
   const lbl = x => LABELS[x] || cap(x);
-  const OWNER_SOURCES = ["Saldo inicial","Newlink","Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Mensualidad","Préstamo","Otro","Reposición"];
-  const baseSources = () => { const me = window.MP_ME; if(!me || me.owner) return OWNER_SOURCES; const pk = document.documentElement.classList.contains("on-poker"); return ["Saldo inicial","Salary", ...(pk ? ["Póker casino","Póker con amigos"] : []), "Mensualidad","Préstamo","Otro","Reposición"]; };
+  const OWNER_SOURCES = ["Saldo inicial","Newlink","Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Premio casino","Apuestas","Mensualidad","Préstamo","Otro","Reposición"];
+  const baseSources = () => { const me = window.MP_ME; if(!me || me.owner) return OWNER_SOURCES; const pk = document.documentElement.classList.contains("on-poker"); return ["Saldo inicial","Salary", ...(pk ? ["Póker casino","Póker con amigos","Apuestas"] : []), "Mensualidad","Préstamo","Otro","Reposición"]; };
   const REP = "Reposición";
   // a replacement deposit puts back money taken out of savings; it points at the withdrawal with "repone"
   const repuestoDe = id => entries.filter(x=>x.type!=="out" && x.source===REP && x.repone===id).reduce((t,x)=>t+x.amount,0);
@@ -2044,6 +2368,8 @@ html.mp-guest .tabs{justify-content:space-around}
         ${evs.length ? `<div class="st-h">Coming up</div><div class="st-ev">${evs.map(e=>`<div>${stLogo(e.t)}<b>${e.est?"~":""}${fmtDate(e.fecha,false)}</b><span>${spEsc(e.txt)}<small>${evAmt(e)}</small></span></div>`).join("")}</div>` : ""}`;
     })();
     $("stList").querySelectorAll("[data-t]").forEach(b => b.onclick = () => { stOpen = stOpen===b.dataset.t ? null : b.dataset.t; renderStocks(); });
+    { const el = $("stStale"), atMs = c.at ? Date.parse(c.at) : 0, old = atMs && Date.now() - atMs > 75*60000;
+      el.hidden = !old; if(old) el.textContent = "Last trade " + new Date(atMs).toLocaleString("en-US",{weekday:"short", hour:"numeric", minute:"2-digit", timeZone:"America/Santo_Domingo"}).replace(",","").replace(/ (AM|PM)$/, m=>m.toLowerCase()); }
     $("stAt").textContent = c.at ? "Updated " + new Date(c.at).toLocaleString("en-US",{weekday:"short", hour:"numeric", minute:"2-digit", timeZone:"America/Santo_Domingo"}) : "";
   }
   const heldList = () => (config.deudas||[]).filter(d=>Number(d.prestado)>0).map(d=>({nombre:d.nombre, vence:d.vence, rd:Math.max(0, Number(d.prestado) - paidTo(d.nombre))})).filter(x=>x.rd>0);
@@ -2124,10 +2450,10 @@ html.mp-guest .tabs{justify-content:space-around}
   $("tOut").onclick=()=>setType("out");
   $("amount").addEventListener("input", ()=>{ syncSave(); updRetImpact(); });
   $("date").addEventListener("input", updRetImpact);
-  const POKER_SRC = ["Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos"];
+  const POKER_SRC = ["Rakeback de la liga","Póker jugando","Póker casino","Póker con amigos","Premio casino","Apuestas"];
   // Player winnings are one-offs: they stay in the savings total but are left out of the daily pace,
   // so a single big night doesn't get projected forward as if it repeats.
-  const WINDFALL_SRC = ["Póker jugando","Póker casino","Póker con amigos","Rakeback como jugador","Premio casino"];
+  const WINDFALL_SRC = ["Póker jugando","Póker casino","Póker con amigos","Apuestas","Rakeback como jugador","Premio casino"];
   const windfallNet = () => entries.filter(e=>WINDFALL_SRC.includes(e.source)).reduce((t,e)=>t+(e.type==="out"?-e.amount:e.amount),0);
   function syncSplit(){
     const out = type==="out";
@@ -2383,6 +2709,7 @@ html.mp-guest .tabs{justify-content:space-around}
     });
   }
   function warnMsg(msg){ toast(msg, "", true); }
+  window.mpToast = toast;
   function toast(title, sub, warn, undo){
     $("toastT").textContent = title; $("toastS").textContent = sub || "";
     const t = $("toast"); t.classList.toggle("warn", !!warn);
@@ -2619,7 +2946,7 @@ html.mp-guest .tabs{justify-content:space-around}
     const dueD = nx ? nx.date : l.fecha;
     subs[1].textContent = l.pagado ? "" : l.pausado ? "" : (dueD < today() ? "Was due " : multi ? "Next " : "Due ") + fmtDate(dueD) + (nx ? ` · ${fmt(nx.amt)}` : "");
     if(!l.pagado && !l.pausado && dueD < today()) subs[1].classList.add("late");
-    if(!l.pagado && l.pausado){ const pb=document.createElement("span"); pb.className="badge none"; pb.textContent="⏸\uFE0E"; pb.title="Paused"; el.querySelector(".debt-head span").appendChild(pb); }
+    if(!l.pagado && l.pausado){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; el.querySelector(".debt-head span").appendChild(pb); }
     if(multi){
       const bar=document.createElement("div"); bar.className="minibar"+(l.pagado?" ":""); bar.innerHTML=`<i style="width:${Math.min(100,paidSum(l)/tot*100)}%"></i>`;
       el.querySelector(".debt-sub").before(bar);
@@ -2652,6 +2979,25 @@ html.mp-guest .tabs{justify-content:space-around}
       const d=document.createElement("button"); d.className="mini danger"; d.type="button"; d.textContent="Delete"; d.onclick=()=>deleteLoan(l); act.appendChild(d);
       if(editingLoan===l.id) el.appendChild(loanEditor(l));
     }
+    // buttons (Marco picked B): "Remind" and "Paid" pills with icons; Undo, Edit and Delete in a ⋯ menu
+    { const kids = [...act.children]; if(kids.length){
+        const SV = {ok:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg>', wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5A8.4 8.4 0 1 1 21 11.5z"/></svg>', dots:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg>'};
+        const pay = kids.find(b=>/^Log payment/.test(b.textContent)), wa = kids.find(b=>/WhatsApp|Reminded/.test(b.textContent)), rest = kids.filter(b=>b!==pay && b!==wa);
+        act.innerHTML = ""; act.classList.add("lb");
+        if(wa){ const was = /Reminded/.test(wa.textContent); wa.title = wa.textContent; wa.className = "lp"; wa.innerHTML = SV.wa + (was ? "Remind again" : /follow/.test(wa.title) ? "Follow up" : "Remind"); act.appendChild(wa); }
+        if(pay){ const m = pay.textContent.match(/\d+\/\d+/); pay.className = "lp g"; pay.innerHTML = SV.ok + "Paid" + (m ? " " + m[0] : ""); act.appendChild(pay); }
+        if(rest.length){ const mb = document.createElement("button"); mb.type = "button"; mb.className = "lmore"; mb.setAttribute("aria-label", "More"); mb.innerHTML = SV.dots;
+          const menu = document.createElement("div"); menu.className = "lmenu"; menu.hidden = editingLoan!==l.id; rest.forEach(b=>{ b.classList.remove("mini"); menu.appendChild(b); });
+          mb.onclick = ev => { ev.stopPropagation(); menu.hidden = !menu.hidden; }; act.appendChild(mb); act.appendChild(menu); } } }
+    { const op = window.__loanOpen || (window.__loanOpen = new Set()), isOpen = op.has(l.id) || editingLoan===l.id;
+      const left = loanRemaining(l), dd = nx ? nx.date : l.fecha, late = !l.pagado && !l.pausado && dd && dd < today();
+      const one = document.createElement("button"); one.type = "button"; one.className = "l1 num";
+      one.innerHTML = `<span class="a"></span><span class="d${late?" late":""}"></span><span class="ch" aria-hidden="true">›</span>`;
+      one.querySelector(".a").textContent = `${fmt(l.monto)} → ${Math.round(tot).toLocaleString("en-US")}` + (!l.pagado && pl.length ? ` · ${fmt(left)} left` : "");
+      one.querySelector(".d").textContent = l.pagado ? "Collected " + fmtDate(l.cobradoEl,false) : l.pausado ? "On hold" : dd ? (late ? "Late · " : "") + fmtDate(dd,false) : "";
+      one.setAttribute("aria-expanded", isOpen);
+      one.onclick = () => { if(op.has(l.id)) op.delete(l.id); else op.add(l.id); el.classList.toggle("lo"); one.setAttribute("aria-expanded", el.classList.contains("lo")); };
+      el.classList.add("lc"); if(isOpen) el.classList.add("lo"); el.prepend(one); }
     return el;
   }
 
@@ -2673,14 +3019,31 @@ html.mp-guest .tabs{justify-content:space-around}
     const N = remindDays(); if(!N) return [];
     return loans.map(dueOf).filter(it => it && (it.kind==="late" || it.d<=N) && !wasReminded(it)).sort((a,b)=>a.date.localeCompare(b.date));
   }
+  function saludoDR(){ const hr = Number(new Date().toLocaleString("en-US", {timeZone:"America/Santo_Domingo", hour:"numeric", hour12:false})) % 24;
+    return hr < 12 ? "Buenos días" : hr < 19 ? "Buenas tardes" : "Buenas noches"; }
+  // warm opener + closer (Marco, Nov 9)
+  function warmBits(name){
+    const now = new Date(), hr = Number(now.toLocaleString("en-US", {timeZone:"America/Santo_Domingo", hour:"numeric", hour12:false})) % 24;
+    const wd = now.toLocaleDateString("en-US", {timeZone:"America/Santo_Domingo", weekday:"short"});
+    const ops = ["todo bien?", "como vas?", "como estas?", "que tal todo?", "como va todo?", "como te va?", "espero que estes bien", "espero que todo bien por alla"];   // typed casually on purpose (Marco)
+    if(wd === "Mon") ops.push("espero que hayas empezado bien la semana");
+    if(wd === "Fri") ops.push("feliz viernes");
+    const key = "pato-op-" + String(name||"").toLowerCase(); let last = ""; try{ last = localStorage.getItem(key) || ""; }catch(e){}
+    const pool = ops.filter(o => o !== last), op = pool[Math.floor(Math.random()*pool.length)];
+    const cl = ["Gracias"]; if(hr < 12) cl.push("Gracias, que tengas buen día"); else if(hr < 19) cl.push("Gracias, buena tarde");
+    return {op: /\?$/.test(op) ? op : op + ".", cl: cl[Math.floor(Math.random()*cl.length)]};   // "todo bien?" needs no period
+  }
+  // remember the opener only when a message is actually sent, so the next one differs
+  function warmSent(name, msg){ const m = String(msg||"").match(/^[^,]*, ([^.?]*\??)/); if(m) try{ localStorage.setItem("pato-op-" + String(name||"").toLowerCase(), m[1]); }catch(e){} }
   function msgFor(it){
     const name = cap(String(it.l.nombre||"").trim());
     const fechaEs = new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
     const monto = "RD$" + Math.round(it.amt).toLocaleString("en-US");
     const cuota = it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "";
-    if(it.kind==="late") return `Hola ${name}! El pago de ${monto}${cuota} que tocaba el ${fechaEs} todavía está pendiente. ¿Cuándo me lo puedes mandar? Gracias!`;
+    const w = warmBits(name);
+    if(it.kind==="late") return `${saludoDR()} ${name}, ${w.op} El pago de ${monto}${cuota} del ${fechaEs} sigue pendiente, me avisas cuándo me lo puedes mandar? ${w.cl}`;
     const when = it.d===0 ? "hoy" : it.d===1 ? "mañana" : `el ${fechaEs}`;
-    return `Hola ${name}! Te escribo pa' recordarte que ${when} te toca el pago de ${monto}${cuota}. Gracias!`;
+    return `${saludoDR()} ${name}, ${w.op} Te recuerdo que ${when} toca el pago de ${monto}${cuota}. ${w.cl}`;
   }
   const dueTxt = it => it.kind==="late" ? `Was due ${fmtDate(it.date,false)} · ${Math.abs(it.d)} day${Math.abs(it.d)>1?"s":""} late` : it.d===0 ? "Due today" : it.d===1 ? "Due tomorrow" : `Due ${fmtDate(it.date,false)} · in ${it.d} days`;
   function waLink(tel, msg){
@@ -2707,6 +3070,74 @@ html.mp-guest .tabs{justify-content:space-around}
     a.addEventListener("click", ()=>{ waOpened.add(itKey(it)); setTimeout(render, 300); });
     return a;
   }
+  // ---- one Remind + one Paid per person (Marco, Nov 9) ----
+  window.__personActs = function(det, p){
+    const open = p.loans.filter(l => !l.pagado).map(l => ({l, it: dueOf(l), nx: nCuotas(l)>1 ? nextInstallment(l) : null}));
+    if(!open.length) return;
+    open.sort((x,y) => ((x.it&&x.it.date)||(x.nx&&x.nx.date)||x.l.fecha||"9").localeCompare((y.it&&y.it.date)||(y.nx&&y.nx.date)||y.l.fecha||"9"));
+    const SV = {wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5A8.4 8.4 0 1 1 21 11.5z"/></svg>', ok:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'};
+    const sum = det.querySelector("summary"), pa = document.createElement("span"); pa.className = "pact";
+    const stop = ev => { ev.preventDefault(); ev.stopPropagation(); };
+    // reminder: every late payment plus the next one; one message
+    const due = open.map(o => o.it).filter(Boolean), late = due.filter(it => it.kind === "late"), nextUp = due.find(it => it.kind !== "late");
+    const items = late.length ? late.concat(nextUp ? [nextUp] : []) : (nextUp ? [nextUp] : []);
+    if(items.length){
+      const name = cap(String(p.name||"").trim());
+      const dEs = it => new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
+      const mEs = it => "RD$" + Math.round(it.amt).toLocaleString("en-US") + (it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "");
+      const wb = warmBits(name), msg = items.length === 1 ? msgFor(items[0]) : `${saludoDR()} ${name}, ${wb.op} Te recuerdo tus pagos: ` +
+        items.map(it => it.kind === "late" ? `${mEs(it)} del ${dEs(it)} (pendiente)` : `${mEs(it)} para el ${dEs(it)}`).join(", ").replace(/, ([^,]*)$/, " y $1") + ". " + wb.cl;
+      const done = items.every(wasReminded) || items.every(it => waOpened.has(itKey(it)));
+      const rb = document.createElement("button"); rb.type = "button"; rb.className = "pic" + (done ? " done" : "");
+      rb.setAttribute("aria-label", "Remind " + name + " on WhatsApp"); rb.title = done ? "Reminded · send again" : "Remind"; rb.innerHTML = SV.wa;
+      rb.onclick = ev => { stop(ev); warmSent(name, msg); const tel = telOf(p.name);
+        if(tel){ items.forEach(it => waOpened.add(itKey(it))); window.open(waLink(tel, msg), "_blank", "noopener"); setTimeout(render, 300); return; }
+        openWA(items[0]); $("waMsg").value = msg; $("waGo").href = waUrl(); };
+      pa.appendChild(rb);
+    }
+    if(!items.length && open.some(o => o.l.pausado)){
+      const nm2 = cap(String(p.name||"").trim()), owed = open.filter(o => o.l.pausado).reduce((s,o) => s + loanRemaining(o.l), 0);
+      const w2 = warmBits(nm2), msg2 = `${saludoDR()} ${nm2}, ${w2.op} El pago de RD$${Math.round(owed).toLocaleString("en-US")} sigue pendiente, me avisas cuándo me lo puedes mandar? ${w2.cl}`;
+      const rb2 = document.createElement("button"); rb2.type = "button"; rb2.className = "pic"; rb2.setAttribute("aria-label", "Remind " + nm2 + " on WhatsApp"); rb2.title = "Remind"; rb2.innerHTML = SV.wa;
+      rb2.onclick = ev => { stop(ev); warmSent(nm2, msg2); const tel = telOf(p.name); if(tel){ window.open(waLink(tel, msg2), "_blank", "noopener"); return; }
+        openWA({l: open[0].l, kind: "late", date: today(), d: 0, amt: owed, k: 1, n: 1}); $("waMsg").value = msg2; $("waGo").href = waUrl(); };
+      pa.appendChild(rb2);
+    }
+    // paid: the payment form; a small picker when there are 2+ open loans
+    const pb = document.createElement("button"); pb.type = "button"; pb.className = "pic g"; pb.setAttribute("aria-label", "Log a payment from " + cap(p.name)); pb.title = "Paid"; pb.innerHTML = SV.ok;
+    pb.onclick = ev => { stop(ev);
+      { const pick = open.find(o => !o.l.pausado) || open[0]; collectLoan(pick.l); return; }  // Marco: Paid goes straight to the next payment due, no picker
+      let m = sum.querySelector(".ppick"); if(m){ m.remove(); return; }
+      m = document.createElement("div"); m.className = "ppick"; m.innerHTML = '<div class="pph">Which loan?</div>';
+      open.forEach(o => { const b = document.createElement("button"); b.type = "button";
+        const amt = o.it ? o.it.amt : o.nx ? o.nx.amt : loanRemaining(o.l), dd = (o.it && o.it.date) || (o.nx && o.nx.date) || o.l.fecha;
+        b.innerHTML = '<span class="a"></span><span class="d"></span>';
+        b.querySelector(".a").textContent = fmt(amt) + (o.nx ? ` (${o.nx.k}/${o.nx.n})` : "") + " · lent " + fmt(o.l.monto);
+        b.querySelector(".d").textContent = o.l.pausado ? "On hold" : dd ? fmtDate(dd,false) : "";
+        b.onclick = e2 => { stop(e2); m.remove(); collectLoan(o.l); }; m.appendChild(b); });
+      sum.appendChild(m);
+      setTimeout(() => document.addEventListener("click", function off(e3){ if(!m.contains(e3.target)){ m.remove(); document.removeEventListener("click", off, true); } }, true), 0);
+    };
+    pa.appendChild(pb);
+    // ⋯ : on hold / off hold, and a gentle message while on hold (Marco, Nov 9)
+    { const held = open.filter(o => o.l.pausado), name = cap(String(p.name||"").trim());
+      const mb = document.createElement("button"); mb.type = "button"; mb.className = "pic pmore"; mb.setAttribute("aria-label", "More for " + name);
+      mb.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg>';
+      mb.onclick = ev => { stop(ev); let m = sum.querySelector(".ppick"); if(m){ m.remove(); return; }
+        m = document.createElement("div"); m.className = "ppick";
+        const item = (t, fn) => { const b = document.createElement("button"); b.type = "button"; b.innerHTML = '<span class="a"></span>'; b.querySelector(".a").textContent = t; b.onclick = e2 => { stop(e2); m.remove(); fn(); }; m.appendChild(b); };
+        const setHold = async on => { const ls = open.filter(o => !!o.l.pausado !== on).map(o => o.l);
+          if(!await sure(on ? `Put ${name} on hold? Reminders stop and due dates wait until you take it off.` : `Take ${name} off hold? Reminders and due dates start again.`)) return;
+          try{ await Promise.all(ls.map(l => db.collection("prestamos").doc(l.id).update({pausado: on}))); }catch(e){ warnMsg("Couldn’t save. Try again."); } };
+        if(held.length){
+          item("Take off hold", () => setHold(false));
+        } else item("Put on hold", () => setHold(true));
+        sum.appendChild(m);
+        setTimeout(() => document.addEventListener("click", function off(e3){ if(!m.contains(e3.target)){ m.remove(); document.removeEventListener("click", off, true); } }, true), 0);
+      };
+      pa.appendChild(mb); }
+    sum.appendChild(pa);
+  };
   let waItem = null;
   function openWA(it){
     if(!it) return;
@@ -3416,7 +3847,7 @@ html.mp-guest .tabs{justify-content:space-around}
   };
 
   // ---------- schedule ----------
-  let pagos = [], pokerOtra = [];
+  let pagos = [], pokerOtra = [], bets = [];
   function paidTo(name){
     const k = String(name||"").trim().toLowerCase();
     return entries.filter(e=>e.source===name && e.type!=="out").reduce((s,e)=>s+(e.raw ?? e.amount),0)
@@ -3445,7 +3876,7 @@ html.mp-guest .tabs{justify-content:space-around}
           const day = d==="fin" ? lastDay(y,m) : Math.min(Number(d), lastDay(y,m));
           const ds = `${y}-${pad(m+1)}-${pad(day)}`;
           // omitir: dates the payer said they will skip (what they owe stays the same)
-          if(ds <= f.hasta && !(f.omitir||[]).includes(ds)) all.push({date:ds, fuente:f.fuente, monto:f.monto, ahorro:!!f.ahorro, tope:f.tope||null, aprox:!!f.aprox});
+          if(ds <= f.hasta && !(f.omitir||[]).includes(ds)) all.push({date:ds, fuente:f.fuente, monto:(f.montos && f.montos[ds] != null) ? f.montos[ds] : f.monto, ahorro:!!f.ahorro, tope:f.tope||null, aprox:!!f.aprox});
         });
         m++; if(m>11){m=0;y++;}
       }
@@ -3583,7 +4014,8 @@ html.mp-guest .tabs{justify-content:space-around}
       }catch(e){ warnMsg("Couldn’t save. Try again."); }
     };
   }
-  const HIST_STEP = 10; let histShown = HIST_STEP;
+  const HIST_STEP = 6; let histShown = HIST_STEP;
+  window.__mpRerender = () => { try{ render(); }catch(e){} };
   function render(){
     try{ renderSpend(); }catch(e){ console.error(e); }
     try{ syncRep(); }catch(e){ console.error(e); }
@@ -3765,9 +4197,145 @@ html.mp-guest .tabs{justify-content:space-around}
       <div class="stat"><b>${fmt(capAct)}</b><span>Lent out now</span></div>
       <div class="stat"><b>${avgRate.toLocaleString("en-US",{maximumFractionDigits:1})}%</b><span>Average interest</span></div>
       <div class="stat"><b class="profit">${fmt(earned)}</b><span>Interest earned</span></div>
-      <div class="stat"><b>${fmt(pending)}</b><span>Interest pending</span></div>
+      <div class="stat"><b class="ipend">${fmt(pending)}</b><span>Interest pending</span></div>
 ` : "";
 
+    // ---- Today brief (top of Savings): what matters today, one line each ----
+    try{ (()=>{
+      const me = window.MP_ME; if(me && !me.owner){ $("brief").hidden = true; return; }
+      const rows = [], t = today(), mk = t.slice(0,7);
+      const lim = Number(config.limiteMensual)||0;
+      if(lim>0 && spend.length){ const S = spSummary(mk), dim = lastDay(+mk.slice(0,4), +mk.slice(5,7)-1), dl = dim - Number(t.slice(8,10)) + 1, left = lim - S.total;
+        rows.push(left>=0 ? ["Spend today", fmt(Math.floor(left/dl)), ""] : ["Over the limit", fmt(-left), "late"]); }
+      if(ibkr && Array.isArray(ibkr.posiciones) && ibkr.posiciones.length){
+        const ps = ibkr.posiciones.filter(x=>Number(x.prev)>0 && Number(x.precio)>0);
+        const chg = ps.reduce((s,x)=>s+Number(x.sh||0)*(Number(x.precio)-Number(x.prev)),0), base = ps.reduce((s,x)=>s+Number(x.sh||0)*Number(x.prev),0);
+        if(base>0){ const pc = chg/base*100; rows.push(["Stocks", `${chg<0?"−":"+"}US$${Math.abs(chg).toFixed(0)} <small>${pc>=0?"+":""}${pc.toFixed(1)}%</small>`, chg>0?"profit":chg<0?"late":""]); } }
+      const due = loans.map(dueOf).filter(it=>it && it.d<=7).map(it=>({n:it.l.nombre, a:it.amt, d:it.date, late:it.d<0}));
+      (config.deudas||[]).forEach(d => { if(d.liga || d.pausado || !d.vence) return; const left = Math.max(0, Number(d.total||0) - paidTo(d.nombre)); const dd = daysBetween(t, d.vence); if(left>0 && dd<=7) due.push({n:d.nombre, a:left, d:d.vence, late:dd<0}); });
+      const byN = {}; due.forEach(x => { const k = norm(x.n)+"|"+x.d; byN[k] = byN[k] ? {...byN[k], a: byN[k].a + x.a} : x; });
+      Object.values(byN).sort((a,b)=>a.d.localeCompare(b.d)).slice(0,3).forEach(x => {
+        const dd = daysBetween(t, x.d), when = x.late ? "late" : dd===0 ? "today" : dd===1 ? "tomorrow" : new Date(x.d+"T12:00").toLocaleDateString("en-US",{weekday:"short"});
+        rows.push([`${cap(String(x.n).trim())} pays`, `${fmt(Math.round(x.a))} <small>${when}</small>`, x.late ? "late" : ""]); });
+      { const sv = rateFor(mk).saved || 0; rows.push(["Saved this month", `${sv<0?"−":"+"}${fmt(Math.abs(Math.round(sv)))}`, sv>0?"profit":sv<0?"late":""]); }
+      $("brDate").textContent = new Date(t+"T12:00").toLocaleDateString("en-US",{weekday:"long", month:"short", day:"numeric"});
+      $("brRows").innerHTML = rows.map(r => `<div class="br-r"><span>${r[0]}</span><b class="num ${r[2]}">${r[1]}</b></div>`).join("");
+      $("brief").hidden = !rows.length;
+    })(); }catch(e){ console.error(e); }
+    // ---- Pato score ----
+    if(!window.__pscDb && typeof db!=="undefined" && db){ window.__pscDb = db; window.__pscHist = {}; db.doc("prefs/score").onSnapshot(s=>{ window.__pscHist = (s.exists && s.data().hist) || {}; }, ()=>{}); }
+    try{ (()=>{
+      const t = today(), from = iso(new Date(Date.now() - 90*864e5)), inW = d => !!d && d >= from && d <= t;
+      const pw = (x, pts) => { if(x<=pts[0][0]) return pts[0][1]; for(let i=1;i<pts.length;i++){ const [a,sa]=pts[i-1], [b,sb]=pts[i]; if(x<=b) return sa+(sb-sa)*(x-a)/(b-a); } return pts[pts.length-1][1]; };   // smooth scale through fixed points
+      const GAME = ["Apuestas","Premio casino","Póker casino","Póker con amigos","Póker jugando"];
+      const NOT_EARNED = ["Saldo inicial","Préstamo","Reposición","Retiro", ...GAME];
+      const earned = entries.filter(e=>e.type!=="out" && inW(e.date) && !NOT_EARNED.includes(e.source)).reduce((s,e)=>s+e.amount,0) + interestBy(inW);
+      const months = 3, incM = earned/months;
+      // spending: the Spend tab's monthly totals (last 3 months), or money taken out of savings if Spend isn't used
+      const mk = t.slice(0,7), keys = [0,1,2].map(i => { const d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1-i, 1); return d.getFullYear()+"-"+pad(d.getMonth()+1); });
+      const day = +t.slice(8,10), dim = lastDay(+mk.slice(0,4), +mk.slice(5,7)-1);
+      let spentM = null;
+      if(spend.length){ const tots = keys.map(k=>spSummary(k).total), thisPace = tots[0]/day*dim, past = tots.slice(1).filter(x=>x>0);
+        spentM = past.length ? (past.reduce((a,b)=>a+b,0) + thisPace)/(past.length+1) : thisPace; }
+      else { const o = entries.filter(e=>isSpend(e) && inW(e.date) && !GAME.includes(e.source)).reduce((s,e)=>s+netOut(e),0); spentM = o/months; }
+      const sav = entries.reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0) + mktGain();
+      const P = {};
+      // SPEND: spend less than you earn; stay under your monthly limit
+      P.spend = [];
+      if(incM>0) P.spend.push(["spend","Spend less than you earn", pw(spentM/incM, [[0.6,100],[0.9,50],[1.1,0]]), `Your spending is about ${Math.round(spentM/incM*100)}% of your income (not counting winnings)`]);
+      const lim = Number(config.limiteMensual)||0;
+      if(lim>0 && spend.length){ const pace = spSummary(mk).total/day*dim; P.spend.push(["limit","Stay under your limit", pw(pace/lim, [[0.85,100],[1,60],[1.2,0]]), `On pace for ${fmt(pace)} of ${fmt(lim)}`]); }
+      // SAVE: months of spending saved; part of it invested
+      P.save = [];
+      if(spentM>0) P.save.push(["months","Months of spending saved", pw(sav/spentM, [[0,0],[1.5,60],[3,100]]), `${(sav/spentM).toFixed(1)} months of spending saved`]);
+      { let inv = 0; try{ const c = ibkrCalc(); if(c) inv += c.liveRd; }catch(e){} (config.inversiones||[]).forEach(x=>{ if(!/ibkr/i.test(x.nombre||"")) inv += Number(x.rd)||0; });
+        if(sav>0) P.save.push(["inv","Money invested", pw(inv/sav, [[0,0],[0.1,50],[0.25,100]]), `${Math.round(inv/sav*100)}% of your savings is invested`]); }
+      // BORROW: loans you made come back on time; not too much of your savings lent out
+      P.borrow = [];
+      { const lk = loans.filter(l=>!l.pausado && l.fecha && l.fecha >= iso(new Date(Date.now()-180*864e5)) && (l.fecha < t || l.pagado));
+        const ok = lk.filter(l=>l.pagado ? (!l.cobradoEl || daysBetween(l.fecha, l.cobradoEl) <= 2) : false).length, late = lk.filter(l=>!l.pagado && l.fecha < t).length, n = ok + late + lk.filter(l=>l.pagado && l.cobradoEl && daysBetween(l.fecha, l.cobradoEl) > 2).length;
+        if(n) P.borrow.push(["ontime","Loans paid back on time", ok/n*100, `${ok} of ${n} paid back on time${late?` · ${late} late now`:""}`]); }
+      { const held = (()=>{ try{ return heldList().reduce((s,x)=>s+x.rd,0); }catch(e){ return 0; } })();
+        const ext = Math.max(0, config.deudas.filter(d=>!d.liga && !d.pausado).reduce((s,d)=>s+Math.max(0,d.total-paidTo(d.nombre)),0) + loans.filter(l=>!l.pagado).reduce((s,l)=>s+loanRemaining(l),0) - held);
+        const lent = ext, all = sav + ext;   // money held for you (e.g. by Dad) counts as savings, not as a loan (Marco's rule)
+        if(all>0 && (lent>0 || P.borrow.length)) P.borrow.push(["lent","Savings lent out", pw(lent/all, [[0.1,100],[0.3,50],[0.5,0]]), `${Math.round(lent/all*100)}% of your money is lent out to people`]); }
+      // PLAN: keep growing toward your goal; leave savings alone
+      P.plan = [];
+      { const rs = keys.map(k=>rateFor(k)), svd = rs.reduce((s,r)=>s+(r.saved||0),0), start = sav - svd;   // growth of the savings balance over 3 months
+        if(start>0) P.plan.push(["kept","Growing toward your goal", pw(svd/start, [[0,0],[0.05,50],[0.15,100]]), svd>=0 ? `Your savings grew ${fmt(svd)} in 3 months` : `Your savings shrank ${fmt(-svd)} in 3 months`]);
+        // savings rate on regular income (Marco, Nov 9): over the last 3 finished months, what the savings balance grew from
+        // regular income (all poker left out: league rakeback, League Action, Tables, Arcade, sports) ÷ the regular income that came in.
+        // Works for anyone: regular income = money in that isn't poker, a loan coming back, a withdrawal/refund or the starting balance.
+        const NOPOKER = new Set([...GAME, ...(typeof POKER_SRC !== "undefined" ? POKER_SRC : []), "Rakeback de la liga"]);
+        const NOTREG = new Set([...NOPOKER, "Saldo inicial", "Préstamo", "Reposición", "Retiro"]);
+        const inK = k => d => (d||"").slice(0,7)===k;
+        const gm = k => entries.filter(e=>NOPOKER.has(e.source) && inK(k)(e.date)).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);   // only what moved through savings
+        const regIn = k => entries.filter(e=>e.type!=="out" && !NOTREG.has(e.source) && inK(k)(e.date)).reduce((s,e)=>s+e.amount,0) + interestBy(inK(k), "ahorro");
+        const fk = [1,2,3].map(i => { const d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1-i, 1); return d.getFullYear()+"-"+pad(d.getMonth()+1); })
+                    .filter(k => entries.some(e=>inK(k)(e.date) && e.source!=="Saldo inicial"))   // finished months with data
+                    .filter((k,i,a) => !spend.length || spend.some(t=>!t.excluded && (t.date||"").slice(0,7)===k) || !a.some(x=>spend.some(t=>!t.excluded && (t.date||"").slice(0,7)===x)));   // with spending tracked, only months it covers
+        const st = fk.map(k => (rateFor(k).saved||0) - gm(k)), ri = fk.map(regIn), sumI = ri.reduce((a,b)=>a+b,0);
+        if(sumI>0){ const sr = st.reduce((a,b)=>a+b,0)/sumI;
+          let run = 0; for(const v of st){ if(v>0) run++; else break; }
+          window.__patoSR = {months:fk, saved:st, regular:ri, rate:sr};
+          P.plan.push(["srate","Savings rate", pw(sr, [[0,0],[0.1,50],[0.2,100]]),
+            sr>=0 ? `You save about ${Math.round(sr*100)}% of your regular income` + (run>=2 ? ` · up ${run} months in a row` : "") : `From regular income you spent more than came in (${Math.round(sr*100)}%)`]); } }
+      // PLAY (Pato): how much you stake compared to what you earn, and how it's going
+      P.play = [];
+      { const bw = (bets||[]).filter(b=>inW(b.fecha)), linked = new Set(bw.map(b=>b.entryId).filter(Boolean));
+        const sportsStake = bw.reduce((s,b)=>s+(Number(b.stake)||0),0) + entries.filter(e=>e.source==="Apuestas" && e.type==="out" && inW(e.date) && !linked.has(e.id) && !bw.length).reduce((s,e)=>s+e.amount,0);
+        const gIn = entries.filter(e=>GAME.includes(e.source) && e.type!=="out" && inW(e.date)).reduce((s,e)=>s+e.amount,0);
+        const gOut = entries.filter(e=>GAME.includes(e.source) && e.type==="out" && inW(e.date)).reduce((s,e)=>s+e.amount,0);
+        const po = pokerOtra.filter(x=>inW(x.fecha) && x.source!=="Rakeback de la liga"), poNet = po.reduce((s,x)=>s+x.monto,0), poLoss = po.filter(x=>x.monto<0).reduce((s,x)=>s-x.monto,0);
+        const betNet = bw.filter(b=>b.result && b.result!=="pending").reduce((s,b)=>s+(Number(b.payout)||0)-(Number(b.stake)||0),0);
+        const staked = sportsStake + entries.filter(e=>GAME.includes(e.source) && e.source!=="Apuestas" && e.type==="out" && inW(e.date)).reduce((s,e)=>s+e.amount,0) + poLoss;
+        const net = (bw.length ? betNet + entries.filter(e=>GAME.includes(e.source) && e.source!=="Apuestas" && inW(e.date)).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0) : gIn - gOut) + poNet;
+        const H = document.documentElement, plays = H.classList.contains("tr-bets") || H.classList.contains("tr-poker") || staked>0;
+        if(plays && earned>0){
+          const sr = staked/earned, a = pw(sr, [[0.05,100],[0.1,60],[0.2,0]]), b = pw(net/earned, [[-0.1,0],[-0.05,50],[0,100]]);
+          P.play.push(["staked","Staked vs what you earn", a, `You staked ${Math.round(sr*100)}% of what you earned`]);
+          P.play.push(["result","Result vs what you earn", Math.min(b, a + 20), `${net>=0?"Up":"Down"} ${fmt(Math.abs(net))} in 90 days${net>0 && a<60 ? " · a winning run doesn’t make heavy staking safe" : ""}`]);
+        } }
+      const NAMES = {spend:"Spend", save:"Save", borrow:"Lend", plan:"Plan", play:"Play"}, W = {spend:25, save:25, borrow:15, plan:15, play:20};
+      const pil = Object.keys(NAMES).filter(k=>P[k].length).map(k=>({k, n:NAMES[k], w:W[k], v:P[k].reduce((s,x)=>s+x[2],0)/P[k].length, items:P[k]}));
+      if(pil.length < 2){ $("psc").hidden = true; return; }
+      const tw = pil.reduce((s,x)=>s+x.w,0); let score = pil.reduce((s,x)=>s+x.v*x.w,0)/tw;
+      const pv = pil.map(x=>x.v);                                   // one bad habit can't hide behind good ones
+      if(pv.some(v=>v<60)) score = Math.min(score, 79); if(pv.some(v=>v<20)) score = Math.min(score, 59); if(pv.filter(v=>v<40).length>=2) score = Math.min(score, 39);
+      score = Math.round(score);
+      const contrib = {}; pil.forEach(x=>x.items.forEach(i=>{ contrib[i[0]] = Math.round(i[2]*x.w/x.items.length/tw*10)/10; }));
+      const PHR = {"Sinking": ["Money is slipping away. Stop the biggest leak first.", "You're taking on water. Pick one cost to cut today.", "This month is running you. Take back one decision.", "Pause the extras. Every peso saved now counts double.", "Too much going out, too little staying. Start small: skip one thing this week.", "Rough water. Spend only on what you truly need for 7 days.", "Your cushion is thin. Rebuilding it comes first.", "Hard truth: this pace empties savings. Change one habit today.", "Slow down before you speed up. No new bets until you're back up.", "Even ducks sink when they stop paddling. Make one move today."], "Paddling": ["Working hard but not getting ahead. Cut one habit.", "Lots of effort, little progress. Find what's eating your money.", "You're staying afloat. Now aim to keep 10% of what comes in.", "Close to even. One smart week tips it your way.", "Money comes in and goes right back out. Save first, then spend.", "You're moving, just against the current. Lower one big cost.", "Good effort. Set a weekly spending cap and stick to it.", "Keep going. A small monthly saving changes this fast.", "You're not sinking, but you're not growing. Pick a goal for this month.", "Paddle smarter: fewer bets, more saving."], "Floating": ["Okay, but one bad month would hurt. Build your cushion.", "Steady, not safe yet. Aim for 3 months of spending saved.", "You're holding your own. Next step: invest a little each month.", "Calm water. A good time to set money aside.", "Balanced, but a surprise bill would rock you. Grow your safety net.", "Not bad. Keep spending under your limit and you'll rise.", "You're above water. Now get the money people owe you back.", "Middle of the pond. One better habit moves you up.", "Things are stable. Make saving automatic so it keeps going.", "Solid footing. Keep bets small and you'll climb."], "Cruising": ["Good habits, money growing. Keep it steady.", "Smooth sailing. Stay under your limit and keep cruising.", "You're in control. Keep saving before you spend.", "Strong pace. Don't let a big week undo a good month.", "Money's working for you. Keep investing a little at a time.", "Nice rhythm. Consistency beats big wins.", "You're doing better than most. Protect what you've built.", "On course. Keep your loans small and your savings growing.", "Steady and strong. One more good habit and you're Flying.", "Good flow. Keep betting as fun money, not a plan."], "Flying": ["Top shape, and rare. Protect it.", "You're flying. Keep the habits that got you here.", "Elite money moves. Stay humble with the bets.", "Few people get here. Don't change what works.", "Your money works as hard as you do. Keep it that way.", "Soaring. Now think long-term: invest, don't splurge.", "Peak form. Your cushion has your back.", "Clear skies. Keep spending below your limit.", "You've earned this. Keep risks small to stay up here.", "High and steady. This is how goals get reached."]};   // Marco approved, Nov 9: a new line each day
+      const Z = [[20,"Sinking",PHR["Sinking"],"z1"],[40,"Paddling",PHR["Paddling"],"z2"],[60,"Floating",PHR["Floating"],"z3"],[80,"Cruising",PHR["Cruising"],"z4"],[101,"Flying",PHR["Flying"],"z5"]];
+      const z = Z.find(x=>score<=x[0]) || Z[4];
+      // gauge: 5 zones on a half circle, needle at the score
+      { const R = 80, cx = 100, cy = 96, pt = (s,r) => { const a = Math.PI*(1 - s/100); return [cx + r*Math.cos(a), cy - r*Math.sin(a)]; };
+        const arc = (s0,s1) => { const [x0,y0] = pt(s0,R), [x1,y1] = pt(s1,R); return `M${x0.toFixed(1)} ${y0.toFixed(1)} A${R} ${R} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`; };
+        const [nx,ny] = pt(score, R-14);
+        $("pscG").innerHTML = `<svg viewBox="0 0 200 112" aria-hidden="true">${[[0,19.4,"z1"],[20.6,39.4,"z2"],[40.6,59.4,"z3"],[60.6,79.4,"z4"],[80.6,100,"z5"]].map(([a,b,c])=>`<path d="${arc(a,b)}" class="g-${c}${c===z[3]?" on":""}"/>`).join("")}<line x1="${cx}" y1="${cy}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" class="g-n"/><circle cx="${cx}" cy="${cy}" r="5" class="g-c"/></svg>`; }
+      $("pscNum").textContent = score; $("pscBand").textContent = z[1]; $("pscBand").className = "psc-z " + z[3]; $("pscMean").textContent = z[2][Math.floor(new Date(t+"T12:00").getTime()/864e5) % z[2].length];
+      // why it moved: compare with the saved score from about a week ago
+      const PH = {spend:["you spent less compared to what you earn","you spent more compared to what you earn"], limit:["you're on a better pace for your limit","you're spending faster than your limit"],
+        months:["your savings cushion grew","your savings cushion shrank"], inv:["more of your money is invested","less of your money is invested"], ontime:["loans came back on time","a loan is late"],
+        lent:["less of your money is lent out","more of your money is lent out"], kept:["your savings grew faster","your savings grew slower"], mup:["your savings grew more months in a row","your savings dropped in a month"], steady:["you saved more each month","you saved less each month"], srate:["you saved more of your regular income","you saved less of your regular income"],
+        staked:["you staked less","you staked more"], result:["your betting results improved","you lost more betting"]};
+      const hist = (window.__pscHist||{}), days = Object.keys(hist).filter(d=>d<t).sort();
+      const ref = days.filter(d=>daysBetween(d,t)>=7).pop() || days[0];
+      if(ref){ const o = hist[ref], d = score - o.s, span = daysBetween(ref,t)>=6 ? "this week" : "since " + new Date(ref+"T12:00").toLocaleDateString("en-US",{weekday:"long"});
+        let best = null; Object.keys(PH).forEach(k=>{ const dc = (contrib[k]||0) - ((o.c||{})[k]||0); if((dc>0)===(d>0) && (!best || Math.abs(dc) > Math.abs(best[1]))) best = [k, dc]; });
+        $("pscWhy").innerHTML = d===0 ? `No change ${span}` : `<b class="${d>0?"up":"dn"}">${d>0?"▲ +":"▼ −"}${Math.abs(d)}</b> ${span}${best && Math.abs(best[1])>=0.5 && (best[1]>0)===(d>0) ? ": " + PH[best[0]][d>0?0:1] : ""}`; }
+      else $("pscWhy").textContent = "";
+      // remember today's score (one per day) so the next ones can explain the change
+      try{ const prev = hist[t]; if(window.__pscDb && (!prev || prev.s!==score || JSON.stringify(prev.c)!==JSON.stringify(contrib)) && window.__pscSaved!==t+score){
+        window.__pscSaved = t+score; const keep = {}; Object.keys(hist).filter(d=>daysBetween(d,t)<=60).forEach(d=>keep[d]=hist[d]); keep[t] = {s:score, c:contrib};
+        window.__pscDb.doc("prefs/score").set({hist:keep, at:Date.now()}).catch(()=>{}); } }catch(e){}
+      $("pscBars").innerHTML = pil.map(x=>`<div class="psc-b"><span>${x.n}</span><i><em style="width:${Math.max(4,Math.round(x.v))}%" class="${x.v>=80?"good":x.v>=40?"mid":"bad"}"></em></i></div>`).join("");
+      $("pscDet").innerHTML = pil.map(x=>`<div class="psc-g"><b>${x.n}</b>${x.items.map(i=>`<div class="psc-i"><i class="${i[2]>=80?"good":i[2]>=40?"mid":"bad"}"></i><span>${i[3]}</span></div>`).join("")}</div>`).join("") +
+        `<p class="psc-how">Last 90 days</p>`;
+      if(!$("pscMore").onclick) $("pscMore").onclick = () => { const d = $("pscDet"), o = d.hidden; d.hidden = !o; $("pscMore").textContent = o ? "Hide details" : "See what's behind it"; };
+      { const s = $("saved"), hero = s && s.closest(".hero, section"), c = $("psc"); if(hero && hero.nextElementSibling !== c) hero.after(c); }
+      $("psc").hidden = false;
+    })(); }catch(e){ console.error(e); $("psc").hidden = true; }
+    // ---- end Pato score ----
     const drawGroup = kind => {
     const isD = kind==="D";
     const map = new Map();
@@ -3779,7 +4347,7 @@ html.mp-guest .tabs{justify-content:space-around}
     const openSet = window.__openPeople || (window.__openPeople = new Set());
     const oweOf = p => isD ? p.deudas.reduce((t,d)=>t+Math.max(0,d.total-paidTo(d.nombre)),0) : p.loans.filter(l=>!l.pagado).reduce((t,l)=>t+loanRemaining(l),0);
     const plist = [...map.entries()].map(([k,p]) => ({...p, k:kind+":"+k, owe: oweOf(p)})).sort((a,b)=>b.owe-a.owe || a.name.localeCompare(b.name));
-    const isPast = p => p.owe<=0 && !p.deudas.some(d=>d.liga) && !(editingLoan && p.loans.some(l=>l.id===editingLoan && !l.pagado)) && !(debtEdit && p.deudas.some(d=>d.nombre===debtEdit.nombre));
+    const isPast = p => p.owe<=0 && !p.deudas.some(d=>d.liga && ligaWeeks(d).reduce((t,w)=>t+(Number(w.monto)||0)+(Number(w.accion)||0),0)>0.5) && !(editingLoan && p.loans.some(l=>l.id===editingLoan && !l.pagado)) && !(debtEdit && p.deudas.some(d=>d.nombre===debtEdit.nombre));
     const activeN = plist.filter(p=>!isPast(p)).length, pastList = plist.filter(isPast);
     if(!activeN) pw.innerHTML = `<div class="empty">${isD ? "No open debts right now." : "No active loans right now."}</div>`;
     $(isD ? "debtPastWrap" : "pastWrap").hidden = !pastList.length;
@@ -3797,10 +4365,11 @@ html.mp-guest .tabs{justify-content:space-around}
       const nm = det.querySelector(".pname"); nm.textContent = cap(p.name);
       if(isD){ det.classList.add("dsum");
         const dpa = p.deudas.some(d=>d.pausado && d.total-paidTo(d.nombre)>0), dv = p.deudas.map(d=>d.vence).filter(Boolean).sort()[0];
-        const nt = dpa ? "⏸\uFE0E" : p.deudas.some(d=>d.liga) ? "Paid weekly" : dv ? "Due " + fmtDate(dv,false) : "";
+        const nt = dpa ? "On hold" : p.deudas.some(d=>d.liga) ? "Paid weekly" : dv ? "Due " + fmtDate(dv,false) : "";
         if(nt){ const sm=document.createElement("small"); sm.className="pnote"; sm.textContent=nt; nm.parentNode.appendChild(sm); } }
+      const onHold = p.loans.some(l=>!l.pagado && l.pausado);
       if(p.loans.length){ const bd=document.createElement("span"); bd.className="badge "+tr.cls; bd.textContent = `${tr.label} · ${tr.score}`; nm.after(bd); }
-      if(p.loans.some(l=>!l.pagado && l.pausado)){ const pb=document.createElement("span"); pb.className="badge none"; pb.textContent="⏸\uFE0E"; pb.title="Paused"; nm.after(pb); }
+      if(onHold){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; nm.after(pb); }
       const actN = p.loans.filter(l=>!l.pagado).length;
       det.querySelector(".powed").innerHTML = isD ? (p.owe>0 ? fmt(p.owe) : `<span class="profit">Paid</span>`) : p.owe>0 ? fmt(p.owe) : `<span class="profit">All paid</span>`;
       const body = det.querySelector(".pbody");
@@ -3810,7 +4379,7 @@ html.mp-guest .tabs{justify-content:space-around}
         const el = document.createElement("div"); el.className = "debt" + (rest===0 ? " paid":"");
         el.innerHTML = `<div class="debt-head"><span></span><span class="num"></span></div><div class="minibar"><i style="width:${pp}%"></i></div><div class="debt-sub num"><span></span><span></span></div>`;
         el.querySelector(".debt-head span").textContent = "Debt" + (d.nota ? " · " + d.nota : "");
-        if(d.pausado && rest>0){ const pb=document.createElement("span"); pb.className="badge none"; pb.textContent="⏸\uFE0E"; pb.title="Paused"; el.querySelector(".debt-head span").appendChild(pb); }
+        if(d.pausado && rest>0){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; el.querySelector(".debt-head span").appendChild(pb); }
         el.querySelector(".debt-head .num").textContent = rest===0 ? "Paid off" : fmt(rest) + " left";
         const subs = el.querySelectorAll(".debt-sub span"); subs[0].textContent = "Collected " + fmt(paid); subs[1].textContent = "of " + fmt(d.total);
         if(db){
@@ -3853,15 +4422,17 @@ html.mp-guest .tabs{justify-content:space-around}
         body.appendChild(el);
       });
       [...p.loans].filter(l=>!l.pagado || editingLoan===l.id).sort((a,b)=>(a.fecha||"").localeCompare(b.fecha||"")).forEach(l => body.appendChild(loanRow(l)));
+      if(!isD && db){ try{ (window.__personActs || (()=>{}))(det, p); }catch(e){ console.error(e); } }  // one Remind + one Paid per person
       const done = p.loans.filter(l=>l.pagado);
       if(done.length){
         const g = done.reduce((t,l)=>t+l.monto*(l.interes||0)/100,0);
         const sm = document.createElement("details"); sm.className="psum";
         sm.innerHTML = `<summary style="cursor:pointer">${done.length} loan${done.length>1?"s":""} collected · you earned ${fmt(g)} in interest</summary>`;
         done.filter(l=>editingLoan!==l.id).forEach(l => sm.appendChild(loanRow(l)));
-        body.appendChild(sm);
+        (window.__lrecBox = window.__lrecBox || []).push(sm);
       }
-      if(p.loans.length && tr.total) { const r=document.createElement("div"); r.className="hint"; r.textContent = "Record: " + recordText(tr) + "."; body.appendChild(r); }
+      if(p.loans.length && tr.total) { const r=document.createElement("div"); r.className="hint"; r.textContent = "Record: " + recordText(tr) + "."; (window.__lrecBox = window.__lrecBox || []).push(r); }
+      if((window.__lrecBox||[]).length){ const rw = document.createElement("details"); rw.className = "lrec"; rw.innerHTML = '<summary>Record</summary>'; window.__lrecBox.forEach(x => rw.appendChild(x)); window.__lrecBox = []; body.appendChild(rw); }
       (isPast(p) ? pastW : pw).appendChild(det);
     });
     };
@@ -3901,7 +4472,8 @@ html.mp-guest .tabs{justify-content:space-around}
     $("pkPlay").className = play>0 ? "profit" : play<0 ? "late" : "";
     const cas = sumSrc("Póker casino"), home = sumSrc("Póker con amigos");
     [["pkCas",cas],["pkHome",home]].forEach(([id,v]) => { $(id).textContent = (v<0?"−":"") + fmt(Math.abs(v)); $(id).className = v>0 ? "profit" : v<0 ? "late" : ""; });
-    const all = ligaNet+play+rbj+cas+home;
+    const sbT = sumSrc("Apuestas"), arT = sumSrc("Premio casino");
+    const all = ligaNet+play+rbj+cas+home+sbT+arT;
     $("pkAll").textContent = (all<0?"−":"") + fmt(Math.abs(all));
     // ---- poker stats: League (rakeback) and League Action (own play), both per league week ----
     // League Action is logged once a week; a week counts only if it has an entry (no entry = not logged, not zero)
@@ -4002,11 +4574,18 @@ html.mp-guest .tabs{justify-content:space-around}
       } else li.style.gridTemplateColumns="1fr auto";
       wl.appendChild(li);
     });
+    { const all = Object.values(wk).filter(w=>w.src===pkOSrc).map(w=>({d:w.d, v:w.sav+w.oth+(w.owed||0)})), sm = $(wid+"Sum");
+      const ym = today().slice(0,7), N = all.length, up = all.filter(x=>x.v>0.5).length, dn = all.filter(x=>x.v<-0.5).length;
+      const tot = all.reduce((t,x)=>t+x.v,0), mo = all.filter(x=>(x.d||"").startsWith(ym)).reduce((t,x)=>t+x.v,0);
+      const best = N ? Math.max(...all.map(x=>x.v)) : 0, worst = N ? Math.min(...all.map(x=>x.v)) : 0;
+      const sg = v => (v<0?"−":v>0?"+":"") + fmt(Math.abs(Math.round(v))), cl = v => v>0 ? "profit" : v<0 ? "late" : "";
+      sm.innerHTML = N ? `<div><span>This month</span><b class="${cl(mo)}">${sg(mo)}</b></div><div><span>Sessions won</span><b>${up}–${dn}</b></div><div><span>Per session</span><b class="${cl(tot/N)}">${sg(tot/N)}</b></div><div><span>Biggest win</span><b class="${cl(best)}">${best>0?sg(best):"—"}</b></div><div><span>Biggest loss</span><b class="${cl(worst)}">${worst<0?sg(worst):"—"}</b></div><div><span>Sessions</span><b>${N}</b></div>` : "";
+      sm.hidden = !N; sm.nextElementSibling.hidden = !N; (window.__rcPk = window.__rcPk || {})[wid] = all; }
     });
     // ---- layout: switch League / Outside Tables / Home games ----
     { const sw = $("pkSeg");
       sw.querySelectorAll("button").forEach(b => { b.classList.toggle("on", b.dataset.v===pkV); b.onclick = () => { window.pkView = b.dataset.v; render(); }; });
-      $("pkVLeague").hidden = pkV!=="league"; $("pkVOther").hidden = pkV==="league";
+      $("pkVLeague").hidden = pkV!=="league"; $("pkVOther").hidden = pkV!=="ot"; $("pkVSports").hidden = pkV!=="sb"; $("pkVArcade").hidden = pkV!=="ar";
       const owRk = ligaWeeks(ligaDebt()).reduce((t,w)=>t+Number(w.monto||0),0), owAc = ligaWeeks(ligaDebt()).reduce((t,w)=>t+Number(w.accion||0),0);
       $("pkThree").innerHTML = `<div><span>Rake per week</span><b>${fmt(Math.round(pkAvgV))}</b></div><div><span>Action per week</span><b class="${cls(actAvgV)}">${sgn(actAvgV)}</b></div>`+(owRk+owAc>0 ? `<div class="pk-owed"><span>League owes you</span><b>${fmt(owRk+owAc)}</b></div>` : "");
       const ks = [...new Set([...avgKeys, ...actKeys])].sort().slice(-8);
@@ -4025,6 +4604,98 @@ html.mp-guest .tabs{justify-content:space-around}
       $("pkWkDet").hidden = !k;
       $("pkOTot").innerHTML = `<span>Outside Tables</span><b class="${cls(cas)}">${sgn(cas)}</b>`;
       $("pkHTot").innerHTML = `<span>Home games</span><b class="${cls(home)}">${sgn(home)}</b>`;
+      { const ym = today().slice(0,7), bets = entries.filter(e=>e.source==="Apuestas").sort((a,b)=>(b.date||"").localeCompare(a.date||"")||((b.createdAt||0)-(a.createdAt||0)));
+        const mo = bets.filter(e=>(e.date||"").startsWith(ym)).reduce((t,e)=>t+(e.type==="out"?-e.amount:e.amount),0);
+        $("pkSTot").innerHTML = `<span>Sports bets</span><b class="${cls(sbT)}">${sgn(sbT)}</b>` + (bets.length ? `<small class="pk-sm">This month <b class="${cls(mo)}">${sgn(mo)}</b></small>` : "");
+        const ul = $("pkSList"); ul.innerHTML = bets.length ? "" : '<li class="empty">Nothing yet.</li>';
+        bets.slice(0,10).forEach(e => { const li = document.createElement("li"); li.style.gridTemplateColumns = "1fr auto";
+          li.innerHTML = `<div><div class="src"></div><div class="meta"></div></div><div class="amt num"></div>`;
+          li.querySelector(".src").textContent = fmtDate(e.date,false); li.querySelector(".meta").textContent = e.type==="out" ? "Deposit" : "Cashout";
+          const a = li.querySelector(".amt"); a.textContent = (e.type==="out"?"−":"+") + fmt(e.amount); a.classList.add(e.type==="out"?"out":"in"); ul.appendChild(li); }); }
+      { const ym = today().slice(0,7), bk = entries.filter(e=>e.source==="Apuestas"), dep = bk.filter(e=>e.type==="out").reduce((t,e)=>t+e.amount,0), cash = bk.filter(e=>e.type!=="out").reduce((t,e)=>t+e.amount,0);
+        const mo = bk.filter(e=>(e.date||"").startsWith(ym)).reduce((t,e)=>t+(e.type==="out"?-e.amount:e.amount),0);
+        $("pkSSum").innerHTML = bk.length ? `<div><span>Deposited</span><b>${fmt(dep)}</b></div><div><span>Cashed out</span><b>${fmt(cash)}</b></div>` : "";
+        $("pkSSum").hidden = !bk.length; $("pkSSum").nextElementSibling.hidden = !bk.length; }
+      { const ym = today().slice(0,7), byD = {};
+        entries.filter(e=>e.source==="Premio casino").forEach(e => { byD[e.date] = (byD[e.date]||0) + (e.type==="out"?-e.amount:e.amount); });
+        const all = Object.entries(byD).map(([d,v])=>({d,v})).sort((a,b)=>b.d.localeCompare(a.d)), N = all.length;
+        $("pkATot").innerHTML = `<span>Arcade</span><b class="${cls(arT)}">${sgn(arT)}</b>`;
+        const mo = all.filter(x=>x.d.startsWith(ym)).reduce((t,x)=>t+x.v,0), up = all.filter(x=>x.v>0.5).length, dn = all.filter(x=>x.v<-0.5).length;
+        const best = N ? Math.max(...all.map(x=>x.v)) : 0, worst = N ? Math.min(...all.map(x=>x.v)) : 0;
+        $("pkASum").innerHTML = N ? `<div><span>This month</span><b class="${cls(mo)}">${sgn(mo)}</b></div><div><span>Days won</span><b>${up}–${dn}</b></div><div><span>Biggest win</span><b class="${cls(best)}">${best>0?sgn(best):"—"}</b></div><div><span>Biggest loss</span><b class="${cls(worst)}">${worst<0?sgn(worst):"—"}</b></div>` : "";
+        $("pkASum").hidden = !N; $("pkASum").nextElementSibling.hidden = !N;
+        const ul = $("pkAList"); ul.innerHTML = "";
+        all.slice(0,20).forEach(x => { const li = document.createElement("li"); li.style.gridTemplateColumns = "1fr auto";
+          li.innerHTML = `<div><div class="src"></div></div><div class="amt num"></div>`; li.querySelector(".src").textContent = fmtDate(x.d,false);
+          const a = li.querySelector(".amt"); a.textContent = (x.v<0?"−":"+") + fmt(Math.abs(x.v)); a.classList.add(x.v<0?"out":"in"); ul.appendChild(li); }); }
+      { const B = [...bets].sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||"")||String(b.hora||"").localeCompare(String(a.hora||"")));
+        const done = B.filter(b=>b.result==="won"||b.result==="lost"||b.result==="push"), pend = B.filter(b=>!b.result||b.result==="pending");
+        const W = done.filter(b=>b.result==="won").length, L = done.filter(b=>b.result==="lost").length;
+        const staked = done.reduce((t,b)=>t+(Number(b.stake)||0),0), net = done.reduce((t,b)=>t+(Number(b.payout)||0)-(Number(b.stake)||0),0);
+        const roi = staked ? net/staked*100 : 0, open = pend.reduce((t,b)=>t+(Number(b.stake)||0),0);
+        const legsAll = B.flatMap(b=>b.legs||[]), lw = legsAll.filter(l=>l.result==="won").length, ll = legsAll.filter(l=>l.result==="lost").length;
+        const od = v => v==null||v==="" ? "" : (Number(v)>0?"+":"")+Number(v);
+        $("sbStats").innerHTML = B.length ? `<div><span>Record</span><b>${W}–${L}${pend.length?` <small>· ${pend.length} open</small>`:""}</b></div><div><span>Staked</span><b>${fmt(staked)}</b></div><div><span>Profit</span><b class="${cls(net)}">${sgn(net)}</b></div><div><span>ROI</span><b class="${cls(roi)}">${roi>0?"+":""}${roi.toFixed(0)}%</b></div>`
+          + (legsAll.length ? `<div><span>Picks hit</span><b>${lw}/${lw+ll}${lw+ll?` <small>· ${Math.round(lw/(lw+ll)*100)}%</small>`:""}</b></div>` : "") + (open ? `<div><span>In play</span><b>${fmt(open)}</b></div>` : "") : "";
+        $("sbStats").hidden = !B.length; $("sbBetsH").hidden = !B.length;
+    // ---- Reality check ----
+    try{ (()=>{
+      const sg = v => (v<0?"−":v>0?"+":"") + fmt(Math.abs(Math.round(v))), cl = v => v>0 ? "profit" : v<0 ? "late" : "";
+      const card = (id, rows) => { const el = $(id); el.innerHTML = rows.length ? `<div class="rc-h">Reality check</div>` + rows.map(r=>`<div class="rc-r"><span>${r[0]}</span><b class="${r[2]||""}">${r[1]}</b></div>${r[3]?`<div class="rc-n">${r[3]}</div>`:""}`).join("") : ""; el.hidden = !rows.length; };
+      const t = today(), ym = t.slice(0,7), from = iso(new Date(Date.now()-90*864e5));
+      // SPORTS
+      { const rows = [], bk = entries.filter(e=>e.source==="Apuestas");
+        const net = bk.reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0), mo = bk.filter(e=>(e.date||"").startsWith(ym)).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);
+        if(bk.length){ rows.push(["This month", sg(mo), cl(mo)]); rows.push(["All time", sg(net), cl(net)]); }
+        const done = bets.filter(b=>b.result==="won"||b.result==="lost"||b.result==="push"), st = done.reduce((s,b)=>s+(Number(b.stake)||0),0), bn = done.reduce((s,b)=>s+(Number(b.payout)||0)-(Number(b.stake)||0),0);
+        if(st>0){ const back = (st+bn)/st*100; rows.push(["Every RD$100 bet", `RD$${Math.round(back)} back`, back>=100?"profit":"late"]); }
+        const grp = k => { const g = {}; done.forEach(b=>{ const x = k(b); if(!x) return; g[x] = g[x] || {n:0, net:0}; g[x].n++; g[x].net += (Number(b.payout)||0)-(Number(b.stake)||0); }); return g; };
+        const ty = grp(b=>b.tipo==="parlay"?"Parlays":"Singles");
+        ["Parlays","Singles"].forEach(k => { if(ty[k]) rows.push([k, sg(ty[k].net), cl(ty[k].net)]); });
+        const sp = grp(b=>{ const s = [...new Set((b.legs||[]).map(l=>String(l.sport||"").trim()).filter(Boolean))]; return s.length===1 ? s[0] : s.length ? "Mixed" : null; });
+        const spk = Object.keys(sp).sort((a,b)=>sp[b].net-sp[a].net);
+        if(spk.length>=2){ rows.push([`Best sport · ${spEsc(spk[0])}`, sg(sp[spk[0]].net), cl(sp[spk[0]].net)]); rows.push([`Worst sport · ${spEsc(spk[spk.length-1])}`, sg(sp[spk[spk.length-1]].net), cl(sp[spk[spk.length-1]].net)]); }
+        else if(spk.length===1) rows.push([spEsc(spk[0]), sg(sp[spk[0]].net), cl(sp[spk[0]].net)]);
+        const NOT = ["Saldo inicial","Préstamo","Reposición","Retiro","Apuestas","Premio casino","Póker casino","Póker con amigos","Póker jugando"];
+        const earned = entries.filter(e=>e.type!=="out" && e.date>=from && !NOT.includes(e.source)).reduce((s,e)=>s+e.amount,0);
+        const bw = bets.filter(b=>(b.fecha||"")>=from), staked = bw.length ? bw.reduce((s,b)=>s+(Number(b.stake)||0),0) : bk.filter(e=>e.type==="out" && e.date>=from).reduce((s,e)=>s+e.amount,0);
+        if(earned>0 && staked>0){ const pc = staked/earned*100; rows.push(["Bet vs your income", `${pc<1?"<1":Math.round(pc)}%`, pc<=5?"profit":pc>10?"late":"", pc<=5 ? "Last 90 days. Under 5% is healthy, and you're there." : "Last 90 days. Under 5% is healthy, so this lowers your Pato score."]); }
+        card("rcSports", rows);
+        // win often enough? (stat 3, plain words; only with 20+ settled bets)
+        { const dec = b => { const s = Number(b.stake)||0, w = Number(b.toWin)||0; if(s>0 && w>0) return (s+w)/s; const o = Number(b.odds)||0; return o>=100 ? 1+o/100 : o<=-100 ? 1+100/Math.abs(o) : o>1 && o<50 ? o : 0; };
+          const S = bets.filter(b=>(b.result==="won"||b.result==="lost") && dec(b)>1).sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||"")).slice(0,50);
+          if(S.length >= 20){ const n = S.length, w = S.filter(b=>b.result==="won").length, need = S.reduce((s,b)=>s+1/dec(b),0)/n, more = Math.ceil(need*n - w - 1e-9);
+            const el = $("rcSports"), v = document.createElement("button"); v.type = "button"; v.className = "rc-v " + (more<=0 ? "ok" : "no");
+            v.innerHTML = (more<=0 ? "✅ You win often enough to profit at these odds" : `❌ To break even, you'd need to win ${more} more of your last ${n} bets`) + `<small hidden>You win ${Math.round(w/n*100)}% of your bets. At the odds you take, you need ${Math.round(need*100)}% to break even.</small>`;
+            v.onclick = () => { const s = v.querySelector("small"); s.hidden = !s.hidden; };
+            const hd = el.querySelector(".rc-h"); if(hd) hd.after(v); else { el.prepend(v); el.hidden = false; } } } }
+      // POKER (Outside Tables + Home games)
+      { const all = [...((window.__rcPk||{}).pkWeeks||[]), ...((window.__rcPk||{}).pkWeeksH||[])], rows = [];
+        if(all.length){ const N = all.length, up = all.filter(x=>x.v>0.5).length, tot = all.reduce((s,x)=>s+x.v,0), mo = all.filter(x=>(x.d||"").startsWith(ym)).reduce((s,x)=>s+x.v,0);
+          rows.push(["This month", sg(mo), cl(mo)]); rows.push(["All time", sg(tot), cl(tot)]);
+          rows.push(["Average session", sg(tot/N), cl(tot/N)]);
+          rows.push(["Sessions you win", `${Math.round(up/N*100)}% <small>· ${up} of ${N}</small>`, up/N>=0.5?"profit":"late"]); }
+        card("rcPoker", rows); }
+    })(); }catch(e){ console.error(e); }
+    // ---- end Reality check ----
+        const RL = {won:"Won",lost:"Lost",push:"Push",pending:"Open"}, ic = r => r==="won"?"✓":r==="lost"?"✗":r==="push"?"↺":"•";
+        const box = $("sbBets"); box.innerHTML = "";
+        B.slice(0,20).forEach(b => {
+          const r = b.result||"pending", n = (b.legs||[]).length, v = r==="won" ? (Number(b.payout)||0)-(Number(b.stake)||0) : r==="lost" ? -(Number(b.stake)||0) : 0;
+          const d = document.createElement("details"); d.className = "sb-bet r-"+r;
+          const title = n>1 ? `Parlay · ${n} picks` : (b.legs&&b.legs[0] ? b.legs[0].pick : "Bet");
+          d.innerHTML = `<summary><div class="sb-l"><b></b><small></small></div><div class="sb-r"><b class="${r==="won"?"in":r==="lost"?"out":""}"></b><small></small></div></summary><ul class="sb-legs"></ul>`;
+          d.querySelector(".sb-l b").textContent = title;
+          d.querySelector(".sb-l small").textContent = `${fmtDate(b.fecha,false)} · ${od(b.odds)} · ${fmt(Number(b.stake)||0)}` + (b.casa ? ` · ${b.casa}` : "");
+          d.querySelector(".sb-r b").textContent = r==="pending" ? `To win ${fmt(Number(b.toWin)||0)}` : r==="push" ? "Push" : (v<0?"−":"+")+fmt(Math.abs(v));
+          d.querySelector(".sb-r small").textContent = RL[r]||"";
+          const ul2 = d.querySelector(".sb-legs");
+          (b.legs||[]).forEach(l => { const li = document.createElement("li"); li.className = "lg-"+(l.result||"pending");
+            li.innerHTML = `<i></i><div><b></b><small></small></div><span></span>`;
+            li.querySelector("i").textContent = ic(l.result); li.querySelector("b").textContent = l.pick||"";
+            li.querySelector("small").textContent = [l.game, l.sport].filter(Boolean).join(" · "); li.querySelector("span").textContent = od(l.odds); ul2.appendChild(li); });
+          box.appendChild(d); });
+      }
     }
     const inv = config.inversionPoker;
     const recovered = inv>0 && pkT>=inv;
@@ -4193,6 +4864,46 @@ html.mp-guest .tabs{justify-content:space-around}
     const parts = [["Savings",sav-inv-heldT,"--c-sav"], ...held.map(x=>["Lent: "+x.nombre, x.rd, "--c-owe"]), ...invs.map(x=>[x.nombre, Number(x.rd), "--c-al"]),["Checking",cc,"--c-cc"],["Cash",cash,"--c-int"],["Owed to you",owed,"--c-owe"]];
     $("netBar").innerHTML = all>0 ? parts.map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
     $("netSplit").innerHTML = parts.filter(([n,v])=>v>0||n==="Savings").map(([n,v,c])=>`<a><span><i style="background:var(${c})"></i>${n}</span><b>${fmt(v)}</b><small>${all>0?Math.round(v/all*100):0}%${n==="Checking"&&!ccE.last?" · not logged":n==="Cash"&&spWallet()===null?" · not logged":""}</small></a>`).join("");
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
   }
   // league rakeback per Monday: average of the weeks so far (first week left out), counting weeks earned but not paid yet
   function ligaAvg(){
@@ -4415,6 +5126,10 @@ html.mp-guest .tabs{justify-content:space-around}
     if(spFilter==="flag") list = list.filter(t=>t.dupe||t.status!=="Aprobada"||t.excluded);
     list.sort((a,b)=> b.date.localeCompare(a.date) || (b.ts||0)-(a.ts||0));
     const canEdit = !!db;
+    const spAll = list.length, spN = window.__spShow || 8; list = list.slice(0, spN);
+    { let m = $("spMore"); if(!m){ m = document.createElement("div"); m.id = "spMore"; m.className = "hist-more"; $("spLedger").after(m); }
+      m.innerHTML = ""; if(spAll > spN){ const b = document.createElement("button"); b.type = "button"; b.textContent = `View more (${spAll-spN})`; b.onclick = () => { window.__spShow = spN + 8; renderSpend(); }; m.appendChild(b); }
+      if(spN > 8){ const b = document.createElement("button"); b.type = "button"; b.textContent = "Show less"; b.onclick = () => { window.__spShow = 8; renderSpend(); $("s-spledger").scrollIntoView({block:"start"}); }; m.appendChild(b); } }
     $("spLedger").innerHTML = list.length ? list.map(t=>{
       const wallet = spIsCashOut(t)||spIsCashIn(t), inc = spIsIn(t), off = !spLive(t);
       const tag = t.status!=="Aprobada" ? t.status : t.excluded ? "Not counted" : t.dupe ? "Possible double" : spIsManual(t) ? (t.fromSav ? "Paid from savings" : "Paid in cash") : spIsCashOut(t) ? (t.kept ? "ATM · you kept it" : "ATM · not counted as spent") : spIsCashIn(t) ? "Cash count" : spIsDep(t) ? "Cash deposited · not spending" : spIsTransfer(t) ? (t.own ? "To your own account" : "Transfer from checking") : inc ? "Money in" : "";
@@ -4838,7 +5553,7 @@ Numbers on the receipt may use a comma for decimals (RD$2.000,00 means 2000). If
   try{ new ResizeObserver(() => { if(Math.abs(($("cWrap").clientWidth||0) - chLastW) > 8) renderChart(); }).observe($("cWrap")); }catch(e){}
   // ---------- income by month ----------
   const BCATS = [["nl","Newlink","--c-nl"],["al","Monthly allowance","--c-al"],["rb","League rakeback","--c-rb"],["pk","Player winnings","--c-pk"],["int","Loan interest","--c-int"],["ot","Other","--c-ot"]];
-  const bCat = src => ({"Newlink":"nl","Mensualidad":"al","Rakeback de la liga":"rb","Póker jugando":"pk","Póker casino":"pk","Póker con amigos":"pk","Rakeback como jugador":"pk","Otro":"ot"})[src] || null;
+  const bCat = src => ({"Newlink":"nl","Mensualidad":"al","Rakeback de la liga":"rb","Póker jugando":"pk","Póker casino":"pk","Póker con amigos":"pk","Apuestas":"pk","Rakeback como jugador":"pk","Otro":"ot"})[src] || null;
   function interestIn(key){
     const share = l => (l.interes||0)/(100+(l.interes||0)); let t=0;
     loans.forEach(l => {
@@ -5102,6 +5817,7 @@ TRACKER DATA:
       pokerOtra = snap.docs.map(d => ({id:d.id, ...d.data(), monto:Number(d.data().monto)||0}));
       render();
     }, ()=>{});
+    db.collection("bets").onSnapshot(snap => { bets = snap.docs.map(d => ({id:d.id, ...d.data()})); render(); }, ()=>{});
     db.collection("pagos").onSnapshot(snap => {
       pagos = snap.docs.map(d => ({id:d.id, ...d.data(), monto:Number(d.data().monto)||0}));
       render();
@@ -5169,10 +5885,72 @@ TRACKER DATA:
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();</script>
+<script id="stakd-alerts-js">
+(function(){
+  var PUB = "BAg0woHIxVYnMieYNkLUB-H_aID7XGPWxXMsWw0EhkhdcJvqnX36l4LsXkt-KZf7-fVb50HkP5ee3GsIOzB-wis";
+  var LIST = [["limit","A stock hits your limit price"],["move","A stock moves 5% or has earnings tomorrow"],["loan","A loan is due tomorrow"],["paid","A payment comes in"],["budget","You reach 85% of your monthly limit"],["rake","Rakeback arrives"]];
+  var $ = function(id){ return document.getElementById(id); };
+  var db = null, prefs = {}, subs = [];
+  var ok = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  var b2u = function(s){ s = s.replace(/-/g,"+").replace(/_/g,"/"); s += "===".slice((s.length+3)%4); var r = atob(s), a = new Uint8Array(r.length); for(var i=0;i<r.length;i++) a[i] = r.charCodeAt(i); return a; };
+  var toast = function(t, s, w){ if(window.mpToast) window.mpToast(t, s||"", w); };
+  function build(){
+    var sh = $("palSheet"); if(!sh || $("alWrap")) return;
+    var w = document.createElement("div"); w.id = "alWrap";
+    w.innerHTML = '<span>Alerts</span><div id="alState"></div>' + LIST.map(function(x){ return '<label class="tg"><span>'+x[1]+'</span><input type="checkbox" data-al="'+x[0]+'"></label>'; }).join("");
+    var before = $("snapKeyRow") || $("sgTabs"); if(before) sh.insertBefore(w, before); else sh.appendChild(w);
+    w.querySelectorAll("[data-al]").forEach(function(c){ c.onchange = function(){ var o = {}; o[c.dataset.al] = c.checked; prefs[c.dataset.al] = c.checked; db.doc("prefs/alerts").set(Object.assign({}, prefs, {at: Date.now()})).catch(function(){ toast("Couldn’t save", "Try again", true); }); }; });
+    state();
+  }
+  function sync(){ var w = $("alWrap"); if(!w) return; w.querySelectorAll("[data-al]").forEach(function(c){ c.checked = prefs[c.dataset.al] !== false; }); }
+  async function state(){
+    var el = $("alState"); if(!el) return;
+    if(!ok){ el.innerHTML = '<div class="hint">To get alerts, open Pato from its Home Screen icon (iPhone with iOS 16.4 or newer).</div>'; return; }
+    var reg = await navigator.serviceWorker.getRegistration().catch(function(){ return null; });
+    var sub = reg ? await reg.pushManager.getSubscription().catch(function(){ return null; }) : null;
+    var on = sub && Notification.permission === "granted" && subs.some(function(s){ return s.endpoint === sub.endpoint; });
+    if(on){ el.innerHTML = '<div class="hint">Alerts are on for this phone.</div>'; return; }
+    if(Notification.permission === "denied"){ el.innerHTML = '<div class="hint">Notifications are blocked. Turn them on in iPhone Settings → Notifications → Pato.</div>'; return; }
+    el.innerHTML = '<button type="button" class="primary" id="alOn">Turn on alerts</button>';
+    $("alOn").onclick = turnOn;
+  }
+  async function turnOn(){
+    var b = $("alOn"); if(b){ b.disabled = true; b.textContent = "Turning on…"; }
+    try{
+      var perm = await Notification.requestPermission();
+      if(perm !== "granted"){ toast("Alerts not allowed", "You can allow them in iPhone Settings", true); state(); return; }
+      var reg = await navigator.serviceWorker.register("sw.js"); await navigator.serviceWorker.ready;
+      var sub = await reg.pushManager.getSubscription() || await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:b2u(PUB)});
+      var j = sub.toJSON(), mine = {endpoint:j.endpoint, keys:j.keys, at:Date.now(), ua:navigator.userAgent.slice(0,120)};
+      subs = subs.filter(function(s){ return s.endpoint !== j.endpoint; }).concat([mine]);
+      await db.doc("prefs/push").set({subs:subs, at:Date.now()});
+      toast("Alerts are on", "You’ll get a test alert within the hour");
+    }catch(e){ console.error(e); toast("Couldn’t turn on alerts", "Open Pato from the Home Screen icon and try again", true); }
+    state();
+  }
+  if(!window.claude) return;
+  window.claude.use("db").then(function(d){
+    db = d; var me = window.MP_ME || {}; if(!me.owner) return;
+    build();
+    if(ok) navigator.serviceWorker.register("sw.js").catch(function(){});
+    db.doc("prefs/alerts").onSnapshot(function(s){ prefs = s.exists ? (s.data() || {}) : {}; sync(); }, function(){});
+    db.doc("prefs/push").onSnapshot(function(s){ subs = (s.exists && s.data().subs) || []; state(); }, function(){});
+  });
+})();
+</script>
 <script id="stakd-guest-js">
 (function(){
   var H = document.documentElement, TABS = ["spending","poker","loans","trends"], db = null, cur = null, shown = false;
   var num = function(v){ return Number(String(v||"").replace(/[^0-9.]/g,"")) || 0; };
+  var track = [];
+  function applyTrack(t){
+    track = Array.isArray(t) ? t : [];
+    var bets = track.indexOf("bets") >= 0, pk = track.indexOf("poker") >= 0;
+    H.classList.toggle("tr-bets", bets); H.classList.toggle("tr-poker", pk);
+    var lab = document.querySelector("#tab-poker span"); if(lab) lab.textContent = bets && !pk ? "Bets" : pk && !bets ? "Poker" : "Play";
+    var seg = document.getElementById("pkSeg");
+    if(seg){ var vis = [].slice.call(seg.querySelectorAll("button")).filter(function(b){ return getComputedStyle(b).display !== "none"; }); var on = seg.querySelector("button.on"); if(vis.length && (!on || vis.indexOf(on) < 0)) vis[0].click(); }
+  }
   function apply(tabs){
     cur = tabs;
     TABS.forEach(function(t){ H.classList.toggle("on-"+t, tabs.indexOf(t) >= 0); });
@@ -5190,18 +5968,20 @@ TRACKER DATA:
   function showSetup(){
     if(shown) return; shown = true; fillSetup();
     var box = document.getElementById("sgSetup"); box.hidden = false; H.classList.add("sg-on");
+    box.querySelectorAll(".sg-chips button").forEach(function(b){ b.onclick = function(){ b.classList.toggle("on"); }; });
     document.getElementById("sgForm").onsubmit = async function(e){
       e.preventDefault();
       var goal = num(document.getElementById("sgGoal").value) || 1000000, lim = num(document.getElementById("sgLimit").value);
-      var tabs = TABS.filter(function(t){ var c = document.querySelector('#sgSetup [data-t="'+t+'"]'); return c && c.checked; });
+      var picks = [].slice.call(document.querySelectorAll('#sgSetup .sg-chips button.on')).map(function(b){ return b.dataset.k; });
+      var tabs = TABS.filter(function(t){ return t === "poker" ? (picks.indexOf("poker") >= 0 || picks.indexOf("bets") >= 0) : picks.indexOf(t) >= 0; });
       var hitos = [0.5,0.65,0.8,1].map(function(f){ return Math.round(goal*f/1000)*1000; });
       document.getElementById("sgMsg").textContent = "Saving…";
       try{
-        await db.doc("prefs/ui").set({ pal: document.getElementById("sgPal").value, tabs: tabs, at: Date.now() });
+        await db.doc("prefs/ui").set({ pal: document.getElementById("sgPal").value, tabs: tabs, track: picks, at: Date.now() });
         var c = { meta: goal, hitos: hitos, deudas: [], fijos: [], creada: new Date().toISOString().slice(0,10) };
         if(lim > 0) c.limiteMensual = lim;
         await db.doc("config/main").set(c);
-        box.hidden = true; H.classList.remove("sg-on"); apply(tabs);
+        box.hidden = true; H.classList.remove("sg-on"); apply(tabs); applyTrack(picks);
       }catch(err){ console.error(err); document.getElementById("sgMsg").textContent = "Couldn’t save. Check your connection and try again."; }
     };
   }
@@ -5219,10 +5999,231 @@ TRACKER DATA:
     db = d; var me = window.MP_ME || {};
     if(me.owner) return; // Marco: nothing changes
     addSettings();
-    db.doc("prefs/ui").onSnapshot(function(s){ var x = s.exists ? s.data() : {}; apply(Array.isArray(x.tabs) ? x.tabs : ["spending","loans","trends"]); syncSettings(); }, function(){});
+    db.doc("prefs/ui").onSnapshot(function(s){ var x = s.exists ? s.data() : {}; apply(Array.isArray(x.tabs) ? x.tabs : ["spending","loans","trends"]); applyTrack(Array.isArray(x.track) ? x.track : ["bets","poker"]); syncSettings(); }, function(){});
     db.doc("config/main").onSnapshot(function(s){ if(!s.exists) showSetup(); }, function(){});
   });
 })();
 </script>
+<script id="pato-light-js">
+(function(){
+  window.__patoLook = function(p){
+    var L = p === "goyardl", H = document.documentElement;
+    H.setAttribute("data-theme", L ? "light" : "dark");
+    var m = document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute("content", L ? "#F4EFE5" : "#0F241B");
+    document.querySelectorAll('img[src^="icon-192"],img[src^="icon-light-192"]').forEach(function(i){ i.src = L ? "icon-light-192.png?v=6" : "icon-192.png?v=6"; });
+  };
+  window.__patoLook(document.documentElement.getAttribute("data-palette"));
+})();
+</script>
+<script id="pato-disc-js">
+(function(){
+  // Discreet mode: hide every money amount (Marco, Nov 9). Text is masked in place and put back when turned off.
+  var H = document.documentElement, KEY = "pato-discreet", orig = new Map(), obs = null;
+  var SHORT = /(^|[\s(])[−+\-]?\d+(?:\.\d+)?[kKM](?=$|[\s.,;:)])/g;   // "1M", "500k" inside sentences
+  var IN = /[−+\-]?\s?(?:RD|US)\$\s?\d[\d,]*(?:\.\d+)?\s?[kKM]?/g, BARE = /^\s*[−+\-]?\s?(?:\d{1,3}(?:,\d{3})+|\d{4,})(?:\.\d+)?\s*$|^\s*[−+\-]?\d+(?:\.\d+)?[kM]\s*$/;
+  var EYE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+  var OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.4 10.4 0 0 1 12 19c-6.4 0-10-7-10-7a18.5 18.5 0 0 1 5.1-5.9M9.9 5.2A9.7 9.7 0 0 1 12 5c6.4 0 10 7 10 7a18.6 18.6 0 0 1-2.2 3.2M14.1 14.1a3 3 0 1 1-4.2-4.2"/><path d="M2 2l20 20"/></svg>';
+  function maskNode(n){
+    var v = n.nodeValue; if(!v || v.indexOf("•") >= 0) return;
+    var p = n.parentNode; if(!p || /^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(p.nodeName)) return;
+    var m = v.replace(IN, "RD$•••").replace(SHORT, "$1•••"); if(m === v && BARE.test(v)) m = "•••";
+    if(p.closest && p.closest("#pctBase,#pctFill,#pct")) m = m.replace(/\d+(?:\.\d+)?\s?%/g, "•••%");   // goal % would give the balance away
+    if(m !== v){ orig.set(n, v); n.nodeValue = m; }
+  }
+  function maskAll(root){ var w = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT), n, list = []; while((n = w.nextNode())) list.push(n); list.forEach(maskNode); }
+  function on(){ H.classList.add("pato-discreet"); maskAll(); if(!obs){ obs = new MutationObserver(function(ms){ if(!H.classList.contains("pato-discreet")) return; ms.forEach(function(m){ if(m.type === "characterData") maskNode(m.target); else m.addedNodes.forEach(function(x){ if(x.nodeType === 3) maskNode(x); else if(x.nodeType === 1) maskAll(x); }); }); }); }
+    obs.observe(document.body, {subtree:true, childList:true, characterData:true}); }
+  function off(){ H.classList.remove("pato-discreet"); if(obs) obs.disconnect(); orig.forEach(function(v, n){ if(n.isConnected) n.nodeValue = v; }); orig.clear(); try{ window.__mpRerender && window.__mpRerender(); }catch(e){} }
+  function paint(){ var b = document.getElementById("discBtn"); if(!b) return; var d = H.classList.contains("pato-discreet"); b.innerHTML = d ? OFF : EYE; b.setAttribute("aria-label", d ? "Show amounts" : "Hide amounts"); b.setAttribute("aria-pressed", d); }
+  function set(d){ d ? on() : off(); try{ localStorage.setItem(KEY, d ? "1" : ""); }catch(e){} paint(); }
+  function place(){
+    var s = document.getElementById("saved"); if(!s || document.getElementById("discBtn")) return;
+    var b = document.createElement("button"); b.type = "button"; b.id = "discBtn"; b.onclick = function(e){ e.stopPropagation(); set(!H.classList.contains("pato-discreet")); };
+    s.parentNode.insertBefore(b, s.nextSibling); paint();
+  }
+  place(); var d = false; try{ d = localStorage.getItem(KEY) === "1"; }catch(e){} if(d) set(true);
+  setInterval(place, 2000);
+})();
+</script>
+<script id="pato-bar-js">
+(function(){
+  var H = document.documentElement, typing = function(e){ var t = e && e.target; return t && (t.tagName === "INPUT" && !/^(checkbox|radio|button|submit|range|file)$/i.test(t.type) || t.tagName === "TEXTAREA" || t.tagName === "SELECT"); };
+  document.addEventListener("focusin", function(e){ if(typing(e)) H.classList.add("kb-open"); });
+  document.addEventListener("focusout", function(){ setTimeout(function(){ if(!typing({target:document.activeElement})) H.classList.remove("kb-open"); window.scrollBy(0,0); }, 60); });
+})();
+</script>
+<div id="snapUi"><button type="button" id="snapBtn" aria-label="Snap a photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
+<input type="file" id="snapFile" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" aria-label="Photo">
+<div id="snapDlg" hidden role="dialog" aria-modal="true"><div class="sd" id="snapBody"></div></div></div><!--/snapUi-->
+<script id="stakd-snap-js">
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var db = null, spend = [], bets = [], file = null;
+  var CATS = {food:"Food", gas:"Car", sport:"Tennis & club", out:"Going out", subs:"Subscriptions", rides:"Rides", health:"Pharmacy & health", family:"Family", needs:"Essentials", shopping:"Wants", fees:"Fees", other:"Other"};
+  var HINT = {"tab-savings":"a deposit or transfer receipt", "tab-spending":"a store receipt or bank transfer receipt", "tab-stocks":"an Interactive Brokers screen (orders, trades or positions)", "tab-poker":"a sports bet slip", "tab-loans":"a bank transfer for a loan (money lent or paid back)", "tab-trends":"a receipt"};
+  var esc = function(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var rd = function(n){ return "RD$" + Math.round(Number(n)||0).toLocaleString("en-US"); };
+  var usd = function(n){ return "US$" + (Number(n)||0).toLocaleString("en-US", {maximumFractionDigits:2}); };
+  var today = function(){ var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+  var okDate = function(s){ return /^\d{4}-\d{2}-\d{2}$/.test(String(s||"")) ? s : today(); };
+  var days = function(a, b){ return Math.abs((new Date(a+"T12:00") - new Date(b+"T12:00")) / 864e5); };
+  var odds = function(o){ o = Number(o); return o ? (o > 0 ? "+" + o : String(o)) : "—"; };
+  var curTab = function(){ var t = document.querySelector('.tabs [aria-selected="true"]'); return t ? t.id : "tab-savings"; };
+  function toast(t, s, w){ if(window.mpToast) return window.mpToast(t, s, w); var el = $("toastT"); if(el){ $("toastT").textContent = t; $("toastS").textContent = s || ""; var x = $("toast"); x.classList.toggle("warn", !!w); x.classList.add("on"); clearTimeout(toast.h); toast.h = setTimeout(function(){ x.classList.remove("on"); }, 3200); } }
+  function open(html){ $("snapBody").innerHTML = html; $("snapDlg").hidden = false; }
+  function close(){ $("snapDlg").hidden = true; $("snapBody").innerHTML = ""; }
+  $("snapDlg").addEventListener("click", function(e){ if(e.target === $("snapDlg")) close(); });
+  function rows(list){ return list.filter(function(r){ return r[1] !== null && r[1] !== undefined && r[1] !== ""; }).map(function(r){ return '<div class="r"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>'; }).join(""); }
+  function buttons(list){ return '<div class="bt">' + list.map(function(b, i){ return '<button type="button" class="'+(i===0?"primary":"secondary")+'" data-b="'+i+'">'+esc(b[0])+'</button>'; }).join("") + '<button type="button" class="secondary" data-b="x">Cancel</button></div>'; }
+  function wire(list){ $("snapBody").querySelectorAll("[data-b]").forEach(function(b){ b.onclick = async function(){ if(b.dataset.b === "x"){ close(); return; } b.disabled = true; try{ await list[+b.dataset.b][1](); }catch(e){ console.error(e); toast("Couldn’t save", "Try again", true); } close(); }; }); }
+
+  function keySheet(then){
+    open('<h3>Add your Claude key</h3><p class="sub">The camera reads photos with Claude. Make a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a> and paste it here. It stays only on this phone.</p><input type="password" id="snapKey" placeholder="sk-ant-…" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="bt"><button type="button" class="primary" id="snapKeySave">Save key</button><button type="button" class="secondary" id="snapKeyNo">Not now</button></div>');
+    $("snapKeyNo").onclick = close;
+    $("snapKeySave").onclick = function(){ var k = $("snapKey").value.trim(); if(!/^sk-ant-/.test(k)){ $("snapKey").focus(); toast("That doesn’t look like a Claude key", "It starts with sk-ant-", true); return; } window.mpClaudeKey.set(k); close(); syncKeyRow(); toast("Key saved", "The camera is ready"); if(then) then(); };
+  }
+  function hasKey(){ document.documentElement.classList.toggle("has-ak", !!(window.mpClaudeKey && window.mpClaudeKey.get())); }
+  hasKey(); setInterval(hasKey, 3000);
+  function syncKeyRow(){ hasKey(); var r = $("snapKeyRow"); if(!r) return; var has = !!(window.mpClaudeKey && window.mpClaudeKey.get()); r.innerHTML = '<span>Claude key: '+(has?"added":"not added")+'</span><button type="button" id="snapKeyBtn">'+(has?"Remove":"Add")+'</button>'; $("snapKeyBtn").onclick = function(){ if(has){ window.mpClaudeKey.set(""); syncKeyRow(); toast("Key removed", ""); } else keySheet(); }; }
+  function addKeyRow(){ var sh = $("palSheet"); if(!sh || $("snapKeyRow")) return; var r = document.createElement("div"); r.id = "snapKeyRow"; var t = $("sgTabs"); if(t) sh.insertBefore(r, t); else sh.appendChild(r); syncKeyRow(); }
+
+  // tap: a small sheet with "Take a photo" and a line to type it (Marco, Nov 9: "500 valet tip")
+  function chooser(){
+    open('<h3>Log something</h3><p class="sub">A photo of a receipt, bet slip, transfer or IBKR screen, or just type it.</p><div class="bt"><button type="button" class="primary" id="snapPhoto">Take a photo</button></div>' +
+      '<div class="snap-type"><input id="snapText" placeholder="Or type it: 500 valet tip" autocomplete="off" enterkeyhint="send"><button type="button" class="secondary" id="snapSend" aria-label="Log it">Log</button></div>' +
+      '<button type="button" class="snap-x" id="snapCancel">Cancel</button>');
+    $("snapPhoto").onclick = function(){ close(); $("snapFile").click(); };
+    var send = function(){ var t = $("snapText").value.trim(); if(t.length < 2){ $("snapText").focus(); return; } close(); read({text:t}); };
+    $("snapSend").onclick = send; $("snapText").onkeydown = function(e){ if(e.key === "Enter"){ e.preventDefault(); send(); } };
+    $("snapCancel").onclick = close;
+  }
+  $("snapBtn").onclick = function(){ if(!(window.mpClaudeKey && window.mpClaudeKey.get())){ keySheet(chooser); return; } chooser(); };
+  $("snapFile").addEventListener("change", function(){
+    file = $("snapFile").files && $("snapFile").files[0]; $("snapFile").value = ""; if(file) read({file:file});
+  });
+  async function read(src){
+    var tab = curTab(), btn = $("snapBtn"), typed = !!src.text; btn.classList.add("busy"); toast(typed ? "Got it…" : "Reading the photo…", "");
+    var P = (typed ? 'You read a short note the person typed into a personal money app in the Dominican Republic, e.g. "500 valet tip" or "sent 2000 to mom". If no payment method is said, use "cash" for tips, colmados, parking and small cash things, otherwise null. Use today unless a day is said.' : 'You read a photo for a personal money app in the Dominican Republic.') + ' Amounts are RD$ (Dominican pesos) unless shown as US$/USD. The person is on the "' + tab.replace("tab-","") + '" tab, so it is probably ' + (HINT[tab] || "a receipt") + ', but decide from ' + (typed ? 'the note' : 'the image') + ' itself. Today is ' + today() + '.\n' +
+      'Answer with JSON only, exactly one of these shapes:\n' +
+      '{"kind":"receipt","merchant":string,"amount":number,"date":"YYYY-MM-DD","cat":one of ' + JSON.stringify(Object.keys(CATS)) + ',"paid":"card"|"cash"|null}\n' +
+      '{"kind":"bet","casa":string (sportsbook),"tipo":"single"|"parlay","stake":number,"odds":American odds integer for the whole ticket,"toWin":number,"payout":number (0 if lost or pending),"result":"won"|"lost"|"pending"|"void","fecha":"YYYY-MM-DD","hora":"HH:MM","legs":[{"sport":string,"game":string,"pick":string,"odds":integer,"result":"won"|"lost"|"pending"|"void","fecha":"YYYY-MM-DD HH:MM"}]}\n' +
+      '{"kind":"stocks","trades":[{"t":ticker,"side":"buy"|"sell","sh":number,"price":number,"usd":number,"fee":number,"limite":number,"status":"filled"|"open"|"cancelled","date":"YYYY-MM-DD"}],"summary":string}\n' +
+      '{"kind":"transfer","direction":"out"|"in","amount":number,"date":"YYYY-MM-DD","person":string (the other person, no account numbers),"bank":string,"note":string,"cat":one of ' + JSON.stringify(Object.keys(CATS)) + ',"own":true if it went to their own account}\n' +
+      '{"kind":"other","summary":string}\n' +
+      'Numbers may use a comma for decimals (RD$2.000,00 means 2000). Use null for anything you cannot see. Food includes groceries, restaurants and delivery; car is gas, tolls, parking, car wash; rides is Uber; wants is clothes, electronics and personal purchases; essentials is paperwork, repairs, utilities, insurance.';
+    var d;
+    try{ var s = await window.claude.use("sample"); if(!s) throw Object.assign(new Error(), {code:"no_key"}); d = typed ? await s.json(P + '\nThe note: """' + src.text.slice(0, 300) + '"""', {modelTier:"quick"}) : await s.json(P, {images: src.file}); }
+    catch(e){
+      btn.classList.remove("busy");
+      var c = e && e.code;
+      if(c === "no_key" || c === "bad_key"){ if(c === "bad_key") toast("Claude didn’t accept the key", "Add it again", true); keySheet(); return; }
+      toast(c === "no_credit" ? "Your Claude account is out of credit" : c === "rate_limited" ? "Claude is busy, try again in a minute" : c === "network" ? "No connection" : c === "image_rejected" ? "That photo couldn’t be read" : "Couldn’t read the photo", c === "no_credit" ? "Add credit at console.anthropic.com" : "Try again", true);
+      return;
+    }
+    btn.classList.remove("busy");
+    try{ show(d || {}, tab); }catch(e){ console.error(e); toast(typed ? "Couldn’t understand that" : "Couldn’t read the photo", "Try again", true); }
+  }
+
+  async function queue(d, note){ await db.collection("snaps").add({status:"pending", kind:d.kind, data:d, tab:curTab(), at:today(), ts:Date.now(), note:note||""}); }
+
+  function show(d, tab){
+    var k = d.kind;
+    if(k === "receipt"){
+      var amt = Number(d.amount)||0, dt = okDate(d.date), cat = CATS[d.cat] ? d.cat : "other";
+      var m = spend.filter(function(x){ var a = Number(x.rd != null ? x.rd : x.amount)||0; return !x.excluded && x.kind !== "manual" && a > 0 && Math.abs(a - amt) <= Math.max(1, amt*0.01) && x.date && days(x.date, dt) <= 3 && !x.receipt; }).sort(function(a, b){ return days(a.date, dt) - days(b.date, dt); })[0];
+      var html = '<h3>Receipt</h3><p class="sub">' + (m ? "Matches your bank charge on " + esc(m.date) + ", so it won’t count twice." : "No bank charge for this yet.") + '</p>' + rows([["Where", d.merchant], ["Amount", rd(amt)], ["Date", dt], ["Category", CATS[cat]]]);
+      var acts = [];
+      if(m) acts.push(["Save", async function(){ var patch = {receipt:{merchant:String(d.merchant||"").slice(0,80), amount:amt, date:dt}, note:"Receipt: " + String(d.merchant||"").slice(0,60)}; if(!m.userCat && cat !== "other" && m.cat !== "errands") patch.cat = cat; await db.collection("spend").doc(m.id).update(patch); toast("Receipt added", "Matched with your bank charge"); }]);
+      else {
+        var cash = async function(){ await db.collection("spend").add({date:dt, merchant:String(d.merchant||CATS[cat]).slice(0,80), amount:amt, currency:"DOP", rd:amt, kind:"manual", status:"Aprobada", cat:cat, source:"manual", excluded:false, ts:Date.now(), receipt:true}); toast(rd(amt) + " cash expense logged", CATS[cat]); };
+        var card = async function(){ await queue(d, "card charge not synced yet: attach to it, don’t add a new expense"); toast("Saved", "It joins the card charge when it comes in"); };
+        if(d.paid === "cash") acts.push(["Paid cash, save", cash], ["I paid by card", card]); else acts.push(["Paid by card, save", card], ["I paid cash", cash]);
+      }
+      open(html + buttons(acts)); wire(acts); return;
+    }
+    if(k === "bet"){
+      var legs = Array.isArray(d.legs) ? d.legs : [];
+      var html2 = '<h3>' + (d.tipo === "parlay" ? "Parlay" : "Bet") + ' · ' + esc(d.casa || "Sportsbook") + '</h3><p class="sub">' + esc(okDate(d.fecha)) + (d.hora ? " · " + esc(d.hora) : "") + '</p>' +
+        rows([["Stake", rd(d.stake)], ["Odds", odds(d.odds)], ["To win", d.toWin ? rd(d.toWin) : null], ["Result", d.result ? String(d.result).replace(/^./, function(c){ return c.toUpperCase(); }) : null], ["Paid", Number(d.payout) > 0 ? rd(d.payout) : null]]) +
+        legs.map(function(l){ return '<div class="leg">' + esc(l.pick) + ' <b>' + esc(odds(l.odds)) + '</b><br><small>' + esc(l.game || l.sport || "") + (l.result ? " · " + esc(l.result) : "") + '</small></div>'; }).join("");
+      var id = (String(d.casa || "bet").toLowerCase().replace(/[^a-z0-9]/g, "") || "bet") + "-" + okDate(d.fecha).replace(/-/g, "") + "-" + String(d.hora || "").replace(/\D/g, "").padStart(4, "0");
+      var dup = bets.some(function(b){ return b.id === id; });
+      var acts2 = [[dup ? "Update this bet" : "Save bet", async function(){
+        var doc = {casa:d.casa || "Sportsbook", tipo:d.tipo === "parlay" ? "parlay" : "single", stake:Number(d.stake)||0, odds:Number(d.odds)||0, toWin:Number(d.toWin)||0, payout:Number(d.payout)||0, result:d.result || "pending", fecha:okDate(d.fecha), hora:d.hora || "", legs:legs.map(function(l){ return {sport:l.sport||"", game:l.game||"", pick:l.pick||"", odds:Number(l.odds)||0, result:l.result||"pending", fecha:l.fecha||""}; }), createdAt:Date.now(), fromSnap:true};
+        if(d.result && d.result !== "pending") doc.calificado = today();
+        await db.collection("bets").doc(id).set(doc); toast("Bet saved", rd(doc.stake) + " · " + odds(doc.odds));
+      }]];
+      open(html2 + buttons(acts2)); wire(acts2); return;
+    }
+    if(k === "stocks"){
+      var tr = Array.isArray(d.trades) ? d.trades : [];
+      var html3 = '<h3>Stocks</h3><p class="sub">' + esc(d.summary || "") + '</p>' + tr.map(function(t){ return '<div class="r"><span>' + esc((t.side === "sell" ? "Sell " : "Buy ") + (t.t || "")) + (t.status && t.status !== "filled" ? " · " + esc(t.status) : "") + '</span><b>' + esc(t.sh ? t.sh + " sh" : "") + (t.price ? " @ " + esc(usd(t.price)) : t.limite ? " limit " + esc(usd(t.limite)) : "") + (t.usd ? " · " + esc(usd(t.usd)) : "") + '</b></div>'; }).join("") + '<p class="sub" style="margin-top:10px">Your Stocks tab updates within the hour.</p>';
+      var acts3 = [["Save", async function(){ await queue(d); toast("Saved", "Stocks update within the hour"); }]];
+      open(html3 + buttons(acts3)); wire(acts3); return;
+    }
+    if(k === "transfer"){
+      var a = Number(d.amount)||0, dt2 = okDate(d.date), out = d.direction !== "in";
+      var html4 = '<h3>Transfer ' + (out ? "sent" : "received") + '</h3><p class="sub">' + esc(d.bank || "") + '</p>' + rows([[out ? "To" : "From", d.person], ["Amount", rd(a)], ["Date", dt2], ["Note", d.note]]);
+      var acts4 = [];
+      var saveTr = function(own){ return async function(){ var to = String(d.person||"someone").slice(0,80), cat = own ? "other" : (CATS[d.cat] ? d.cat : "other");
+        var doc = {date:dt2, merchant:(own ? "Transfer to own account · " : "Transfer to ") + to, amount:a, currency:"DOP", rd: own ? 0 : a, kind:"transfer", status:"Aprobada", cat:cat, source:"manual", excluded:false, ts:Date.now(), note: own ? "RD$" + a + " moved between own accounts; not spending" : "RD$" + a, fromSnap:true}; if(own) doc.own = true;
+        await db.collection("spend").add(doc);
+        toast(rd(own ? 0 : a) + " transfer logged", to); }; };
+      if(out && tab !== "tab-loans"){ if(d.own) acts4.push(["To my own account, save", saveTr(true)], ["It was spending", saveTr(false)]); else acts4.push(["Save as spending", saveTr(false)], ["It went to my own account", saveTr(true)]); }
+      if(false) acts4.push(["Fill the transfer form", async function(){ $("spTrAmt").value = a.toLocaleString("en-US"); $("spTrTo").value = String(d.person||"").slice(0,80); $("spTrDate").value = dt2; ["spTrAmt","spTrTo","spTrDate"].forEach(function(x){ $(x).dispatchEvent(new Event("input")); }); setTimeout(function(){ $("s-sptr").scrollIntoView({behavior:"smooth", block:"start"}); }, 50); toast("Check it and tap Log transfer", ""); }]);
+      acts4.push([tab === "tab-loans" ? (out ? "Save as a loan" : "Save as a payment") : out ? "It’s a loan" : "Save", async function(){ await queue(d, tab === "tab-loans" ? (out ? "loan given" : "loan payment received") : ""); toast("Saved", "It’s added within the hour"); }]);
+      open(html4 + buttons(acts4)); wire(acts4); return;
+    }
+    open('<h3>Couldn’t tell what this is</h3><p class="sub">' + esc(d.summary || "Try a clearer photo or screenshot.") + '</p><div class="bt"><button type="button" class="secondary" id="snapOk">OK</button></div>'); $("snapOk").onclick = close;
+  }
+
+  if(!window.claude) return;
+  window.claude.use("db").then(function(d){
+    db = d; addKeyRow();
+    db.collection("spend").onSnapshot(function(s){ spend = s.docs.map(function(x){ var o = x.data(); o.id = x.id; return o; }); }, function(){});
+    db.collection("bets").onSnapshot(function(s){ bets = s.docs.map(function(x){ return {id:x.id}; }); }, function(){});
+  });
+})();
+</script>
+<script id="pato-ui-js">
+(function(){
+  // one small pill per tab: duck + score + zone; tap opens the score on Savings
+  window.__patoPill = function(s, name, cls){
+    var light = document.documentElement.getAttribute("data-palette") === "goyardl";
+    document.querySelectorAll(".tabp").forEach(function(tp){
+      var row = tp.querySelector(":scope > .pp-row");
+      if(!row){ row = document.createElement("div"); row.className = "pp-row"; row.innerHTML = '<button type="button" class="pato-pill"><img alt=""><b></b><span></span></button>'; tp.insertBefore(row, tp.firstChild);
+        row.firstChild.onclick = function(){ var t = document.getElementById("tab-savings"); if(t && t.getAttribute("aria-selected") !== "true") t.click(); setTimeout(function(){ var c = document.getElementById("psc"); if(c) c.scrollIntoView({behavior:"smooth", block:"center"}); }, 80); }; }
+      var b = row.firstChild; b.querySelector("img").src = light ? "icon-light-192.png?v=6" : "icon-192.png?v=6";
+      b.querySelector("b").textContent = s; var sp = b.querySelector("span"); sp.textContent = name; sp.className = cls;
+      b.setAttribute("aria-label", "Pato score " + s + ", " + name);
+    });
+  };
+  if(window.__patoLast) window.__patoPill.apply(null, window.__patoLast);
+  // camera button sits in the middle of the tab bar
+  function dockCam(){ var nav = document.querySelector(".tabs"), b = document.getElementById("snapBtn"); if(!nav) return;
+    var st = document.getElementById("tab-stocks"), spn = document.getElementById("tab-spending");   // order: Savings, Stocks, Spend, camera, Poker, Loans, Trends
+    if(st && spn && st.nextElementSibling !== spn) nav.insertBefore(st, spn);
+    if(!b) return;
+    var vis = Array.prototype.filter.call(nav.querySelectorAll("[role=tab]"), function(x){ return !x.hidden && getComputedStyle(x).display !== "none"; });
+    var before = vis[Math.ceil(vis.length/2)] || null; if(b.parentNode !== nav || b.nextElementSibling !== before) nav.insertBefore(b, before); }
+  dockCam(); setInterval(dockCam, 1500);
+})();
+</script>
+<script id="pato-looks-js">
+(function(){
+  var base = window.__patoLook;
+  window.__patoLook = function(p){
+    if(base) base(p);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if(p === "goyardt"){ if(m) m.setAttribute("content", "#24170E"); }
+    if(p === "goyardl"){ if(m) m.setAttribute("content", "#E8D7B8"); }
+    document.querySelectorAll('img[src^="icon-192"],img[src^="icon-light-192"],img[src^="icon-brown-192"]').forEach(function(i){
+      i.src = p === "goyardl" ? "icon-light-192.png?v=6" : p === "goyardt" ? "icon-brown-192.png?v=6" : "icon-192.png?v=6"; });
+  };
+  window.__patoLook(document.documentElement.getAttribute("data-palette"));
+})();
+</script>
+<div id="sbCover"></div>
 </body>
 </html>
