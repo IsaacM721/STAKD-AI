@@ -1657,7 +1657,8 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109100225";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109100914";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4138,7 +4139,7 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
     $("loanStats").innerHTML = loans.length ? `
       <div class="stat"><b>${fmt(capAct)}</b><span>Lent out now</span></div>
       <div class="stat"><b>${avgRate.toLocaleString("en-US",{maximumFractionDigits:1})}%</b><span>Average interest</span></div>
-      <div class="stat"><b>${fmt(earned)}</b><span>Interest earned</span></div>
+      <div class="stat"><b class="profit">${fmt(earned)}</b><span>Interest earned</span></div>
       <div class="stat"><b>${fmt(pending)}</b><span>Interest pending</span></div>
 ` : "";
 
