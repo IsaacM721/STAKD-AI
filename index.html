@@ -1659,7 +1659,8 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109103406";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109103858";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4210,14 +4211,17 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       P.plan = [];
       { const rs = keys.map(k=>rateFor(k)), svd = rs.reduce((s,r)=>s+(r.saved||0),0), start = sav - svd;   // growth of the savings balance over 3 months
         if(start>0) P.plan.push(["kept","Growing toward your goal", pw(svd/start, [[0,0],[0.05,50],[0.15,100]]), svd>=0 ? `Your savings grew ${fmt(svd)} in 3 months` : `Your savings shrank ${fmt(-svd)} in 3 months`]);
-        // steady saving (Marco, Nov 9): how much the savings balance grew per finished month, not counting winnings (poker, Arcade, sports)
-        const gm = k => entries.filter(e=>GAME.includes(e.source) && (e.date||"").slice(0,7)===k).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);   // only what moved through savings
+        // steady saving (Marco, Nov 9): savings growth per finished month from regular income only. All poker is left out
+        // (league rakeback, League Action, Tables, Arcade, sports), since the league is slowing down. Median of the last 3 finished months.
+        const NOPOKER = new Set([...GAME, ...(typeof POKER_SRC !== "undefined" ? POKER_SRC : []), "Rakeback de la liga"]);
+        const gm = k => entries.filter(e=>NOPOKER.has(e.source) && (e.date||"").slice(0,7)===k).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);   // only what moved through savings
         const fk = [1,2,3].map(i => { const d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1-i, 1); return d.getFullYear()+"-"+pad(d.getMonth()+1); })
                     .filter(k => entries.some(e=>(e.date||"").slice(0,7)===k && e.source!=="Saldo inicial"));   // finished months with data
         const st = fk.map(k => (rateFor(k).saved||0) - gm(k));
-        if(st.length){ const stM = st.reduce((a,b)=>a+b,0)/st.length; let run = 0; for(const v of st){ if(v>0) run++; else break; }
+        if(st.length){ const so = [...st].sort((a,b)=>a-b), stM = so.length%2 ? so[(so.length-1)/2] : (so[so.length/2-1]+so[so.length/2])/2;
+          let run = 0; for(const v of st){ if(v>0) run++; else break; }
           P.plan.push(["steady","Saving steadily", pw(stM, [[0,0],[15000,40],[30000,70],[50000,100]]),
-            stM>0 ? `You save about ${fmt(Math.round(stM/500)*500)} a month, not counting winnings` + (run>=2 ? ` · up ${run} months in a row` : "") : `Without winnings your savings went down about ${fmt(Math.round(-stM/500)*500)} a month`]); } }
+            stM>0 ? `You save about ${fmt(Math.round(stM/500)*500)} a month from regular income` + (run>=2 ? ` · up ${run} months in a row` : "") : `From regular income your savings went down about ${fmt(Math.round(-stM/500)*500)} a month`]); } }
       // PLAY (Pato): how much you stake compared to what you earn, and how it's going
       P.play = [];
       { const bw = (bets||[]).filter(b=>inW(b.fecha)), linked = new Set(bw.map(b=>b.entryId).filter(Boolean));
