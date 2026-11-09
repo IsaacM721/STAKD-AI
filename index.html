@@ -1663,7 +1663,8 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109105440";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109105648";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3074,6 +3075,14 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
         openWA(items[0]); $("waMsg").value = msg; $("waGo").href = waUrl(); };
       pa.appendChild(rb);
     }
+    if(!items.length && open.some(o => o.l.pausado)){
+      const nm2 = cap(String(p.name||"").trim()), owed = open.filter(o => o.l.pausado).reduce((s,o) => s + loanRemaining(o.l), 0);
+      const msg2 = `${typeof saludoDR === "function" ? saludoDR() : "Hola"} ${nm2}! El pago de RD$${Math.round(owed).toLocaleString("en-US")} sigue pendiente. ¿Me avisas cuándo me lo puedes mandar? Gracias!`;
+      const rb2 = document.createElement("button"); rb2.type = "button"; rb2.className = "pic"; rb2.setAttribute("aria-label", "Remind " + nm2 + " on WhatsApp"); rb2.title = "Remind"; rb2.innerHTML = SV.wa;
+      rb2.onclick = ev => { stop(ev); const tel = telOf(p.name); if(tel){ window.open(waLink(tel, msg2), "_blank", "noopener"); return; }
+        openWA({l: open[0].l, kind: "late", date: today(), d: 0, amt: owed, k: 1, n: 1}); $("waMsg").value = msg2; $("waGo").href = waUrl(); };
+      pa.appendChild(rb2);
+    }
     // paid: the payment form; a small picker when there are 2+ open loans
     const pb = document.createElement("button"); pb.type = "button"; pb.className = "pic g"; pb.setAttribute("aria-label", "Log a payment from " + cap(p.name)); pb.title = "Paid"; pb.innerHTML = SV.ok;
     pb.onclick = ev => { stop(ev);
@@ -3101,9 +3110,6 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
           if(!await sure(on ? `Put ${name} on hold? Reminders stop and due dates wait until you take it off.` : `Take ${name} off hold? Reminders and due dates start again.`)) return;
           try{ await Promise.all(ls.map(l => db.collection("prestamos").doc(l.id).update({pausado: on}))); }catch(e){ warnMsg("Couldn’t save. Try again."); } };
         if(held.length){
-          item("Message", () => { const msg = `${typeof saludoDR === "function" ? saludoDR() : "Hola"} ${name}! ¿Cómo estás? Cuando puedas hablamos de lo pendiente, sin presión.`;
-            const tel = telOf(p.name); if(tel){ window.open(waLink(tel, msg), "_blank", "noopener"); return; }
-            openWA({l: held[0].l, kind: "pre", date: today(), d: 0, amt: 0, k: 1, n: 1}); $("waTitle").textContent = "Message"; $("waSub").textContent = name; $("waMsg").value = msg; $("waGo").href = waUrl(); });
           item("Take off hold", () => setHold(false));
         } else item("Put on hold", () => setHold(true));
         sum.appendChild(m);
