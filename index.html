@@ -1544,7 +1544,8 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109014805";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109014934";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4066,7 +4067,7 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
         window.__pscDb.doc("prefs/score").set({hist:keep, at:Date.now()}).catch(()=>{}); } }catch(e){}
       $("pscBars").innerHTML = pil.map(x=>`<div class="psc-b"><span>${x.n}</span><i><em style="width:${Math.max(4,Math.round(x.v))}%" class="${x.v>=80?"good":x.v>=40?"mid":"bad"}"></em></i></div>`).join("");
       $("pscDet").innerHTML = pil.map(x=>`<div class="psc-g"><b>${x.n}</b>${x.items.map(i=>`<div class="psc-i"><i class="${i[2]>=80?"good":i[2]>=40?"mid":"bad"}"></i><span>${i[3]}</span></div>`).join("")}</div>`).join("") +
-        `<p class="psc-how">Built on the FinHealth Score from the Financial Health Network, plus how you bet and play. Based on your last 90 days.</p>`;
+        `<p class="psc-how">Last 90 days</p>`;
       if(!$("pscMore").onclick) $("pscMore").onclick = () => { const d = $("pscDet"), o = d.hidden; d.hidden = !o; $("pscMore").textContent = o ? "Hide details" : "See what's behind it"; };
       { const s = $("saved"), hero = s && s.closest(".hero, section"), c = $("psc"); if(hero && hero.nextElementSibling !== c) hero.after(c); }
       window.__patoLast = [score, z[1], z[3]]; window.__patoPill && window.__patoPill(score, z[1], z[3]);
