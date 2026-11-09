@@ -1380,28 +1380,6 @@ html:root[data-palette="goyards"] .seg button[aria-pressed="true"],html:root[dat
 #brief .br-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}#brief .br-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--mango)}#brief .br-h span{font-size:.78rem;color:var(--muted)}
 #brief .br-r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;font-size:.92rem}#brief .br-r span{color:var(--muted)}#brief .br-r b{font-weight:600;color:var(--ink)}#brief .br-r b small{font-weight:500;color:var(--muted);font-size:.78rem;margin-left:4px}
 #brief .br-r b.profit{color:var(--green)}#brief .br-r b.late{color:var(--red,#e07a6a)}</style>
-<style id="stakd-snap">
-#snapBtn{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:31;width:54px;height:54px;border-radius:50%;border:0;background:var(--mango);color:var(--paper,#fff);box-shadow:0 8px 24px rgba(0,0,0,.3);display:grid;place-items:center;cursor:pointer}
-#snapBtn svg{width:24px;height:24px}
-#snapBtn.busy{animation:snapPulse 1s ease-in-out infinite}
-@keyframes snapPulse{50%{transform:scale(.92);opacity:.75}}
-html.sg-on #snapBtn,#mpGate:not([hidden])~#snapUi #snapBtn{display:none}
-#snapDlg{position:fixed;inset:0;z-index:95;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45);padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
-#snapDlg[hidden]{display:none}
-#snapDlg .sd{width:100%;max-width:420px;max-height:85vh;overflow:auto;background:var(--card);border-radius:22px;padding:20px 18px;color:var(--ink)}
-#snapDlg h3{margin:0 0 2px;font-family:var(--serif,Georgia),serif;font-size:1.2rem;color:var(--mango)}
-#snapDlg .sub{margin:0 0 12px;color:var(--muted);font-size:.85rem}
-#snapDlg .r{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 9%,transparent);font-size:.92rem}
-#snapDlg .r span{color:var(--muted)}#snapDlg .r b{font-weight:600;text-align:right}
-#snapDlg .leg{font-size:.85rem;padding:6px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink) 9%,transparent)}
-#snapDlg .leg small{color:var(--muted)}
-#snapDlg .bt{display:flex;flex-direction:column;gap:8px;margin-top:16px}
-#snapDlg .bt button{width:100%}
-#snapDlg input{width:100%;margin-top:8px}
-#snapDlg a{color:var(--mango)}
-#snapKeyRow{flex-basis:100%;max-width:340px;margin:10px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--ink)}
-#snapKeyRow button{background:none;border:0;color:var(--mango);font:inherit;text-decoration:underline;cursor:pointer}
-</style>
 <style id="stakd-alerts">
 #alWrap{flex-basis:100%;max-width:340px;margin:12px auto 0;text-align:left}
 #alWrap>span{display:block;text-align:center;margin-bottom:6px}
@@ -1524,6 +1502,31 @@ html,body{overscroll-behavior:none}
 @media (min-width:760px){.tabs{transform:translateX(-50%) translateZ(0)!important}}
 html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 </style>
+<style id="stakd-snap">
+#snapBtn{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:31;width:54px;height:54px;border-radius:50%;border:0;background:var(--mango);color:var(--paper,#fff);box-shadow:0 8px 24px rgba(0,0,0,.3);display:grid;place-items:center;cursor:pointer}
+#snapBtn svg{width:24px;height:24px}
+#snapBtn.busy{animation:snapPulse 1s ease-in-out infinite}
+@keyframes snapPulse{50%{transform:scale(.92);opacity:.75}}
+html.sg-on #snapBtn,#mpGate:not([hidden])~#snapUi #snapBtn{display:none}
+#snapDlg{position:fixed;inset:0;z-index:95;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45);padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+#snapDlg[hidden]{display:none}
+#snapDlg .sd{width:100%;max-width:420px;max-height:85vh;overflow:auto;background:var(--card);border-radius:22px;padding:20px 18px;color:var(--ink)}
+#snapDlg h3{margin:0 0 2px;font-family:var(--serif,Georgia),serif;font-size:1.2rem;color:var(--mango)}
+#snapDlg .sub{margin:0 0 12px;color:var(--muted);font-size:.85rem}
+#snapDlg .r{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 9%,transparent);font-size:.92rem}
+#snapDlg .r span{color:var(--muted)}#snapDlg .r b{font-weight:600;text-align:right}
+#snapDlg .leg{font-size:.85rem;padding:6px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink) 9%,transparent)}
+#snapDlg .leg small{color:var(--muted)}
+#snapDlg .bt{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+#snapDlg .bt button{width:100%}
+#snapDlg input{width:100%;margin-top:8px}
+#snapDlg a{color:var(--mango)}
+#snapDlg .snap-type{display:flex;gap:8px;margin-top:12px}#snapDlg .snap-type input{flex:1;margin:0}#snapDlg .snap-type button{flex:none;width:auto;padding:0 18px}
+#snapDlg .snap-x{all:unset;display:block;margin:14px auto 0;color:var(--muted);font-size:.88rem;cursor:pointer}
+html.has-ak #s-sptr,html.has-ak #s-spcash>h3,html.has-ak #s-spcash>.grid,html.has-ak #spForWd,html.has-ak #spSave{display:none!important}
+#snapKeyRow{flex-basis:100%;max-width:340px;margin:10px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--ink)}
+#snapKeyRow button{background:none;border:0;color:var(--mango);font:inherit;text-decoration:underline;cursor:pointer}
+</style>
 <style id="pato-ui">
 #spMore{display:flex;gap:10px;justify-content:center;margin-top:8px}#spMore:empty{display:none}
 #spMore button{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.85rem;padding:7px 14px;border-radius:999px;cursor:pointer}
@@ -1550,7 +1553,8 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109015607";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109020653";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4639,6 +4643,14 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
       $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
       const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
       $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
   }
   // league rakeback per Monday: average of the weeks so far (first week left out), counting weeks earned but not paid yet
   function ligaAvg(){
@@ -5620,120 +5632,6 @@ TRACKER DATA:
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();</script>
-<div id="snapUi"><button type="button" id="snapBtn" aria-label="Snap a photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
-<input type="file" id="snapFile" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" aria-label="Photo">
-<div id="snapDlg" hidden role="dialog" aria-modal="true"><div class="sd" id="snapBody"></div></div></div><!--/snapUi-->
-<script id="stakd-snap-js">
-(function(){
-  var $ = function(id){ return document.getElementById(id); };
-  var db = null, spend = [], bets = [], file = null;
-  var CATS = {food:"Food", gas:"Car", sport:"Tennis & club", out:"Going out", subs:"Subscriptions", rides:"Rides", health:"Pharmacy & health", family:"Family", needs:"Essentials", shopping:"Wants", fees:"Fees", other:"Other"};
-  var HINT = {"tab-savings":"a deposit or transfer receipt", "tab-spending":"a store receipt or bank transfer receipt", "tab-stocks":"an Interactive Brokers screen (orders, trades or positions)", "tab-poker":"a sports bet slip", "tab-loans":"a bank transfer for a loan (money lent or paid back)", "tab-trends":"a receipt"};
-  var esc = function(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
-  var rd = function(n){ return "RD$" + Math.round(Number(n)||0).toLocaleString("en-US"); };
-  var usd = function(n){ return "US$" + (Number(n)||0).toLocaleString("en-US", {maximumFractionDigits:2}); };
-  var today = function(){ var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
-  var okDate = function(s){ return /^\d{4}-\d{2}-\d{2}$/.test(String(s||"")) ? s : today(); };
-  var days = function(a, b){ return Math.abs((new Date(a+"T12:00") - new Date(b+"T12:00")) / 864e5); };
-  var odds = function(o){ o = Number(o); return o ? (o > 0 ? "+" + o : String(o)) : "—"; };
-  var curTab = function(){ var t = document.querySelector('.tabs [aria-selected="true"]'); return t ? t.id : "tab-savings"; };
-  function toast(t, s, w){ if(window.mpToast) return window.mpToast(t, s, w); var el = $("toastT"); if(el){ $("toastT").textContent = t; $("toastS").textContent = s || ""; var x = $("toast"); x.classList.toggle("warn", !!w); x.classList.add("on"); clearTimeout(toast.h); toast.h = setTimeout(function(){ x.classList.remove("on"); }, 3200); } }
-  function open(html){ $("snapBody").innerHTML = html; $("snapDlg").hidden = false; }
-  function close(){ $("snapDlg").hidden = true; $("snapBody").innerHTML = ""; }
-  $("snapDlg").addEventListener("click", function(e){ if(e.target === $("snapDlg")) close(); });
-  function rows(list){ return list.filter(function(r){ return r[1] !== null && r[1] !== undefined && r[1] !== ""; }).map(function(r){ return '<div class="r"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>'; }).join(""); }
-  function buttons(list){ return '<div class="bt">' + list.map(function(b, i){ return '<button type="button" class="'+(i===0?"primary":"secondary")+'" data-b="'+i+'">'+esc(b[0])+'</button>'; }).join("") + '<button type="button" class="secondary" data-b="x">Cancel</button></div>'; }
-  function wire(list){ $("snapBody").querySelectorAll("[data-b]").forEach(function(b){ b.onclick = async function(){ if(b.dataset.b === "x"){ close(); return; } b.disabled = true; try{ await list[+b.dataset.b][1](); }catch(e){ console.error(e); toast("Couldn’t save", "Try again", true); } close(); }; }); }
-
-  function keySheet(then){
-    open('<h3>Add your Claude key</h3><p class="sub">The camera reads photos with Claude. Make a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a> and paste it here. It stays only on this phone.</p><input type="password" id="snapKey" placeholder="sk-ant-…" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="bt"><button type="button" class="primary" id="snapKeySave">Save key</button><button type="button" class="secondary" id="snapKeyNo">Not now</button></div>');
-    $("snapKeyNo").onclick = close;
-    $("snapKeySave").onclick = function(){ var k = $("snapKey").value.trim(); if(!/^sk-ant-/.test(k)){ $("snapKey").focus(); toast("That doesn’t look like a Claude key", "It starts with sk-ant-", true); return; } window.mpClaudeKey.set(k); close(); syncKeyRow(); toast("Key saved", "The camera is ready"); if(then) then(); };
-  }
-  function syncKeyRow(){ var r = $("snapKeyRow"); if(!r) return; var has = !!(window.mpClaudeKey && window.mpClaudeKey.get()); r.innerHTML = '<span>Claude key: '+(has?"added":"not added")+'</span><button type="button" id="snapKeyBtn">'+(has?"Remove":"Add")+'</button>'; $("snapKeyBtn").onclick = function(){ if(has){ window.mpClaudeKey.set(""); syncKeyRow(); toast("Key removed", ""); } else keySheet(); }; }
-  function addKeyRow(){ var sh = $("palSheet"); if(!sh || $("snapKeyRow")) return; var r = document.createElement("div"); r.id = "snapKeyRow"; var t = $("sgTabs"); if(t) sh.insertBefore(r, t); else sh.appendChild(r); syncKeyRow(); }
-
-  $("snapBtn").onclick = function(){ if(!(window.mpClaudeKey && window.mpClaudeKey.get())){ keySheet(function(){ $("snapFile").click(); }); return; } $("snapFile").click(); };
-  $("snapFile").addEventListener("change", async function(){
-    file = $("snapFile").files && $("snapFile").files[0]; $("snapFile").value = ""; if(!file) return;
-    var tab = curTab(), btn = $("snapBtn"); btn.classList.add("busy"); toast("Reading the photo…", "");
-    var P = 'You read a photo for a personal money app in the Dominican Republic. Amounts are RD$ (Dominican pesos) unless shown as US$/USD. The person is on the "' + tab.replace("tab-","") + '" tab, so it is probably ' + (HINT[tab] || "a receipt") + ', but decide from the image itself. Today is ' + today() + '.\n' +
-      'Answer with JSON only, exactly one of these shapes:\n' +
-      '{"kind":"receipt","merchant":string,"amount":number,"date":"YYYY-MM-DD","cat":one of ' + JSON.stringify(Object.keys(CATS)) + ',"paid":"card"|"cash"|null}\n' +
-      '{"kind":"bet","casa":string (sportsbook),"tipo":"single"|"parlay","stake":number,"odds":American odds integer for the whole ticket,"toWin":number,"payout":number (0 if lost or pending),"result":"won"|"lost"|"pending"|"void","fecha":"YYYY-MM-DD","hora":"HH:MM","legs":[{"sport":string,"game":string,"pick":string,"odds":integer,"result":"won"|"lost"|"pending"|"void","fecha":"YYYY-MM-DD HH:MM"}]}\n' +
-      '{"kind":"stocks","trades":[{"t":ticker,"side":"buy"|"sell","sh":number,"price":number,"usd":number,"fee":number,"limite":number,"status":"filled"|"open"|"cancelled","date":"YYYY-MM-DD"}],"summary":string}\n' +
-      '{"kind":"transfer","direction":"out"|"in","amount":number,"date":"YYYY-MM-DD","person":string (the other person, no account numbers),"bank":string,"note":string}\n' +
-      '{"kind":"other","summary":string}\n' +
-      'Numbers may use a comma for decimals (RD$2.000,00 means 2000). Use null for anything you cannot see. Food includes groceries, restaurants and delivery; car is gas, tolls, parking, car wash; rides is Uber; wants is clothes, electronics and personal purchases; essentials is paperwork, repairs, utilities, insurance.';
-    var d;
-    try{ var s = await window.claude.use("sample"); if(!s) throw Object.assign(new Error(), {code:"no_key"}); d = await s.json(P, {images: file}); }
-    catch(e){
-      btn.classList.remove("busy");
-      var c = e && e.code;
-      if(c === "no_key" || c === "bad_key"){ if(c === "bad_key") toast("Claude didn’t accept the key", "Add it again", true); keySheet(); return; }
-      toast(c === "no_credit" ? "Your Claude account is out of credit" : c === "rate_limited" ? "Claude is busy, try again in a minute" : c === "network" ? "No connection" : c === "image_rejected" ? "That photo couldn’t be read" : "Couldn’t read the photo", c === "no_credit" ? "Add credit at console.anthropic.com" : "Try again", true);
-      return;
-    }
-    btn.classList.remove("busy");
-    try{ show(d || {}, tab); }catch(e){ console.error(e); toast("Couldn’t read the photo", "Try again", true); }
-  });
-
-  async function queue(d, note){ await db.collection("snaps").add({status:"pending", kind:d.kind, data:d, tab:curTab(), at:today(), ts:Date.now(), note:note||""}); }
-
-  function show(d, tab){
-    var k = d.kind;
-    if(k === "receipt"){
-      var amt = Number(d.amount)||0, dt = okDate(d.date), cat = CATS[d.cat] ? d.cat : "other";
-      var m = spend.filter(function(x){ var a = Number(x.rd != null ? x.rd : x.amount)||0; return !x.excluded && x.kind !== "manual" && a > 0 && Math.abs(a - amt) <= Math.max(1, amt*0.01) && x.date && days(x.date, dt) <= 3 && !x.receipt; }).sort(function(a, b){ return days(a.date, dt) - days(b.date, dt); })[0];
-      var html = '<h3>Receipt</h3><p class="sub">' + (m ? "Matches your bank charge on " + esc(m.date) + ", so it won’t count twice." : "No bank charge for this yet.") + '</p>' + rows([["Where", d.merchant], ["Amount", rd(amt)], ["Date", dt], ["Category", CATS[cat]]]);
-      var acts = [];
-      if(m) acts.push(["Save", async function(){ var patch = {receipt:{merchant:String(d.merchant||"").slice(0,80), amount:amt, date:dt}, note:"Receipt: " + String(d.merchant||"").slice(0,60)}; if(!m.userCat && cat !== "other" && m.cat !== "errands") patch.cat = cat; await db.collection("spend").doc(m.id).update(patch); toast("Receipt added", "Matched with your bank charge"); }]);
-      else {
-        var cash = async function(){ await db.collection("spend").add({date:dt, merchant:String(d.merchant||CATS[cat]).slice(0,80), amount:amt, currency:"DOP", rd:amt, kind:"manual", status:"Aprobada", cat:cat, source:"manual", excluded:false, ts:Date.now(), receipt:true}); toast(rd(amt) + " cash expense logged", CATS[cat]); };
-        var card = async function(){ await queue(d, "card charge not synced yet: attach to it, don’t add a new expense"); toast("Saved", "It joins the card charge when it comes in"); };
-        if(d.paid === "cash") acts.push(["Paid cash, save", cash], ["I paid by card", card]); else acts.push(["Paid by card, save", card], ["I paid cash", cash]);
-      }
-      open(html + buttons(acts)); wire(acts); return;
-    }
-    if(k === "bet"){
-      var legs = Array.isArray(d.legs) ? d.legs : [];
-      var html2 = '<h3>' + (d.tipo === "parlay" ? "Parlay" : "Bet") + ' · ' + esc(d.casa || "Sportsbook") + '</h3><p class="sub">' + esc(okDate(d.fecha)) + (d.hora ? " · " + esc(d.hora) : "") + '</p>' +
-        rows([["Stake", rd(d.stake)], ["Odds", odds(d.odds)], ["To win", d.toWin ? rd(d.toWin) : null], ["Result", d.result ? String(d.result).replace(/^./, function(c){ return c.toUpperCase(); }) : null], ["Paid", Number(d.payout) > 0 ? rd(d.payout) : null]]) +
-        legs.map(function(l){ return '<div class="leg">' + esc(l.pick) + ' <b>' + esc(odds(l.odds)) + '</b><br><small>' + esc(l.game || l.sport || "") + (l.result ? " · " + esc(l.result) : "") + '</small></div>'; }).join("");
-      var id = (String(d.casa || "bet").toLowerCase().replace(/[^a-z0-9]/g, "") || "bet") + "-" + okDate(d.fecha).replace(/-/g, "") + "-" + String(d.hora || "").replace(/\D/g, "").padStart(4, "0");
-      var dup = bets.some(function(b){ return b.id === id; });
-      var acts2 = [[dup ? "Update this bet" : "Save bet", async function(){
-        var doc = {casa:d.casa || "Sportsbook", tipo:d.tipo === "parlay" ? "parlay" : "single", stake:Number(d.stake)||0, odds:Number(d.odds)||0, toWin:Number(d.toWin)||0, payout:Number(d.payout)||0, result:d.result || "pending", fecha:okDate(d.fecha), hora:d.hora || "", legs:legs.map(function(l){ return {sport:l.sport||"", game:l.game||"", pick:l.pick||"", odds:Number(l.odds)||0, result:l.result||"pending", fecha:l.fecha||""}; }), createdAt:Date.now(), fromSnap:true};
-        if(d.result && d.result !== "pending") doc.calificado = today();
-        await db.collection("bets").doc(id).set(doc); toast("Bet saved", rd(doc.stake) + " · " + odds(doc.odds));
-      }]];
-      open(html2 + buttons(acts2)); wire(acts2); return;
-    }
-    if(k === "stocks"){
-      var tr = Array.isArray(d.trades) ? d.trades : [];
-      var html3 = '<h3>Stocks</h3><p class="sub">' + esc(d.summary || "") + '</p>' + tr.map(function(t){ return '<div class="r"><span>' + esc((t.side === "sell" ? "Sell " : "Buy ") + (t.t || "")) + (t.status && t.status !== "filled" ? " · " + esc(t.status) : "") + '</span><b>' + esc(t.sh ? t.sh + " sh" : "") + (t.price ? " @ " + esc(usd(t.price)) : t.limite ? " limit " + esc(usd(t.limite)) : "") + (t.usd ? " · " + esc(usd(t.usd)) : "") + '</b></div>'; }).join("") + '<p class="sub" style="margin-top:10px">Your Stocks tab updates within the hour.</p>';
-      var acts3 = [["Save", async function(){ await queue(d); toast("Saved", "Stocks update within the hour"); }]];
-      open(html3 + buttons(acts3)); wire(acts3); return;
-    }
-    if(k === "transfer"){
-      var a = Number(d.amount)||0, dt2 = okDate(d.date), out = d.direction !== "in";
-      var html4 = '<h3>Transfer ' + (out ? "sent" : "received") + '</h3><p class="sub">' + esc(d.bank || "") + '</p>' + rows([[out ? "To" : "From", d.person], ["Amount", rd(a)], ["Date", dt2], ["Note", d.note]]);
-      var acts4 = [];
-      if(out && tab === "tab-spending" && $("spTrAmt")) acts4.push(["Fill the transfer form", async function(){ $("spTrAmt").value = a.toLocaleString("en-US"); $("spTrTo").value = String(d.person||"").slice(0,80); $("spTrDate").value = dt2; ["spTrAmt","spTrTo","spTrDate"].forEach(function(x){ $(x).dispatchEvent(new Event("input")); }); setTimeout(function(){ $("s-sptr").scrollIntoView({behavior:"smooth", block:"start"}); }, 50); toast("Check it and tap Log transfer", ""); }]);
-      acts4.push([tab === "tab-loans" ? (out ? "Save as a loan" : "Save as a payment") : "Save", async function(){ await queue(d, tab === "tab-loans" ? (out ? "loan given" : "loan payment received") : ""); toast("Saved", "It’s added within the hour"); }]);
-      open(html4 + buttons(acts4)); wire(acts4); return;
-    }
-    open('<h3>Couldn’t tell what this is</h3><p class="sub">' + esc(d.summary || "Try a clearer photo or screenshot.") + '</p><div class="bt"><button type="button" class="secondary" id="snapOk">OK</button></div>'); $("snapOk").onclick = close;
-  }
-
-  if(!window.claude) return;
-  window.claude.use("db").then(function(d){
-    db = d; addKeyRow();
-    db.collection("spend").onSnapshot(function(s){ spend = s.docs.map(function(x){ var o = x.data(); o.id = x.id; return o; }); }, function(){});
-    db.collection("bets").onSnapshot(function(s){ bets = s.docs.map(function(x){ return {id:x.id}; }); }, function(){});
-  });
-})();
-</script>
 <script id="stakd-alerts-js">
 (function(){
   var PUB = "BAg0woHIxVYnMieYNkLUB-H_aID7XGPWxXMsWw0EhkhdcJvqnX36l4LsXkt-KZf7-fVb50HkP5ee3GsIOzB-wis";
@@ -5899,6 +5797,139 @@ TRACKER DATA:
   var H = document.documentElement, typing = function(e){ var t = e && e.target; return t && (t.tagName === "INPUT" && !/^(checkbox|radio|button|submit|range|file)$/i.test(t.type) || t.tagName === "TEXTAREA" || t.tagName === "SELECT"); };
   document.addEventListener("focusin", function(e){ if(typing(e)) H.classList.add("kb-open"); });
   document.addEventListener("focusout", function(){ setTimeout(function(){ if(!typing({target:document.activeElement})) H.classList.remove("kb-open"); window.scrollBy(0,0); }, 60); });
+})();
+</script>
+<div id="snapUi"><button type="button" id="snapBtn" aria-label="Snap a photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
+<input type="file" id="snapFile" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" aria-label="Photo">
+<div id="snapDlg" hidden role="dialog" aria-modal="true"><div class="sd" id="snapBody"></div></div></div><!--/snapUi-->
+<script id="stakd-snap-js">
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var db = null, spend = [], bets = [], file = null;
+  var CATS = {food:"Food", gas:"Car", sport:"Tennis & club", out:"Going out", subs:"Subscriptions", rides:"Rides", health:"Pharmacy & health", family:"Family", needs:"Essentials", shopping:"Wants", fees:"Fees", other:"Other"};
+  var HINT = {"tab-savings":"a deposit or transfer receipt", "tab-spending":"a store receipt or bank transfer receipt", "tab-stocks":"an Interactive Brokers screen (orders, trades or positions)", "tab-poker":"a sports bet slip", "tab-loans":"a bank transfer for a loan (money lent or paid back)", "tab-trends":"a receipt"};
+  var esc = function(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var rd = function(n){ return "RD$" + Math.round(Number(n)||0).toLocaleString("en-US"); };
+  var usd = function(n){ return "US$" + (Number(n)||0).toLocaleString("en-US", {maximumFractionDigits:2}); };
+  var today = function(){ var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+  var okDate = function(s){ return /^\d{4}-\d{2}-\d{2}$/.test(String(s||"")) ? s : today(); };
+  var days = function(a, b){ return Math.abs((new Date(a+"T12:00") - new Date(b+"T12:00")) / 864e5); };
+  var odds = function(o){ o = Number(o); return o ? (o > 0 ? "+" + o : String(o)) : "—"; };
+  var curTab = function(){ var t = document.querySelector('.tabs [aria-selected="true"]'); return t ? t.id : "tab-savings"; };
+  function toast(t, s, w){ if(window.mpToast) return window.mpToast(t, s, w); var el = $("toastT"); if(el){ $("toastT").textContent = t; $("toastS").textContent = s || ""; var x = $("toast"); x.classList.toggle("warn", !!w); x.classList.add("on"); clearTimeout(toast.h); toast.h = setTimeout(function(){ x.classList.remove("on"); }, 3200); } }
+  function open(html){ $("snapBody").innerHTML = html; $("snapDlg").hidden = false; }
+  function close(){ $("snapDlg").hidden = true; $("snapBody").innerHTML = ""; }
+  $("snapDlg").addEventListener("click", function(e){ if(e.target === $("snapDlg")) close(); });
+  function rows(list){ return list.filter(function(r){ return r[1] !== null && r[1] !== undefined && r[1] !== ""; }).map(function(r){ return '<div class="r"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>'; }).join(""); }
+  function buttons(list){ return '<div class="bt">' + list.map(function(b, i){ return '<button type="button" class="'+(i===0?"primary":"secondary")+'" data-b="'+i+'">'+esc(b[0])+'</button>'; }).join("") + '<button type="button" class="secondary" data-b="x">Cancel</button></div>'; }
+  function wire(list){ $("snapBody").querySelectorAll("[data-b]").forEach(function(b){ b.onclick = async function(){ if(b.dataset.b === "x"){ close(); return; } b.disabled = true; try{ await list[+b.dataset.b][1](); }catch(e){ console.error(e); toast("Couldn’t save", "Try again", true); } close(); }; }); }
+
+  function keySheet(then){
+    open('<h3>Add your Claude key</h3><p class="sub">The camera reads photos with Claude. Make a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a> and paste it here. It stays only on this phone.</p><input type="password" id="snapKey" placeholder="sk-ant-…" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="bt"><button type="button" class="primary" id="snapKeySave">Save key</button><button type="button" class="secondary" id="snapKeyNo">Not now</button></div>');
+    $("snapKeyNo").onclick = close;
+    $("snapKeySave").onclick = function(){ var k = $("snapKey").value.trim(); if(!/^sk-ant-/.test(k)){ $("snapKey").focus(); toast("That doesn’t look like a Claude key", "It starts with sk-ant-", true); return; } window.mpClaudeKey.set(k); close(); syncKeyRow(); toast("Key saved", "The camera is ready"); if(then) then(); };
+  }
+  function hasKey(){ document.documentElement.classList.toggle("has-ak", !!(window.mpClaudeKey && window.mpClaudeKey.get())); }
+  hasKey(); setInterval(hasKey, 3000);
+  function syncKeyRow(){ hasKey(); var r = $("snapKeyRow"); if(!r) return; var has = !!(window.mpClaudeKey && window.mpClaudeKey.get()); r.innerHTML = '<span>Claude key: '+(has?"added":"not added")+'</span><button type="button" id="snapKeyBtn">'+(has?"Remove":"Add")+'</button>'; $("snapKeyBtn").onclick = function(){ if(has){ window.mpClaudeKey.set(""); syncKeyRow(); toast("Key removed", ""); } else keySheet(); }; }
+  function addKeyRow(){ var sh = $("palSheet"); if(!sh || $("snapKeyRow")) return; var r = document.createElement("div"); r.id = "snapKeyRow"; var t = $("sgTabs"); if(t) sh.insertBefore(r, t); else sh.appendChild(r); syncKeyRow(); }
+
+  // tap: a small sheet with "Take a photo" and a line to type it (Marco, Nov 9: "500 valet tip")
+  function chooser(){
+    open('<h3>Log something</h3><p class="sub">A photo of a receipt, bet slip, transfer or IBKR screen, or just type it.</p><div class="bt"><button type="button" class="primary" id="snapPhoto">Take a photo</button></div>' +
+      '<div class="snap-type"><input id="snapText" placeholder="Or type it: 500 valet tip" autocomplete="off" enterkeyhint="send"><button type="button" class="secondary" id="snapSend" aria-label="Log it">Log</button></div>' +
+      '<button type="button" class="snap-x" id="snapCancel">Cancel</button>');
+    $("snapPhoto").onclick = function(){ close(); $("snapFile").click(); };
+    var send = function(){ var t = $("snapText").value.trim(); if(t.length < 2){ $("snapText").focus(); return; } close(); read({text:t}); };
+    $("snapSend").onclick = send; $("snapText").onkeydown = function(e){ if(e.key === "Enter"){ e.preventDefault(); send(); } };
+    $("snapCancel").onclick = close;
+  }
+  $("snapBtn").onclick = function(){ if(!(window.mpClaudeKey && window.mpClaudeKey.get())){ keySheet(chooser); return; } chooser(); };
+  $("snapFile").addEventListener("change", function(){
+    file = $("snapFile").files && $("snapFile").files[0]; $("snapFile").value = ""; if(file) read({file:file});
+  });
+  async function read(src){
+    var tab = curTab(), btn = $("snapBtn"), typed = !!src.text; btn.classList.add("busy"); toast(typed ? "Got it…" : "Reading the photo…", "");
+    var P = (typed ? 'You read a short note the person typed into a personal money app in the Dominican Republic, e.g. "500 valet tip" or "sent 2000 to mom". If no payment method is said, use "cash" for tips, colmados, parking and small cash things, otherwise null. Use today unless a day is said.' : 'You read a photo for a personal money app in the Dominican Republic.') + ' Amounts are RD$ (Dominican pesos) unless shown as US$/USD. The person is on the "' + tab.replace("tab-","") + '" tab, so it is probably ' + (HINT[tab] || "a receipt") + ', but decide from ' + (typed ? 'the note' : 'the image') + ' itself. Today is ' + today() + '.\n' +
+      'Answer with JSON only, exactly one of these shapes:\n' +
+      '{"kind":"receipt","merchant":string,"amount":number,"date":"YYYY-MM-DD","cat":one of ' + JSON.stringify(Object.keys(CATS)) + ',"paid":"card"|"cash"|null}\n' +
+      '{"kind":"bet","casa":string (sportsbook),"tipo":"single"|"parlay","stake":number,"odds":American odds integer for the whole ticket,"toWin":number,"payout":number (0 if lost or pending),"result":"won"|"lost"|"pending"|"void","fecha":"YYYY-MM-DD","hora":"HH:MM","legs":[{"sport":string,"game":string,"pick":string,"odds":integer,"result":"won"|"lost"|"pending"|"void","fecha":"YYYY-MM-DD HH:MM"}]}\n' +
+      '{"kind":"stocks","trades":[{"t":ticker,"side":"buy"|"sell","sh":number,"price":number,"usd":number,"fee":number,"limite":number,"status":"filled"|"open"|"cancelled","date":"YYYY-MM-DD"}],"summary":string}\n' +
+      '{"kind":"transfer","direction":"out"|"in","amount":number,"date":"YYYY-MM-DD","person":string (the other person, no account numbers),"bank":string,"note":string,"cat":one of ' + JSON.stringify(Object.keys(CATS)) + ',"own":true if it went to their own account}\n' +
+      '{"kind":"other","summary":string}\n' +
+      'Numbers may use a comma for decimals (RD$2.000,00 means 2000). Use null for anything you cannot see. Food includes groceries, restaurants and delivery; car is gas, tolls, parking, car wash; rides is Uber; wants is clothes, electronics and personal purchases; essentials is paperwork, repairs, utilities, insurance.';
+    var d;
+    try{ var s = await window.claude.use("sample"); if(!s) throw Object.assign(new Error(), {code:"no_key"}); d = typed ? await s.json(P + '\nThe note: """' + src.text.slice(0, 300) + '"""', {modelTier:"quick"}) : await s.json(P, {images: src.file}); }
+    catch(e){
+      btn.classList.remove("busy");
+      var c = e && e.code;
+      if(c === "no_key" || c === "bad_key"){ if(c === "bad_key") toast("Claude didn’t accept the key", "Add it again", true); keySheet(); return; }
+      toast(c === "no_credit" ? "Your Claude account is out of credit" : c === "rate_limited" ? "Claude is busy, try again in a minute" : c === "network" ? "No connection" : c === "image_rejected" ? "That photo couldn’t be read" : "Couldn’t read the photo", c === "no_credit" ? "Add credit at console.anthropic.com" : "Try again", true);
+      return;
+    }
+    btn.classList.remove("busy");
+    try{ show(d || {}, tab); }catch(e){ console.error(e); toast(typed ? "Couldn’t understand that" : "Couldn’t read the photo", "Try again", true); }
+  }
+
+  async function queue(d, note){ await db.collection("snaps").add({status:"pending", kind:d.kind, data:d, tab:curTab(), at:today(), ts:Date.now(), note:note||""}); }
+
+  function show(d, tab){
+    var k = d.kind;
+    if(k === "receipt"){
+      var amt = Number(d.amount)||0, dt = okDate(d.date), cat = CATS[d.cat] ? d.cat : "other";
+      var m = spend.filter(function(x){ var a = Number(x.rd != null ? x.rd : x.amount)||0; return !x.excluded && x.kind !== "manual" && a > 0 && Math.abs(a - amt) <= Math.max(1, amt*0.01) && x.date && days(x.date, dt) <= 3 && !x.receipt; }).sort(function(a, b){ return days(a.date, dt) - days(b.date, dt); })[0];
+      var html = '<h3>Receipt</h3><p class="sub">' + (m ? "Matches your bank charge on " + esc(m.date) + ", so it won’t count twice." : "No bank charge for this yet.") + '</p>' + rows([["Where", d.merchant], ["Amount", rd(amt)], ["Date", dt], ["Category", CATS[cat]]]);
+      var acts = [];
+      if(m) acts.push(["Save", async function(){ var patch = {receipt:{merchant:String(d.merchant||"").slice(0,80), amount:amt, date:dt}, note:"Receipt: " + String(d.merchant||"").slice(0,60)}; if(!m.userCat && cat !== "other" && m.cat !== "errands") patch.cat = cat; await db.collection("spend").doc(m.id).update(patch); toast("Receipt added", "Matched with your bank charge"); }]);
+      else {
+        var cash = async function(){ await db.collection("spend").add({date:dt, merchant:String(d.merchant||CATS[cat]).slice(0,80), amount:amt, currency:"DOP", rd:amt, kind:"manual", status:"Aprobada", cat:cat, source:"manual", excluded:false, ts:Date.now(), receipt:true}); toast(rd(amt) + " cash expense logged", CATS[cat]); };
+        var card = async function(){ await queue(d, "card charge not synced yet: attach to it, don’t add a new expense"); toast("Saved", "It joins the card charge when it comes in"); };
+        if(d.paid === "cash") acts.push(["Paid cash, save", cash], ["I paid by card", card]); else acts.push(["Paid by card, save", card], ["I paid cash", cash]);
+      }
+      open(html + buttons(acts)); wire(acts); return;
+    }
+    if(k === "bet"){
+      var legs = Array.isArray(d.legs) ? d.legs : [];
+      var html2 = '<h3>' + (d.tipo === "parlay" ? "Parlay" : "Bet") + ' · ' + esc(d.casa || "Sportsbook") + '</h3><p class="sub">' + esc(okDate(d.fecha)) + (d.hora ? " · " + esc(d.hora) : "") + '</p>' +
+        rows([["Stake", rd(d.stake)], ["Odds", odds(d.odds)], ["To win", d.toWin ? rd(d.toWin) : null], ["Result", d.result ? String(d.result).replace(/^./, function(c){ return c.toUpperCase(); }) : null], ["Paid", Number(d.payout) > 0 ? rd(d.payout) : null]]) +
+        legs.map(function(l){ return '<div class="leg">' + esc(l.pick) + ' <b>' + esc(odds(l.odds)) + '</b><br><small>' + esc(l.game || l.sport || "") + (l.result ? " · " + esc(l.result) : "") + '</small></div>'; }).join("");
+      var id = (String(d.casa || "bet").toLowerCase().replace(/[^a-z0-9]/g, "") || "bet") + "-" + okDate(d.fecha).replace(/-/g, "") + "-" + String(d.hora || "").replace(/\D/g, "").padStart(4, "0");
+      var dup = bets.some(function(b){ return b.id === id; });
+      var acts2 = [[dup ? "Update this bet" : "Save bet", async function(){
+        var doc = {casa:d.casa || "Sportsbook", tipo:d.tipo === "parlay" ? "parlay" : "single", stake:Number(d.stake)||0, odds:Number(d.odds)||0, toWin:Number(d.toWin)||0, payout:Number(d.payout)||0, result:d.result || "pending", fecha:okDate(d.fecha), hora:d.hora || "", legs:legs.map(function(l){ return {sport:l.sport||"", game:l.game||"", pick:l.pick||"", odds:Number(l.odds)||0, result:l.result||"pending", fecha:l.fecha||""}; }), createdAt:Date.now(), fromSnap:true};
+        if(d.result && d.result !== "pending") doc.calificado = today();
+        await db.collection("bets").doc(id).set(doc); toast("Bet saved", rd(doc.stake) + " · " + odds(doc.odds));
+      }]];
+      open(html2 + buttons(acts2)); wire(acts2); return;
+    }
+    if(k === "stocks"){
+      var tr = Array.isArray(d.trades) ? d.trades : [];
+      var html3 = '<h3>Stocks</h3><p class="sub">' + esc(d.summary || "") + '</p>' + tr.map(function(t){ return '<div class="r"><span>' + esc((t.side === "sell" ? "Sell " : "Buy ") + (t.t || "")) + (t.status && t.status !== "filled" ? " · " + esc(t.status) : "") + '</span><b>' + esc(t.sh ? t.sh + " sh" : "") + (t.price ? " @ " + esc(usd(t.price)) : t.limite ? " limit " + esc(usd(t.limite)) : "") + (t.usd ? " · " + esc(usd(t.usd)) : "") + '</b></div>'; }).join("") + '<p class="sub" style="margin-top:10px">Your Stocks tab updates within the hour.</p>';
+      var acts3 = [["Save", async function(){ await queue(d); toast("Saved", "Stocks update within the hour"); }]];
+      open(html3 + buttons(acts3)); wire(acts3); return;
+    }
+    if(k === "transfer"){
+      var a = Number(d.amount)||0, dt2 = okDate(d.date), out = d.direction !== "in";
+      var html4 = '<h3>Transfer ' + (out ? "sent" : "received") + '</h3><p class="sub">' + esc(d.bank || "") + '</p>' + rows([[out ? "To" : "From", d.person], ["Amount", rd(a)], ["Date", dt2], ["Note", d.note]]);
+      var acts4 = [];
+      var saveTr = function(own){ return async function(){ var to = String(d.person||"someone").slice(0,80), cat = own ? "other" : (CATS[d.cat] ? d.cat : "other");
+        var doc = {date:dt2, merchant:(own ? "Transfer to own account · " : "Transfer to ") + to, amount:a, currency:"DOP", rd: own ? 0 : a, kind:"transfer", status:"Aprobada", cat:cat, source:"manual", excluded:false, ts:Date.now(), note: own ? "RD$" + a + " moved between own accounts; not spending" : "RD$" + a, fromSnap:true}; if(own) doc.own = true;
+        await db.collection("spend").add(doc);
+        toast(rd(own ? 0 : a) + " transfer logged", to); }; };
+      if(out && tab !== "tab-loans"){ if(d.own) acts4.push(["To my own account, save", saveTr(true)], ["It was spending", saveTr(false)]); else acts4.push(["Save as spending", saveTr(false)], ["It went to my own account", saveTr(true)]); }
+      if(false) acts4.push(["Fill the transfer form", async function(){ $("spTrAmt").value = a.toLocaleString("en-US"); $("spTrTo").value = String(d.person||"").slice(0,80); $("spTrDate").value = dt2; ["spTrAmt","spTrTo","spTrDate"].forEach(function(x){ $(x).dispatchEvent(new Event("input")); }); setTimeout(function(){ $("s-sptr").scrollIntoView({behavior:"smooth", block:"start"}); }, 50); toast("Check it and tap Log transfer", ""); }]);
+      acts4.push([tab === "tab-loans" ? (out ? "Save as a loan" : "Save as a payment") : out ? "It’s a loan" : "Save", async function(){ await queue(d, tab === "tab-loans" ? (out ? "loan given" : "loan payment received") : ""); toast("Saved", "It’s added within the hour"); }]);
+      open(html4 + buttons(acts4)); wire(acts4); return;
+    }
+    open('<h3>Couldn’t tell what this is</h3><p class="sub">' + esc(d.summary || "Try a clearer photo or screenshot.") + '</p><div class="bt"><button type="button" class="secondary" id="snapOk">OK</button></div>'); $("snapOk").onclick = close;
+  }
+
+  if(!window.claude) return;
+  window.claude.use("db").then(function(d){
+    db = d; addKeyRow();
+    db.collection("spend").onSnapshot(function(s){ spend = s.docs.map(function(x){ var o = x.data(); o.id = x.id; return o; }); }, function(){});
+    db.collection("bets").onSnapshot(function(s){ bets = s.docs.map(function(x){ return {id:x.id}; }); }, function(){});
+  });
 })();
 </script>
 <script id="pato-ui-js">
