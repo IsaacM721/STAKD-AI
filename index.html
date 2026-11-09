@@ -1647,7 +1647,8 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109092931";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109094241";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -2988,14 +2989,16 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
     const N = remindDays(); if(!N) return [];
     return loans.map(dueOf).filter(it => it && (it.kind==="late" || it.d<=N) && !wasReminded(it)).sort((a,b)=>a.date.localeCompare(b.date));
   }
+  function saludoDR(){ const hr = Number(new Date().toLocaleString("en-US", {timeZone:"America/Santo_Domingo", hour:"numeric", hour12:false})) % 24;
+    return hr < 12 ? "Buenos días" : hr < 19 ? "Buenas tardes" : "Buenas noches"; }
   function msgFor(it){
     const name = cap(String(it.l.nombre||"").trim());
     const fechaEs = new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
     const monto = "RD$" + Math.round(it.amt).toLocaleString("en-US");
     const cuota = it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "";
-    if(it.kind==="late") return `Hola ${name}! El pago de ${monto}${cuota} que tocaba el ${fechaEs} todavía está pendiente. ¿Cuándo me lo puedes mandar? Gracias!`;
+    if(it.kind==="late") return `${saludoDR()} ${name}! El pago de ${monto}${cuota} del ${fechaEs} sigue pendiente. ¿Me avisas cuándo me lo puedes mandar? Gracias!`;
     const when = it.d===0 ? "hoy" : it.d===1 ? "mañana" : `el ${fechaEs}`;
-    return `Hola ${name}! Te escribo pa' recordarte que ${when} te toca el pago de ${monto}${cuota}. Gracias!`;
+    return `${saludoDR()} ${name}! Te recuerdo el pago de ${monto}${cuota} para ${when}. Gracias!`;
   }
   const dueTxt = it => it.kind==="late" ? `Was due ${fmtDate(it.date,false)} · ${Math.abs(it.d)} day${Math.abs(it.d)>1?"s":""} late` : it.d===0 ? "Due today" : it.d===1 ? "Due tomorrow" : `Due ${fmtDate(it.date,false)} · in ${it.d} days`;
   function waLink(tel, msg){
@@ -3037,8 +3040,8 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
       const name = cap(String(p.name||"").trim());
       const dEs = it => new Date(it.date+"T12:00").toLocaleDateString("es-DO",{weekday:"long", day:"numeric", month:"long"}).replace(",","");
       const mEs = it => "RD$" + Math.round(it.amt).toLocaleString("en-US") + (it.n>1 ? ` (cuota ${it.k} de ${it.n})` : "");
-      const msg = items.length === 1 ? msgFor(items[0]) : `Hola ${name}! Te escribo pa' recordarte tus pagos: ` +
-        items.map(it => it.kind === "late" ? `${mEs(it)} que tocaba el ${dEs(it)} (pendiente)` : `${mEs(it)} el ${dEs(it)}`).join(", ").replace(/, ([^,]*)$/, " y $1") + ". Gracias!";
+      const msg = items.length === 1 ? msgFor(items[0]) : `${saludoDR()} ${name}! Te recuerdo tus pagos: ` +
+        items.map(it => it.kind === "late" ? `${mEs(it)} del ${dEs(it)} (pendiente)` : `${mEs(it)} para el ${dEs(it)}`).join(", ").replace(/, ([^,]*)$/, " y $1") + ". Gracias!";
       const done = items.every(wasReminded) || items.every(it => waOpened.has(itKey(it)));
       const rb = document.createElement("button"); rb.type = "button"; rb.className = "pic" + (done ? " done" : "");
       rb.setAttribute("aria-label", "Remind " + name + " on WhatsApp"); rb.title = done ? "Reminded · send again" : "Remind"; rb.innerHTML = SV.wa;
