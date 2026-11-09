@@ -1519,7 +1519,8 @@ html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109012054";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109012501";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4028,7 +4029,7 @@ html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
       if(ref){ const o = hist[ref], d = score - o.s, span = daysBetween(ref,t)>=6 ? "this week" : "since " + new Date(ref+"T12:00").toLocaleDateString("en-US",{weekday:"long"});
         let best = null; Object.keys(PH).forEach(k=>{ const dc = (contrib[k]||0) - ((o.c||{})[k]||0); if((dc>0)===(d>0) && (!best || Math.abs(dc) > Math.abs(best[1]))) best = [k, dc]; });
         $("pscWhy").innerHTML = d===0 ? `No change ${span}` : `<b class="${d>0?"up":"dn"}">${d>0?"▲ +":"▼ −"}${Math.abs(d)}</b> ${span}${best && Math.abs(best[1])>=0.5 && (best[1]>0)===(d>0) ? ": " + PH[best[0]][d>0?0:1] : ""}`; }
-      else $("pscWhy").textContent = "Your first score. From next week you'll see what moved it.";
+      else $("pscWhy").textContent = "";
       // remember today's score (one per day) so the next ones can explain the change
       try{ const prev = hist[t]; if(window.__pscDb && (!prev || prev.s!==score || JSON.stringify(prev.c)!==JSON.stringify(contrib)) && window.__pscSaved!==t+score){
         window.__pscSaved = t+score; const keep = {}; Object.keys(hist).filter(d=>daysBetween(d,t)<=60).forEach(d=>keep[d]=hist[d]); keep[t] = {s:score, c:contrib};
