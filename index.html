@@ -1657,9 +1657,14 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 .psc-i i{flex:none;width:8px;height:8px;border-radius:50%;background:#E5BE3E}.psc-i i.good{background:#3DBB7E}.psc-i i.bad{background:#E0735A}
 .psc-how{font-size:.74rem;color:var(--muted);margin:10px 0 0;line-height:1.4}
 </style>
+<style id="pato-holdmenu">
+#people .pic.pmore{background:transparent;color:var(--muted);width:28px}
+#people .pic.pmore svg{fill:currentColor;stroke:none}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109104856";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109105440";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3085,6 +3090,26 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       setTimeout(() => document.addEventListener("click", function off(e3){ if(!m.contains(e3.target)){ m.remove(); document.removeEventListener("click", off, true); } }, true), 0);
     };
     pa.appendChild(pb);
+    // ⋯ : on hold / off hold, and a gentle message while on hold (Marco, Nov 9)
+    { const held = open.filter(o => o.l.pausado), name = cap(String(p.name||"").trim());
+      const mb = document.createElement("button"); mb.type = "button"; mb.className = "pic pmore"; mb.setAttribute("aria-label", "More for " + name);
+      mb.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg>';
+      mb.onclick = ev => { stop(ev); let m = sum.querySelector(".ppick"); if(m){ m.remove(); return; }
+        m = document.createElement("div"); m.className = "ppick";
+        const item = (t, fn) => { const b = document.createElement("button"); b.type = "button"; b.innerHTML = '<span class="a"></span>'; b.querySelector(".a").textContent = t; b.onclick = e2 => { stop(e2); m.remove(); fn(); }; m.appendChild(b); };
+        const setHold = async on => { const ls = open.filter(o => !!o.l.pausado !== on).map(o => o.l);
+          if(!await sure(on ? `Put ${name} on hold? Reminders stop and due dates wait until you take it off.` : `Take ${name} off hold? Reminders and due dates start again.`)) return;
+          try{ await Promise.all(ls.map(l => db.collection("prestamos").doc(l.id).update({pausado: on}))); }catch(e){ warnMsg("Couldn’t save. Try again."); } };
+        if(held.length){
+          item("Message", () => { const msg = `${typeof saludoDR === "function" ? saludoDR() : "Hola"} ${name}! ¿Cómo estás? Cuando puedas hablamos de lo pendiente, sin presión.`;
+            const tel = telOf(p.name); if(tel){ window.open(waLink(tel, msg), "_blank", "noopener"); return; }
+            openWA({l: held[0].l, kind: "pre", date: today(), d: 0, amt: 0, k: 1, n: 1}); $("waTitle").textContent = "Message"; $("waSub").textContent = name; $("waMsg").value = msg; $("waGo").href = waUrl(); });
+          item("Take off hold", () => setHold(false));
+        } else item("Put on hold", () => setHold(true));
+        sum.appendChild(m);
+        setTimeout(() => document.addEventListener("click", function off(e3){ if(!m.contains(e3.target)){ m.remove(); document.removeEventListener("click", off, true); } }, true), 0);
+      };
+      pa.appendChild(mb); }
     sum.appendChild(pa);
   };
   let waItem = null;
