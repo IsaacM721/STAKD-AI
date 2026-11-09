@@ -1663,7 +1663,8 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109110251";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109110324";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3022,9 +3023,7 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
   function warmBits(name){
     const now = new Date(), hr = Number(now.toLocaleString("en-US", {timeZone:"America/Santo_Domingo", hour:"numeric", hour12:false})) % 24;
     const wd = now.toLocaleDateString("en-US", {timeZone:"America/Santo_Domingo", weekday:"short"});
-    const ops = ["todo bien?", "espero que estés bien", "cómo vas?", "espero que todo esté bien por allá"];
-    if(wd === "Mon") ops.push("espero que hayas empezado bien la semana");
-    if(wd === "Fri") ops.push("feliz viernes");
+    const ops = ["todo bien?", "como vas?", "como estas?"];   // Marco's own openers, typed casually on purpose
     const key = "pato-op-" + String(name||"").toLowerCase(); let last = ""; try{ last = localStorage.getItem(key) || ""; }catch(e){}
     const pool = ops.filter(o => o !== last), op = pool[Math.floor(Math.random()*pool.length)];
     try{ localStorage.setItem(key, op); }catch(e){}
