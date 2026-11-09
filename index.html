@@ -1659,7 +1659,8 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109103858";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109104856";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4211,17 +4212,23 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       P.plan = [];
       { const rs = keys.map(k=>rateFor(k)), svd = rs.reduce((s,r)=>s+(r.saved||0),0), start = sav - svd;   // growth of the savings balance over 3 months
         if(start>0) P.plan.push(["kept","Growing toward your goal", pw(svd/start, [[0,0],[0.05,50],[0.15,100]]), svd>=0 ? `Your savings grew ${fmt(svd)} in 3 months` : `Your savings shrank ${fmt(-svd)} in 3 months`]);
-        // steady saving (Marco, Nov 9): savings growth per finished month from regular income only. All poker is left out
-        // (league rakeback, League Action, Tables, Arcade, sports), since the league is slowing down. Median of the last 3 finished months.
+        // savings rate on regular income (Marco, Nov 9): over the last 3 finished months, what the savings balance grew from
+        // regular income (all poker left out: league rakeback, League Action, Tables, Arcade, sports) ÷ the regular income that came in.
+        // Works for anyone: regular income = money in that isn't poker, a loan coming back, a withdrawal/refund or the starting balance.
         const NOPOKER = new Set([...GAME, ...(typeof POKER_SRC !== "undefined" ? POKER_SRC : []), "Rakeback de la liga"]);
-        const gm = k => entries.filter(e=>NOPOKER.has(e.source) && (e.date||"").slice(0,7)===k).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);   // only what moved through savings
+        const NOTREG = new Set([...NOPOKER, "Saldo inicial", "Préstamo", "Reposición", "Retiro"]);
+        const inK = k => d => (d||"").slice(0,7)===k;
+        const gm = k => entries.filter(e=>NOPOKER.has(e.source) && inK(k)(e.date)).reduce((s,e)=>s+(e.type==="out"?-e.amount:e.amount),0);   // only what moved through savings
+        const regIn = k => entries.filter(e=>e.type!=="out" && !NOTREG.has(e.source) && inK(k)(e.date)).reduce((s,e)=>s+e.amount,0) + interestBy(inK(k), "ahorro");
         const fk = [1,2,3].map(i => { const d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1-i, 1); return d.getFullYear()+"-"+pad(d.getMonth()+1); })
-                    .filter(k => entries.some(e=>(e.date||"").slice(0,7)===k && e.source!=="Saldo inicial"));   // finished months with data
-        const st = fk.map(k => (rateFor(k).saved||0) - gm(k));
-        if(st.length){ const so = [...st].sort((a,b)=>a-b), stM = so.length%2 ? so[(so.length-1)/2] : (so[so.length/2-1]+so[so.length/2])/2;
+                    .filter(k => entries.some(e=>inK(k)(e.date) && e.source!=="Saldo inicial"))   // finished months with data
+                    .filter((k,i,a) => !spend.length || spend.some(t=>!t.excluded && (t.date||"").slice(0,7)===k) || !a.some(x=>spend.some(t=>!t.excluded && (t.date||"").slice(0,7)===x)));   // with spending tracked, only months it covers
+        const st = fk.map(k => (rateFor(k).saved||0) - gm(k)), ri = fk.map(regIn), sumI = ri.reduce((a,b)=>a+b,0);
+        if(sumI>0){ const sr = st.reduce((a,b)=>a+b,0)/sumI;
           let run = 0; for(const v of st){ if(v>0) run++; else break; }
-          P.plan.push(["steady","Saving steadily", pw(stM, [[0,0],[15000,40],[30000,70],[50000,100]]),
-            stM>0 ? `You save about ${fmt(Math.round(stM/500)*500)} a month from regular income` + (run>=2 ? ` · up ${run} months in a row` : "") : `From regular income your savings went down about ${fmt(Math.round(-stM/500)*500)} a month`]); } }
+          window.__patoSR = {months:fk, saved:st, regular:ri, rate:sr};
+          P.plan.push(["srate","Savings rate", pw(sr, [[0,0],[0.1,50],[0.2,100]]),
+            sr>=0 ? `You save about ${Math.round(sr*100)}% of your regular income` + (run>=2 ? ` · up ${run} months in a row` : "") : `From regular income you spent more than came in (${Math.round(sr*100)}%)`]); } }
       // PLAY (Pato): how much you stake compared to what you earn, and how it's going
       P.play = [];
       { const bw = (bets||[]).filter(b=>inW(b.fecha)), linked = new Set(bw.map(b=>b.entryId).filter(Boolean));
@@ -4258,7 +4265,7 @@ html:root[data-palette="goyardl"] .stat b.ipend{color:#9A6F1F}
       // why it moved: compare with the saved score from about a week ago
       const PH = {spend:["you spent less compared to what you earn","you spent more compared to what you earn"], limit:["you're on a better pace for your limit","you're spending faster than your limit"],
         months:["your savings cushion grew","your savings cushion shrank"], inv:["more of your money is invested","less of your money is invested"], ontime:["loans came back on time","a loan is late"],
-        lent:["less of your money is lent out","more of your money is lent out"], kept:["your savings grew faster","your savings grew slower"], mup:["your savings grew more months in a row","your savings dropped in a month"], steady:["you saved more each month","you saved less each month"],
+        lent:["less of your money is lent out","more of your money is lent out"], kept:["your savings grew faster","your savings grew slower"], mup:["your savings grew more months in a row","your savings dropped in a month"], steady:["you saved more each month","you saved less each month"], srate:["you saved more of your regular income","you saved less of your regular income"],
         staked:["you staked less","you staked more"], result:["your betting results improved","you lost more betting"]};
       const hist = (window.__pscHist||{}), days = Object.keys(hist).filter(d=>d<t).sort();
       const ref = days.filter(d=>daysBetween(d,t)>=7).pop() || days[0];
