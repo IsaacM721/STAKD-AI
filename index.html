@@ -1502,7 +1502,8 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109010857";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109011031";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3942,7 +3943,7 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
       const P = {};
       // SPEND: spend less than you earn; stay under your monthly limit
       P.spend = [];
-      if(incM>0) P.spend.push(["spend","Spend less than you earn", pw(spentM/incM, [[0.6,100],[0.9,50],[1.1,0]]), `You spend about ${Math.round(spentM/incM*100)}% of what you earn`]);
+      if(incM>0) P.spend.push(["spend","Spend less than you earn", pw(spentM/incM, [[0.6,100],[0.9,50],[1.1,0]]), `Your spending is about ${Math.round(spentM/incM*100)}% of your income (not counting winnings)`]);
       const lim = Number(config.limiteMensual)||0;
       if(lim>0 && spend.length){ const pace = spSummary(mk).total/day*dim; P.spend.push(["limit","Stay under your limit", pw(pace/lim, [[0.85,100],[1,60],[1.2,0]]), `On pace for ${fmt(pace)} of ${fmt(lim)}`]); }
       // SAVE: months of spending saved; part of it invested
@@ -3957,12 +3958,12 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
         if(n) P.borrow.push(["ontime","Loans paid back on time", ok/n*100, `${ok} of ${n} paid back on time${late?` · ${late} late now`:""}`]); }
       { const held = (()=>{ try{ return heldList().reduce((s,x)=>s+x.rd,0); }catch(e){ return 0; } })();
         const ext = Math.max(0, config.deudas.filter(d=>!d.liga && !d.pausado).reduce((s,d)=>s+Math.max(0,d.total-paidTo(d.nombre)),0) + loans.filter(l=>!l.pagado).reduce((s,l)=>s+loanRemaining(l),0) - held);
-        const lent = ext + held, all = sav + ext;   // money held by someone (e.g. Dad) is already inside savings
-        if(all>0 && (lent>0 || P.borrow.length)) P.borrow.push(["lent","Savings lent out", pw(lent/all, [[0.1,100],[0.3,50],[0.5,0]]), `${Math.round(lent/all*100)}% of your money is with other people`]); }
+        const lent = ext, all = sav + ext;   // money held for you (e.g. by Dad) counts as savings, not as a loan (Marco's rule)
+        if(all>0 && (lent>0 || P.borrow.length)) P.borrow.push(["lent","Savings lent out", pw(lent/all, [[0.1,100],[0.3,50],[0.5,0]]), `${Math.round(lent/all*100)}% of your money is lent out to people`]); }
       // PLAN: keep growing toward your goal; leave savings alone
       P.plan = [];
-      { const rs = keys.map(k=>rateFor(k)), svd = rs.reduce((s,r)=>s+(r.saved||0),0), inc = rs.reduce((s,r)=>s+Math.max(0,r.inc||0),0), rate = inc>0 ? svd/inc : null;
-        if(rate!==null) P.plan.push(["kept","Growing toward your goal", pw(rate, [[0,0],[0.1,50],[0.25,100]]), `You kept ${Math.max(-100,Math.min(100,Math.round(rate*100)))}% of what came in`]);
+      { const rs = keys.map(k=>rateFor(k)), svd = rs.reduce((s,r)=>s+(r.saved||0),0), start = sav - svd;   // growth of the savings balance over 3 months
+        if(start>0) P.plan.push(["kept","Growing toward your goal", pw(svd/start, [[0,0],[0.05,50],[0.15,100]]), svd>=0 ? `Your savings grew ${fmt(svd)} in 3 months` : `Your savings shrank ${fmt(-svd)} in 3 months`]);
         const up = rs.filter(r=>(r.saved||0)>0).length;
         P.plan.push(["mup","Saved every month", up/3*100, `Savings grew in ${up} of the last 3 months`]); }
       // PLAY (Pato): how much you stake compared to what you earn, and how it's going
@@ -4000,7 +4001,7 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
       // why it moved: compare with the saved score from about a week ago
       const PH = {spend:["you spent less compared to what you earn","you spent more compared to what you earn"], limit:["you're on a better pace for your limit","you're spending faster than your limit"],
         months:["your savings cushion grew","your savings cushion shrank"], inv:["more of your money is invested","less of your money is invested"], ontime:["loans came back on time","a loan is late"],
-        lent:["less of your money is lent out","more of your money is lent out"], kept:["you kept more of what came in","you kept less of what came in"], mup:["your savings grew more months in a row","your savings dropped in a month"],
+        lent:["less of your money is lent out","more of your money is lent out"], kept:["your savings grew faster","your savings grew slower"], mup:["your savings grew more months in a row","your savings dropped in a month"],
         staked:["you staked less","you staked more"], result:["your betting results improved","you lost more betting"]};
       const hist = (window.__pscHist||{}), days = Object.keys(hist).filter(d=>d<t).sort();
       const ref = days.filter(d=>daysBetween(d,t)>=7).pop() || days[0];
