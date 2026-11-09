@@ -1551,9 +1551,27 @@ html.has-ak #s-sptr,html.has-ak #s-spcash>h3,html.has-ak #s-spcash>.grid,html.ha
  background:linear-gradient(145deg,#2F8F62,#1C6444);color:#fff;border:3px solid var(--paper);box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:2}
 .tabs #snapBtn svg{width:24px;height:24px}
 </style>
+<style id="pato-loans">
+.loan.lc>.l1{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;cursor:pointer;padding:4px 0;font-size:.95rem}
+.loan.lc>.l1 .a{font-weight:600;color:var(--ink)}
+.loan.lc>.l1 .d{margin-left:auto;color:var(--muted);font-size:.86rem;white-space:nowrap}.loan.lc>.l1 .d.late{color:var(--red)}
+.loan.lc>.l1 .ch{color:var(--muted);transition:transform .2s;font-size:1.1rem;line-height:1}
+.loan.lc.lo>.l1 .ch{transform:rotate(90deg)}
+.loan.lc:not(.lo)>:not(.l1){display:none!important}
+.loan.lc.lo>.l1{margin-bottom:8px}
+details.lrec{margin-top:10px}
+details.lrec>summary{cursor:pointer;color:var(--muted);font-size:.85rem;list-style:none}
+details.lrec>summary::-webkit-details-marker{display:none}
+details.lrec>summary::after{content:" ›";display:inline-block;transition:transform .2s}
+details.lrec[open]>summary::after{transform:rotate(90deg)}
+#sbCover{position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:60;pointer-events:none}
+html:root[data-palette="goyards"] #sbCover{background:#0E2219}
+html:root[data-palette="goyardl"] #sbCover{background:#F4EFE5}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109020653";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109023936";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -2847,6 +2865,15 @@ html.has-ak #s-sptr,html.has-ak #s-spcash>h3,html.has-ak #s-spcash>.grid,html.ha
       const d=document.createElement("button"); d.className="mini danger"; d.type="button"; d.textContent="Delete"; d.onclick=()=>deleteLoan(l); act.appendChild(d);
       if(editingLoan===l.id) el.appendChild(loanEditor(l));
     }
+    { const op = window.__loanOpen || (window.__loanOpen = new Set()), isOpen = op.has(l.id) || editingLoan===l.id;
+      const left = loanRemaining(l), dd = nx ? nx.date : l.fecha, late = !l.pagado && !l.pausado && dd && dd < today();
+      const one = document.createElement("button"); one.type = "button"; one.className = "l1 num";
+      one.innerHTML = `<span class="a"></span><span class="d${late?" late":""}"></span><span class="ch" aria-hidden="true">›</span>`;
+      one.querySelector(".a").textContent = `${fmt(l.monto)} → ${Math.round(tot).toLocaleString("en-US")}` + (!l.pagado && pl.length ? ` · ${fmt(left)} left` : "");
+      one.querySelector(".d").textContent = l.pagado ? "Collected " + fmtDate(l.cobradoEl,false) : l.pausado ? "Paused" : dd ? (late ? "Late · " : "") + fmtDate(dd,false) : "";
+      one.setAttribute("aria-expanded", isOpen);
+      one.onclick = () => { if(op.has(l.id)) op.delete(l.id); else op.add(l.id); el.classList.toggle("lo"); one.setAttribute("aria-expanded", el.classList.contains("lo")); };
+      el.classList.add("lc"); if(isOpen) el.classList.add("lo"); el.prepend(one); }
     return el;
   }
 
@@ -4177,9 +4204,10 @@ html.has-ak #s-sptr,html.has-ak #s-spcash>h3,html.has-ak #s-spcash>.grid,html.ha
         const sm = document.createElement("details"); sm.className="psum";
         sm.innerHTML = `<summary style="cursor:pointer">${done.length} loan${done.length>1?"s":""} collected · you earned ${fmt(g)} in interest</summary>`;
         done.filter(l=>editingLoan!==l.id).forEach(l => sm.appendChild(loanRow(l)));
-        body.appendChild(sm);
+        (window.__lrecBox = window.__lrecBox || []).push(sm);
       }
-      if(p.loans.length && tr.total) { const r=document.createElement("div"); r.className="hint"; r.textContent = "Record: " + recordText(tr) + "."; body.appendChild(r); }
+      if(p.loans.length && tr.total) { const r=document.createElement("div"); r.className="hint"; r.textContent = "Record: " + recordText(tr) + "."; (window.__lrecBox = window.__lrecBox || []).push(r); }
+      if((window.__lrecBox||[]).length){ const rw = document.createElement("details"); rw.className = "lrec"; rw.innerHTML = '<summary>Record</summary>'; window.__lrecBox.forEach(x => rw.appendChild(x)); window.__lrecBox = []; body.appendChild(rw); }
       (isPast(p) ? pastW : pw).appendChild(det);
     });
     };
@@ -5957,5 +5985,6 @@ TRACKER DATA:
   dockCam(); setInterval(dockCam, 1500);
 })();
 </script>
+<div id="sbCover"></div>
 </body>
 </html>
