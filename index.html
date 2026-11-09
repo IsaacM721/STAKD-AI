@@ -1645,9 +1645,20 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
 #people .ppick button:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
 #people .ppick .a{font-weight:600}#people .ppick .d{margin-left:auto;color:var(--muted)}
 </style>
+<style id="pato-hold">
+#people .person>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:2px;align-items:center}
+#people .person>summary>div:first-child{grid-column:1;grid-row:1;display:flex;align-items:center;gap:6px;min-width:0;white-space:nowrap}
+#people .person>summary .pname{flex:none}
+#people .person>summary .badge{margin-left:0;flex:none;font-size:.68rem;padding:2px 7px}
+#people .person>summary .powed{grid-column:1;grid-row:2;margin:0;text-align:left;font-size:1.05rem}
+#people .person>summary .pact{grid-column:2;grid-row:1 / span 2;gap:8px;margin:0}
+#people .pic{width:36px;height:36px}
+.badge.hold{border-color:color-mix(in srgb,var(--muted) 55%,transparent);color:var(--muted);font-weight:600}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109094241";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109095228";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -2916,7 +2927,7 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
     const dueD = nx ? nx.date : l.fecha;
     subs[1].textContent = l.pagado ? "" : l.pausado ? "" : (dueD < today() ? "Was due " : multi ? "Next " : "Due ") + fmtDate(dueD) + (nx ? ` · ${fmt(nx.amt)}` : "");
     if(!l.pagado && !l.pausado && dueD < today()) subs[1].classList.add("late");
-    if(!l.pagado && l.pausado){ const pb=document.createElement("span"); pb.className="badge none"; pb.textContent="⏸\uFE0E"; pb.title="Paused"; el.querySelector(".debt-head span").appendChild(pb); }
+    if(!l.pagado && l.pausado){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; el.querySelector(".debt-head span").appendChild(pb); }
     if(multi){
       const bar=document.createElement("div"); bar.className="minibar"+(l.pagado?" ":""); bar.innerHTML=`<i style="width:${Math.min(100,paidSum(l)/tot*100)}%"></i>`;
       el.querySelector(".debt-sub").before(bar);
@@ -2964,7 +2975,7 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
       const one = document.createElement("button"); one.type = "button"; one.className = "l1 num";
       one.innerHTML = `<span class="a"></span><span class="d${late?" late":""}"></span><span class="ch" aria-hidden="true">›</span>`;
       one.querySelector(".a").textContent = `${fmt(l.monto)} → ${Math.round(tot).toLocaleString("en-US")}` + (!l.pagado && pl.length ? ` · ${fmt(left)} left` : "");
-      one.querySelector(".d").textContent = l.pagado ? "Collected " + fmtDate(l.cobradoEl,false) : l.pausado ? "Paused" : dd ? (late ? "Late · " : "") + fmtDate(dd,false) : "";
+      one.querySelector(".d").textContent = l.pagado ? "Collected " + fmtDate(l.cobradoEl,false) : l.pausado ? "On hold" : dd ? (late ? "Late · " : "") + fmtDate(dd,false) : "";
       one.setAttribute("aria-expanded", isOpen);
       one.onclick = () => { if(op.has(l.id)) op.delete(l.id); else op.add(l.id); el.classList.toggle("lo"); one.setAttribute("aria-expanded", el.classList.contains("lo")); };
       el.classList.add("lc"); if(isOpen) el.classList.add("lo"); el.prepend(one); }
@@ -3053,14 +3064,14 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
     // paid: the payment form; a small picker when there are 2+ open loans
     const pb = document.createElement("button"); pb.type = "button"; pb.className = "pic g"; pb.setAttribute("aria-label", "Log a payment from " + cap(p.name)); pb.title = "Paid"; pb.innerHTML = SV.ok;
     pb.onclick = ev => { stop(ev);
-      if(open.length === 1){ collectLoan(open[0].l); return; }
+      { const pick = open.find(o => !o.l.pausado) || open[0]; collectLoan(pick.l); return; }  // Marco: Paid goes straight to the next payment due, no picker
       let m = sum.querySelector(".ppick"); if(m){ m.remove(); return; }
       m = document.createElement("div"); m.className = "ppick"; m.innerHTML = '<div class="pph">Which loan?</div>';
       open.forEach(o => { const b = document.createElement("button"); b.type = "button";
         const amt = o.it ? o.it.amt : o.nx ? o.nx.amt : loanRemaining(o.l), dd = (o.it && o.it.date) || (o.nx && o.nx.date) || o.l.fecha;
         b.innerHTML = '<span class="a"></span><span class="d"></span>';
         b.querySelector(".a").textContent = fmt(amt) + (o.nx ? ` (${o.nx.k}/${o.nx.n})` : "") + " · lent " + fmt(o.l.monto);
-        b.querySelector(".d").textContent = o.l.pausado ? "Paused" : dd ? fmtDate(dd,false) : "";
+        b.querySelector(".d").textContent = o.l.pausado ? "On hold" : dd ? fmtDate(dd,false) : "";
         b.onclick = e2 => { stop(e2); m.remove(); collectLoan(o.l); }; m.appendChild(b); });
       sum.appendChild(m);
       setTimeout(() => document.addEventListener("click", function off(e3){ if(!m.contains(e3.target)){ m.remove(); document.removeEventListener("click", off, true); } }, true), 0);
@@ -4126,7 +4137,7 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
     $("loanStats").innerHTML = loans.length ? `
       <div class="stat"><b>${fmt(capAct)}</b><span>Lent out now</span></div>
       <div class="stat"><b>${avgRate.toLocaleString("en-US",{maximumFractionDigits:1})}%</b><span>Average interest</span></div>
-      <div class="stat"><b class="profit">${fmt(earned)}</b><span>Interest earned</span></div>
+      <div class="stat"><b>${fmt(earned)}</b><span>Interest earned</span></div>
       <div class="stat"><b>${fmt(pending)}</b><span>Interest pending</span></div>
 ` : "";
 
@@ -4281,10 +4292,11 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
       const nm = det.querySelector(".pname"); nm.textContent = cap(p.name);
       if(isD){ det.classList.add("dsum");
         const dpa = p.deudas.some(d=>d.pausado && d.total-paidTo(d.nombre)>0), dv = p.deudas.map(d=>d.vence).filter(Boolean).sort()[0];
-        const nt = dpa ? "⏸\uFE0E" : p.deudas.some(d=>d.liga) ? "Paid weekly" : dv ? "Due " + fmtDate(dv,false) : "";
+        const nt = dpa ? "On hold" : p.deudas.some(d=>d.liga) ? "Paid weekly" : dv ? "Due " + fmtDate(dv,false) : "";
         if(nt){ const sm=document.createElement("small"); sm.className="pnote"; sm.textContent=nt; nm.parentNode.appendChild(sm); } }
-      if(p.loans.length){ const bd=document.createElement("span"); bd.className="badge "+tr.cls; bd.textContent = `${tr.label} · ${tr.score}`; nm.after(bd); }
-      if(p.loans.some(l=>!l.pagado && l.pausado)){ const pb=document.createElement("span"); pb.className="badge none"; pb.textContent="⏸\uFE0E"; pb.title="Paused"; nm.after(pb); }
+      const onHold = p.loans.some(l=>!l.pagado && l.pausado);
+      if(p.loans.length && !onHold){ const bd=document.createElement("span"); bd.className="badge "+tr.cls; bd.textContent = `${tr.label} · ${tr.score}`; nm.after(bd); }
+      if(onHold){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; nm.after(pb); }
       const actN = p.loans.filter(l=>!l.pagado).length;
       det.querySelector(".powed").innerHTML = isD ? (p.owe>0 ? fmt(p.owe) : `<span class="profit">Paid</span>`) : p.owe>0 ? fmt(p.owe) : `<span class="profit">All paid</span>`;
       const body = det.querySelector(".pbody");
@@ -4294,7 +4306,7 @@ html:root[data-palette="goyardl"] #people .pic.g{border-color:#B8892F;color:#9A6
         const el = document.createElement("div"); el.className = "debt" + (rest===0 ? " paid":"");
         el.innerHTML = `<div class="debt-head"><span></span><span class="num"></span></div><div class="minibar"><i style="width:${pp}%"></i></div><div class="debt-sub num"><span></span><span></span></div>`;
         el.querySelector(".debt-head span").textContent = "Debt" + (d.nota ? " · " + d.nota : "");
-        if(d.pausado && rest>0){ const pb=document.createElement("span"); pb.className="badge none"; pb.textContent="⏸\uFE0E"; pb.title="Paused"; el.querySelector(".debt-head span").appendChild(pb); }
+        if(d.pausado && rest>0){ const pb=document.createElement("span"); pb.className="badge none hold"; pb.textContent="On hold"; el.querySelector(".debt-head span").appendChild(pb); }
         el.querySelector(".debt-head .num").textContent = rest===0 ? "Paid off" : fmt(rest) + " left";
         const subs = el.querySelectorAll(".debt-sub span"); subs[0].textContent = "Collected " + fmt(paid); subs[1].textContent = "of " + fmt(d.total);
         if(db){
