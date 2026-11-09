@@ -1540,10 +1540,12 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 .pato-pill b{font-weight:800;font-variant-numeric:tabular-nums}
 .pato-pill span.z1{color:#D9534A}.pato-pill span.z2{color:#E07B2E}.pato-pill span.z3{color:#C9A227}.pato-pill span.z4{color:#5FAE47}.pato-pill span.z5{color:#2E9E68}
 .tabp>.pp-row{display:flow-root;margin:0 0 -2px}
+#p-savings>.pp-row{display:none}
 </style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109014546";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109014805";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4596,6 +4598,14 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
     const parts = [["Savings",sav-inv-heldT,"--c-sav"], ...held.map(x=>["Lent: "+x.nombre, x.rd, "--c-owe"]), ...invs.map(x=>[x.nombre, Number(x.rd), "--c-al"]),["Checking",cc,"--c-cc"],["Cash",cash,"--c-int"],["Owed to you",owed,"--c-owe"]];
     $("netBar").innerHTML = all>0 ? parts.map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
     $("netSplit").innerHTML = parts.filter(([n,v])=>v>0||n==="Savings").map(([n,v,c])=>`<a><span><i style="background:var(${c})"></i>${n}</span><b>${fmt(v)}</b><small>${all>0?Math.round(v/all*100):0}%${n==="Checking"&&!ccE.last?" · not logged":n==="Cash"&&spWallet()===null?" · not logged":""}</small></a>`).join("");
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
     { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
       const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
       const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
