@@ -1518,9 +1518,16 @@ html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
 .psc-i i{flex:none;width:8px;height:8px;border-radius:50%;background:#E5BE3E}.psc-i i.good{background:#3DBB7E}.psc-i i.bad{background:#E0735A}
 .psc-how{font-size:.74rem;color:var(--muted);margin:10px 0 0;line-height:1.4}
 </style>
+<style id="pato-bar">
+html,body{overscroll-behavior:none}
+.tabs{position:fixed!important;bottom:0!important;transform:translateZ(0)!important;-webkit-transform:translateZ(0)!important;will-change:transform}
+@media (min-width:760px){.tabs{transform:translateX(-50%) translateZ(0)!important}}
+html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109012851";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109013434";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -5819,6 +5826,13 @@ TRACKER DATA:
   }
   place(); var d = false; try{ d = localStorage.getItem(KEY) === "1"; }catch(e){} if(d) set(true);
   setInterval(place, 2000);
+})();
+</script>
+<script id="pato-bar-js">
+(function(){
+  var H = document.documentElement, typing = function(e){ var t = e && e.target; return t && (t.tagName === "INPUT" && !/^(checkbox|radio|button|submit|range|file)$/i.test(t.type) || t.tagName === "TEXTAREA" || t.tagName === "SELECT"); };
+  document.addEventListener("focusin", function(e){ if(typing(e)) H.classList.add("kb-open"); });
+  document.addEventListener("focusout", function(){ setTimeout(function(){ if(!typing({target:document.activeElement})) H.classList.remove("kb-open"); window.scrollBy(0,0); }, 60); });
 })();
 </script>
 </body>
