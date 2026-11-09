@@ -1524,9 +1524,27 @@ html,body{overscroll-behavior:none}
 @media (min-width:760px){.tabs{transform:translateX(-50%) translateZ(0)!important}}
 html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
 </style>
+<style id="pato-ui">
+#spMore{display:flex;gap:10px;justify-content:center;margin-top:8px}#spMore:empty{display:none}
+#spMore button{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.85rem;padding:7px 14px;border-radius:999px;cursor:pointer}
+.nw-split{display:grid;gap:14px;margin-top:14px}
+.nw-gh{display:flex;justify-content:space-between;align-items:baseline;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-bottom:4px;border-bottom:1px solid color-mix(in srgb,var(--ink) 9%,transparent)}
+.nw-gh b{font-size:.9rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+.nw-r{display:grid;grid-template-columns:10px minmax(0,1fr) auto 3.2em;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 5%,transparent)}
+.nw-r:last-child{border-bottom:0}
+.nw-r i{width:9px;height:9px;border-radius:50%}
+.nw-r span{color:var(--ink);font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nw-r span small{color:var(--muted);font-size:.78rem}
+.nw-r b{font-weight:700;color:var(--ink)}.nw-r>small{color:var(--muted);font-size:.8rem;text-align:right}
+.pato-pill{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;float:right;margin:2px 0 6px 10px;padding:4px 11px 4px 4px;border-radius:999px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);font-size:.82rem;color:var(--ink);position:relative;z-index:2}
+.pato-pill img{width:24px;height:24px;border-radius:7px}
+.pato-pill b{font-weight:800;font-variant-numeric:tabular-nums}
+.pato-pill span.z1{color:#D9534A}.pato-pill span.z2{color:#E07B2E}.pato-pill span.z3{color:#C9A227}.pato-pill span.z4{color:#5FAE47}.pato-pill span.z5{color:#2E9E68}
+.tabp>.pp-row{display:flow-root;margin:0 0 -2px}
+</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109013434";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109014546";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -3745,7 +3763,7 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
       }catch(e){ warnMsg("Couldn’t save. Try again."); }
     };
   }
-  const HIST_STEP = 10; let histShown = HIST_STEP;
+  const HIST_STEP = 6; let histShown = HIST_STEP;
   window.__mpRerender = () => { try{ render(); }catch(e){} };
   function render(){
     try{ renderSpend(); }catch(e){ console.error(e); }
@@ -4049,6 +4067,7 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
         `<p class="psc-how">Built on the FinHealth Score from the Financial Health Network, plus how you bet and play. Based on your last 90 days.</p>`;
       if(!$("pscMore").onclick) $("pscMore").onclick = () => { const d = $("pscDet"), o = d.hidden; d.hidden = !o; $("pscMore").textContent = o ? "Hide details" : "See what's behind it"; };
       { const s = $("saved"), hero = s && s.closest(".hero, section"), c = $("psc"); if(hero && hero.nextElementSibling !== c) hero.after(c); }
+      window.__patoLast = [score, z[1], z[3]]; window.__patoPill && window.__patoPill(score, z[1], z[3]);
       $("psc").hidden = false;
     })(); }catch(e){ console.error(e); $("psc").hidden = true; }
     // ---- end Pato score ----
@@ -4063,7 +4082,7 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
     const openSet = window.__openPeople || (window.__openPeople = new Set());
     const oweOf = p => isD ? p.deudas.reduce((t,d)=>t+Math.max(0,d.total-paidTo(d.nombre)),0) : p.loans.filter(l=>!l.pagado).reduce((t,l)=>t+loanRemaining(l),0);
     const plist = [...map.entries()].map(([k,p]) => ({...p, k:kind+":"+k, owe: oweOf(p)})).sort((a,b)=>b.owe-a.owe || a.name.localeCompare(b.name));
-    const isPast = p => p.owe<=0 && !p.deudas.some(d=>d.liga) && !(editingLoan && p.loans.some(l=>l.id===editingLoan && !l.pagado)) && !(debtEdit && p.deudas.some(d=>d.nombre===debtEdit.nombre));
+    const isPast = p => p.owe<=0 && !p.deudas.some(d=>d.liga && ligaWeeks(d).reduce((t,w)=>t+(Number(w.monto)||0)+(Number(w.accion)||0),0)>0.5) && !(editingLoan && p.loans.some(l=>l.id===editingLoan && !l.pagado)) && !(debtEdit && p.deudas.some(d=>d.nombre===debtEdit.nombre));
     const activeN = plist.filter(p=>!isPast(p)).length, pastList = plist.filter(isPast);
     if(!activeN) pw.innerHTML = `<div class="empty">${isD ? "No open debts right now." : "No active loans right now."}</div>`;
     $(isD ? "debtPastWrap" : "pastWrap").hidden = !pastList.length;
@@ -4577,6 +4596,14 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
     const parts = [["Savings",sav-inv-heldT,"--c-sav"], ...held.map(x=>["Lent: "+x.nombre, x.rd, "--c-owe"]), ...invs.map(x=>[x.nombre, Number(x.rd), "--c-al"]),["Checking",cc,"--c-cc"],["Cash",cash,"--c-int"],["Owed to you",owed,"--c-owe"]];
     $("netBar").innerHTML = all>0 ? parts.map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
     $("netSplit").innerHTML = parts.filter(([n,v])=>v>0||n==="Savings").map(([n,v,c])=>`<a><span><i style="background:var(${c})"></i>${n}</span><b>${fmt(v)}</b><small>${all>0?Math.round(v/all*100):0}%${n==="Checking"&&!ccE.last?" · not logged":n==="Cash"&&spWallet()===null?" · not logged":""}</small></a>`).join("");
+    { const nl = n => n.startsWith("Lent: ") ? "Held by " + n.slice(6) : n, note = n => n==="Checking"&&!ccE.last ? "not logged" : n==="Cash"&&spWallet()===null ? "not logged" : "";
+      const COL = ["--c-sav","--c-al","--c-cc","--c-pk","--c-nl"];
+      const mine = parts.filter(([n,v])=>n!=="Owed to you" && (v>0||n==="Savings")).sort((a,b)=>b[1]-a[1]).map(([n,v],k)=>[nl(n),v,COL[k%COL.length],note(n)]);
+      const owed = parts.filter(([n,v])=>n==="Owed to you" && v>0).map(([n,v])=>[n,v,"--c-owe",""]);
+      const sum = L => L.reduce((t,x)=>t+x[1],0), pc = v => all>0 ? Math.round(v/all*100) : 0;
+      $("netBar").innerHTML = all>0 ? [...mine, ...owed].map(([,v,c])=>v>0?`<i style="width:${v/all*100}%;background:var(${c})"></i>`:"").join("") : "";
+      const grp = (t, L) => L.length ? `<div class="nw-g"><div class="nw-gh"><span>${t}</span><b>${fmt(sum(L))}</b></div>${L.map(([n,v,c,x])=>`<div class="nw-r"><i style="background:var(${c})"></i><span>${spEsc(n)}${x?` <small>· ${x}</small>`:""}</span><b>${fmt(v)}</b><small>${pc(v)}%</small></div>`).join("")}</div>` : "";
+      $("netSplit").className = "nw-split num"; $("netSplit").innerHTML = grp("Your money", mine) + grp("Owed to you", owed); }
   }
   // league rakeback per Monday: average of the weeks so far (first week left out), counting weeks earned but not paid yet
   function ligaAvg(){
@@ -4799,6 +4826,10 @@ html.kb-open .tabs,html.kb-open #snapBtn{visibility:hidden}
     if(spFilter==="flag") list = list.filter(t=>t.dupe||t.status!=="Aprobada"||t.excluded);
     list.sort((a,b)=> b.date.localeCompare(a.date) || (b.ts||0)-(a.ts||0));
     const canEdit = !!db;
+    const spAll = list.length, spN = window.__spShow || 8; list = list.slice(0, spN);
+    { let m = $("spMore"); if(!m){ m = document.createElement("div"); m.id = "spMore"; m.className = "hist-more"; $("spLedger").after(m); }
+      m.innerHTML = ""; if(spAll > spN){ const b = document.createElement("button"); b.type = "button"; b.textContent = `View more (${spAll-spN})`; b.onclick = () => { window.__spShow = spN + 8; renderSpend(); }; m.appendChild(b); }
+      if(spN > 8){ const b = document.createElement("button"); b.type = "button"; b.textContent = "Show less"; b.onclick = () => { window.__spShow = 8; renderSpend(); $("s-spledger").scrollIntoView({block:"start"}); }; m.appendChild(b); } }
     $("spLedger").innerHTML = list.length ? list.map(t=>{
       const wallet = spIsCashOut(t)||spIsCashIn(t), inc = spIsIn(t), off = !spLive(t);
       const tag = t.status!=="Aprobada" ? t.status : t.excluded ? "Not counted" : t.dupe ? "Possible double" : spIsManual(t) ? (t.fromSav ? "Paid from savings" : "Paid in cash") : spIsCashOut(t) ? (t.kept ? "ATM · you kept it" : "ATM · not counted as spent") : spIsCashIn(t) ? "Cash count" : spIsDep(t) ? "Cash deposited · not spending" : spIsTransfer(t) ? (t.own ? "To your own account" : "Transfer from checking") : inc ? "Money in" : "";
@@ -5833,6 +5864,23 @@ TRACKER DATA:
   var H = document.documentElement, typing = function(e){ var t = e && e.target; return t && (t.tagName === "INPUT" && !/^(checkbox|radio|button|submit|range|file)$/i.test(t.type) || t.tagName === "TEXTAREA" || t.tagName === "SELECT"); };
   document.addEventListener("focusin", function(e){ if(typing(e)) H.classList.add("kb-open"); });
   document.addEventListener("focusout", function(){ setTimeout(function(){ if(!typing({target:document.activeElement})) H.classList.remove("kb-open"); window.scrollBy(0,0); }, 60); });
+})();
+</script>
+<script id="pato-ui-js">
+(function(){
+  // one small pill per tab: duck + score + zone; tap opens the score on Savings
+  window.__patoPill = function(s, name, cls){
+    var light = document.documentElement.getAttribute("data-palette") === "goyardl";
+    document.querySelectorAll(".tabp").forEach(function(tp){
+      var row = tp.querySelector(":scope > .pp-row");
+      if(!row){ row = document.createElement("div"); row.className = "pp-row"; row.innerHTML = '<button type="button" class="pato-pill"><img alt=""><b></b><span></span></button>'; tp.insertBefore(row, tp.firstChild);
+        row.firstChild.onclick = function(){ var t = document.getElementById("tab-savings"); if(t && t.getAttribute("aria-selected") !== "true") t.click(); setTimeout(function(){ var c = document.getElementById("psc"); if(c) c.scrollIntoView({behavior:"smooth", block:"center"}); }, 80); }; }
+      var b = row.firstChild; b.querySelector("img").src = light ? "icon-light-192.png?v=6" : "icon-192.png?v=6";
+      b.querySelector("b").textContent = s; var sp = b.querySelector("span"); sp.textContent = name; sp.className = cls;
+      b.setAttribute("aria-label", "Pato score " + s + ", " + name);
+    });
+  };
+  if(window.__patoLast) window.__patoPill.apply(null, window.__patoLast);
 })();
 </script>
 </body>
