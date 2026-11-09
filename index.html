@@ -1473,9 +1473,27 @@ html:root[data-palette="goyardl"] body::after{background:#F4EFE5}
 html:root[data-palette="goyardl"] .seg button[aria-pressed="true"],html:root[data-palette="goyardl"] .seg button.on{background:linear-gradient(135deg,#2F8F62,#1C6444);color:#fff}
 html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #sfOffer .g{box-shadow:0 14px 34px rgba(70,52,20,.12)}
 </style>
+<style id="pato-rc">
+.rc{margin:4px 0 14px;padding:12px 16px;border-radius:18px;background:color-mix(in srgb,var(--card) 90%,var(--mango) 10%);border:1px solid color-mix(in srgb,var(--mango) 28%,transparent)}
+.rc[hidden]{display:none}
+.rc-h{font-family:var(--serif,Georgia),serif;font-weight:700;font-size:1rem;color:var(--mango);margin-bottom:4px}
+.rc-r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;font-size:.9rem}
+.rc-r span{color:var(--muted)}.rc-r b{font-weight:600;color:var(--ink);text-align:right}.rc-r b small{font-weight:500;color:var(--muted);font-size:.76rem}
+.rc-r b.profit{color:var(--green)}.rc-r b.late{color:var(--red,#e07a6a)}
+.rc-n{font-size:.78rem;color:var(--muted);margin:-2px 0 4px}
+.rc-r b{white-space:nowrap}
+.rc-v{all:unset;display:block;cursor:pointer;margin:2px 0 6px;padding:9px 12px;border-radius:12px;font-size:.88rem;font-weight:600;line-height:1.35;color:var(--ink);background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.rc-v small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:4px}.rc-v small[hidden]{display:none}
+</style>
+<style id="pato-disc">
+#discBtn{all:unset;cursor:pointer;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;margin-left:6px;vertical-align:middle;color:var(--muted);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+#discBtn svg{width:19px;height:19px}
+html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
+</style>
 <style id="pato-score">
-#psc{margin:0 0 14px;padding:16px 18px 14px;border-radius:20px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);text-align:center}
+#psc{margin:14px 0;padding:16px 18px 14px;border-radius:20px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);text-align:center}
 #psc[hidden]{display:none}
+#brief{display:none!important}
 .psc-h b{font-family:var(--serif,Georgia),serif;font-size:1.05rem;color:var(--ink)}
 .psc-gw{position:relative;max-width:240px;margin:4px auto 0}
 #pscG svg{display:block;width:100%;height:auto;overflow:visible}
@@ -1500,26 +1518,10 @@ html:root[data-palette="goyardl"] #sfLock .g,html:root[data-palette="goyardl"] #
 .psc-i i{flex:none;width:8px;height:8px;border-radius:50%;background:#E5BE3E}.psc-i i.good{background:#3DBB7E}.psc-i i.bad{background:#E0735A}
 .psc-how{font-size:.74rem;color:var(--muted);margin:10px 0 0;line-height:1.4}
 </style>
-<style id="pato-rc">
-.rc{margin:4px 0 14px;padding:12px 16px;border-radius:18px;background:color-mix(in srgb,var(--card) 90%,var(--mango) 10%);border:1px solid color-mix(in srgb,var(--mango) 28%,transparent)}
-.rc[hidden]{display:none}
-.rc-h{font-family:var(--serif,Georgia),serif;font-weight:700;font-size:1rem;color:var(--mango);margin-bottom:4px}
-.rc-r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;font-size:.9rem}
-.rc-r span{color:var(--muted)}.rc-r b{font-weight:600;color:var(--ink);text-align:right}.rc-r b small{font-weight:500;color:var(--muted);font-size:.76rem}
-.rc-r b.profit{color:var(--green)}.rc-r b.late{color:var(--red,#e07a6a)}
-.rc-n{font-size:.78rem;color:var(--muted);margin:-2px 0 4px}
-.rc-r b{white-space:nowrap}
-.rc-v{all:unset;display:block;cursor:pointer;margin:2px 0 6px;padding:9px 12px;border-radius:12px;font-size:.88rem;font-weight:600;line-height:1.35;color:var(--ink);background:color-mix(in srgb,var(--ink) 5%,transparent)}
-.rc-v small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:4px}.rc-v small[hidden]{display:none}
-</style>
-<style id="pato-disc">
-#discBtn{all:unset;cursor:pointer;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;margin-left:6px;vertical-align:middle;color:var(--muted);background:color-mix(in srgb,var(--ink) 7%,transparent)}
-#discBtn svg{width:19px;height:19px}
-html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
-</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261109012501";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109012851";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -4011,14 +4013,15 @@ html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
       if(pv.some(v=>v<60)) score = Math.min(score, 79); if(pv.some(v=>v<20)) score = Math.min(score, 59); if(pv.filter(v=>v<40).length>=2) score = Math.min(score, 39);
       score = Math.round(score);
       const contrib = {}; pil.forEach(x=>x.items.forEach(i=>{ contrib[i[0]] = Math.round(i[2]*x.w/x.items.length/tw*10)/10; }));
-      const Z = [[20,"Sinking","Money is slipping away. Stop the biggest leak first.","z1"],[40,"Paddling","Working, but not getting ahead. Cut one habit.","z2"],[60,"Floating","Okay, but one bad month hurts. Build your cushion.","z3"],[80,"Cruising","Good habits, money growing. Keep it steady.","z4"],[101,"Flying","Top shape, and rare. Protect it.","z5"]];
+      const PHR = {"Sinking": ["Money is slipping away. Stop the biggest leak first.", "You're taking on water. Pick one cost to cut today.", "This month is running you. Take back one decision.", "Pause the extras. Every peso saved now counts double.", "Too much going out, too little staying. Start small: skip one thing this week.", "Rough water. Spend only on what you truly need for 7 days.", "Your cushion is thin. Rebuilding it comes first.", "Hard truth: this pace empties savings. Change one habit today.", "Slow down before you speed up. No new bets until you're back up.", "Even ducks sink when they stop paddling. Make one move today."], "Paddling": ["Working hard but not getting ahead. Cut one habit.", "Lots of effort, little progress. Find what's eating your money.", "You're staying afloat. Now aim to keep 10% of what comes in.", "Close to even. One smart week tips it your way.", "Money comes in and goes right back out. Save first, then spend.", "You're moving, just against the current. Lower one big cost.", "Good effort. Set a weekly spending cap and stick to it.", "Keep going. A small monthly saving changes this fast.", "You're not sinking, but you're not growing. Pick a goal for this month.", "Paddle smarter: fewer bets, more saving."], "Floating": ["Okay, but one bad month would hurt. Build your cushion.", "Steady, not safe yet. Aim for 3 months of spending saved.", "You're holding your own. Next step: invest a little each month.", "Calm water. A good time to set money aside.", "Balanced, but a surprise bill would rock you. Grow your safety net.", "Not bad. Keep spending under your limit and you'll rise.", "You're above water. Now get the money people owe you back.", "Middle of the pond. One better habit moves you up.", "Things are stable. Make saving automatic so it keeps going.", "Solid footing. Keep bets small and you'll climb."], "Cruising": ["Good habits, money growing. Keep it steady.", "Smooth sailing. Stay under your limit and keep cruising.", "You're in control. Keep saving before you spend.", "Strong pace. Don't let a big week undo a good month.", "Money's working for you. Keep investing a little at a time.", "Nice rhythm. Consistency beats big wins.", "You're doing better than most. Protect what you've built.", "On course. Keep your loans small and your savings growing.", "Steady and strong. One more good habit and you're Flying.", "Good flow. Keep betting as fun money, not a plan."], "Flying": ["Top shape, and rare. Protect it.", "You're flying. Keep the habits that got you here.", "Elite money moves. Stay humble with the bets.", "Few people get here. Don't change what works.", "Your money works as hard as you do. Keep it that way.", "Soaring. Now think long-term: invest, don't splurge.", "Peak form. Your cushion has your back.", "Clear skies. Keep spending below your limit.", "You've earned this. Keep risks small to stay up here.", "High and steady. This is how goals get reached."]};   // Marco approved, Nov 9: a new line each day
+      const Z = [[20,"Sinking",PHR["Sinking"],"z1"],[40,"Paddling",PHR["Paddling"],"z2"],[60,"Floating",PHR["Floating"],"z3"],[80,"Cruising",PHR["Cruising"],"z4"],[101,"Flying",PHR["Flying"],"z5"]];
       const z = Z.find(x=>score<=x[0]) || Z[4];
       // gauge: 5 zones on a half circle, needle at the score
       { const R = 80, cx = 100, cy = 96, pt = (s,r) => { const a = Math.PI*(1 - s/100); return [cx + r*Math.cos(a), cy - r*Math.sin(a)]; };
         const arc = (s0,s1) => { const [x0,y0] = pt(s0,R), [x1,y1] = pt(s1,R); return `M${x0.toFixed(1)} ${y0.toFixed(1)} A${R} ${R} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`; };
         const [nx,ny] = pt(score, R-14);
         $("pscG").innerHTML = `<svg viewBox="0 0 200 112" aria-hidden="true">${[[0,19.4,"z1"],[20.6,39.4,"z2"],[40.6,59.4,"z3"],[60.6,79.4,"z4"],[80.6,100,"z5"]].map(([a,b,c])=>`<path d="${arc(a,b)}" class="g-${c}${c===z[3]?" on":""}"/>`).join("")}<line x1="${cx}" y1="${cy}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" class="g-n"/><circle cx="${cx}" cy="${cy}" r="5" class="g-c"/></svg>`; }
-      $("pscNum").textContent = score; $("pscBand").textContent = z[1]; $("pscBand").className = "psc-z " + z[3]; $("pscMean").textContent = z[2];
+      $("pscNum").textContent = score; $("pscBand").textContent = z[1]; $("pscBand").className = "psc-z " + z[3]; $("pscMean").textContent = z[2][Math.floor(new Date(t+"T12:00").getTime()/864e5) % z[2].length];
       // why it moved: compare with the saved score from about a week ago
       const PH = {spend:["you spent less compared to what you earn","you spent more compared to what you earn"], limit:["you're on a better pace for your limit","you're spending faster than your limit"],
         months:["your savings cushion grew","your savings cushion shrank"], inv:["more of your money is invested","less of your money is invested"], ontime:["loans came back on time","a loan is late"],
@@ -4038,6 +4041,7 @@ html.pato-discreet canvas,html.pato-discreet .home-tiles small{filter:blur(7px)}
       $("pscDet").innerHTML = pil.map(x=>`<div class="psc-g"><b>${x.n}</b>${x.items.map(i=>`<div class="psc-i"><i class="${i[2]>=80?"good":i[2]>=40?"mid":"bad"}"></i><span>${i[3]}</span></div>`).join("")}</div>`).join("") +
         `<p class="psc-how">Built on the FinHealth Score from the Financial Health Network, plus how you bet and play. Based on your last 90 days.</p>`;
       if(!$("pscMore").onclick) $("pscMore").onclick = () => { const d = $("pscDet"), o = d.hidden; d.hidden = !o; $("pscMore").textContent = o ? "Hide details" : "See what's behind it"; };
+      { const s = $("saved"), hero = s && s.closest(".hero, section"), c = $("psc"); if(hero && hero.nextElementSibling !== c) hero.after(c); }
       $("psc").hidden = false;
     })(); }catch(e){ console.error(e); $("psc").hidden = true; }
     // ---- end Pato score ----
