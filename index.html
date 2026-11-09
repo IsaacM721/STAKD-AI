@@ -1433,9 +1433,11 @@ html.sg-on #snapBtn,#mpGate:not([hidden])~#snapUi #snapBtn{display:none}
 #alWrap .hint{font-size:.82rem;color:var(--muted);text-align:center;margin:4px 0 8px}
 html.mp-guest #alWrap{display:none}
 </style>
+<style id="stakd-stale">#stStale{display:inline-block;margin:6px 0 2px;padding:3px 10px;border-radius:999px;font-size:.78rem;color:var(--muted);border:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}#stStale[hidden]{display:none}</style>
 </head>
 <body>
-<script id="stakd-ver">window.STAKD_V="20261108201455";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script id="stakd-ver">window.STAKD_V="20261109000456";(function(){function chk(){fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==window.STAKD_V){var u=location.pathname+"?v="+j.v;if(location.search!=="?v="+j.v)location.replace(u);}}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+
 
 
 
@@ -1835,6 +1837,7 @@ html.mp-guest #alWrap{display:none}
     <h2>IBKR</h2>
     <div class="st-big num" id="stVal">—</div>
     <div class="st-rd num" id="stRd"></div>
+    <div id="stStale" hidden></div>
     <div class="num" id="stBoxes"></div>
     <div id="stList"></div>
     <div id="stMore"></div>
@@ -2101,6 +2104,8 @@ html.mp-guest #alWrap{display:none}
         ${evs.length ? `<div class="st-h">Coming up</div><div class="st-ev">${evs.map(e=>`<div>${stLogo(e.t)}<b>${e.est?"~":""}${fmtDate(e.fecha,false)}</b><span>${spEsc(e.txt)}<small>${evAmt(e)}</small></span></div>`).join("")}</div>` : ""}`;
     })();
     $("stList").querySelectorAll("[data-t]").forEach(b => b.onclick = () => { stOpen = stOpen===b.dataset.t ? null : b.dataset.t; renderStocks(); });
+    { const el = $("stStale"), atMs = c.at ? Date.parse(c.at) : 0, old = atMs && Date.now() - atMs > 75*60000;
+      el.hidden = !old; if(old) el.textContent = "Last trade " + new Date(atMs).toLocaleString("en-US",{weekday:"short", hour:"numeric", minute:"2-digit", timeZone:"America/Santo_Domingo"}).replace(",","").replace(/ (AM|PM)$/, m=>m.toLowerCase()); }
     $("stAt").textContent = c.at ? "Updated " + new Date(c.at).toLocaleString("en-US",{weekday:"short", hour:"numeric", minute:"2-digit", timeZone:"America/Santo_Domingo"}) : "";
   }
   const heldList = () => (config.deudas||[]).filter(d=>Number(d.prestado)>0).map(d=>({nombre:d.nombre, vence:d.vence, rd:Math.max(0, Number(d.prestado) - paidTo(d.nombre))})).filter(x=>x.rd>0);
